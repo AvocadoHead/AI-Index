@@ -57,25 +57,25 @@ class ModuleCloud {
     { name: "Canva", categories: ["T2I", "DES", "Animation"], url: "https://www.canva.com/your-apps/text-to-image" },
     { name: "PhotoMaker", categories: ["T2I", "I2I", "Face Swap", "Portrait"], url: "https://huggingface.co/spaces/TencentARC/PhotoMaker" },
     { name: "Astria", categories: ["T2I", "I2I", "Fine-tuning"], url: "https://www.astria.ai" },
+    { name: "Sana", categories: ["T2I"], url: "https://sana-gen.mit.edu/" },
 
     // Text to Video (T2V)
-
-    { name: "HaliuoAI", categories: ["T2V", "I2V", "Face Swap"], url: "https://hailuoai.com/video" },
+    { name: "HaliuoAI", categories: ["T2V", "I2V",], url: "https://hailuoai.com/video" },
     { name: "Kling.ai", categories: ["T2V", "I2V"], url: "https://klingai.com" },
-    { name: "RunwayML", categories: ["T2I", "I2I", "T2V", "I2V", "V2V", "Animation", "Lip Sync"], url: "https://runwayml.com" },
+    { name: "RunwayML", categories: ["T2I", "I2I", "T2V", "I2V", "V2V", "Animation", "LipSync & Face Swap"], url: "https://runwayml.com" },
     { name: "Pika Labs", categories: ["T2V", "I2V", "Animation"], url: "https://pika.art" },
     { name: "Kaiber", categories: ["T2V", "I2V", "Animation", "Music Generation"], url: "https://kaiber.ai" },
     { name: "Meta's Make-A-Video", categories: ["T2V", "I2V"], url: "https://makeavideo.studio" },
-    { name: "Synthesia", categories: ["T2V", "Animation", "Lip Sync"], url: "https://www.synthesia.io" },
+    { name: "Synthesia", categories: ["T2V", "Animation", "LipSync & Face Swap"], url: "https://www.synthesia.io" },
     { name: "Veed.io", categories: ["T2V", "V2V", "DES"], url: "https://www.veed.io" },
-    { name: "Domo", categories: ["T2V", "Animation", "Lip Sync"], url: "https://domo.com" },
+    { name: "Domo", categories: ["T2V", "Animation", "LipSync & Face Swap"], url: "https://domo.com" },
     { name: "Vidu", categories: ["T2V", "V2V", "Animation"], url: "https://vidu.ai" },
     { name: "Kaps", categories: ["T2V", "I2V", "Animation", "Face Swap"], url: "https://kaps.co.il" },
     { name: "Sora", categories: ["T2V", "I2V", "Animation"], url: "https://openai.com/sora" },
 
     // Image to Video (I2V)
     { name: "Pixverse", categories: ["T2V", "I2V", "Animation", "3D"], url: "https://pixverse.ai" },
-    { name: "D-ID", categories: ["I2V", "Face Swap", "Lip Sync"], url: "https://studio.d-id.com" },
+    { name: "D-ID", categories: ["I2V", "LipSync & Face Swap"], url: "https://studio.d-id.com" },
     { name: "Luma Labs", categories: ["I2V", "3D", "Animation"], url: "https://lumalabs.ai" },
     { name: "Deep Dream Generator", categories: ["I2V", "T2I", "I2I"], url: "https://deepdreamgenerator.com" },
 
