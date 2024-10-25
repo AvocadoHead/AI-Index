@@ -62,7 +62,7 @@ class ModuleCloud {
     // Text to Video (T2V)
     { name: "HaliuoAI", categories: ["T2V", "I2V",], url: "https://hailuoai.com/video" },
     { name: "Kling.ai", categories: ["T2V", "I2V"], url: "https://klingai.com" },
-    { name: "RunwayML", categories: ["T2I", "I2I", "T2V", "I2V", "V2V", "Animation", "LipSync & Face Swap"], url: "https://runwayml.com" },
+    { name: "RunwayML", categories: ["T2I", "I2I", "T2V", "LipSync & Face Swap", "I2V", "V2V", "Animation"], url: "https://runwayml.com" },
     { name: "Pika Labs", categories: ["T2V", "I2V", "Animation"], url: "https://pika.art" },
     { name: "Kaiber", categories: ["T2V", "I2V", "Animation", "Music Generation"], url: "https://kaiber.ai" },
     { name: "Meta's Make-A-Video", categories: ["T2V", "I2V"], url: "https://makeavideo.studio" },
