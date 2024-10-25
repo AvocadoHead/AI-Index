@@ -89,7 +89,7 @@ class ModuleCloud {
     { name: "Point-E", categories: ["3D", "T2I"], url: "https://huggingface.co/spaces/openai/point-e" },
     { name: "GET3D", categories: ["3D", "T2I", "Animation"], url: "https://github.com/nvidia/GET3D" },
     { name: "CSM", categories:["3D","Image to 3D"], url:'http://3d.csm.ai' },
-    { name: "Meshy", categories:["3D","Image to 3D"], url:'www.meshy.ai' },
+    { name: "Meshy", categories:["3D","Image to 3D"], url:'http://meshy.ai' },
     { name: "Blender", categories: ["3D", "Animation", "DES"], url: "https://www.blender.org" },
     { name: "Cinema 4D", categories: ["3D", "Animation", "DES"], url: "https://www.maxon.net/cinema-4d" },
     { name: "ZoeDepth", categories: ["3D", "I2I"], url: "https://huggingface.co/spaces/shariqfarooq/ZoeDepth" },
