@@ -60,11 +60,13 @@ class ModuleCloud {
         const moduleData = [
 
 // Large Language Models (LLM)
-	{ name: "ChatGPT", categories: ["LLM", "AI"], url: "https://chat.openai.com", scores: { "LLM": 0.90, "USE": 0.85 } },
-	{ name: "Claude", categories: ["LLM", "AI"], url: "https://claude.ai", scores: { "LLM": 0.95, "USE": 0.9 } },
-	{ name: "Perplexity", categories: ["LLM", "AI"], url: "https://perplexity.ai", scores: { "LLM": 0.97, "USE": 0.8 } },
-	{ name: "Groq", categories: ["LLM", "AI"], url: "https://groq.com/", scores: { "LLM": 0.98, "USE": 0.9 } },
-	{ name: "Bard", categories: ["LLM", "AI"], url: "https://bard.google.com", scores: { "LLM": 0.85, "USE": 0.75 } },
+	{ name: "ChatGPT", categories: ["LLM", "USE"], url: "https://chat.openai.com", scores: { "LLM": 0.90, "USE": 0.85 } },
+	{ name: "Claude", categories: ["LLM", "USE"], url: "https://claude.ai", scores: { "LLM": 0.95, "USE": 0.9 } },
+	{ name: "Perplexity", categories: ["LLM", "USE"], url: "https://perplexity.ai", scores: { "LLM": 0.97, "USE": 0.8 } },
+	{ name: "Grammarly", categories: ["LLM", "USE"], url: "https://www.grammarly.com/", scores: { "LLM": 0.95, "USE": 0.9 } },
+	{ name: "Groq", categories: ["LLM", "USE"], url: "https://groq.com/", scores: { "LLM": 0.98, "USE": 0.9 } },
+	{ name: "Bard", categories: ["LLM", "USE"], url: "https://bard.google.com", scores: { "LLM": 0.85, "USE": 0.75 } },
+	{ name: "Jasper", categories: ["LLM", "USE"], url: "https://www.jasper.ai/", scores: { "LLM": 0.80, "USE": 0.79 } },
 	
 // Text to Image (T2I)
 	{ name: "DALL-E 3", categories: ["T2I", "I2I", "DES"], url: "https://openai.com/dall-e-3", scores: { "T2I": 0.85, "I2I": 0.8, "DES": 0.85 } },
@@ -91,6 +93,8 @@ class ModuleCloud {
 	{ name: "Synthesia", categories: ["T2V", "ANI", "FCE"], url: "https://www.synthesia.io", scores: { "T2V": 0.86, "ANI": 0.84, "FCE": 0.87 } },
 	{ name: "Veed.io", categories: ["T2V", "V2V", "DES"], url: "https://www.veed.io", scores: { "T2V": 0.82, "V2V": 0.84, "DES": 0.83 } },
 	{ name: "Domo", categories: ["T2V", "ANI", "FCE"], url: "https://domo.com", scores: { "T2V": 0.80, "ANI": 0.78, "FCE": 0.82 } },
+	{ name: "Fliki", categories: ["T2V"], url: "https://fliki.ai/", scores: { "T2V": 0.89 } },
+
 	{ name: "Vidu", categories: ["T2V", "V2V", "ANI"], url: "https://vidu.ai", scores: { "T2V": 0.81, "V2V": 0.79, "ANI": 0.80 } },
 	{ name: "Kaps", categories: ["T2V", "I2V", "ANI", "Face Swap"], url: "https://kaps.co.il", scores: { "T2V": 0.79, "I2V": 0.77, "ANI": 0.78, "Face Swap": 0.80 } },
 	{ name: "Sora", categories: ["T2V", "I2V", "ANI"], url: "https://openai.com/sora", scores: { "T2V": 0.90, "I2V": 0.88, "ANI": 0.89 } },
@@ -113,6 +117,7 @@ class ModuleCloud {
 	{ name: "GET3D", categories: ["3D", "T2I", "ANI"], url: "https://github.com/nvidia/GET3D", scores: { "3D": 0.85, "T2I": 0.83, "ANI": 0.81 } },
 	{ name: "CSM", categories: ["3D", "Image to 3D"], url: "http://3d.csm.ai", scores: { "3D": 0.84, "Image to 3D": 0.86 } },
 	{ name: "Meshy", categories: ["3D", "Image to 3D"], url: "http://www.meshy.ai", scores: { "3D": 0.83, "Image to 3D": 0.85 } },
+	{ name: "Vizcom", categories: ["3D", "Image to 3D"], url: "https://www.vizcom.ai/", scores: { "3D": 0.85, "Image to 3D": 0.87 } },
 	{ name: "Blender", categories: ["3D", "Animation", "DES"], url: "https://www.blender.org", scores: { "3D": 0.92, "Animation": 0.90, "DES": 0.88 } },
 	{ name: "Cinema 4D", categories: ["3D", "Animation", "DES"], url: "https://www.maxon.net/cinema-4d", scores: { "3D": 0.91, "Animation": 0.89, "DES": 0.87 } },
 	{ name: "ZoeDepth", categories: ["3D", "I2I"], url: "https://huggingface.co/spaces/shariqfarooq/ZoeDepth", scores: { "3D": 0.83, "I2I": 0.81 } },
