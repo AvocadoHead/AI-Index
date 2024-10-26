@@ -64,7 +64,6 @@ class ModuleCloud {
 	{ name: "Claude", categories: ["LLM", "AI"], url: "https://claude.ai", scores: { "LLM": 0.95, "USE": 0.9 } },
 	{ name: "Perplexity", categories: ["LLM", "AI"], url: "https://perplexity.ai", scores: { "LLM": 0.97, "USE": 0.8 } },
 	{ name: "Groq", categories: ["LLM", "AI"], url: "https://groq.com/", scores: { "LLM": 0.98, "USE": 0.9 } },
-	{ name: "Anthropic", categories: ["LLM", "AI"], url: "https://anthropic.com", scores: { "LLM": 0.95, "USE": 0.9 } },
 	{ name: "Bard", categories: ["LLM", "AI"], url: "https://bard.google.com", scores: { "LLM": 0.85, "USE": 0.75 } },
 	
 // Text to Image (T2I)
