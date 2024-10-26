@@ -92,7 +92,7 @@ class ModuleCloud {
 	{ name: "Meta's Make-A-Video", categories: ["T2V", "I2V"], url: "https://makeavideo.studio", scores: { "T2V": 0.83, "I2V": 0.81 } },
 	{ name: "Synthesia", categories: ["T2V", "ANI", "FCE"], url: "https://www.synthesia.io", scores: { "T2V": 0.86, "ANI": 0.84, "FCE": 0.87 } },
 	{ name: "Veed.io", categories: ["T2V", "V2V", "DES"], url: "https://www.veed.io", scores: { "T2V": 0.82, "V2V": 0.84, "DES": 0.83 } },
-	{ name: "Domo", categories: ["T2V", "ANI", "FCE"], url: "https://domo.com", scores: { "T2V": 0.80, "ANI": 0.78, "FCE": 0.82 } },
+	{ name: "Domo", categories: ["T2V", "ANI", "V2V", "FCE"], url: "https://domo.com", scores: { "T2V": 0.80, "ANI": 0.78, "V2V": 0.92, "FCE": 0.82 } },
 	{ name: "Fliki", categories: ["T2V"], url: "https://fliki.ai/", scores: { "T2V": 0.89 } },
 
 	{ name: "Vidu", categories: ["T2V", "V2V", "ANI"], url: "https://vidu.ai", scores: { "T2V": 0.81, "V2V": 0.79, "ANI": 0.80 } },
