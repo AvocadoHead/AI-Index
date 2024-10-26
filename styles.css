@@ -2,36 +2,210 @@ body {
     margin: 0;
     overflow: hidden;
     background: #000;
-    font-family: 'Heebo', Arial, sans-serif;
+    font-family: 'Inter', sans-serif;
+    transition: all 0.3s ease;
+    color: #fff;
+}
+
+body.light-mode {
+    background: #f5f5f5;
+    color: #000;
 }
 
 canvas {
     display: block;
+    cursor: grab;
 }
 
-.category-controls {
+canvas:active {
+    cursor: grabbing;
+}
+
+.sidebar {
     position: fixed;
-    top: 10px;
-    left: 50%;
-    transform: translateX(-50%);
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
     z-index: 100;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(8px);
+    border-radius: 16px;
+    max-height: 80vh;
+    overflow-y: auto;
 }
 
-.category-controls button {
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    color: white;
-    padding: 8px 16px;
-    margin: 5px;
-    border-radius: 20px;
+.sidebar::-webkit-scrollbar {
+    width: 3px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+}
+
+.light-mode .sidebar::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.sidebar button {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.9);
+    padding: 10px 20px;
+    border-radius: 12px;
     cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    font-size: 14px;
+    font-weight: 500;
+    text-align: left;
+    white-space: nowrap;
+    width: 160px;
+    position: relative;
+    overflow: hidden;
+}
+
+.light-mode .sidebar button {
+    background: rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    color: rgba(0, 0, 0, 0.8);
+}
+
+.sidebar button:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateX(5px);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.light-mode .sidebar button:hover {
+    background: rgba(0, 0, 0, 0.08);
+    border-color: rgba(0, 0, 0, 0.15);
+}
+
+.sidebar button.active {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.3);
+    color: white;
+    font-weight: 600;
+    transform: translateX(8px);
+}
+
+.light-mode .sidebar button.active {
+    background: rgba(0, 0, 0, 0.1);
+    border-color: rgba(0, 0, 0, 0.2);
+    color: black;
+}
+
+.toggle-mode {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    z-index: 100;
+    padding: 10px;
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     transition: all 0.3s ease;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-.category-controls button:hover {
-    background: rgba(255, 255, 255, 0.3);
+.light-mode .toggle-mode {
+    background: rgba(0, 0, 0, 0.05);
 }
 
-.category-controls button.active {
-    background: rgba(255, 255, 255, 0.5);
+.toggle-mode:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.05);
+}
+
+.light-mode .toggle-mode:hover {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.tooltip {
+    position: fixed;
+    background: rgba(0, 0, 0, 0.85);
+    color: white;
+    padding: 12px 16px;
+    border-radius: 12px;
+    font-size: 14px;
+    pointer-events: none;
+    opacity: 0;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1000;
+    max-width: 250px;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.light-mode .tooltip {
+    background: rgba(255, 255, 255, 0.95);
+    color: black;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.tooltip strong {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.tooltip small {
+    opacity: 0.8;
+    font-size: 13px;
+    line-height: 1.4;
+    display: block;
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        left: 10px;
+        padding: 15px;
+    }
+
+    .sidebar button {
+        width: 130px;
+        padding: 8px 16px;
+        font-size: 13px;
+    }
+
+    .toggle-mode {
+        top: 10px;
+        right: 10px;
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+    }
+
+    .tooltip {
+        padding: 10px 14px;
+        font-size: 13px;
+        max-width: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    .sidebar button {
+        width: 110px;
+        padding: 6px 12px;
+        font-size: 12px;
+    }
 }
