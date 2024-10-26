@@ -63,6 +63,7 @@ class ModuleCloud {
 	{ name: "ChatGPT", categories: ["LLM", "AI"], url: "https://chat.openai.com", scores: { "LLM": 0.90, "USE": 0.85 } },
 	{ name: "Claude", categories: ["LLM", "AI"], url: "https://claude.ai", scores: { "LLM": 0.95, "USE": 0.9 } },
 	{ name: "Perplexity", categories: ["LLM", "AI"], url: "https://perplexity.ai", scores: { "LLM": 0.97, "USE": 0.8 } },
+	{ name: "Groq", categories: ["LLM", "AI"], url: "https://groq.com/", scores: { "LLM": 0.98, "USE": 0.9 } },
 	{ name: "Anthropic", categories: ["LLM", "AI"], url: "https://anthropic.com", scores: { "LLM": 0.95, "USE": 0.9 } },
 	{ name: "Bard", categories: ["LLM", "AI"], url: "https://bard.google.com", scores: { "LLM": 0.85, "USE": 0.75 } },
 	
@@ -71,6 +72,7 @@ class ModuleCloud {
 	{ name: "Midjourney", categories: ["T2I", "I2I", "DES"], url: "https://www.midjourney.com", scores: { "T2I": 0.92, "I2I": 0.88, "DES": 0.90 } },
 	{ name: "Stable Diffusion", categories: ["T2I", "I2I", "ANI"], url: "https://huggingface.co/spaces/stabilityai/stable-diffusion", scores: { "T2I": 0.88, "I2I": 0.85, "Animation": 0.80 } },
 	{ name:	"Fooocus", categories: ["T2I", "I2I", "UPS"], url: "https://colab.research.google.com/github/lllyasviel/Fooocus/blob/main/fooocus_colab.ipynb", scores: { "T2I": 0.88, "I2I": 0.92, "UPS": 0.95 } },
+	{ name:	"Artflow", categories: ["T2I", "FCE"], url: "https://app.artflow.ai/", scores: { "T2I": 0.78, "FCE": 0.94 } },
 	{ name: "Leonardo.ai", categories: ["T2I", "I2I", "ANI"], url: "https://leonardo.ai", scores: { "T2I": 0.86, "I2I": 0.84, "ANI": 0.78 } },
 	{ name: "Ideogram", categories: ["T2I", "DES"], url: "https://ideogram.ai", scores: { "T2I": 0.83, "DES": 0.85 } },
 	{ name: "Adobe Firefly", categories: ["T2I", "I2I", "DES"], url: "https://www.adobe.com/products/firefly", scores: { "T2I": 0.87, "I2I": 0.85, "DES": 0.89 } },
@@ -121,6 +123,9 @@ class ModuleCloud {
 	{ name: "Sketch", categories: ["DES", "UI/UX"], url: "https://www.sketch.com", scores: { "DES": 0.88, "UI/UX": 0.90 } },
 	{ name: "InVision", categories: ["DES", "UI/UX"], url: "https://www.invisionapp.com", scores: { "DES": 0.86, "UI/UX": 0.88 } },
 	{ name: "Adobe XD", categories: ["DES", "UI/UX"], url: "https://www.adobe.com/products/xd", scores: { "DES": 0.87, "UI/UX": 0.89 } },
+	{ name: "DBG Upscale", categories: ["UPS"], url: "https://dgb.lol/ai-image-upscaler", scores: { "UPS": 0.78 } },
+
+
 
 // Audio (AUD)
 	{ name: "ElevenLabs", categories: ["AUD", "T2S", "Voice Clone"], url: "https://elevenlabs.io", scores: { "AUD": 0.89, "T2S": 0.91, "Voice Clone": 0.90 } },
