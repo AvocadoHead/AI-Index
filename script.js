@@ -137,6 +137,7 @@ class ModuleCloud {
 	{ name: "OpenAI Whisper", categories: ["AUD", "S2T"], url: "https://github.com/openai/whisper", scores: { "AUD": 0.90, "S2T": 0.92 } },
 	{ name: "Descript", categories: ["AUD", "V2V", "Voice Clone"], url: "https://www.descript.com", scores: { "AUD": 0.87, "V2V": 0.85, "Voice Clone": 0.86 } },
 	{ name: "Lalal.ai", categories: ["AUD", "Music", "Voice Separation"], url: "https://www.lalal.ai", scores: { "AUD": 0.88, "Music": 0.87, "Voice Separation": 0.89 } },
+	{ name: "Weights", categories: ["AUD", "Music", "Voice Separation"], url: "https://www.weights.gg/", scores: { "AUD": 0.95, "Music": 0.90, "Voice Separation": 0.89 } },
 	{ name: "Boomy", categories: ["AUD", "Music Generation"], url: "https://boomy.com/", scores: { "AUD": 0.81, "Music Generation": 0.80 } },
 	{ name: "Narakeet", categories: ["AUD", "Music Generation"], url: "https://www.narakeet.com/", scores: { "AUD": 0.90, "Music Generation": 0.79 } },
 	{ name: "Ace Studio", categories: ["AUD", "Music Generation"], url: "https://acestudio.ai/", scores: { "AUD": 0.91, "Music Generation": 0.90 } },
