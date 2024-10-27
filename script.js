@@ -93,6 +93,7 @@ class ModuleCloud {
 	{ name: "Kaiber", categories: ["T2V", "I2V", "ANI", "Music Generation"], url: "https://kaiber.ai", scores: { "T2V": 0.84, "I2V": 0.82, "ANI": 0.80, "Music Generation": 0.78 } },
 	{ name: "Meta's Make-A-Video", categories: ["T2V", "I2V"], url: "https://makeavideo.studio", scores: { "T2V": 0.83, "I2V": 0.81 } },
 	{ name: "Synthesia", categories: ["T2V", "ANI", "FCE"], url: "https://www.synthesia.io", scores: { "T2V": 0.86, "ANI": 0.84, "FCE": 0.87 } },
+	{ name: "Stable Video", categories: ["T2V", "I2V"], url: "https://www.stablevideo.com/", scores: { "T2V": 0.89, "I2V": 0.89 } },
 	{ name: "Veed.io", categories: ["T2V", "I2V", "VID", "V2V", "DES"], url: "https://www.veed.io", scores: { "T2V": 0.82, "I2V": 0.81, "VID": 0.83,"V2V": 0.84, "DES": 0.83 } },
 	{ name: "Fliki", categories: ["T2V"], url: "https://fliki.ai/", scores: { "T2V": 0.89 } },
 	{ name: "Vidu", categories: ["T2V", "V2V", "ANI", "I2V"], url: "https://vidu.ai", scores: { "T2V": 0.81, "V2V": 0.79, "I2V": 0.94, "ANI": 0.80 } },
@@ -159,7 +160,8 @@ class ModuleCloud {
  	{ name: "DeepDreamGenerator", categories: ["VID"], url: "https://deepdreamgenerator.com/", scores: { "VID": 0.84 } },
  	{ name: "Haiper", categories: ["T2V", "I2V", "VID"], url: "https://haiper.ai/", scores: { "T2V": 0.82, "I2V": 0.9, "VID": 0.92 } },
  	{ name: "muse.ai", categories: ["VID"], url: "https://muse.ai/", scores: { "VID": 0.92 } },
- 	{ name: "Magichour.ai", categories: ["T2I", "T2V", "I2I", "I2V", "VID"], url: "https://magichour.ai/", scores: { "T2I": 0.82, "T2V": 0.85, "I2I": 0.87, "I2V": 0.89,"VID": 0.90 } }
+ 	{ name: "Magichour.ai", categories: ["T2I", "T2V", "I2I", "I2V", "VID"], url: "https://magichour.ai/", scores: { "T2I": 0.82, "T2V": 0.85, "I2I": 0.87, "I2V": 0.89,"VID": 0.90 } },
+ 	{ name: "VideoLeap", categories: ["T2I", "T2V", "I2I", "I2V", "VID"], url: "https://www.videoleapapp.com/", scores: { "T2I": 0.79, "T2V": 0.80, "I2I": 0.80, "I2V": 0.82,"VID": 0.90 } }
 
         ];
 
