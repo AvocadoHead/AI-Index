@@ -151,14 +151,14 @@ class ModuleCloud {
 	{ name: "Mubert", categories: ["AUD", "Music Generation"], url: "https://mubert.com", scores: { "AUD": 0.84, "Music Generation": 0.86 } },
 	{ name: "Suno.ai", categories: ["AUD", "Music Generation"], url: "https://www.suno.ai", scores: { "AUD": 0.86, "Music Generation": 0.88 } },
 	{ name: "Udio.ai", categories: ["AUD", "Music Generation"], url: "https://udio.com", scores: { "AUD": 0.83, "Music Generation": 0.85 } },
-	{ name: "Stable Audio", categories: ["AUD", "Music Generation"], url: "https://www.stableaudio.com", scores: { "AUD": 0.85, "Music Generation": 0.87 } }
+	{ name: "Stable Audio", categories: ["AUD", "Music Generation"], url: "https://www.stableaudio.com", scores: { "AUD": 0.85, "Music Generation": 0.87 } },
 
 // Video Tools (VID)
-	{ name: "WiseCut", categories: ["VID"], url: "https://app.wisecut.ai/", scores: { "VID": 0.88 } }
-	{ name: "Kapwing", categories: ["VID"], url: "https://www.kapwing.com/", scores: { "VID": 0.82 } }
- 	{ name: "DeepDreamGenerator", categories: ["VID"], url: "https://deepdreamgenerator.com/", scores: { "VID": 0.84 } }
- 	{ name: "Haiper", categories: ["T2V", "I2V", "VID"], url: "https://haiper.ai/", scores: { "T2V": 0.82, "I2V": 0.9, "VID": 0.92 } }
- 	{ name: "muse.ai", categories: ["VID"], url: "https://muse.ai/", scores: { "VID": 0.92 } }
+	{ name: "WiseCut", categories: ["VID"], url: "https://app.wisecut.ai/", scores: { "VID": 0.88 } },
+	{ name: "Kapwing", categories: ["VID"], url: "https://www.kapwing.com/", scores: { "VID": 0.82 } },
+ 	{ name: "DeepDreamGenerator", categories: ["VID"], url: "https://deepdreamgenerator.com/", scores: { "VID": 0.84 } },
+ 	{ name: "Haiper", categories: ["T2V", "I2V", "VID"], url: "https://haiper.ai/", scores: { "T2V": 0.82, "I2V": 0.9, "VID": 0.92 } },
+ 	{ name: "muse.ai", categories: ["VID"], url: "https://muse.ai/", scores: { "VID": 0.92 } },
  	{ name: "Magichour.ai", categories: ["T2I", "T2V", "I2I", "I2V", "VID"], url: "https://magichour.ai/", scores: { "T2I": 0.82, "T2V": 0.85, "I2I": 0.87, "I2V": 0.89,"VID": 0.90 } }
 
         ];
