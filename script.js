@@ -110,7 +110,7 @@ class ModuleCloud {
 	{ name: "CapCut", categories: ["V2V", "DES", "ANI"], url: "https://www.capcut.com", scores: { "V2V": 0.85, "DES": 0.83, "ANI": 0.81 } },
 	{ name: "Stable Video Diffusion", categories: ["V2V", "I2V", "ANI"], url: "https://huggingface.co/stabilityai/stable-video-diffusion-img2vid", scores: { "V2V": 0.87, "I2V": 0.86, "Animation": 0.84 } },
 	{ name: "DaVinci Resolve", categories: ["V2V", "DES", "AUD"], url: "https://www.blackmagicdesign.com/products/davinciresolve", scores: { "V2V": 0.89, "DES": 0.88, "AUD": 0.87 } },
-	{ name: "Adobe Premiere", categories: ["V2V", "DES", "AUD"], url: "https://www.adobe.com/products/premiere", scores: { "V2V": 0.90, "DES": 0.89, "AUD": 0.88 } },
+	{ name: "Adobe Premiere", categories: ["V2V", "DES" ], url: "https://www.adobe.com/products/premiere", scores: { "V2V": 0.90, "DES": 0.89, } },
 
 // 3D Oriented (3D)
 	{ name: "Point-E", categories: ["3D", "T2I"], url: "https://huggingface.co/spaces/openai/point-e", scores: { "3D": 0.82, "T2I": 0.80 } },
@@ -140,6 +140,8 @@ class ModuleCloud {
 	{ name: "Weights", categories: ["AUD", "Music", "Voice Separation"], url: "https://www.weights.gg/", scores: { "AUD": 0.95, "Music": 0.90, "Voice Separation": 0.89 } },
 	{ name: "Boomy", categories: ["AUD", "Music Generation"], url: "https://boomy.com/", scores: { "AUD": 0.81, "Music Generation": 0.80 } },
 	{ name: "Narakeet", categories: ["AUD", "Music Generation"], url: "https://www.narakeet.com/", scores: { "AUD": 0.90, "Music Generation": 0.79 } },
+	{ name: "Adobe Podcast", categories: ["AUD" ], url: "https://podcast.adobe.com/", scores: { "AUD": 0.92 } },
+
 	{ name: "Ace Studio", categories: ["AUD", "Music Generation"], url: "https://acestudio.ai/", scores: { "AUD": 0.91, "Music Generation": 0.90 } },
 	{ name: "Fadr", categories: ["AUD", "Music Generation"], url: "https://fadr.com/", scores: { "AUD": 0.93, "Music Generation": 0.75 } },
 	{ name: "AIVA", categories: ["AUD", "Music Generation"], url: "https://www.aiva.ai", scores: { "AUD": 0.85, "Music Generation": 0.87 } },
