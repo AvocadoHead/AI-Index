@@ -150,7 +150,7 @@ class ModuleCloud {
 	{ name: "Pixelmator Pro", categories: ["UPS", "DES"], url: "https://www.pixelmator.com/pro/", scores: { "UPS": 0.77, "DES": 0.81 } },
 		
 // Audio (AUD)
-	{ name: "Descript", categories: ["AUD", "T2S", "S2T" "Voice Clone"], url: "https://www.descript.com", scores: { "AUD": 0.87, "T2S": 0.85, "S2T": 0.86 "VCL": 0.86 } },
+	{ name: "Descript", categories: ["AUD", "T2S", "S2T", "VCL"], url: "https://www.descript.com", scores: { "AUD": 0.87, "T2S": 0.85, "S2T": 0.86, "VCL": 0.86 } },
 	{ name: "Lalal.ai", categories: ["AUD", "MUS", "VCL"], url: "https://www.lalal.ai", scores: { "AUD": 0.88, "MUS": 0.87, "VCL": 0.89 } },
 	{ name: "Boomy", categories: ["AUD", "MUS"], url: "https://boomy.com/", scores: { "AUD": 0.81, "MUS": 0.80 } },
 	{ name: "Adobe Podcast", categories: ["AUD" ], url: "https://podcast.adobe.com/", scores: { "AUD": 0.92 } },
@@ -182,7 +182,7 @@ class ModuleCloud {
 	{ name: "FacePoke", categories: ["FCE"], url: "https://facepoke.org/", scores: { "FCE": 0.96 } },
 	{ name: "ReShot", categories: ["FCE"], url: "https://www.reshot.ai/", scores: { "FCE": 0.95 } },
 	{ name: "D-ID", categories: ["T2V"], url: "https://www.d-id.com/", scores: { "T2V": 0.87 } },
-	{ name: "Reface", categories: ["FCE", "V2V"], url: "https://reface.ai/", scores: { "FCE": 0.89, "V2V": 0.87 } },{ name: "Reface", categories: ["FCE", "V2V"], url: "https://reface.ai/", scores: { "FCE": 0.89, "V2V": 0.87 } },
+	{ name: "Reface", categories: ["FCE", "V2V"], url: "https://reface.ai/", scores: { "FCE": 0.89, "V2V": 0.87 } },
 	{ name: "FaceSwap", categories: ["FCE", "V2V"], url: "https://faceswap.dev/", scores: { "FCE": 0.86, "V2V": 0.85 } },
 	{ name: "FaceApp", categories: ["FCE"], url: "https://www.faceapp.com/", scores: { "FCE": 0.88 } },
 	{ name: "Facetune", categories: ["FCE"], url: "https://www.facetuneapp.com/", scores: { "FCE": 0.87 } },
