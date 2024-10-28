@@ -166,7 +166,7 @@ class ModuleCloud {
 
 // Content Generation (CON)
 	{ name: "Jasper", categories: ["CON", "LLM", "USE"], url: "https://www.jasper.ai/", scores: { "CON": 0.82, "LLM": 0.80, "USE": 0.79 } },
-	{ name: "Vidu", categories: ["CON" "T2V", "V2V", "ANI", "I2V"], url: "https://vidu.ai", scores: { "CON": 0.86, "T2V": 0.81, "V2V": 0.79, "I2V": 0.94, "ANI": 0.80 } },
+	{ name: "Vidu", categories: ["CON", "T2V", "V2V", "ANI", "I2V"], url: "https://vidu.ai", scores: { "CON": 0.86, "T2V": 0.81, "V2V": 0.79, "I2V": 0.94, "ANI": 0.80 } },
 		
 // Presentation Creation (PRE)
 	{ name: "Gamma", categories: ["PRE", "LLM", "USE"], url: "https://gamma.app/", scores: { "PRE": 0.92, "LLM": 0.88, "USE": 0.92 } },
