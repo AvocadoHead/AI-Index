@@ -170,9 +170,10 @@ class ModuleCloud {
 	{ name: "Filmora", categories: ["VID"], url: "https://filmora.wondershare.com/", scores: { "VID": 0.87 } },
 		
 // User Interface/User Experience Design (UX/UI)
-	{ name: "Mobirise", categories: ["LLM", "USE", "UI/UX"], url: "https://www.grammarly.com/", scores: { "LLM": 0.95, "USE": 0.9, "UI/UX": 0.9 } },
+	{ name: "Mobirise", categories: ["LLM", "USE", "UI/UX"], url: "https://mobirise.com/", scores: { "LLM": 0.95, "USE": 0.9, "UI/UX": 0.9 } },
 	{ name: "Axure RP", categories: ["UI/UX"], url: "https://www.axure.com/", scores: { "UI/UX": 0.89 } },
-		
+	{ name: "Bolt.new", categories: ["UI/UX"], url: "https://bolt.new/", scores: { "UI/UX": 0.96 } },
+
 // Animation (ANI)
 	{ name: "Live Portrait", categories: ["ANI", "FCE"], url: "https://liveportrait.app/", scores: { "ANI": 0.95, "FCE": 0.96 } },
 	{ name: "Toon Boom Harmony", categories: ["ANI"], url: "https://www.toonboom.com/products/harmony", scores: { "ANI": 0.91 } },
