@@ -191,7 +191,9 @@ class ModuleCloud {
 	{ name: "Suno.ai", categories: ["AUD", "MUS"], url: "https://www.suno.ai", scores: { "AUD": 0.86, "MUS": 0.88 } },
 	{ name: "Udio.ai", categories: ["AUD", "MUS"], url: "https://udio.com", scores: { "AUD": 0.83, "MUS": 0.85 } },
 	{ name: "Stable Audio", categories: ["AUD", "MUS"], url: "https://www.stableaudio.com", scores: { "AUD": 0.85, "MUS": 0.87 } }
-		
+	
+	];
+	    
         moduleData.forEach(data => {
             const module = new AIModule(data.name, data.categories, data.url, data.scores);
             this.positionModuleInCloud(module);
