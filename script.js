@@ -64,7 +64,6 @@ class ModuleCloud {
 	{ name: "Claude", categories: ["LLM", "USE"], url: "https://claude.ai", scores: { "LLM": 0.95, "USE": 0.9 } },
 	{ name: "Groq", categories: ["LLM", "USE"], url: "https://groq.com/", scores: { "LLM": 0.98, "USE": 0.9 } },
 	{ name: "Bard", categories: ["LLM", "USE"], url: "https://bard.google.com", scores: { "LLM": 0.85, "USE": 0.75 } },
-	{ name: "Jasper", categories: ["LLM", "USE"], url: "https://www.jasper.ai/", scores: { "LLM": 0.80, "USE": 0.79 } },
 		
 // AI Tools (USE)
 	{ name: "Grammarly", categories: ["LLM", "USE"], url: "https://www.grammarly.com/", scores: { "LLM": 0.95, "USE": 0.9 } },
@@ -98,7 +97,6 @@ class ModuleCloud {
 	{ name: "Stable Video", categories: ["T2V", "I2V"], url: "https://www.stablevideo.com/", scores: { "T2V": 0.89, "I2V": 0.89 } },
 	{ name: "Veed.io", categories: ["T2V", "I2V", "VID", "V2V", "DES"], url: "https://www.veed.io", scores: { "T2V": 0.82, "I2V": 0.81, "VID": 0.83,"V2V": 0.84, "DES": 0.83 } },
 	{ name: "Fliki", categories: ["T2V"], url: "https://fliki.ai/", scores: { "T2V": 0.89 } },
-	{ name: "Vidu", categories: ["T2V", "V2V", "ANI", "I2V"], url: "https://vidu.ai", scores: { "T2V": 0.81, "V2V": 0.79, "I2V": 0.94, "ANI": 0.80 } },
 	{ name: "Kaps", categories: ["USE"], url: "https://kaps.co.il", scores: { "T2V": 0.79, "I2V": 0.77, "ANI": 0.78, "Face Swap": 0.80 } },
 	{ name: "Sora", categories: ["T2V", "I2V", "ANI"], url: "https://openai.com/sora", scores: { "T2V": 0.90, "I2V": 0.88, "ANI": 0.89 } },
 
@@ -176,9 +174,13 @@ class ModuleCloud {
 	{ name: "FacePoke", categories: ["FCE"], url: "https://facepoke.org/", scores: { "FCE": 0.96 } },
 		
 // AI Search (SEA)
-	{ name: "Perplexity", categories: ["LLM", "USE", "SEA"], url: "https://perplexity.ai", scores: { "LLM": 0.97, "USE": 0.8, "SEA": 0.92 } }
+	{ name: "Perplexity", categories: ["LLM", "USE", "SEA"], url: "https://perplexity.ai", scores: { "LLM": 0.97, "USE": 0.8, "SEA": 0.92 } },
 
-//Content Generation (
+//Content Generation (CON)
+	{ name: "Jasper", categories: ["LLM", "USE"], url: "https://www.jasper.ai/", scores: { "LLM": 0.80, "USE": 0.79 } },
+	{ name: "Vidu", categories: ["CON" "T2V", "V2V", "ANI", "I2V"], url: "https://vidu.ai", scores: { "CON": 0.86, "T2V": 0.81, "V2V": 0.79, "I2V": 0.94, "ANI": 0.80 } },
+// Writing Assistant (WRI)
+	
         moduleData.forEach(data => {
             const module = new AIModule(data.name, data.categories, data.url, data.scores);
             this.positionModuleInCloud(module);
