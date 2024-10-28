@@ -56,6 +56,9 @@ canvas:active {
 }
 
 .sidebar button {
+    display: flex; /* Enables flexbox */
+    align-items: center; /* Centers text vertically */
+    justify-content: flex-start; /* Aligns text to the left */
     background: rgba(255, 255, 255, 0.08);
     border: 1px solid rgba(255, 255, 255, 0.1);
     color: rgba(255, 255, 255, 0.9);
@@ -71,6 +74,7 @@ canvas:active {
     position: relative;
     overflow: hidden;
 }
+
 
 .light-mode .sidebar button {
     background: rgba(0, 0, 0, 0.05);
