@@ -354,7 +354,7 @@ class ModuleCloud {
     showTooltip(x, y, module) {
         const scores = Object.entries(module.scores)
             .filter(([category]) => this.selectedCategories.has(category))
-            .map(([category, score]) => `${category}: ${Math.round(score * 100)}%`)
+            .map(([category, score]) => `${category}: ${Math.round(score * 100)}Pts.`)
             .join('<br>');
 
         this.tooltip.innerHTML = `
