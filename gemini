@@ -62,11 +62,19 @@ class ModuleCloud {
 // Large Language Models (LLM)
 	{ name: "ChatGPT", categories: ["LLM", "USE"], url: "https://chat.openai.com", scores: { "LLM": 0.90, "USE": 0.85 } },
 	{ name: "Claude", categories: ["LLM", "USE"], url: "https://claude.ai", scores: { "LLM": 0.95, "USE": 0.9 } },
+	{ name: "BERT", categories: ["LLM"], url: "https://huggingface.co/bert", scores: { "LLM": 0.85 } },
+	{ name: "LaMDA", categories: ["LLM"], url: "https://ai.google/research/pubs/archive/2021/la-mda.pdf", scores: { "LLM": 0.87 } },
+	{ name: "PaLM", categories: ["LLM"], url: "https://ai.google/research/pubs/archive/2022/palm.pdf", scores: { "LLM": 0.88 } },
 	{ name: "Groq", categories: ["LLM", "USE"], url: "https://groq.com/", scores: { "LLM": 0.98, "USE": 0.9 } },
 	{ name: "Bard", categories: ["LLM", "USE"], url: "https://bard.google.com", scores: { "LLM": 0.85, "USE": 0.75 } },
 		
 // AI Tools (USE)
 	{ name: "Grammarly", categories: ["LLM", "USE"], url: "https://www.grammarly.com/", scores: { "LLM": 0.95, "USE": 0.9 } },
+	{ name: "Copy.ai", categories: ["USE"], url: "https://www.copy.ai", scores: { "USE": 0.87 } },
+	{ name: "Otter.ai", categories: ["USE", "AUD"], url: "https://otter.ai", scores: { "USE": 0.86, "AUD": 0.88 } },
+	{ name: "Notion AI", categories: ["USE"], url: "https://www.notion.so/product/ai", scores: { "USE": 0.84 } },
+	{ name: "Remove.bg", categories: ["USE"], url: "https://www.remove.bg/", scores: { "USE": 0.91 } },
+	{ name: "IDM-Vton", categories: ["USE"], url: "https://huggingface.co/spaces/yisol/IDM-VTON", scores: { "USE": 0.94 } },
 
 // Text to Image (T2I)
 	{ name: "DALL-E 3", categories: ["T2I", "I2I", "DES"], url: "https://openai.com/dall-e-3", scores: { "T2I": 0.85, "I2I": 0.8, "DES": 0.85 } },
@@ -77,6 +85,7 @@ class ModuleCloud {
 	{ name: "Leonardo.ai", categories: ["T2I", "I2I", "ANI"], url: "https://leonardo.ai", scores: { "T2I": 0.86, "I2I": 0.84, "ANI": 0.78 } },
 	{ name: "Ideogram", categories: ["T2I", "DES"], url: "https://ideogram.ai", scores: { "T2I": 0.83, "DES": 0.85 } },
 	{ name: "Adobe Firefly", categories: ["T2I", "I2I", "DES"], url: "https://www.adobe.com/products/firefly", scores: { "T2I": 0.87, "I2I": 0.85, "DES": 0.89 } },
+	{ name: "Imagen", categories: ["T2I"], url: "https://imagen.research.google/", scores: { "T2I": 0.85 } },{ name: "Imagen", categories: ["T2I"], url: "https://imagen.research.google/", scores: { "T2I": 0.89 } },
 	{ name: "Canva", categories: ["T2I", "DES", "ANI"], url: "https://www.canva.com/your-apps/text-to-image", scores: { "T2I": 0.80, "DES": 0.88, "ANI": 0.75 } },
 	{ name: "PhotoMaker", categories: ["T2I", "I2I", "FCE", ], url: "https://huggingface.co/spaces/TencentARC/PhotoMaker", scores: { "T2I": 0.82, "I2I": 0.84, "FCE": 0.86, } },
 	{ name: "Astria", categories: ["T2I", "I2I", "UPS"], url: "https://www.astria.ai", scores: { "T2I": 0.81, "I2I": 0.79, "UPS": 0.85 } },
@@ -92,10 +101,12 @@ class ModuleCloud {
 	{ name: "Kling.ai", categories: ["T2V", "I2V"], url: "https://klingai.com", scores: { "T2V": 0.79, "I2V": 0.77 } },
 	{ name: "RunwayML", categories: ["T2I", "I2I", "T2V", "FCE", "I2V", "V2V", "ANI"], url: "https://runwayml.com", scores: { "T2I": 0.86, "I2I": 0.84, "T2V": 0.88, "FCE": 0.85, "I2V": 0.87, "V2V": 0.86, "ANI": 0.83 } },
 	{ name: "Pika Labs", categories: ["T2V", "I2V", "ANI"], url: "https://pika.art", scores: { "T2V": 0.85, "I2V": 0.83, "ANI": 0.81 } },
+	{ name: "Noisee.ai", categories: ["T2V", "USE"], url: "https://noisee.ai/", scores: { "T2V": 0.92, "USE": 0.84 } },
 	{ name: "Kaiber", categories: ["T2V", "I2V", "ANI", "MUS"], url: "https://kaiber.ai", scores: { "T2V": 0.84, "I2V": 0.82, "ANI": 0.80, "MUS": 0.78 } },
 	{ name: "Meta's Make-A-Video", categories: ["T2V", "I2V"], url: "https://makeavideo.studio", scores: { "T2V": 0.83, "I2V": 0.81 } },
 	{ name: "Synthesia", categories: ["T2V", "ANI", "FCE"], url: "https://www.synthesia.io", scores: { "T2V": 0.86, "ANI": 0.84, "FCE": 0.87 } },
 	{ name: "Stable Video", categories: ["T2V", "I2V"], url: "https://www.stablevideo.com/", scores: { "T2V": 0.89, "I2V": 0.89 } },
+	{ name: "Lumen5", categories: ["T2V", "VID"], url: "https://lumen5.com/", scores: { "T2V": 0.77, "VID": 0.78 } },
 	{ name: "Veed.io", categories: ["T2V", "I2V", "VID", "V2V", "DES"], url: "https://www.veed.io", scores: { "T2V": 0.82, "I2V": 0.81, "VID": 0.83,"V2V": 0.84, "DES": 0.83 } },
 	{ name: "Fliki", categories: ["T2V"], url: "https://fliki.ai/", scores: { "T2V": 0.89 } },
 	{ name: "Kaps", categories: ["USE"], url: "https://kaps.co.il", scores: { "T2V": 0.79, "I2V": 0.77, "ANI": 0.78, "Face Swap": 0.80 } },
@@ -107,7 +118,8 @@ class ModuleCloud {
 	{ name: "D-ID", categories: ["I2V", "FCE"], url: "https://studio.d-id.com", scores: { "I2V": 0.85, "FCE": 0.87 } },
 	{ name: "Luma Labs", categories: ["T2V", "I2V", "ANI"], url: "https://lumalabs.ai", scores: { "T2V": 0.92, "I2V": 0.84, "ANI": 0.82 } },
 	{ name: "Deep Dream Generator", categories: ["I2V", "T2I", "I2I"], url: "https://deepdreamgenerator.com", scores: { "I2V": 0.79, "T2I": 0.81, "I2I": 0.80 } },
-
+	{ name: "EbSynth", categories: ["V2V"], url: "https://ebsynth.com/", scores: { "V2V": 0.88 } },
+		
 // Video Repaint (V2V)
 	{ name: "Domo", categories: ["T2V", "ANI", "V2V", "FCE"], url: "https://domo.com", scores: { "T2V": 0.80, "ANI": 0.78, "V2V": 0.92, "FCE": 0.82 } },
 	{ name: "CapCut", categories: ["V2V", "DES", "ANI"], url: "https://www.capcut.com", scores: { "V2V": 0.85, "DES": 0.83, "ANI": 0.81 } },
@@ -133,9 +145,12 @@ class ModuleCloud {
 	{ name: "Magnific.ai", categories: ["I2I", "UPS"], url: "https://magnific.ai/", scores: { "I2I": 0.99, "UPS": 0.97 } },
 	{ name: "DBG Upscale", categories: ["UPS"], url: "https://dgb.lol/ai-image-upscaler", scores: { "UPS": 0.78 } },
 	{ name: "Upscayl", categories: ["UPS"], url: "https://upscayl.org/", scores: { "UPS": 0.88 } },
-
+	{ name: "Topaz Gigapixel AI", categories: ["UPS"], url: "https://www.topazlabs.com/gigapixel-ai", scores: { "UPS": 0.93 } },
+	{ name: "Let's Enhance", categories: ["UPS"], url: "https://letsenhance.io/", scores: { "UPS": 0.90 } },
+	{ name: "Pixelmator Pro", categories: ["UPS", "DES"], url: "https://www.pixelmator.com/pro/", scores: { "UPS": 0.77, "DES": 0.81 } },
+		
 // Audio (AUD)
-	{ name: "Descript", categories: ["AUD", "V2V", "Voice Clone"], url: "https://www.descript.com", scores: { "AUD": 0.87, "V2V": 0.85, "VCL": 0.86 } },
+	{ name: "Descript", categories: ["AUD", "T2S", "S2T" "Voice Clone"], url: "https://www.descript.com", scores: { "AUD": 0.87, "T2S": 0.85, "S2T": 0.86 "VCL": 0.86 } },
 	{ name: "Lalal.ai", categories: ["AUD", "MUS", "VCL"], url: "https://www.lalal.ai", scores: { "AUD": 0.88, "MUS": 0.87, "VCL": 0.89 } },
 	{ name: "Boomy", categories: ["AUD", "MUS"], url: "https://boomy.com/", scores: { "AUD": 0.81, "MUS": 0.80 } },
 	{ name: "Adobe Podcast", categories: ["AUD" ], url: "https://podcast.adobe.com/", scores: { "AUD": 0.92 } },
@@ -152,29 +167,48 @@ class ModuleCloud {
  	{ name: "muse.ai", categories: ["VID"], url: "https://muse.ai/", scores: { "VID": 0.92 } },
  	{ name: "Magichour.ai", categories: ["T2I", "T2V", "I2I", "I2V", "VID"], url: "https://magichour.ai/", scores: { "T2I": 0.82, "T2V": 0.85, "I2I": 0.87, "I2V": 0.89,"VID": 0.90 } },
  	{ name: "VideoLeap", categories: ["T2I", "T2V", "I2I", "V2V", "I2V", "VID"], url: "https://www.videoleapapp.com/", scores: { "T2I": 0.79, "T2V": 0.80, "I2I": 0.80, "V2V": 0.9, "I2V": 0.82,"VID": 0.90 } },
-
+	{ name: "Filmora", categories: ["VID"], url: "https://filmora.wondershare.com/", scores: { "VID": 0.87 } },
+		
 // User Interface/User Experience Design (UX/UI)
 	{ name: "Mobirise", categories: ["LLM", "USE", "UI/UX"], url: "https://www.grammarly.com/", scores: { "LLM": 0.95, "USE": 0.9, "UI/UX": 0.9 } },
-
+	{ name: "Axure RP", categories: ["UI/UX"], url: "https://www.axure.com/", scores: { "UI/UX": 0.89 } },
+		
 // Animation (ANI)
 	{ name: "Live Portrait", categories: ["ANI", "FCE"], url: "https://liveportrait.app/", scores: { "ANI": 0.95, "FCE": 0.96 } },
+	{ name: "Toon Boom Harmony", categories: ["ANI"], url: "https://www.toonboom.com/products/harmony", scores: { "ANI": 0.91 } },
 		
-//Face Editing (FCE)
+// Face Editing (FCE)
 	{ name: "Advanced Live Portrait", categories: ["ANI", "FCE"], url: "https://github.com/PowerHouseMan/ComfyUI-AdvancedLivePortrait", scores: { "FCE": 0.96 } },
 	{ name: "FacePoke", categories: ["FCE"], url: "https://facepoke.org/", scores: { "FCE": 0.96 } },
 	{ name: "ReShot", categories: ["FCE"], url: "https://www.reshot.ai/", scores: { "FCE": 0.95 } },
+	{ name: "D-ID", categories: ["T2V"], url: "https://www.d-id.com/", scores: { "T2V": 0.87 } },
+	{ name: "Reface", categories: ["FCE", "V2V"], url: "https://reface.ai/", scores: { "FCE": 0.89, "V2V": 0.87 } },{ name: "Reface", categories: ["FCE", "V2V"], url: "https://reface.ai/", scores: { "FCE": 0.89, "V2V": 0.87 } },
+	{ name: "FaceSwap", categories: ["FCE", "V2V"], url: "https://faceswap.dev/", scores: { "FCE": 0.86, "V2V": 0.85 } },
+	{ name: "FaceApp", categories: ["FCE"], url: "https://www.faceapp.com/", scores: { "FCE": 0.88 } },
+	{ name: "Facetune", categories: ["FCE"], url: "https://www.facetuneapp.com/", scores: { "FCE": 0.87 } },
 
 // AI Search (SEA)
 	{ name: "Perplexity", categories: ["LLM", "USE", "SEA"], url: "https://perplexity.ai", scores: { "LLM": 0.97, "USE": 0.8, "SEA": 0.92 } },
-
+	{ name: "You.com", categories: ["SEA"], url: "https://you.com/", scores: { "SEA": 0.88 } },
+		
 // Content Generation (CON)
 	{ name: "Jasper", categories: ["CON", "LLM", "USE"], url: "https://www.jasper.ai/", scores: { "CON": 0.82, "LLM": 0.80, "USE": 0.79 } },
 	{ name: "Vidu", categories: ["CON", "T2V", "V2V", "ANI", "I2V"], url: "https://vidu.ai", scores: { "CON": 0.86, "T2V": 0.81, "V2V": 0.79, "ANI":0.9,"I2V": 0.94 } },
+	{ name: "Hour One", categories: ["T2V"], url: "https://hourone.ai/", scores: { "T2V": 0.87 } },
+	{ name: "Writesonic", categories: ["CON"], url: "https://writesonic.com/", scores: { "CON": 0.88 } },
+	{ name: "Rytr", categories: ["CON"], url: "https://rytr.me/", scores: { "CON": 0.87 } },
 		
 // Presentation Creation (PRE)
 	{ name: "Gamma", categories: ["PRE", "LLM", "USE"], url: "https://gamma.app/", scores: { "PRE": 0.92, "LLM": 0.88, "USE": 0.92 } },
-		
+	{ name: "Beautiful.ai", categories: ["PRE"], url: "https://www.beautiful.ai/", scores: { "PRE": 0.89 } },
+	{ name: "Slidebean", categories: ["PRE"], url: "https://slidebean.com/", scores: { "PRE": 0.88 } },
+	{ name: "Pitch", categories: ["PRE"], url: "https://pitch.com/", scores: { "PRE": 0.87 } },
+	{ name: "Prezi", categories: ["PRE"], url: "https://prezi.com/", scores: { "PRE": 0.86 } },
+	{ name: "Napkin.ai", categories: ["PRE"], url: "https://www.napkin.ai/", scores: { "PRE": 0.92 } },
+	{ name: "Flowchart.ai", categories: ["PRE"], url: "https://whimsical.com/ai/ai-text-to-flowchart", scores: { "PRE": 0.92 } },
+
 // Image To 3D (I23)
+	{ name: "Polycam", categories: ["I23"], url: "https://poly.cam/", scores: { "I23": 0.88 } },
 	{ name: "CSM", categories: ["3D", "I23"], url: "http://3d.csm.ai", scores: { "3D": 0.84, "I23": 0.87 } },
 	{ name: "Meshy", categories: ["3D", "I23"], url: "http://www.meshy.ai", scores: { "3D": 0.83, "I23": 0.85 } },	
 	{ name: "ZoeDepth", categories: ["3D", "I23"], url: "https://huggingface.co/spaces/shariqfarooq/ZoeDepth", scores: { "3D": 0.83, "I23": 0.81 } },
@@ -182,6 +216,7 @@ class ModuleCloud {
 // Text To Speech (T2S)
 	{ name: "Narakeet", categories: ["T2S", "AUD"], url: "https://www.narakeet.com/", scores: { "T2S": 0.92, "AUD": 0.90 } },
         { name: "Bark", categories: ["AUD", "T2S"], url: "https://huggingface.co/spaces/suno/bark", scores: { "T2S": 0.92, "AUD": 0.80 } },
+
 // Speech To Text (S2T)
 	{ name: "OpenAI Whisper", categories: ["AUD", "S2T"], url: "https://github.com/openai/whisper", scores: { "AUD": 0.90, "S2T": 0.92 } },
 	
@@ -193,8 +228,8 @@ class ModuleCloud {
 //Music Generation (MUS)
 	{ name: "Suno.ai", categories: ["AUD", "MUS"], url: "https://www.suno.ai", scores: { "AUD": 0.86, "MUS": 0.88 } },
 	{ name: "Udio.ai", categories: ["AUD", "MUS"], url: "https://udio.com", scores: { "AUD": 0.83, "MUS": 0.85 } },
-	{ name: "Stable Audio", categories: ["AUD", "MUS"], url: "https://www.stableaudio.com", scores: { "AUD": 0.85, "MUS": 0.87 } }
-	
+	{ name: "Stable Audio", categories: ["AUD", "MUS"], url: "https://www.stableaudio.com", scores: { "AUD": 0.85, "MUS": 0.87 } },
+	{ name: "Amper Music", categories: ["MUS"], url: "https://www.ampermusic.com/", scores: { "MUS": 0.86 } }
 	];
 	    
         moduleData.forEach(data => {
