@@ -57,7 +57,9 @@ class ModuleCloud {
     }
 
     loadModules() {
-        const moduleData = [// Large Language Models (LLM)
+        const moduleData = [
+
+// Large Language Models (LLM)
 	{ name: "ChatGPT", categories: ["LLM", "USE"], url: "https://chat.openai.com", scores: { "LLM": 0.90, "USE": 0.85 } },
 	{ name: "Claude", categories: ["LLM", "USE"], url: "https://claude.ai", scores: { "LLM": 0.95, "USE": 0.9 } },
 	{ name: "Perplexity", categories: ["LLM", "USE"], url: "https://perplexity.ai", scores: { "LLM": 0.97, "USE": 0.8 } },
