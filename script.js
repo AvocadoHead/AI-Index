@@ -176,10 +176,10 @@ class ModuleCloud {
 // AI Search (SEA)
 	{ name: "Perplexity", categories: ["LLM", "USE", "SEA"], url: "https://perplexity.ai", scores: { "LLM": 0.97, "USE": 0.8, "SEA": 0.92 } },
 
-//Content Generation (CON)
+// Content Generation (CON)
 	{ name: "Jasper", categories: ["LLM", "USE"], url: "https://www.jasper.ai/", scores: { "LLM": 0.80, "USE": 0.79 } },
-	{ name: "Vidu", categories: ["CON" "T2V", "V2V", "ANI", "I2V"], url: "https://vidu.ai", scores: { "CON": 0.86, "T2V": 0.81, "V2V": 0.79, "I2V": 0.94, "ANI": 0.80 } },
-// Writing Assistant (WRI)
+	{ name: "Vidu", categories: ["CON" "T2V", "V2V", "ANI", "I2V"], url: "https://vidu.ai", scores: { "CON": 0.86, "T2V": 0.81, "V2V": 0.79, "I2V": 0.94, "ANI": 0.80 } }
+// Presentation Creation (PRE)
 	
         moduleData.forEach(data => {
             const module = new AIModule(data.name, data.categories, data.url, data.scores);
