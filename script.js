@@ -63,7 +63,6 @@ class ModuleCloud {
 	{ name: "ChatGPT", categories: ["LLM", "USE"], url: "https://chat.openai.com", scores: { "LLM": 0.90, "USE": 0.85 } },
 	{ name: "Claude", categories: ["LLM", "USE"], url: "https://claude.ai", scores: { "LLM": 0.95, "USE": 0.9 } },
 	{ name: "BERT", categories: ["LLM"], url: "https://huggingface.co/bert", scores: { "LLM": 0.85 } },
-	{ name: "LaMDA", categories: ["LLM"], url: "https://ai.google/research/pubs/archive/2021/la-mda.pdf", scores: { "LLM": 0.87 } },
 	{ name: "PaLM", categories: ["LLM"], url: "https://ai.google/research/pubs/archive/2022/palm.pdf", scores: { "LLM": 0.88 } },
 	{ name: "Groq", categories: ["LLM", "USE"], url: "https://groq.com/", scores: { "LLM": 0.98, "USE": 0.9 } },
 	{ name: "Bard", categories: ["LLM", "USE"], url: "https://bard.google.com", scores: { "LLM": 0.85, "USE": 0.75 } },
@@ -141,7 +140,7 @@ class ModuleCloud {
 	{ name: "InteriorAI", categories: ["DES", "I2I"], url: "https://interiorai.com/", scores: { "DES": 0.91, "I2I": 0.9 } },
 	{ name: "Adobe XD", categories: ["DES", "UI/UX"], url: "https://www.adobe.com/products/xd", scores: { "DES": 0.87, "UI/UX": 0.89 } },
 
-//Upscale/Enhance (UPS)
+// Upscale/Enhance (UPS)
 	{ name: "Magnific.ai", categories: ["I2I", "UPS"], url: "https://magnific.ai/", scores: { "I2I": 0.99, "UPS": 0.97 } },
 	{ name: "DBG Upscale", categories: ["UPS"], url: "https://dgb.lol/ai-image-upscaler", scores: { "UPS": 0.78 } },
 	{ name: "Upscayl", categories: ["UPS"], url: "https://upscayl.org/", scores: { "UPS": 0.88 } },
@@ -169,7 +168,7 @@ class ModuleCloud {
  	{ name: "VideoLeap", categories: ["T2I", "T2V", "I2I", "V2V", "I2V", "VID"], url: "https://www.videoleapapp.com/", scores: { "T2I": 0.79, "T2V": 0.80, "I2I": 0.80, "V2V": 0.9, "I2V": 0.82,"VID": 0.90 } },
 	{ name: "Filmora", categories: ["VID"], url: "https://filmora.wondershare.com/", scores: { "VID": 0.87 } },
 		
-// User Interface/User Experience Design (UX/UI)
+// User Interface/User Experience Design (UI/UX)
 	{ name: "Mobirise", categories: ["LLM", "USE", "UI/UX"], url: "https://mobirise.com/", scores: { "LLM": 0.95, "USE": 0.9, "UI/UX": 0.9 } },
 	{ name: "Axure RP", categories: ["UI/UX"], url: "https://www.axure.com/", scores: { "UI/UX": 0.89 } },
 	{ name: "Bolt.new", categories: ["UI/UX"], url: "https://bolt.new/", scores: { "UI/UX": 0.96 } },
@@ -226,7 +225,7 @@ class ModuleCloud {
 	{ name: "Play.ht", categories: ["AUD", "T2S", "VCL"], url: "https://play.ht", scores: { "AUD": 0.86, "T2S": 0.88, "VCL": 0.87 } },
 	{ name: "Weights", categories: ["AUD", "VCL"], url: "https://www.weights.gg/", scores: { "AUD": 0.95, "VCL": 0.94 } },
 
-//Music Generation (MUS)
+// Music Generation (MUS)
 	{ name: "Suno.ai", categories: ["AUD", "MUS"], url: "https://www.suno.ai", scores: { "AUD": 0.86, "MUS": 0.88 } },
 	{ name: "Udio.ai", categories: ["AUD", "MUS"], url: "https://udio.com", scores: { "AUD": 0.83, "MUS": 0.85 } },
 	{ name: "Stable Audio", categories: ["AUD", "MUS"], url: "https://www.stableaudio.com", scores: { "AUD": 0.85, "MUS": 0.87 } },
