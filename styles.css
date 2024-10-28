@@ -56,6 +56,9 @@ canvas:active {
 }
 
 .sidebar button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background: rgba(255, 255, 255, 0.08);
     border: 1px solid rgba(255, 255, 255, 0.1);
     color: rgba(255, 255, 255, 0.9);
@@ -65,7 +68,7 @@ canvas:active {
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     font-size: 12px;
     font-weight: 500;
-    text-align: left;
+    text-align: center;
     white-space: nowrap;
     width: 140px;
     position: relative;
