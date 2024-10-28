@@ -160,7 +160,8 @@ class ModuleCloud {
 //Face Editing (FCE)
 	{ name: "Advanced Live Portrait", categories: ["ANI", "FCE"], url: "https://github.com/PowerHouseMan/ComfyUI-AdvancedLivePortrait", scores: { "FCE": 0.96 } },
 	{ name: "FacePoke", categories: ["FCE"], url: "https://facepoke.org/", scores: { "FCE": 0.96 } },
-		
+	{ name: "ReShot", categories: ["FCE"], url: "https://www.reshot.ai/", scores: { "FCE": 0.95 } },
+
 // AI Search (SEA)
 	{ name: "Perplexity", categories: ["LLM", "USE", "SEA"], url: "https://perplexity.ai", scores: { "LLM": 0.97, "USE": 0.8, "SEA": 0.92 } },
 
