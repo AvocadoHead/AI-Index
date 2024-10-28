@@ -181,7 +181,7 @@ class ModuleCloud {
 		
 // Text To Speech (T2S)
 	{ name: "Narakeet", categories: ["T2S", "AUD"], url: "https://www.narakeet.com/", scores: { "T2S": 0.92, "AUD": 0.90 } },
-	
+        { name: "Bark", categories: ["AUD", "T2S"], url: "https://huggingface.co/spaces/suno/bark", scores: { "T2S": 0.92, "AUD": 0.80 } },
 // Speech To Text (S2T)
 	{ name: "OpenAI Whisper", categories: ["AUD", "S2T"], url: "https://github.com/openai/whisper", scores: { "AUD": 0.90, "S2T": 0.92 } },
 	
