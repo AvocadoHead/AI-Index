@@ -152,7 +152,7 @@ class ModuleCloud {
  	{ name: "VideoLeap", categories: ["T2I", "T2V", "I2I", "V2V", "I2V", "VID"], url: "https://www.videoleapapp.com/", scores: { "T2I": 0.79, "T2V": 0.80, "I2I": 0.80, "V2V": 0.9, "I2V": 0.82,"VID": 0.90 } },
 
 // User Interface/User Experience Design (UX/UI)
-	{ name: "Mobirise", categories: ["LLM", "USE", "UX/UI"], url: "https://www.grammarly.com/", scores: { "LLM": 0.95, "USE": 0.9, "UX/UI": 0.9 } },
+	{ name: "Mobirise", categories: ["LLM", "USE", "UI/UX"], url: "https://www.grammarly.com/", scores: { "LLM": 0.95, "USE": 0.9, "UI/UX": 0.9 } },
 
 // Animation (ANI)
 	{ name: "Live Portrait", categories: ["ANI", "FCE"], url: "https://liveportrait.app/", scores: { "ANI": 0.95, "FCE": 0.96 } },
