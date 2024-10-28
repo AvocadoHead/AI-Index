@@ -67,7 +67,6 @@ class ModuleCloud {
 		
 // AI Tools (USE)
 	{ name: "Grammarly", categories: ["LLM", "USE"], url: "https://www.grammarly.com/", scores: { "LLM": 0.95, "USE": 0.9 } },
-	{ name: "Gamma", categories: ["LLM", "USE"], url: "https://gamma.app/", scores: { "LLM": 0.88, "USE": 0.92 } },
 
 // Text to Image (T2I)
 	{ name: "DALL-E 3", categories: ["T2I", "I2I", "DES"], url: "https://openai.com/dall-e-3", scores: { "T2I": 0.85, "I2I": 0.8, "DES": 0.85 } },
@@ -117,12 +116,9 @@ class ModuleCloud {
 // 3D Tools (3D)
 	{ name: "Point-E", categories: ["3D", "T2I"], url: "https://huggingface.co/spaces/openai/point-e", scores: { "3D": 0.82, "T2I": 0.80 } },
 	{ name: "GET3D", categories: ["3D", "T2I", "ANI"], url: "https://github.com/nvidia/GET3D", scores: { "3D": 0.85, "T2I": 0.83, "ANI": 0.81 } },
-	{ name: "CSM", categories: ["3D", "Image to 3D"], url: "http://3d.csm.ai", scores: { "3D": 0.84, "Image to 3D": 0.86 } },
-	{ name: "Meshy", categories: ["3D", "Image to 3D"], url: "http://www.meshy.ai", scores: { "3D": 0.83, "Image to 3D": 0.85 } },
 	{ name: "Vizcom", categories: ["3D", "Image to 3D"], url: "https://www.vizcom.ai/", scores: { "3D": 0.85, "Image to 3D": 0.87 } },
 	{ name: "Blender", categories: ["3D", "Animation", "DES"], url: "https://www.blender.org", scores: { "3D": 0.92, "Animation": 0.90, "DES": 0.88 } },
 	{ name: "Cinema 4D", categories: ["3D", "Animation", "DES"], url: "https://www.maxon.net/cinema-4d", scores: { "3D": 0.91, "Animation": 0.89, "DES": 0.87 } },
-	{ name: "ZoeDepth", categories: ["3D", "I2I"], url: "https://huggingface.co/spaces/shariqfarooq/ZoeDepth", scores: { "3D": 0.83, "I2I": 0.81 } },
 
 // Design (DES)
 	{ name: "Figma", categories: ["DES", "UI/UX"], url: "https://www.figma.com", scores: { "DES": 0.93, "UI/UX": 0.95 } },
@@ -178,9 +174,17 @@ class ModuleCloud {
 
 // Content Generation (CON)
 	{ name: "Jasper", categories: ["LLM", "USE"], url: "https://www.jasper.ai/", scores: { "LLM": 0.80, "USE": 0.79 } },
-	{ name: "Vidu", categories: ["CON" "T2V", "V2V", "ANI", "I2V"], url: "https://vidu.ai", scores: { "CON": 0.86, "T2V": 0.81, "V2V": 0.79, "I2V": 0.94, "ANI": 0.80 } }
+	{ name: "Vidu", categories: ["CON" "T2V", "V2V", "ANI", "I2V"], url: "https://vidu.ai", scores: { "CON": 0.86, "T2V": 0.81, "V2V": 0.79, "I2V": 0.94, "ANI": 0.80 } },
 // Presentation Creation (PRE)
-	
+	{ name: "Gamma", categories: ["LLM", "USE"], url: "https://gamma.app/", scores: { "LLM": 0.88, "USE": 0.92 } },
+// Image To 3D (I23)
+	{ name: "CSM", categories: ["3D", "I23"], url: "http://3d.csm.ai", scores: { "3D": 0.84, "I23": 0.87 } },
+	{ name: "Meshy", categories: ["3D", "I23"], url: "http://www.meshy.ai", scores: { "3D": 0.83, "I23": 0.85 } },	
+	{ name: "ZoeDepth", categories: ["3D", "I23"], url: "https://huggingface.co/spaces/shariqfarooq/ZoeDepth", scores: { "3D": 0.83, "I23": 0.81 } }
+// Text To Speec (T2S)
+// Speech To Text (S2T)
+// Voice Cloning (VCL)
+//Music Generation 		
         moduleData.forEach(data => {
             const module = new AIModule(data.name, data.categories, data.url, data.scores);
             this.positionModuleInCloud(module);
