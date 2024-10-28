@@ -131,6 +131,7 @@ class ModuleCloud {
 	{ name: "GET3D", categories: ["3D", "T2I", "ANI"], url: "https://github.com/nvidia/GET3D", scores: { "3D": 0.85, "T2I": 0.83, "ANI": 0.81 } },
 	{ name: "Blender", categories: ["3D", "ANI", "DES"], url: "https://www.blender.org", scores: { "3D": 0.92, "ANI": 0.90, "DES": 0.88 } },
 	{ name: "Cinema 4D", categories: ["3D", "ANI", "DES"], url: "https://www.maxon.net/cinema-4d", scores: { "3D": 0.91, "ANI": 0.89, "DES": 0.87 } },
+	{ name: "Imagine 3D", categories: ["I23"], url: "https://lumalabs.ai/dashboard/imagine", scores: { "I23": 0.90 } },
 
 // Design (DES)
 	{ name: "Figma", categories: ["DES", "UI/UX"], url: "https://www.figma.com", scores: { "DES": 0.93, "UI/UX": 0.95 } },
