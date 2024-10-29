@@ -47,7 +47,7 @@ const defaultModules = [
 
 // Video Repaint (V2V)
 	{ name: "Domo", categories: ["T2V", "ANI", "V2V", "FCE"], url: "https://domo.com", scores: { "T2V": 0.80, "ANI": 0.78, "V2V": 0.92, "FCE": 0.82 } },
-	{ name: "CapCut", categories: ["V2V", "DES", "ANI"], url: "https://www.capcut.com", scores: { "V2V": 0.85, "DES": 0.83, "ANI": 0.81 } },
+	{ name: "CapCut", categories: ["VID", "V2V", "DES", "ANI"], url: "https://www.capcut.com", scores: { "VID": 0.94, "V2V": 0.85, "DES": 0.83, "ANI": 0.81 } },
 	{ name: "Stable Video Diffusion", categories: ["V2V", "I2V", "ANI"], url: "https://huggingface.co/stabilityai/stable-video-diffusion-img2vid", scores: { "V2V": 0.87, "I2V": 0.86, "ANI": 0.84 } },
 
 // 3D Tools (3D)
