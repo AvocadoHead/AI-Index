@@ -163,7 +163,7 @@ canvas:active {
 
 @media (max-width: 768px) {
     .sidebar {
-        left: 10px; /* שים לב ששינינו גם כאן את הצד לשמאל */
+        left: 10px; /* שים לב ששינינו גם כא�� את הצד לשמאל */
         padding: 10px;
     }
 
@@ -177,4 +177,115 @@ canvas:active {
         padding: 6px 12px;
         font-size: 12px;
     }
+}
+
+.module-form-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+#moduleForm {
+    display: none;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+#moduleForm.show {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#moduleForm input {
+    padding: 8px;
+    border: 1px solid #444;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.score-input {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.score-input input {
+    width: 80px;
+}
+
+/* Add these styles to match the existing design */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: var(--bg-color);
+    min-width: 300px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    z-index: 1000;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    padding: 15px;
+}
+
+.dropdown-content.show {
+    display: block;
+}
+
+#moduleForm {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#moduleForm input {
+    padding: 8px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background: var(--bg-color);
+    color: var(--text-color);
+}
+
+.score-input {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    color: var(--text-color);
+}
+
+.score-input input {
+    width: 80px;
+}
+
+.submit-btn {
+    background-color: var(--accent-color);
+    color: var(--text-color);
+    border: none;
+    padding: 8px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.submit-btn:hover {
+    opacity: 0.9;
+}
+
+/* Update the file-controls to accommodate the dropdown */
+.file-controls {
+    display: flex;
+    gap: 5px;
+}
+
+.file-controls button {
+    padding: 5px 10px;
 }
