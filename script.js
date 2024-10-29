@@ -460,6 +460,35 @@ class ModuleCloud {
         this.modules.push(newModule);
         this.positionModuleInCloud(newModule);
     }
+
+    loadModules(loadedModules) {
+        // Clear existing modules
+        this.defaultModules = [];
+        this.userModules = [];
+        this.modules = [];
+
+        // Convert each loaded module into an AIModule instance
+        loadedModules.forEach(moduleData => {
+            const newModule = new AIModule(
+                moduleData.name,
+                moduleData.categories,
+                moduleData.url,
+                moduleData.scores
+            );
+            this.defaultModules.push(newModule);
+        });
+
+        // Update the combined modules array
+        this.modules = [...this.defaultModules];
+        
+        // Reposition all modules
+        this.modules.forEach(module => {
+            this.positionModuleInCloud(module);
+        });
+
+        // Trigger a redraw
+        this.draw();
+    }
 }
 
 new ModuleCloud();
