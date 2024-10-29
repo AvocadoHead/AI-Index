@@ -365,8 +365,8 @@ class ModuleCloud {
             const screenX = this.canvas.width / 2 + rotated.x;
             const screenY = this.canvas.height / 2 + rotated.y;
             
-            // Increase hit area for better detection
-            const hitRadius = 40; // Larger hit area
+            // Reduce hit area for more precise detection
+            const hitRadius = 25; // Reduced from 40 to 25
             const dx = mouseX - screenX;
             const dy = mouseY - screenY;
             
