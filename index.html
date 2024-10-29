@@ -5,39 +5,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Module Cloud</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="sidebar">
-       <button data-category="all" class="active">All</button>
-<button data-category="LLM">Language Models</button>
-<button data-category="USE">AI Tools</button>
-<button data-category="T2I">Text to Image</button>
-<button data-category="I2I">Image to Image</button>
-<button data-category="T2V">Text to Video</button>
-<button data-category="I2V">Image to Video</button>
-<button data-category="V2V">Video Repaint</button>
-<button data-category="3D">3D Tools</button>
-<button data-category="DES">Design</button>
-<button data-category="UPS">Upscale/Enhance</button>
-<button data-category="AUD">Audio</button>
-<button data-category="VID">Video Tools</button>
-<button data-category="UI/UX">UI/UX</button>
-<button data-category="ANI">Animation</button>
-<button data-category="FCE">Face Editing</button>
-<button data-category="SEA">AI Search</button>
-<button data-category="CON">Content Generation</button>
-<button data-category="PRE">Presentation Creation</button>
-<button data-category="I23">Image to 3D</button>
-<button data-category="T2S">Text to Speech</button>
-<button data-category="S2T">Speech to Text</button>
-<button data-category="VCL">Voice Cloning</button>
-<button data-category="MUS">Music Generation</button>
+        <button data-category="all" class="active">All</button>
+        <button data-category="LLM">Language Models</button>
+        <button data-category="USE">AI Tools</button>
+        <button data-category="T2I">Text to Image</button>
+        <button data-category="I2I">Image to Image</button>
+        <button data-category="T2V">Text to Video</button>
+        <button data-category="I2V">Image to Video</button>
+        <button data-category="V2V">Video Repaint</button>
+        <button data-category="3D">3D Tools</button>
+        <button data-category="DES">Design</button>
+        <button data-category="UPS">Upscale/Enhance</button>
+        <button data-category="AUD">Audio</button>
+        <button data-category="VID">Video Tools</button>
+        <button data-category="UI/UX">UI/UX</button>
+        <button data-category="ANI">Animation</button>
+        <button data-category="FCE">Face Editing</button>
+        <button data-category="SEA">AI Search</button>
+        <button data-category="CON">Content Generation</button>
+        <button data-category="PRE">Presentation Creation</button>
+        <button data-category="I23">Image to 3D</button>
+        <button data-category="T2S">Text to Speech</button>
+        <button data-category="S2T">Speech to Text</button>
+        <button data-category="VCL">Voice Cloning</button>
+        <button data-category="MUS">Music Generation</button>
     </div>
 
-    <button id="toggleMode" class="toggle-mode">☀️</button>
+    <div class="controls">
+        <button id="toggleMode" class="toggle-mode">☀️</button>
+        <div class="file-controls">
+            <button id="saveFile">Save</button>
+            <button id="loadFile">Load</button>
+            <input type="file" id="fileInput" accept=".json" style="display: none">
+        </div>
+        <div class="color-picker">
+            <input type="color" id="bgColor" value="#1a1a1a">
+        </div>
+    </div>
+
     <div id="tooltip" class="tooltip"></div>
     <canvas id="moduleCloud"></canvas>
+    <script src="modules.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
