@@ -336,9 +336,9 @@ class ModuleCloud {
                 .join('<br>');
 
             const tooltipContent = `
-                <strong>${module.name}</strong><br>
-                <small>Categories: ${module.categories.join(', ')}</small><br>
-                <small>${scoresList}</small>
+                <strong>${module.name}</strong>
+                <small>Categories: ${module.categories.join(', ')}<br>
+                ${scoresList}</small>
             `;
             
             this.tooltip.innerHTML = tooltipContent;
