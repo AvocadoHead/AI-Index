@@ -1,78 +1,112 @@
 body {
     margin: 0;
     overflow: hidden;
-    background: #000;
-    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+    font-family: system-ui, -apple-system, sans-serif;
     transition: all 0.3s ease;
     color: #fff;
 }
 
 body.light-mode {
-    background: #f5f5f5;
+    background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
     color: #000;
 }
 
 canvas {
     display: block;
     cursor: grab;
+    transition: background 0.5s ease;
 }
 
 canvas:active {
     cursor: grabbing;
 }
 
+.controls {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    gap: 10px;
+    z-index: 100;
+}
+
+.file-controls {
+    display: flex;
+    gap: 8px;
+}
+
+.file-controls button,
+.toggle-mode {
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+    backdrop-filter: blur(8px);
+    transition: all 0.3s ease;
+}
+
+.light-mode .file-controls button,
+.light-mode .toggle-mode {
+    background: rgba(0, 0, 0, 0.1);
+    color: black;
+}
+
+.file-controls button:hover,
+.toggle-mode:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+.light-mode .file-controls button:hover,
+.light-mode .toggle-mode:hover {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.color-picker {
+    display: flex;
+    align-items: center;
+}
+
+.color-picker input {
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    background: transparent;
+}
+
 .sidebar {
     position: fixed;
-    left: 20px;
+    left: 20px; /* העברנו את ה-sidebar לצד שמאל */
     top: 50%;
     transform: translateY(-50%);
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 4px; /* הקטנת המרווח בין הכפתורים */
     z-index: 100;
-    padding: 14px;
+    padding: 5px; /* הקטנת הפדינג של ה-sidebar */
     background: rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(8px);
-    border-radius: 14px;
+    border-radius: 10px; /* הקטנת הרדיוס לפינות */
     max-height: 80vh;
-    overflow-y: auto;
-}
-
-.sidebar::-webkit-scrollbar {
-    width: 3px;
-}
-
-.sidebar::-webkit-scrollbar-track {
-    background: transparent;
-}
-
-.sidebar::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 10px;
-}
-
-.light-mode .sidebar::-webkit-scrollbar-thumb {
-    background: rgba(0, 0, 0, 0.2);
+    overflow-y: auto; scrollbar-gutter: stable; overflow-x: hidden;
 }
 
 .sidebar button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     background: rgba(255, 255, 255, 0.08);
     border: 1px solid rgba(255, 255, 255, 0.1);
     color: rgba(255, 255, 255, 0.9);
-    padding: 8px 15px;
-    border-radius: 10px;
+    padding: 4px 10px; /* הקטנת הפדינג של הכפתורים */
+    border-radius: 8px; /* הקטנת הרדיוס לפינות */
     cursor: pointer;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    font-size: 12px;
-    font-weight: 500;
-    text-align: center;
+    font-size: 10px; /* הקטנת גודל הפונט */
+    text-align: left;
     white-space: nowrap;
-    width: 140px;
-    position: relative;
-    overflow: hidden;
 }
 
 .light-mode .sidebar button {
@@ -84,19 +118,16 @@ canvas:active {
 .sidebar button:hover {
     background: rgba(255, 255, 255, 0.15);
     transform: translateX(5px);
-    border-color: rgba(255, 255, 255, 0.2);
 }
 
 .light-mode .sidebar button:hover {
     background: rgba(0, 0, 0, 0.08);
-    border-color: rgba(0, 0, 0, 0.15);
 }
 
 .sidebar button.active {
     background: rgba(255, 255, 255, 0.2);
     border-color: rgba(255, 255, 255, 0.3);
     color: white;
-    font-weight: 600;
     transform: translateX(8px);
 }
 
@@ -104,40 +135,6 @@ canvas:active {
     background: rgba(0, 0, 0, 0.1);
     border-color: rgba(0, 0, 0, 0.2);
     color: black;
-}
-
-.toggle-mode {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    background: rgba(255, 255, 255, 0.1);
-    border: none;
-    font-size: 20px;
-    cursor: pointer;
-    z-index: 100;
-    padding: 10px;
-    border-radius: 50%;
-    width: 44px;
-    height: 44px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
-    backdrop-filter: blur(8px);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-.light-mode .toggle-mode {
-    background: rgba(0, 0, 0, 0.05);
-}
-
-.toggle-mode:hover {
-    background: rgba(255, 255, 255, 0.2);
-    transform: scale(1.05);
-}
-
-.light-mode .toggle-mode:hover {
-    background: rgba(0, 0, 0, 0.1);
 }
 
 .tooltip {
@@ -149,65 +146,32 @@ canvas:active {
     font-size: 14px;
     pointer-events: none;
     opacity: 0;
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: opacity 0.2s ease;
     z-index: 1000;
     max-width: 250px;
     backdrop-filter: blur(8px);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .light-mode .tooltip {
     background: rgba(255, 255, 255, 0.95);
     color: black;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    border: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-.tooltip strong {
-    display: block;
-    margin-bottom: 6px;
-    font-weight: 600;
-    font-size: 15px;
-}
-
-.tooltip small {
-    opacity: 0.8;
-    font-size: 13px;
-    line-height: 1.4;
-    display: block;
 }
 
 @media (max-width: 768px) {
     .sidebar {
-        left: 10px;
-        padding: 15px;
+        left: 10px; /* שים לב ששינינו גם כאן את הצד לשמאל */
+        padding: 10px;
     }
 
-    .sidebar button {
-        width: 130px;
-        padding: 8px 16px;
-        font-size: 13px;
-    }
-
-    .toggle-mode {
+    .controls {
         top: 10px;
         right: 10px;
-        width: 40px;
-        height: 40px;
-        font-size: 18px;
     }
 
-    .tooltip {
-        padding: 10px 14px;
-        font-size: 13px;
-        max-width: 200px;
-    }
-}
-
-@media (max-width: 480px) {
-    .sidebar button {
-        width: 110px;
+    .file-controls button,
+    .toggle-mode {
         padding: 6px 12px;
         font-size: 12px;
     }
