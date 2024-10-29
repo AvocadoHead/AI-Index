@@ -118,7 +118,7 @@ class ModuleCloud {
         const loadFile = document.getElementById('loadFile');
         const fileInput = document.getElementById('fileInput');
         if (loadFile && fileInput) {
-            fileInput.setAttribute('accept', '.js,.json');
+            fileInput.setAttribute('accept', '.txt,.js,text/plain,text/javascript');
             loadFile.onclick = () => fileInput.click();
             fileInput.onchange = (event) => this.handleFileUpload(event);
         }
@@ -435,6 +435,7 @@ class ModuleCloud {
     }
 
     saveModules() {
+        // Create file content
         const modulesLines = this.modules.map(module => {
             const categoriesStr = module.categories.map(cat => `"${cat}"`).join(', ');
             const scoresStr = Object.entries(module.scores)
@@ -446,11 +447,20 @@ class ModuleCloud {
 
         const fileContent = modulesLines.join(',\n') + ',\n';
         
+        // Prompt for filename
+        let filename = prompt('Enter a name for your file:', 'my_modules');
+        if (!filename) return; // User cancelled
+        
+        // Add .js extension if not present
+        if (!filename.toLowerCase().endsWith('.js') && !filename.toLowerCase().endsWith('.txt')) {
+            filename += '.txt'; // Default to .txt as it's more universal
+        }
+        
         const blob = new Blob([fileContent], { type: 'text/plain' });
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;
-        a.download = 'modules.js';
+        a.download = filename;
         document.body.appendChild(a);
         a.click();
         document.body.removeChild(a);
@@ -503,50 +513,54 @@ class ModuleCloud {
 
     handleFileUpload(event) {
         const file = event.target.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = (e) => {
-                try {
-                    const content = e.target.result;
-                    let data;
+        if (!file) return;
 
-                    // Handle the JS format with individual module entries
-                    if (content.includes('{')) {
-                        // Convert the content to valid JSON array
-                        const cleanContent = '[' + 
-                            content.trim()
-                                .replace(/,\s*$/, '')  // Remove trailing comma
-                                .replace(/\t/g, '')    // Remove tabs
-                                .replace(/'/g, '"')    // Replace single quotes with double quotes
-                                .replace(/([{,]\s*)(\w+):/g, '$1"$2":') // Add quotes to property names
-                        + ']';
+        // Log file info for debugging
+        console.log('Selected file:', file.name, file.type);
 
-                        try {
-                            data = JSON.parse(cleanContent);
-                        } catch (e) {
-                            console.error('Parse error:', e);
-                            console.log('Attempted to parse:', cleanContent);
-                            return;
-                        }
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            try {
+                const content = e.target.result;
+                let data;
+
+                // Handle the text format
+                if (content.includes('{')) {
+                    // Convert the content to valid JSON array
+                    const cleanContent = '[' + 
+                        content.trim()
+                            .replace(/,\s*$/, '')  // Remove trailing comma
+                            .replace(/\t/g, '')    // Remove tabs
+                            .replace(/'/g, '"')    // Replace single quotes with double quotes
+                            .replace(/([{,]\s*)(\w+):/g, '$1"$2":') // Add quotes to property names
+                    + ']';
+
+                    try {
+                        data = JSON.parse(cleanContent);
+                    } catch (e) {
+                        console.error('Parse error:', e);
+                        console.log('Attempted to parse:', cleanContent);
+                        return;
                     }
-
-                    if (data && Array.isArray(data)) {
-                        this.modules = data.map(m => {
-                            const module = new AIModule(m.name, m.categories, m.url, m.scores);
-                            this.positionModuleInCloud(module);
-                            return module;
-                        });
-                        
-                        this.defaultModules = [...this.modules];
-                        this.initialized = true;
-                        console.log('Successfully loaded', this.modules.length, 'modules');
-                    }
-                } catch (error) {
-                    console.error('Error loading file:', error);
                 }
-            };
-            reader.readAsText(file);
-        }
+
+                if (data && Array.isArray(data)) {
+                    this.modules = data.map(m => {
+                        const module = new AIModule(m.name, m.categories, m.url, m.scores);
+                        this.positionModuleInCloud(module);
+                        return module;
+                    });
+                    
+                    this.defaultModules = [...this.modules];
+                    this.initialized = true;
+                    console.log('Successfully loaded', this.modules.length, 'modules');
+                }
+            } catch (error) {
+                console.error('Error loading file:', error);
+                alert('Error loading file. Please make sure it\'s in the correct format.');
+            }
+        };
+        reader.readAsText(file);
     }
 
     drawModule(module) {
