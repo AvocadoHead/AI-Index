@@ -1,30 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Eyal Izenman | איל איזנמן</title>
-  <link rel="stylesheet" href="styles.css">
-  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-36D3N7VSMG"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-36D3N7VSMG');
+    </script>
+    <title>AI Module Cloud</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
-  <div class="container">
-    <h1>Eyal Izenman | איל איזנמן</h1>
-    <h2>Visual, AI Artist & Educator | אמן חזותי בינאי ומורה</h2>
-    <div class="carousel-container">
-      <div class="carousel" id="carousel">
-        <!-- Carousel items will be added dynamically here -->
-      </div>
+    <div class="sidebar">
+        <button data-category="all" class="active">All</button>
+        <button data-category="LLM">Language Models</button>
+        <button data-category="USE">AI Tools</button>
+        <button data-category="T2I">Text to Image</button>
+        <button data-category="I2I">Image to Image</button>
+        <button data-category="T2V">Text to Video</button>
+        <button data-category="I2V">Image to Video</button>
+        <button data-category="V2V">Video Repaint</button>
+        <button data-category="3D">3D Tools</button>
+        <button data-category="DES">Design</button>
+        <button data-category="UPS">Upscale/Enhance</button>
+        <button data-category="AUD">Audio</button>
+        <button data-category="VID">Video Tools</button>
+        <button data-category="UI/UX">UI/UX</button>
+        <button data-category="ANI">Animation</button>
+        <button data-category="FCE">Face Editing</button>
+        <button data-category="SEA">AI Search</button>
+        <button data-category="CON">Content Generation</button>
+        <button data-category="PRE">Presentation Creation</button>
+        <button data-category="I23">Image to 3D</button>
+        <button data-category="T2S">Text to Speech</button>
+        <button data-category="S2T">Speech to Text</button>
+        <button data-category="VCL">Voice Cloning</button>
+        <button data-category="MUS">Music Generation</button>
     </div>
-<div id="floating-quotes-container"></div>
-    <div class="contact-info">
-      <div class="contact-details">
-        <a href="https://wa.me/97236030603" target="_blank">WhatsApp: +972 3 6030603</a>
-        <a href="mailto:Eyalizenman@gmail.com" class="email-link">Eyalizenman@gmail.com</a>
-      </div>
-      <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=https://wa.me/97236030603" alt="WhatsApp QR Code">
+
+    <div class="controls">
+        <button id="toggleMode" class="toggle-mode">☀️</button>
+        <div class="file-controls">
+            <button id="saveFile">Save</button>
+            <button id="loadFile">Load</button>
+            <div class="dropdown">
+                <button id="addModule">+ Add Module</button>
+                <div class="dropdown-content">
+                    <form id="moduleForm">
+                        <input type="text" id="moduleName" placeholder="Module Name" required>
+                        <input type="text" id="moduleUrl" placeholder="Module URL" required>
+                        <input type="text" id="moduleCategories" 
+                               placeholder="Categories with scores (e.g., LLM:90, USE:75)" required>
+                        <button type="submit" class="submit-btn">Add Module</button>
+                    </form>
+                </div>
+            </div>
+            <input type="file" id="fileInput" accept=".json" style="display: none">
+        </div>
+        <div class="color-picker">
+            <input type="color" id="bgColor" value="#1a1a1a">
+        </div>
     </div>
-  </div>
-  <script src="script.js"></script>
+
+    <div id="tooltip" class="tooltip"></div>
+    <canvas id="moduleCloud"></canvas>
+    <script src="modules.js"></script>
+    <script src="script.js"></script>
+    <div class="footer">
+        <div class="contact-info">
+            <a href="https://avocadohead.github.io/Eyal-Izenman-Portfolio/" target="_blank" class="copyright">
+                ©Eyal Izenman 2024 
+            </a>
+            <a href="mailto:Eyalizenman@Gmail.com">Eyalizenman@Gmail.com</a>
+            <a href="tel:+97236030603">WhatsApp: +972 3 6030603</a>
+        </div>
+        <div class="social-icons">
+            <a href="https://www.facebook.com/Eyal.Izenman/" target="_blank">
+                <i class="fab fa-facebook"></i>
+            </a>
+            <a href="https://www.instagram.com/ei.sense" target="_blank">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/eyal-izenman-37a0471b/" target="_blank">
+                <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="https://buymeacoffee.com/Optopia" target="_blank">
+                <i class="fas fa-coffee"></i>
+            </a>
+            <a href="https://www.hollo.co.il/?section=9&customer=14908" target="_blank">
+                <i class="fas fa-tshirt"></i>
+            </a>
+        </div>
+    </div>
 </body>
 </html>
