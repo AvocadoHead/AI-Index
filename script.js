@@ -551,8 +551,25 @@ class ModuleCloud {
 
     drawModule(module) {
         const rotated = this.rotatePoint(module.x, module.y, module.z);
-        // Adjust scale range to be more subtle
-        const scale = Math.max(0.8, (rotated.z + 400) / 600); // Minimum 0.8, less variation
+        // Minimal position influence
+        const baseScale = Math.max(0.98, (rotated.z + 400) / 600); // Almost no position-based variation
+        
+        // Get current category from active button
+        const activeCategory = document.querySelector('.sidebar button.active')?.dataset.category;
+        
+        // Calculate score-based size multiplier with much more impact
+        let scoreMultiplier = 1;
+        if (module.scores && Object.keys(module.scores).length > 0) {
+            if (activeCategory && activeCategory !== 'all' && module.scores[activeCategory]) {
+                // Much more dramatic range based on category score
+                const score = module.scores[activeCategory];
+                scoreMultiplier = 0.5 + (score * 1.0); // 0.5 to 1.5 range
+            } else {
+                // Use highest score when not in specific category
+                const maxScore = Math.max(...Object.values(module.scores));
+                scoreMultiplier = 0.5 + (maxScore * 1.0);
+            }
+        }
         
         this.ctx.save();
         this.ctx.translate(
@@ -560,11 +577,13 @@ class ModuleCloud {
             this.canvas.height / 2 + rotated.y
         );
         
-        // Increase base font size to 20px
+        // Smaller base size but larger multiplier effect
+        const fontSize = 18 * baseScale * scoreMultiplier;
+        
         this.ctx.fillStyle = document.body.classList.contains('light-mode') ? '#000000' : '#ffffff';
         this.ctx.textAlign = 'center';
         this.ctx.textBaseline = 'middle';
-        this.ctx.font = `${20 * scale}px Heebo`; // Base size 20px
+        this.ctx.font = `${fontSize}px Heebo`;
         this.ctx.fillText(module.name, 0, 0);
         
         this.ctx.restore();
