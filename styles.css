@@ -94,9 +94,11 @@ canvas:active {
     border-radius: 10px; /* הקטנת הרדיוס לפינות */
     max-height: 80vh;
     overflow-y: auto; scrollbar-gutter: stable; overflow-x: hidden;
+    direction:rtl
 }
 
 .sidebar button {
+    direction: ltr;
     background: rgba(255, 255, 255, 0.08);
     border: 1px solid rgba(255, 255, 255, 0.1);
     color: rgba(255, 255, 255, 0.9);
