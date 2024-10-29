@@ -298,3 +298,62 @@ body.light-mode .tooltip {
 .file-controls button {
     padding: 5px 10px;
 }
+
+.footer {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 12px;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 8px;
+    border-radius: 4px;
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.contact-info a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.contact-info a:hover {
+    color: white;
+}
+
+.qr-codes {
+    display: flex;
+    gap: 8px;
+}
+
+.qr-code {
+    width: 40px;
+    height: 40px;
+    border-radius: 4px;
+    transition: transform 0.3s;
+}
+
+.qr-code:hover {
+    transform: scale(1.1);
+}
+
+/* Light mode adjustments */
+body.light-mode .footer {
+    background: rgba(255, 255, 255, 0.8);
+}
+
+body.light-mode .contact-info a {
+    color: rgba(0, 0, 0, 0.8);
+}
+
+body.light-mode .contact-info a:hover {
+    color: black;
+}
