@@ -329,20 +329,22 @@ body.light-mode .tooltip {
     color: white;
 }
 
-.qr-codes {
+.social-icons {
     display: flex;
-    gap: 8px;
+    gap: 10px;
+    align-items: center;
 }
 
-.qr-code {
-    width: 40px;
-    height: 40px;
-    border-radius: 4px;
-    transition: transform 0.3s;
+.social-icons a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    transition: all 0.3s;
+    font-size: 16px;
 }
 
-.qr-code:hover {
-    transform: scale(1.1);
+.social-icons a:hover {
+    color: white;
+    transform: translateY(-2px);
 }
 
 /* Light mode adjustments */
@@ -350,10 +352,12 @@ body.light-mode .footer {
     background: rgba(255, 255, 255, 0.8);
 }
 
-body.light-mode .contact-info a {
+body.light-mode .contact-info a,
+body.light-mode .social-icons a {
     color: rgba(0, 0, 0, 0.8);
 }
 
-body.light-mode .contact-info a:hover {
+body.light-mode .contact-info a:hover,
+body.light-mode .social-icons a:hover {
     color: black;
 }
