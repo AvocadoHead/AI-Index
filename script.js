@@ -83,7 +83,7 @@ class ModuleCloud {
     positionModuleInCloud(module) {
         const theta = Math.random() * Math.PI * 2;
         const phi = Math.acos(Math.random() * 2 - 1);
-        const radius = this.cloudSpread + (Math.random() * 100);
+        const radius = this.cloudSpread + (Math.random() * (this.cloudSpread * 0.2));
 
         module.targetX = radius * Math.sin(phi) * Math.cos(theta);
         module.targetY = radius * Math.sin(phi) * Math.sin(theta);
@@ -92,9 +92,29 @@ class ModuleCloud {
 
     initializeCanvas() {
         const updateSize = () => {
-            this.canvas.width = window.innerWidth;
-            this.canvas.height = window.innerHeight;
+            // Make canvas fill the screen while maintaining aspect ratio
+            const devicePixelRatio = window.devicePixelRatio || 1;
+            const width = window.innerWidth;
+            const height = window.innerHeight;
+            
+            // Set display size
+            this.canvas.style.width = '100%';
+            this.canvas.style.height = '100%';
+            this.canvas.style.position = 'fixed';
+            this.canvas.style.top = '0';
+            this.canvas.style.left = '0';
+            
+            // Set actual size in memory
+            this.canvas.width = width * devicePixelRatio;
+            this.canvas.height = height * devicePixelRatio;
+            
+            // Scale all drawing operations
+            this.ctx.scale(devicePixelRatio, devicePixelRatio);
+
+            // Adjust cloud spread based on screen size
+            this.cloudSpread = Math.min(width, height) * 0.3; // Adjust cloud size relative to screen
         };
+        
         window.addEventListener('resize', updateSize);
         updateSize();
     }
@@ -259,6 +279,70 @@ class ModuleCloud {
                 window.open(hoveredModule.url, '_blank');
             }
         };
+
+        // Add touch events
+        this.canvas.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            const touch = e.touches[0];
+            this.isDragging = true;
+            this.lastMouseX = touch.clientX - this.canvas.getBoundingClientRect().left;
+            this.lastMouseY = touch.clientY - this.canvas.getBoundingClientRect().top;
+        }, { passive: false });
+
+        this.canvas.addEventListener('touchmove', (e) => {
+            e.preventDefault();
+            if (this.isDragging) {
+                const touch = e.touches[0];
+                const rect = this.canvas.getBoundingClientRect();
+                const mouseX = touch.clientX - rect.left;
+                const mouseY = touch.clientY - rect.top;
+
+                const deltaX = mouseX - this.lastMouseX;
+                const deltaY = mouseY - this.lastMouseY;
+                
+                // Adjust sensitivity for touch
+                this.momentumX = deltaY * 0.0015;
+                this.momentumY = deltaX * 0.0015;
+                
+                this.rotationX += this.momentumX;
+                this.rotationY += this.momentumY;
+
+                // Handle tooltip for touch
+                const hoveredModule = this.getHoveredModule(mouseX, mouseY);
+                if (hoveredModule) {
+                    this.showTooltip(hoveredModule, touch.clientX, touch.clientY);
+                } else {
+                    this.hideTooltip();
+                }
+
+                this.lastMouseX = mouseX;
+                this.lastMouseY = mouseY;
+            }
+        }, { passive: false });
+
+        this.canvas.addEventListener('touchend', () => {
+            this.isDragging = false;
+            this.lastInteractionTime = Date.now();
+            this.hideTooltip();
+        });
+
+        // Prevent default touch behaviors
+        document.addEventListener('touchmove', (e) => {
+            if (e.target === this.canvas) {
+                e.preventDefault();
+            }
+        }, { passive: false });
+
+        // Handle device orientation if available
+        if (window.DeviceOrientationEvent) {
+            window.addEventListener('deviceorientation', (e) => {
+                if (!this.isDragging) {
+                    const tiltSpeed = 0.0002;
+                    this.momentumX = e.beta * tiltSpeed;
+                    this.momentumY = e.gamma * tiltSpeed;
+                }
+            });
+        }
     }
 
     adjustColor(color, amount) {
@@ -598,34 +682,21 @@ class ModuleCloud {
 
     drawModule(module) {
         const rotated = this.rotatePoint(module.x, module.y, module.z);
-        // Minimal position influence
-        const baseScale = Math.max(0.98, (rotated.z + 400) / 600); // Almost no position-based variation
         
-        // Get current category from active button
-        const activeCategory = document.querySelector('.sidebar button.active')?.dataset.category;
-        
-        // Calculate score-based size multiplier with much more impact
-        let scoreMultiplier = 1;
-        if (module.scores && Object.keys(module.scores).length > 0) {
-            if (activeCategory && activeCategory !== 'all' && module.scores[activeCategory]) {
-                // Much more dramatic range based on category score
-                const score = module.scores[activeCategory];
-                scoreMultiplier = 0.5 + (score * 1.0); // 0.5 to 1.5 range
-            } else {
-                // Use highest score when not in specific category
-                const maxScore = Math.max(...Object.values(module.scores));
-                scoreMultiplier = 0.5 + (maxScore * 1.0);
-            }
-        }
+        // Center position calculation
+        const centerX = this.canvas.width / (2 * window.devicePixelRatio);
+        const centerY = this.canvas.height / (2 * window.devicePixelRatio);
         
         this.ctx.save();
         this.ctx.translate(
-            this.canvas.width / 2 + rotated.x,
-            this.canvas.height / 2 + rotated.y
+            centerX + rotated.x,
+            centerY + rotated.y
         );
         
-        // Smaller base size but larger multiplier effect
-        const fontSize = 18 * baseScale * scoreMultiplier;
+        // Adjust font size based on screen size
+        const minDimension = Math.min(window.innerWidth, window.innerHeight);
+        const baseFontSize = minDimension < 768 ? 14 : 18;
+        const fontSize = baseFontSize * Math.max(0.98, (rotated.z + 400) / 600);
         
         this.ctx.fillStyle = document.body.classList.contains('light-mode') ? '#000000' : '#ffffff';
         this.ctx.textAlign = 'center';
