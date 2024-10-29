@@ -39,6 +39,18 @@
         <div class="file-controls">
             <button id="saveFile">Save</button>
             <button id="loadFile">Load</button>
+            <div class="dropdown">
+                <button id="addModule">+ Add Module</button>
+                <div class="dropdown-content">
+                    <form id="moduleForm">
+                        <input type="text" id="moduleName" placeholder="Module Name" required>
+                        <input type="text" id="moduleUrl" placeholder="Module URL" required>
+                        <input type="text" id="moduleCategories" 
+                               placeholder="Categories with scores (e.g., LLM:90, USE:75)" required>
+                        <button type="submit" class="submit-btn">Add Module</button>
+                    </form>
+                </div>
+            </div>
             <input type="file" id="fileInput" accept=".json" style="display: none">
         </div>
         <div class="color-picker">
