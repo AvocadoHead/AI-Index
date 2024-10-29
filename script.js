@@ -154,22 +154,55 @@ class ModuleCloud {
             };
         }
 
-        // Category filtering
+        // Category filtering with multi-select
         const categoryButtons = document.querySelectorAll('.sidebar button');
         categoryButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                categoryButtons.forEach(btn => btn.classList.remove('active'));
-                button.classList.add('active');
-
+            button.addEventListener('click', (e) => {
                 const category = button.dataset.category;
+                
                 if (category === 'all') {
+                    // 'All' button always clears other selections
+                    categoryButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
                     this.modules = [...this.defaultModules];
+                } else if (e.shiftKey) {
+                    // Shift+click for multi-select
+                    if (button.classList.contains('active')) {
+                        // Remove this category if already selected
+                        button.classList.remove('active');
+                    } else {
+                        // Add this category
+                        button.classList.add('active');
+                        // Remove 'all' selection if it was active
+                        document.querySelector('.sidebar button[data-category="all"]')
+                            ?.classList.remove('active');
+                    }
+                    
+                    // Get all active categories
+                    const activeCategories = Array.from(document.querySelectorAll('.sidebar button.active'))
+                        .map(btn => btn.dataset.category);
+                    
+                    // Filter modules that match ANY of the selected categories
+                    this.modules = this.defaultModules.filter(module => 
+                        module.categories.some(cat => activeCategories.includes(cat))
+                    );
+                    
+                    // If no categories selected, show all
+                    if (activeCategories.length === 0) {
+                        document.querySelector('.sidebar button[data-category="all"]')
+                            ?.classList.add('active');
+                        this.modules = [...this.defaultModules];
+                    }
                 } else {
+                    // Normal click - single category
+                    categoryButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
                     this.modules = this.defaultModules.filter(module => 
                         module.categories.includes(category)
                     );
                 }
 
+                // Reposition visible modules
                 this.modules.forEach(module => this.positionModuleInCloud(module));
             });
         });
