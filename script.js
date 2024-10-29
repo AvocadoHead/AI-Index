@@ -39,9 +39,11 @@ class AIModule {
 
 class ModuleCloud {
     constructor() {
+        this.defaultModules = [...defaultModules]; // Store original modules
+        this.userModules = []; // Store user-added modules
+        this.modules = [...this.defaultModules]; // Combined modules for display
         this.canvas = document.getElementById('moduleCloud');
         this.ctx = this.canvas.getContext('2d');
-        this.modules = [];
         this.rotation = { x: 0.001, y: 0.001 };
         this.isDragging = false;
         this.lastMousePos = { x: 0, y: 0 };
@@ -122,16 +124,7 @@ class ModuleCloud {
         });
 
         document.getElementById('saveFile').addEventListener('click', () => {
-            const data = JSON.stringify(this.modules, null, 2);
-            const blob = new Blob([data], { type: 'application/json' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = 'ai-modules.json';
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            URL.revokeObjectURL(url);
+            this.saveModules();
         });
 
         document.getElementById('loadFile').addEventListener('click', () => {
@@ -164,6 +157,50 @@ class ModuleCloud {
             const color = e.target.value;
             const darkerColor = this.adjustColor(color, -20);
             document.body.style.background = `linear-gradient(135deg, ${color} 0%, ${darkerColor} 100%)`;
+        });
+
+        document.getElementById('addModule').addEventListener('click', (e) => {
+            e.stopPropagation();
+            const dropdown = document.querySelector('.dropdown-content');
+            dropdown.classList.toggle('show');
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!e.target.matches('.dropdown, .dropdown *')) {
+                const dropdowns = document.getElementsByClassName('dropdown-content');
+                Array.from(dropdowns).forEach(dropdown => {
+                    if (dropdown.classList.contains('show')) {
+                        dropdown.classList.remove('show');
+                    }
+                });
+            }
+        });
+
+        document.getElementById('moduleForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('moduleName').value;
+            const url = document.getElementById('moduleUrl').value;
+            
+            // Parse categories with scores (format: "CAT1:90, CAT2:75")
+            const categoryInput = document.getElementById('moduleCategories').value;
+            const categoryPairs = categoryInput.split(',').map(pair => pair.trim());
+            
+            const categories = [];
+            const scores = {};
+            
+            categoryPairs.forEach(pair => {
+                const [category, score] = pair.split(':').map(item => item.trim());
+                if (category && score) {
+                    categories.push(category);
+                    scores[category] = parseFloat(score) / 100; // Convert to 0-1 scale
+                }
+            });
+
+            this.addNewModule(name, categories, url, scores);
+            
+            // Reset form
+            e.target.reset();
+            document.querySelector('.dropdown-content').classList.remove('show');
         });
     }
 
@@ -363,6 +400,65 @@ class ModuleCloud {
         });
 
         requestAnimationFrame(this.animate.bind(this));
+    }
+
+    saveModules() {
+        // Combine default and user modules
+        const allModules = [...this.defaultModules, ...this.userModules];
+        
+        // Create the formatted string
+        let fileContent = 'const defaultModules = [\n\n';
+        
+        // Group modules by their primary category
+        const groupedModules = {};
+        allModules.forEach(module => {
+            const primaryCategory = module.categories[0];
+            if (!groupedModules[primaryCategory]) {
+                groupedModules[primaryCategory] = [];
+            }
+            groupedModules[primaryCategory].push(module);
+        });
+        
+        // Format each group
+        Object.entries(groupedModules).forEach(([category, modules], groupIndex) => {
+            fileContent += `// ${category}\n`;
+            
+            modules.forEach((module, index) => {
+                const scoresStr = Object.entries(module.scores)
+                    .map(([cat, score]) => `"${cat}": ${score.toFixed(2)}`)
+                    .join(', ');
+                    
+                fileContent += `\t{ name: "${module.name}", categories: [${module.categories.map(c => `"${c}"`).join(', ')}], url: "${module.url}", scores: { ${scoresStr} } }`;
+                
+                // Add comma if not the last module
+                if (index < modules.length - 1 || groupIndex < Object.keys(groupedModules).length - 1) {
+                    fileContent += ',';
+                }
+                fileContent += '\n';
+            });
+            
+            fileContent += '\n';
+        });
+        
+        fileContent += '];\n';
+        
+        // Create and trigger download
+        const blob = new Blob([fileContent], { type: 'application/javascript' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'modules.js';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+    }
+
+    addNewModule(name, categories, url, scores) {
+        const newModule = new AIModule(name, categories, url, scores);
+        this.userModules.push(newModule);
+        this.modules.push(newModule);
+        this.positionModuleInCloud(newModule);
     }
 }
 
