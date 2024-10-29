@@ -335,7 +335,8 @@ body.light-mode .tooltip {
     align-items: center;
 }
 
-.social-icons a {
+.social-icons a,
+.social-icons a:visited {
     color: rgba(255, 255, 255, 0.8);
     text-decoration: none;
     transition: all 0.3s;
@@ -353,11 +354,13 @@ body.light-mode .footer {
 }
 
 body.light-mode .contact-info a,
-body.light-mode .social-icons a {
+body.light-mode .social-icons a,
+body.light-mode .social-icons a:visited {
     color: rgba(0, 0, 0, 0.8);
 }
 
 body.light-mode .contact-info a:hover,
-body.light-mode .social-icons a:hover {
+body.light-mode .social-icons a:hover,
+body.light-mode .social-icons a:hover:visited {
     color: black;
 }
