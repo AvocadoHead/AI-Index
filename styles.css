@@ -515,3 +515,27 @@ body.light-mode .social-icons a:hover:visited {
 #moduleForm button:hover {
     background: #666;
 }
+
+/* Webkit browsers (Chrome, Safari, newer Edge) */
+.sidebar::-webkit-scrollbar {
+    width: 6px;  /* Slim width */
+}
+
+.sidebar::-webkit-scrollbar-track {
+    background: #1a1a1a;  /* Dark track */
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    background: #333;  /* Slightly lighter thumb */
+    border-radius: 3px;  /* Rounded corners */
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+    background: #444;  /* Slightly lighter on hover */
+}
+
+/* Firefox */
+.sidebar {
+    scrollbar-width: thin;  /* "thin" or "auto" */
+    scrollbar-color: #333 #1a1a1a;  /* thumb track */
+}
