@@ -27,11 +27,12 @@ canvas:active {
     top: 20px;
     right: 20px;
     display: flex;
-    gap: 10px;
+    gap: 8px;
     z-index: 100;
+    padding: 8px;
 }
 
-.file-controls {
+.file-controls, .module-controls {
     display: flex;
     gap: 8px;
 }
@@ -292,7 +293,7 @@ body.light-mode .tooltip {
 /* Update the file-controls to accommodate the dropdown */
 .file-controls {
     display: flex;
-    gap: 5px;
+    gap: 10px;
 }
 
 .file-controls button {
@@ -388,20 +389,129 @@ body.light-mode .social-icons a:hover:visited {
 }
 
 .control-button {
-    width: 80px;         /* Fixed width for both buttons */
-    height: 50px;        /* Fixed height for both buttons */
-    padding: 5px;
+    width: 70px;  /* Slightly smaller width */
+    height: 40px; /* Slightly smaller height */
+    padding: 2px;
+    margin: 0;
     border: none;
-    border-radius: 4px;
+    border-radius: 3px;
     background-color: #333;
     color: white;
     cursor: pointer;
-    font-size: 14px;
-    line-height: 1.2;    /* Adjust line height for the two lines */
+    font-family: 'Heebo', Arial, sans-serif;
+    font-size: 11px;
+    font-weight: 300; /* Thinner text */
+    line-height: 1.3;
     text-align: center;
-    transition: background-color 0.3s;
+    transition: all 0.2s ease;
+    letter-spacing: 0.5px; /* More elegant spacing */
 }
 
 .control-button:hover {
     background-color: #444;
+}
+
+.control-button small {
+    font-size: 11px;  /* Smaller font for the first word */
+    opacity: 0.9;     /* Slightly dimmed */
+}
+
+.control-button:hover {
+    background-color: #444;
+}
+
+/* Elegant button styling */
+.control-button {
+    width: 70px;  /* Slightly smaller width */
+    height: 40px; /* Slightly smaller height */
+    padding: 2px;
+    margin: 0;
+    border: none;
+    border-radius: 3px;
+    background-color: #333;
+    color: white;
+    cursor: pointer;
+    font-family: 'Heebo', Arial, sans-serif;
+    font-size: 11px;
+    font-weight: 300; /* Thinner text */
+    line-height: 1.3;
+    text-align: center;
+    transition: all 0.2s ease;
+    letter-spacing: 0.5px; /* More elegant spacing */
+}
+
+.control-button:hover {
+    background-color: #444;
+}
+
+/* Controls layout */
+.controls {
+    display: flex;
+    gap: 8px;
+    padding: 8px;
+}
+
+.file-controls, .module-controls {
+    display: flex;
+    gap: 8px;
+}
+
+/* Dropdown styling */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #333;
+    min-width: 250px;
+    padding: 10px;
+    border-radius: 4px;
+    z-index: 1000;
+    margin-top: 4px;
+}
+
+.dropdown-content.show {
+    display: block;
+}
+
+/* Form styling */
+#moduleForm {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+#moduleForm input {
+    padding: 6px;
+    border: none;
+    border-radius: 3px;
+    background: #444;
+    color: white;
+    font-family: 'Heebo', Arial, sans-serif;
+    font-size: 12px;
+}
+
+#moduleForm input::placeholder {
+    color: #aaa;
+}
+
+#moduleForm button {
+    padding: 6px;
+    border: none;
+    border-radius: 3px;
+    background: #555;
+    color: white;
+    cursor: pointer;
+    font-family: 'Heebo', Arial, sans-serif;
+    font-size: 12px;
+    transition: background 0.2s;
+}
+
+#moduleForm button:hover {
+    background: #666;
 }
