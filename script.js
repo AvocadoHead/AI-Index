@@ -62,10 +62,16 @@ class ModuleCloud {
         this.lastInteractionTime = 0;
         this.interactionTimeout = 3000; // Time in ms before auto-rotation resumes
         this.isAutoRotating = true;
-
+        this.scale = 1;
+        this.lastTouchDistance = 0;
+        
         this.initializeCanvas();
         this.setupEventListeners();
 
+        // Initialize with empty arrays
+        this.modules = [];
+        this.defaultModules = [];
+        
         if (typeof defaultModules !== 'undefined') {
             console.log('Loading default modules:', defaultModules.length);
             this.modules = defaultModules.map(m => {
@@ -78,6 +84,41 @@ class ModuleCloud {
         }
 
         this.animate();
+
+        // Add touch event listeners
+        this.setupTouchEvents();
+    }
+
+    initializeFromModules(modules) {
+        try {
+            this.modules = modules.map(m => {
+                const module = new AIModule(m.name, m.categories, m.url, m.scores);
+                this.positionModuleInCloud(module);
+                return module;
+            });
+            this.defaultModules = [...this.modules];
+            this.initialized = true;
+        } catch (error) {
+            console.error('Error initializing modules:', error);
+            this.showError('Error loading modules');
+        }
+    }
+
+    showError(message) {
+        // Create or update error display
+        const errorElement = document.getElementById('errorMessage') || document.createElement('div');
+        errorElement.id = 'errorMessage';
+        errorElement.className = 'error-message';
+        errorElement.textContent = message;
+        
+        if (!document.body.contains(errorElement)) {
+            document.body.appendChild(errorElement);
+        }
+
+        // Auto-hide after 5 seconds
+        setTimeout(() => {
+            errorElement.remove();
+        }, 5000);
     }
 
     positionModuleInCloud(module) {
@@ -479,8 +520,9 @@ class ModuleCloud {
     getHoveredModule(mouseX, mouseY) {
         const hoveredModule = this.modules.find(module => {
             const rotated = this.rotatePoint(module.x, module.y, module.z);
-            const screenX = this.canvas.width / 2 + rotated.x;
-            const screenY = this.canvas.height / 2 + rotated.y;
+            // Use devicePixelRatio to correct the coordinates
+            const screenX = (this.canvas.width / 2 / window.devicePixelRatio) + rotated.x;
+            const screenY = (this.canvas.height / 2 / window.devicePixelRatio) + rotated.y;
             
             // Reduce hit area for more precise detection
             const hitRadius = 25; // Reduced from 40 to 25
@@ -553,27 +595,30 @@ class ModuleCloud {
 
     saveModules() {
         // Create file content
-        const modulesLines = this.modules.map(module => {
+        const modulesLines = this.modules.map((module, index) => {
             const categoriesStr = module.categories.map(cat => `"${cat}"`).join(', ');
             const scoresStr = Object.entries(module.scores)
                 .map(([cat, score]) => `"${cat}": ${score}`)
                 .join(', ');
             
-            return `\t{ name: "${module.name}", categories: [${categoriesStr}], url: "${module.url}", scores: { ${scoresStr} } }`;
+            // Add comma only if it's not the last item
+            const comma = index === this.modules.length - 1 ? '' : ',';
+            
+            return `\t{ name: "${module.name}", categories: [${categoriesStr}], url: "${module.url}", scores: { ${scoresStr} } }${comma}`;
         });
 
-        const fileContent = modulesLines.join(',\n') + ',\n';
+        const fileContent = '[\n' + modulesLines.join('\n') + '\n]';
         
         // Prompt for filename
         let filename = prompt('Enter a name for your file:', 'my_modules');
         if (!filename) return; // User cancelled
         
         // Add .js extension if not present
-        if (!filename.toLowerCase().endsWith('.js') && !filename.toLowerCase().endsWith('.txt')) {
-            filename += '.txt'; // Default to .txt as it's more universal
+        if (!filename.toLowerCase().endsWith('.js')) {
+            filename += '.js';
         }
         
-        const blob = new Blob([fileContent], { type: 'text/plain' });
+        const blob = new Blob([fileContent], { type: 'text/javascript' });
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;
@@ -586,19 +631,18 @@ class ModuleCloud {
 
     addNewModule(name, url, categoriesString) {
         try {
-            // Parse categories string (e.g., "LLM:95, USE:75, T2I:88")
-            const categories = [];
-            const scores = {};
+            const { categories, scores } = this.parseCategoriesAndScores(categoriesString);
             
-            // Split by comma and handle each category:score pair
-            categoriesString.split(',').forEach(item => {
-                const [category, score] = item.trim().split(':');
-                if (category && score) {
-                    const cleanCategory = category.trim();
-                    categories.push(cleanCategory);
-                    scores[cleanCategory] = parseFloat(score) / 100; // Convert 95 to 0.95
-                }
-            });
+            // Validate inputs
+            if (!name?.trim()) {
+                throw new Error('Module name is required');
+            }
+            if (!url?.trim()) {
+                throw new Error('Module URL is required');
+            }
+            if (categories.length === 0) {
+                throw new Error('At least one category is required');
+            }
 
             const module = new AIModule(
                 name.trim(),
@@ -607,6 +651,7 @@ class ModuleCloud {
                 scores
             );
 
+            // Initialize arrays if needed
             if (!this.modules) this.modules = [];
             if (!this.defaultModules) this.defaultModules = [];
             
@@ -624,59 +669,65 @@ class ModuleCloud {
             return true;
         } catch (error) {
             console.error('Error adding module:', error);
+            this.showError(error.message);
             return false;
         }
+    }
+
+    parseCategoriesAndScores(categoriesString) {
+        const categories = [];
+        const scores = {};
+        
+        if (!categoriesString?.trim()) {
+            throw new Error('Categories string is required');
+        }
+
+        categoriesString.split(',').forEach((item, index) => {
+            const [category, score] = item.trim().split(':');
+            
+            if (!category || !score) {
+                throw new Error(`Invalid format at item ${index + 1}. Expected "Category:Score"`);
+            }
+
+            const cleanCategory = category.trim();
+            const numScore = parseFloat(score);
+
+            if (isNaN(numScore) || numScore < 0 || numScore > 100) {
+                throw new Error(`Invalid score for ${cleanCategory}: ${score}. Score must be between 0 and 100`);
+            }
+
+            categories.push(cleanCategory);
+            scores[cleanCategory] = numScore / 100;
+        });
+
+        return { categories, scores };
     }
 
     handleFileUpload(event) {
         const file = event.target.files[0];
         if (!file) return;
 
-        // Log file info for debugging
-        console.log('Selected file:', file.name, file.type);
-
         const reader = new FileReader();
         reader.onload = (e) => {
             try {
                 const content = e.target.result;
-                let data;
-
-                // Handle the text format
-                if (content.includes('{')) {
-                    // Convert the content to valid JSON array
-                    const cleanContent = '[' + 
-                        content.trim()
-                            .replace(/,\s*$/, '')  // Remove trailing comma
-                            .replace(/\t/g, '')    // Remove tabs
-                            .replace(/'/g, '"')    // Replace single quotes with double quotes
-                            .replace(/([{,]\s*)(\w+):/g, '$1"$2":') // Add quotes to property names
-                    + ']';
-
-                    try {
-                        data = JSON.parse(cleanContent);
-                    } catch (e) {
-                        console.error('Parse error:', e);
-                        console.log('Attempted to parse:', cleanContent);
-                        return;
-                    }
+                // Extract array content between brackets
+                const match = content.match(/\[([\s\S]*)\]/);
+                if (!match) {
+                    throw new Error('Invalid file format');
                 }
 
-                if (data && Array.isArray(data)) {
-                    this.modules = data.map(m => {
-                        const module = new AIModule(m.name, m.categories, m.url, m.scores);
-                        this.positionModuleInCloud(module);
-                        return module;
-                    });
-                    
-                    this.defaultModules = [...this.modules];
-                    this.initialized = true;
-                    console.log('Successfully loaded', this.modules.length, 'modules');
-                }
+                // Evaluate the array content
+                const modules = eval(`[${match[1]}]`);
+                this.initializeFromModules(modules);
+                
+                console.log('Successfully loaded', this.modules.length, 'modules');
             } catch (error) {
                 console.error('Error loading file:', error);
-                alert('Error loading file. Please make sure it\'s in the correct format.');
+                this.showError('Error loading file. Please check the format.');
             }
         };
+
         reader.readAsText(file);
     }
 
@@ -689,14 +740,14 @@ class ModuleCloud {
         
         this.ctx.save();
         this.ctx.translate(
-            centerX + rotated.x,
-            centerY + rotated.y
+            centerX + (rotated.x * this.scale),
+            centerY + (rotated.y * this.scale)
         );
         
-        // Adjust font size based on screen size
+        // Adjust font size based on screen size and zoom
         const minDimension = Math.min(window.innerWidth, window.innerHeight);
         const baseFontSize = minDimension < 768 ? 14 : 18;
-        const fontSize = baseFontSize * Math.max(0.98, (rotated.z + 400) / 600);
+        const fontSize = baseFontSize * Math.max(0.98, (rotated.z + 400) / 600) * this.scale;
         
         this.ctx.fillStyle = document.body.classList.contains('light-mode') ? '#000000' : '#ffffff';
         this.ctx.textAlign = 'center';
@@ -705,6 +756,104 @@ class ModuleCloud {
         this.ctx.fillText(module.name, 0, 0);
         
         this.ctx.restore();
+    }
+
+    getHoveredModule(mouseX, mouseY) {
+        const hoveredModule = this.modules.find(module => {
+            const rotated = this.rotatePoint(module.x, module.y, module.z);
+            const screenX = (this.canvas.width / 2 / window.devicePixelRatio) + (rotated.x * this.scale);
+            const screenY = (this.canvas.height / 2 / window.devicePixelRatio) + (rotated.y * this.scale);
+            
+            const hitRadius = 25 * this.scale; // Scale hit area with zoom
+            const dx = mouseX - screenX;
+            const dy = mouseY - screenY;
+            
+            return (dx * dx + dy * dy) < (hitRadius * hitRadius);
+        });
+        
+        return hoveredModule;
+    }
+
+    setupTouchEvents() {
+        this.canvas.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            if (e.touches.length === 1) {
+                // Single touch - handle as potential tap
+                const touch = e.touches[0];
+                this.isDragging = true;
+                this.lastMouseX = touch.clientX - this.canvas.getBoundingClientRect().left;
+                this.lastMouseY = touch.clientY - this.canvas.getBoundingClientRect().top;
+                
+                // Store touch start time and position for tap detection
+                this.touchStartTime = Date.now();
+                this.touchStartPos = { x: touch.clientX, y: touch.clientY };
+            } else if (e.touches.length === 2) {
+                // Two fingers - initialize pinch-to-zoom
+                this.lastTouchDistance = this.getTouchDistance(e.touches);
+            }
+        }, { passive: false });
+
+        this.canvas.addEventListener('touchmove', (e) => {
+            e.preventDefault();
+            if (e.touches.length === 1 && this.isDragging) {
+                // Handle rotation
+                const touch = e.touches[0];
+                const rect = this.canvas.getBoundingClientRect();
+                const mouseX = touch.clientX - rect.left;
+                const mouseY = touch.clientY - rect.top;
+
+                const deltaX = mouseX - this.lastMouseX;
+                const deltaY = mouseY - this.lastMouseY;
+                
+                this.momentumX = deltaY * 0.0015;
+                this.momentumY = deltaX * 0.0015;
+                
+                this.rotationX += this.momentumX;
+                this.rotationY += this.momentumY;
+
+                this.lastMouseX = mouseX;
+                this.lastMouseY = mouseY;
+            } else if (e.touches.length === 2) {
+                // Handle pinch-to-zoom
+                const currentDistance = this.getTouchDistance(e.touches);
+                const delta = currentDistance - this.lastTouchDistance;
+                
+                // Adjust zoom sensitivity
+                this.scale *= (1 + delta * 0.01);
+                
+                // Limit zoom range
+                this.scale = Math.max(0.5, Math.min(2, this.scale));
+                
+                this.lastTouchDistance = currentDistance;
+            }
+        }, { passive: false });
+
+        this.canvas.addEventListener('touchend', (e) => {
+            if (e.touches.length === 0) {
+                // Check if this was a tap (quick touch without much movement)
+                if (this.touchStartTime && Date.now() - this.touchStartTime < 300) {
+                    const touch = e.changedTouches[0];
+                    const rect = this.canvas.getBoundingClientRect();
+                    const mouseX = touch.clientX - rect.left;
+                    const mouseY = touch.clientY - rect.top;
+                    
+                    const hoveredModule = this.getHoveredModule(mouseX, mouseY);
+                    if (hoveredModule && hoveredModule.url) {
+                        window.open(hoveredModule.url, '_blank');
+                    }
+                }
+                
+                this.isDragging = false;
+                this.lastInteractionTime = Date.now();
+            }
+            this.hideTooltip();
+        });
+    }
+
+    getTouchDistance(touches) {
+        const dx = touches[0].clientX - touches[1].clientX;
+        const dy = touches[0].clientY - touches[1].clientY;
+        return Math.sqrt(dx * dx + dy * dy);
     }
 }
 
