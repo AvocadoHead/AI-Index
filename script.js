@@ -775,10 +775,23 @@ class ModuleCloud {
             centerY + (rotated.y * this.scale)
         );
         
-        // Adjust font size based on screen size and zoom
-        const minDimension = Math.min(window.innerWidth, window.innerHeight);
-        const baseFontSize = minDimension < 768 ? 14 : 18;
-        const fontSize = baseFontSize * Math.max(0.98, (rotated.z + 400) / 600) * this.scale;
+        // Get active categories
+        const activeCategories = new Set(
+            Array.from(document.querySelectorAll('.sidebar button.active'))
+                .map(btn => btn.dataset.category)
+        );
+        
+        // Default size
+        let fontSize = 18;
+        
+        if (activeCategories.size > 0 && !activeCategories.has('all')) {
+            const score = module.getAverageScore(activeCategories);
+            // Expand the 0.8-0.98 range to a more visible scale
+            // score of 0.8 -> 14px
+            // score of 0.9 -> 24px
+            // score of 0.98 -> 36px
+            fontSize = 14 + ((score - 0.8) * 110); // Exaggerated scaling
+        }
         
         this.ctx.fillStyle = document.body.classList.contains('light-mode') ? '#000000' : '#ffffff';
         this.ctx.textAlign = 'center';
