@@ -384,6 +384,23 @@ class ModuleCloud {
                 }
             });
         }
+
+        // Delete module button
+        const deleteModuleBtn = document.getElementById('deleteModule');
+        if (deleteModuleBtn) {
+            deleteModuleBtn.onclick = () => {
+                // Create a dropdown with all current modules
+                const moduleNames = this.modules.map(m => m.name);
+                const selectedModule = prompt(
+                    'Enter the name of the module to delete:\n\nCurrent modules:\n' + 
+                    moduleNames.join('\n')
+                );
+                
+                if (selectedModule) {
+                    this.deleteModule(selectedModule.trim());
+                }
+            };
+        }
     }
 
     adjustColor(color, amount) {
@@ -854,6 +871,20 @@ class ModuleCloud {
         const dx = touches[0].clientX - touches[1].clientX;
         const dy = touches[0].clientY - touches[1].clientY;
         return Math.sqrt(dx * dx + dy * dy);
+    }
+
+    deleteModule(moduleName) {
+        const initialLength = this.modules.length;
+        
+        // Remove from both arrays
+        this.modules = this.modules.filter(m => m.name !== moduleName);
+        this.defaultModules = this.defaultModules.filter(m => m.name !== moduleName);
+        
+        if (this.modules.length < initialLength) {
+            console.log(`Deleted module: ${moduleName}`);
+        } else {
+            this.showError(`Module "${moduleName}" not found`);
+        }
     }
 }
 
