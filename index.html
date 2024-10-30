@@ -48,12 +48,26 @@
     <div class="controls">
         <button id="toggleMode" class="toggle-mode">☀️</button>
         <div class="file-controls">
-            <button id="saveFile">Save</button>
-            <button id="loadFile">Load</button>
+            <button id="saveFile" class="control-button">
+                Save<br>Index
+            </button>
+            <button id="loadFile" class="control-button">
+                Load<br>Index
+            </button>
             <div class="module-controls">
-                <button id="addModule" class="control-button">
-                    Add<br>Module
-                </button>
+                <div class="dropdown">
+                    <button id="addModule" class="control-button">
+                        Add<br>Module
+                    </button>
+                    <div class="dropdown-content">
+                        <form id="moduleForm">
+                            <input type="text" id="moduleName" placeholder="Module Name" required>
+                            <input type="text" id="moduleUrl" placeholder="URL" required>
+                            <input type="text" id="moduleCategories" placeholder="Categories (e.g., LLM:95, USE:75)" required>
+                            <button type="submit">Add</button>
+                        </form>
+                    </div>
+                </div>
                 <button id="deleteModule" class="control-button">
                     Delete<br>Module
                 </button>
