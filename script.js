@@ -73,14 +73,28 @@ class ModuleCloud {
         this.defaultModules = [];
         
         if (typeof defaultModules !== 'undefined') {
-            console.log('Loading default modules:', defaultModules.length);
-            this.modules = defaultModules.map(m => {
-                const module = new AIModule(m.name, m.categories, m.url, m.scores);
-                this.positionModuleInCloud(module);
-                return module;
-            });
-            this.defaultModules = [...this.modules];
-            this.initialized = true;
+            console.log('Found modules file, attempting to load...');
+            try {
+                // Ensure we're getting all entries
+                const moduleCount = defaultModules.length;
+                console.log(`Total modules in file: ${moduleCount}`);
+                
+                this.modules = defaultModules.map((m, index) => {
+                    if (!m.name || !m.categories || !m.url || !m.scores) {
+                        console.warn(`Module at index ${index} is missing required fields:`, m);
+                        return null;
+                    }
+                    const module = new AIModule(m.name, m.categories, m.url, m.scores);
+                    this.positionModuleInCloud(module);
+                    return module;
+                }).filter(m => m !== null); // Remove any null entries
+                
+                console.log(`Successfully loaded ${this.modules.length} modules`);
+                this.defaultModules = [...this.modules];
+                this.initialized = true;
+            } catch (error) {
+                console.error('Error during module loading:', error);
+            }
         }
 
         this.animate();
