@@ -381,3 +381,27 @@ body.light-mode .social-icons a:hover:visited {
     from { transform: translateX(100%); }
     to { transform: translateX(0); }
 }
+
+.module-controls {
+    display: flex;
+    gap: 10px;  /* Space between buttons */
+}
+
+.control-button {
+    width: 80px;         /* Fixed width for both buttons */
+    height: 50px;        /* Fixed height for both buttons */
+    padding: 5px;
+    border: none;
+    border-radius: 4px;
+    background-color: #333;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 1.2;    /* Adjust line height for the two lines */
+    text-align: center;
+    transition: background-color 0.3s;
+}
+
+.control-button:hover {
+    background-color: #444;
+}
