@@ -415,6 +415,19 @@ class ModuleCloud {
                 }
             };
         }
+
+        // Add mouse wheel zoom
+        this.canvas.addEventListener('wheel', (e) => {
+            e.preventDefault();
+            
+            // Get zoom direction and calculate delta
+            const delta = -e.deltaY * 0.001; // Adjust sensitivity here
+            
+            // Apply zoom with the same limits as pinch
+            this.scale *= (1 + delta);
+            this.scale = Math.max(0.5, Math.min(2, this.scale));
+            
+        }, { passive: false });
     }
 
     adjustColor(color, amount) {
@@ -551,12 +564,11 @@ class ModuleCloud {
     getHoveredModule(mouseX, mouseY) {
         const hoveredModule = this.modules.find(module => {
             const rotated = this.rotatePoint(module.x, module.y, module.z);
-            // Use devicePixelRatio to correct the coordinates
-            const screenX = (this.canvas.width / 2 / window.devicePixelRatio) + rotated.x;
-            const screenY = (this.canvas.height / 2 / window.devicePixelRatio) + rotated.y;
+            const screenX = (this.canvas.width / 2 / window.devicePixelRatio) + (rotated.x * this.scale);
+            const screenY = (this.canvas.height / 2 / window.devicePixelRatio) + (rotated.y * this.scale);
             
             // Reduce hit area for more precise detection
-            const hitRadius = 25; // Reduced from 40 to 25
+            const hitRadius = 15; // Reduced from 25 to 15 for more precise clicks
             const dx = mouseX - screenX;
             const dy = mouseY - screenY;
             
