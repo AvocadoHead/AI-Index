@@ -26,7 +26,15 @@ class AIModule {
     }
 
     getAverageScore(selectedCategories) {
-        if (selectedCategories.has('all')) return 1;
+        // For 'all' category, calculate average of all scores
+        if (selectedCategories.has('all')) {
+            const scores = Object.values(this.scores);
+            return scores.length > 0 ? 
+                scores.reduce((sum, score) => sum + score, 0) / scores.length 
+                : 1;
+        }
+        
+        // Original logic for specific categories
         let totalScore = 0;
         let count = 0;
         selectedCategories.forEach(category => {
@@ -777,17 +785,7 @@ class ModuleCloud {
     drawModule(module) {
         const rotated = this.rotatePoint(module.x, module.y, module.z);
         
-        // Center position calculation
-        const centerX = this.canvas.width / (2 * window.devicePixelRatio);
-        const centerY = this.canvas.height / (2 * window.devicePixelRatio);
-        
-        this.ctx.save();
-        this.ctx.translate(
-            centerX + (rotated.x * this.scale),
-            centerY + (rotated.y * this.scale)
-        );
-        
-        // Get active categories
+        // Calculate font size first
         const activeCategories = new Set(
             Array.from(document.querySelectorAll('.sidebar button.active'))
                 .map(btn => btn.dataset.category)
@@ -796,14 +794,20 @@ class ModuleCloud {
         // Default size
         let fontSize = 18;
         
-        if (activeCategories.size > 0 && !activeCategories.has('all')) {
+        if (activeCategories.size > 0) {
             const score = module.getAverageScore(activeCategories);
-            // Expand the 0.8-0.98 range to a more visible scale
-            // score of 0.8 -> 14px
-            // score of 0.9 -> 24px
-            // score of 0.98 -> 36px
-            fontSize = 14 + ((score - 0.8) * 110); // Exaggerated scaling
+            fontSize = 14 + ((score - 0.8) * 110);
         }
+        
+        // Rest of the drawing code...
+        const centerX = this.canvas.width / (2 * window.devicePixelRatio);
+        const centerY = this.canvas.height / (2 * window.devicePixelRatio);
+        
+        this.ctx.save();
+        this.ctx.translate(
+            centerX + (rotated.x * this.scale),
+            centerY + (rotated.y * this.scale)
+        );
         
         this.ctx.fillStyle = document.body.classList.contains('light-mode') ? '#000000' : '#ffffff';
         this.ctx.textAlign = 'center';
