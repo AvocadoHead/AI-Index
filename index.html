@@ -62,17 +62,26 @@
                     <button id="addModule" class="control-button">
                         Add<br>Module
                     </button>
-                    <div class="dropdown-content">
-                        <form id="moduleForm">
-                            <input type="text" id="moduleName" placeholder="Module Name" required>
-                            <input type="text" id="moduleUrl" placeholder="URL" required>
-                            <input type="text" id="moduleCategories" placeholder="Categories (e.g., LLM:95, USE:75)" required>
-                            <button type="submit">Add</button>
+                    <div class="dropdown-content" id="editModuleDropdown">
+                        <form id="editModuleForm">
+                            <label for="editModuleName">Name</label>
+                            <input type="text" id="editModuleName" required readonly>
+                            
+                            <label for="editModuleUrl">URL</label>
+                            <input type="url" id="editModuleUrl" required>
+                            
+                            <label for="editModuleCategories">Categories and Scores (e.g., LLM:95, Chat:80)</label>
+                            <input type="text" id="editModuleCategories" required>
+                            
+                            <button type="submit">Save Changes</button>
                         </form>
                     </div>
                 </div>
                 <button id="deleteModule" class="control-button">
                     Delete<br>Module
+                </button>
+                <button id="editModule" class="menu-button" disabled>
+                    Edit<br>Module
                 </button>
             </div>
             <input type="file" id="fileInput" accept=".js,.txt" style="display: none;">
