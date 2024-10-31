@@ -72,6 +72,9 @@ class ModuleCloud {
         this.isAutoRotating = true;
         this.scale = 1;
         this.lastTouchDistance = 0;
+        this.lastClickTime = 0;
+        this.lastClickedModule = null;
+        this.clickDelay = 300; // milliseconds between clicks
         
         this.initializeCanvas();
         this.setupEventListeners();
@@ -331,7 +334,7 @@ class ModuleCloud {
             document.body.style.backgroundColor = bgColorPicker.value;
         }
 
-        // Add click handler for opening URLs
+        // Update canvas click handler
         this.canvas.onclick = (e) => {
             const rect = this.canvas.getBoundingClientRect();
             const mouseX = e.clientX - rect.left;
@@ -341,16 +344,16 @@ class ModuleCloud {
             
             if (clickedModule) {
                 if (this.activeModule === clickedModule) {
-                    // Second click - open URL
+                    // Second click on same module - open URL
                     window.open(clickedModule.url, '_blank');
                 } else {
-                    // First click - pin tooltip and enable edit button
+                    // First click - just show tooltip and enable edit
                     this.activeModule = clickedModule;
-                    this.showTooltip(clickedModule, e.clientX, e.clientY, true);
                     document.getElementById('editModule').disabled = false;
+                    this.showTooltip(clickedModule, e.clientX, e.clientY, true);
                 }
             } else {
-                // Clicking empty space - unpin and disable edit
+                // Clicking empty space
                 this.activeModule = null;
                 this.hideTooltip();
                 document.getElementById('editModule').disabled = true;
