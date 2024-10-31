@@ -112,6 +112,9 @@ class ModuleCloud {
 
         // Add touch event listeners
         this.setupTouchEvents();
+
+        this.activeModule = null;  // Track active (selected) module
+        this.pinnedTooltip = false;  // Track if tooltip is pinned
     }
 
     initializeFromModules(modules) {
@@ -225,19 +228,22 @@ class ModuleCloud {
             };
         }
 
-        // Add module dropdown
+        // Fix Add Module dropdown
         const addModuleBtn = document.getElementById('addModule');
         const dropdownContent = document.querySelector('.dropdown-content');
         if (addModuleBtn && dropdownContent) {
-            addModuleBtn.onclick = () => dropdownContent.classList.toggle('show');
+            addModuleBtn.onclick = (e) => {
+                e.stopPropagation();
+                dropdownContent.classList.toggle('show');
+            };
             
-            // Close dropdown when clicking outside, but not when clicking inside the form
-            window.onclick = (event) => {
-                if (!event.target.matches('#addModule') && 
-                    !event.target.closest('.dropdown-content')) {
+            // Close dropdown when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!e.target.closest('#addModule') && 
+                    !e.target.closest('.dropdown-content')) {
                     dropdownContent.classList.remove('show');
                 }
-            };
+            });
         }
 
         // Category filtering with multi-select
@@ -341,22 +347,25 @@ class ModuleCloud {
             const mouseY = e.clientY - rect.top;
             
             const clickedModule = this.getHoveredModule(mouseX, mouseY);
+            const editModuleBtn = document.getElementById('editModule');
             
             if (clickedModule) {
                 if (this.activeModule === clickedModule) {
                     // Second click on same module - open URL
                     window.open(clickedModule.url, '_blank');
                 } else {
-                    // First click - just show tooltip and enable edit
+                    // First click - select module and pin tooltip
                     this.activeModule = clickedModule;
-                    document.getElementById('editModule').disabled = false;
-                    this.showTooltip(clickedModule, e.clientX, e.clientY, true);
+                    this.pinnedTooltip = true;
+                    editModuleBtn.disabled = false;
+                    this.showTooltip(clickedModule, e.clientX, e.clientY);
                 }
             } else {
-                // Clicking empty space
+                // Click on empty space - unpin tooltip and deselect module
                 this.activeModule = null;
+                this.pinnedTooltip = false;
                 this.hideTooltip();
-                document.getElementById('editModule').disabled = true;
+                editModuleBtn.disabled = true;
             }
         };
 
@@ -428,15 +437,14 @@ class ModuleCloud {
         const deleteModuleBtn = document.getElementById('deleteModule');
         if (deleteModuleBtn) {
             deleteModuleBtn.onclick = () => {
-                // Create a dropdown with all current modules
-                const moduleNames = this.modules.map(m => m.name);
-                const selectedModule = prompt(
-                    'Enter the name of the module to delete:\n\nCurrent modules:\n' + 
-                    moduleNames.join('\n')
-                );
-                
-                if (selectedModule) {
-                    this.deleteModule(selectedModule.trim());
+                if (this.activeModule) {
+                    if (confirm(`Are you sure you want to delete "${this.activeModule.name}"?`)) {
+                        this.deleteModule(this.activeModule.name);
+                        this.activeModule = null;
+                        this.pinnedTooltip = false;
+                        this.hideTooltip();
+                        document.getElementById('editModule').disabled = true;
+                    }
                 }
             };
         }
@@ -454,16 +462,22 @@ class ModuleCloud {
             
         }, { passive: false });
 
-        // Add edit module dropdown handler
+        // Fix Edit Module dropdown functionality
         const editModuleBtn = document.getElementById('editModule');
         const editDropdown = document.getElementById('editModuleDropdown');
-        
-        if (editModuleBtn && editDropdown) {
-            editModuleBtn.onclick = () => {
-                editDropdown.classList.toggle('show');
+
+        if (editModuleBtn) {
+            editModuleBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
                 
-                // If we have an active module, populate the form
-                if (this.activeModule) {
+                if (!this.activeModule) return; // Don't do anything if no module is selected
+                
+                // Toggle dropdown visibility
+                if (editDropdown) {
+                    editDropdown.classList.toggle('show');
+                    
+                    // Populate form with active module data
                     document.getElementById('editModuleName').value = this.activeModule.name;
                     document.getElementById('editModuleUrl').value = this.activeModule.url;
                     
@@ -474,55 +488,53 @@ class ModuleCloud {
                         .join(', ');
                     document.getElementById('editModuleCategories').value = categoriesScores;
                 }
-            };
+            });
 
-            // Close dropdown when clicking outside
-            window.onclick = (event) => {
-                if (!event.target.matches('#editModule') && 
-                    !event.target.closest('#editModuleDropdown')) {
-                    editDropdown.classList.remove('show');
+            // Handle click outside to close dropdown
+            document.addEventListener('click', (e) => {
+                if (!e.target.closest('#editModule') && 
+                    !e.target.closest('#editModuleDropdown')) {
+                    editDropdown?.classList.remove('show');
                 }
-            };
+            });
         }
 
-        // Handle edit form submission
+        // Add form submission handler
         const editModuleForm = document.getElementById('editModuleForm');
         if (editModuleForm) {
-            editModuleForm.onsubmit = (e) => {
+            editModuleForm.addEventListener('submit', (e) => {
                 e.preventDefault();
-                if (this.activeModule) {
-                    const url = document.getElementById('editModuleUrl').value;
-                    const categoriesString = document.getElementById('editModuleCategories').value;
+                
+                if (!this.activeModule) return;
+                
+                const newUrl = document.getElementById('editModuleUrl').value;
+                const newCategories = document.getElementById('editModuleCategories').value;
+                
+                try {
+                    const { categories, scores } = this.parseCategoriesAndScores(newCategories);
                     
-                    try {
-                        const { categories, scores } = this.parseCategoriesAndScores(categoriesString);
-                        
-                        // Update module
-                        this.activeModule.url = url;
-                        this.activeModule.categories = categories;
-                        this.activeModule.scores = scores;
-                        
-                        // Update both arrays
-                        const moduleIndex = this.modules.findIndex(m => m.name === this.activeModule.name);
-                        const defaultIndex = this.defaultModules.findIndex(m => m.name === this.activeModule.name);
-                        
-                        if (moduleIndex !== -1) this.modules[moduleIndex] = this.activeModule;
-                        if (defaultIndex !== -1) this.defaultModules[defaultIndex] = this.activeModule;
-                        
-                        // Refresh tooltip
-                        this.showTooltip(this.activeModule, 
-                            parseInt(this.tooltip.style.left), 
-                            parseInt(this.tooltip.style.top), 
-                            true);
-                        
-                        // Close dropdown
-                        document.getElementById('editModuleDropdown').classList.remove('show');
-                    } catch (error) {
-                        console.error('Error updating module:', error);
-                        alert('Error updating module. Please check the format.');
-                    }
+                    // Update module
+                    this.activeModule.url = newUrl;
+                    this.activeModule.categories = categories;
+                    this.activeModule.scores = scores;
+                    
+                    // Update both arrays
+                    const moduleIndex = this.modules.findIndex(m => m.name === this.activeModule.name);
+                    const defaultIndex = this.defaultModules.findIndex(m => m.name === this.activeModule.name);
+                    
+                    if (moduleIndex !== -1) this.modules[moduleIndex] = this.activeModule;
+                    if (defaultIndex !== -1) this.defaultModules[defaultIndex] = this.activeModule;
+                    
+                    // Close dropdown and reset form
+                    editDropdown.classList.remove('show');
+                    editModuleForm.reset();
+                    
+                    console.log('Module updated successfully');
+                } catch (error) {
+                    console.error('Error updating module:', error);
+                    this.showError(error.message);
                 }
-            };
+            });
         }
     }
 
@@ -593,15 +605,18 @@ class ModuleCloud {
         }
     }
 
-    showTooltip(module, x, y, isPinned = false) {
+    showTooltip(module, x, y) {
         if (!this.tooltip) return;
         
-        // Get favicon
+        // If pinned and not showing the active module, don't update
+        if (this.pinnedTooltip && module !== this.activeModule) {
+            return;
+        }
+        
         const logoUrl = module.url ? 
             `https://www.google.com/s2/favicons?domain=${new URL(module.url).hostname}&sz=128` : 
             'default-ai-logo.png';
         
-        // Format scores list
         const scoresList = Object.entries(module.scores)
             .map(([category, score]) => 
                 `${category}: ${Math.round(score * 100)}%`)
@@ -628,17 +643,12 @@ class ModuleCloud {
         this.tooltip.style.display = 'block';
         this.tooltip.style.left = `${x + 10}px`;
         this.tooltip.style.top = `${y + 10}px`;
-
-        // Update tooltip click handler
-        this.tooltip.querySelector('.module-name').onclick = () => {
-            if (this.activeModule === module) {
-                window.open(module.url, '_blank');
-            }
-        };
+        
+        this.updateTooltipPosition(module);
     }
 
     hideTooltip() {
-        if (this.tooltip) {
+        if (this.tooltip && !this.pinnedTooltip) {
             this.tooltip.style.display = 'none';
         }
     }
@@ -727,6 +737,10 @@ class ModuleCloud {
             });
         }
         
+        if (this.activeModule && this.pinnedTooltip) {
+            this.updateTooltipPosition(this.activeModule);
+        }
+
         requestAnimationFrame(() => this.animate());
     }
 
@@ -796,7 +810,7 @@ class ModuleCloud {
         try {
             const { categories, scores } = this.parseCategoriesAndScores(categoriesString);
             
-            // Validate inputs
+            // Simple validation - just check if fields are not empty
             if (!name?.trim()) {
                 throw new Error('Module name is required');
             }
@@ -814,14 +828,10 @@ class ModuleCloud {
                 scores
             );
 
-            // Initialize arrays if needed
-            if (!this.modules) this.modules = [];
-            if (!this.defaultModules) this.defaultModules = [];
-            
+            // Add to arrays
             this.modules.push(module);
             this.defaultModules.push(module);
             this.positionModuleInCloud(module);
-            this.initialized = true;
             
             console.log('Added module:', {
                 name: module.name,
@@ -848,12 +858,12 @@ class ModuleCloud {
         categoriesString.split(',').forEach((item, index) => {
             const [category, score] = item.trim().split(':');
             
-            if (!category || !score) {
+            if (!category) {
                 throw new Error(`Invalid format at item ${index + 1}. Expected "Category:Score"`);
             }
 
             const cleanCategory = category.trim();
-            const numScore = parseFloat(score);
+            const numScore = score ? parseFloat(score) : 100; // Default to 100 if no score provided
 
             if (isNaN(numScore) || numScore < 0 || numScore > 100) {
                 throw new Error(`Invalid score for ${cleanCategory}: ${score}. Score must be between 0 and 100`);
@@ -1040,6 +1050,22 @@ class ModuleCloud {
         } else {
             this.showError(`Module "${moduleName}" not found`);
         }
+    }
+
+    updateTooltipPosition(module) {
+        if (!this.tooltip || !module) return;
+        
+        const rotated = this.rotatePoint(module.x, module.y, module.z);
+        const screenX = (this.canvas.width / 2 / window.devicePixelRatio) + (rotated.x * this.scale);
+        const screenY = (this.canvas.height / 2 / window.devicePixelRatio) + (rotated.y * this.scale);
+        
+        // Convert canvas coordinates to screen coordinates
+        const rect = this.canvas.getBoundingClientRect();
+        const worldX = rect.left + screenX;
+        const worldY = rect.top + screenY;
+
+        this.tooltip.style.left = `${worldX + 20}px`;  // Offset from module
+        this.tooltip.style.top = `${worldY - 10}px`;   // Offset from module
     }
 }
 
