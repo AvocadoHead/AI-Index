@@ -76,6 +76,8 @@ class ModuleCloud {
         this.lastClickedModule = null;
         this.clickDelay = 300; // milliseconds between clicks
         
+        this.GOOGLE_API_KEY = 'YOUR_API_KEY'; // You'll need to get a Google API key
+        
         this.initializeCanvas();
         this.setupEventListeners();
 
@@ -115,6 +117,10 @@ class ModuleCloud {
 
         this.activeModule = null;  // Track active (selected) module
         this.pinnedTooltip = false;  // Track if tooltip is pinned
+        this.moduleDescriptions = new Map();
+        this.tooltipDebounceTimer = null;
+        this.lastHoveredModule = null;
+        this.tooltipDebounceDelay = 300; // Increased to 300ms for more stability
     }
 
     initializeFromModules(modules) {
@@ -311,7 +317,43 @@ class ModuleCloud {
             this.lastInteractionTime = Date.now();
         };
 
-        this.canvas.onmousemove = (e) => this.handleMouseMove(e);
+        this.canvas.onmousemove = (e) => {
+            const rect = this.canvas.getBoundingClientRect();
+            const mouseX = e.clientX - rect.left;
+            const mouseY = e.clientY - rect.top;
+
+            // Handle dragging
+            if (this.isDragging) {
+                const deltaX = mouseX - this.lastMouseX;
+                const deltaY = mouseY - this.lastMouseY;
+                
+                this.momentumX = deltaY * 0.001;
+                this.momentumY = deltaX * 0.001;
+                
+                this.rotationX += this.momentumX;
+                this.rotationY += this.momentumY;
+            } else if (!this.pinnedTooltip) { // Only process hover if tooltip isn't pinned
+                clearTimeout(this.tooltipDebounceTimer);
+                this.tooltipDebounceTimer = setTimeout(() => {
+                    const hoveredModule = this.getHoveredModule(mouseX, mouseY);
+                    if (hoveredModule && !this.pinnedTooltip) {
+                        if (this.lastHoveredModule !== hoveredModule) {
+                            this.lastHoveredModule = hoveredModule;
+                            this.showTooltip(hoveredModule, e.clientX, e.clientY, false);
+                        }
+                        this.canvas.style.cursor = 'pointer';
+                    } else if (!hoveredModule && !this.pinnedTooltip) {
+                        this.hideTooltip();
+                        this.lastHoveredModule = null;
+                        this.canvas.style.cursor = 'default';
+                    }
+                }, this.tooltipDebounceDelay);
+            }
+
+            this.lastMouseX = mouseX;
+            this.lastMouseY = mouseY;
+        };
+
         this.canvas.onmouseleave = () => {
             this.isDragging = false;
             this.hideTooltip();
@@ -351,8 +393,10 @@ class ModuleCloud {
             
             if (clickedModule) {
                 if (this.activeModule === clickedModule) {
-                    // Second click on same module - open URL
-                    window.open(clickedModule.url, '_blank');
+                    // Second click - open URL
+                    if (clickedModule.url) {
+                        window.open(clickedModule.url, '_blank');
+                    }
                 } else {
                     // First click - select module and pin tooltip
                     this.activeModule = clickedModule;
@@ -552,6 +596,7 @@ class ModuleCloud {
         const mouseX = event.clientX - rect.left;
         const mouseY = event.clientY - rect.top;
 
+        // Handle dragging
         if (this.isDragging) {
             const deltaX = mouseX - this.lastMouseX;
             const deltaY = mouseY - this.lastMouseY;
@@ -563,13 +608,16 @@ class ModuleCloud {
             this.rotationY += this.momentumY;
         }
 
-        const hoveredModule = this.getHoveredModule(mouseX, mouseY);
-        if (hoveredModule) {
-            this.showTooltip(hoveredModule, event.clientX, event.clientY);
-            this.canvas.style.cursor = 'pointer';
-        } else {
-            this.hideTooltip();
-            this.canvas.style.cursor = 'default';
+        // Handle hover - only show tooltip if not pinned
+        if (!this.pinnedTooltip) {
+            const hoveredModule = this.getHoveredModule(mouseX, mouseY);
+            if (hoveredModule) {
+                this.showTooltip(hoveredModule, event.clientX, event.clientY);
+                this.canvas.style.cursor = 'pointer';
+            } else {
+                this.hideTooltip();
+                this.canvas.style.cursor = 'default';
+            }
         }
 
         this.lastMouseX = mouseX;
@@ -605,46 +653,43 @@ class ModuleCloud {
         }
     }
 
-    showTooltip(module, x, y) {
+    async showTooltip(module, x, y) {
         if (!this.tooltip) return;
         
-        // If pinned and not showing the active module, don't update
-        if (this.pinnedTooltip && module !== this.activeModule) {
-            return;
-        }
-        
-        const logoUrl = module.url ? 
-            `https://www.google.com/s2/favicons?domain=${new URL(module.url).hostname}&sz=128` : 
-            'default-ai-logo.png';
-        
-        const scoresList = Object.entries(module.scores)
-            .map(([category, score]) => 
-                `${category}: ${Math.round(score * 100)}%`)
-            .join('<br>');
-
-        const tooltipContent = `
-            <div class="tooltip-header">
-                <img src="${logoUrl}" 
-                     alt="${module.name} logo" 
-                     class="tooltip-logo"
-                     onerror="this.src='default-ai-logo.png'">
-                <h3 class="module-name">${module.name}</h3>
-            </div>
-            <div class="tooltip-body">
-                <p class="tooltip-description">${module.description || 'Advanced AI model'}</p>
-                <div class="tooltip-scores">
-                    <small>Categories: ${module.categories.join(', ')}<br>
-                    ${scoresList}</small>
+        try {
+            const description = await this.fetchModuleDescription(module);
+            const faviconUrl = module.url ? 
+                `https://www.google.com/s2/favicons?domain=${new URL(module.url).hostname}&sz=128` : 
+                'data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🤖</text></svg>';
+            
+            const tooltipContent = `
+                <div class="tooltip-header">
+                    <img src="${faviconUrl}" 
+                         alt="${module.name} logo" 
+                         class="tooltip-logo"
+                         onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🤖</text></svg>'">
+                    <strong>${module.name}</strong>
                 </div>
-            </div>
-        `;
-        
-        this.tooltip.innerHTML = tooltipContent;
-        this.tooltip.style.display = 'block';
-        this.tooltip.style.left = `${x + 10}px`;
-        this.tooltip.style.top = `${y + 10}px`;
-        
-        this.updateTooltipPosition(module);
+                <div class="tooltip-body">
+                    <p>${description}</p>
+                    <small>
+                        Categories: ${module.categories.join(', ')}<br>
+                        ${Object.entries(module.scores)
+                            .map(([category, score]) => 
+                                `${category}: ${Math.round(score * 100)}%`)
+                            .join('<br>')}
+                    </small>
+                </div>
+            `;
+            
+            this.tooltip.innerHTML = tooltipContent;
+            this.tooltip.style.display = 'block';
+            this.tooltip.style.left = `${x + 10}px`;
+            this.tooltip.style.top = `${y + 10}px`;
+            
+        } catch (error) {
+            console.error('Error showing tooltip:', error);
+        }
     }
 
     hideTooltip() {
@@ -946,7 +991,8 @@ class ModuleCloud {
             const screenX = (this.canvas.width / 2 / window.devicePixelRatio) + (rotated.x * this.scale);
             const screenY = (this.canvas.height / 2 / window.devicePixelRatio) + (rotated.y * this.scale);
             
-            const hitRadius = 25 * this.scale; // Scale hit area with zoom
+            // Reduce hit area for more precise detection
+            const hitRadius = 15; // Reduced from 25 to 15 for more precise clicks
             const dx = mouseX - screenX;
             const dy = mouseY - screenY;
             
@@ -1066,6 +1112,54 @@ class ModuleCloud {
 
         this.tooltip.style.left = `${worldX + 20}px`;  // Offset from module
         this.tooltip.style.top = `${worldY - 10}px`;   // Offset from module
+    }
+
+    async fetchModuleDescription(module) {
+        if (!module.url) return 'Advanced AI model';
+        
+        try {
+            // Check cache first
+            if (this.moduleDescriptions.has(module.url)) {
+                return this.moduleDescriptions.get(module.url);
+            }
+
+            const response = await fetch(module.url);
+            const text = await response.text();
+            
+            // Parse the HTML
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(text, 'text/html');
+            
+            // Try different meta tags in order of preference
+            const description = 
+                doc.querySelector('meta[name="description"]')?.getAttribute('content') ||
+                doc.querySelector('meta[property="og:description"]')?.getAttribute('content') ||
+                doc.querySelector('meta[name="twitter:description"]')?.getAttribute('content');
+                
+            if (description) {
+                // Clean and cache the description
+                const cleanDescription = description
+                    .replace(/\s+/g, ' ')
+                    .trim();
+                
+                this.moduleDescriptions.set(module.url, cleanDescription);
+                return cleanDescription;
+            }
+            
+            // If no description found, return the module name only
+            return module.name;
+            
+        } catch (error) {
+            console.error('Error fetching description:', error);
+            return module.name;
+        }
+    }
+
+    updateTooltipPosition(x, y) {
+        if (this.tooltip && this.tooltip.style.display === 'block') {
+            this.tooltip.style.left = `${x + 10}px`;
+            this.tooltip.style.top = `${y + 10}px`;
+        }
     }
 }
 
