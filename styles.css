@@ -151,6 +151,14 @@ canvas:active {
     z-index: 1000;
     pointer-events: none;
     max-width: 200px;
+    transition: all 0.1s ease-out;
+}
+
+.tooltip.pinned {
+    pointer-events: auto;
+    background: rgba(26, 26, 26, 0.95);
+    border: 1px solid #333;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
 
 .tooltip strong {
@@ -238,12 +246,12 @@ body.light-mode .tooltip {
     display: none;
     position: absolute;
     right: 0;
-    background-color: var(--bg-color);
+    background-color: #1a1a1a;
     min-width: 300px;
     box-shadow: 0 8px 16px rgba(0,0,0,0.2);
     z-index: 1000;
     border-radius: 8px;
-    border: 1px solid var(--border-color);
+    border: 1px solid #333;
     padding: 15px;
 }
 
@@ -609,4 +617,175 @@ body.light-mode .tooltip-logo {
 
 #editModuleForm button:hover {
     background: #1976D2;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #1a1a1a;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 4px;
+    padding: 8px;
+}
+
+.dropdown-content.show {
+    display: block;
+}
+
+.dropdown-content form {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.dropdown-content input,
+.dropdown-content textarea {
+    background-color: #2a2a2a;
+    border: 1px solid #3a3a3a;
+    color: #ffffff;
+    padding: 8px;
+    border-radius: 4px;
+}
+
+.dropdown-content button {
+    background-color: #3a3a3a;
+    color: #ffffff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.dropdown-content button:hover {
+    background-color: #4a4a4a;
+}
+
+.tooltip.pinned {
+    pointer-events: auto;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    border: 1px solid #3a3a3a;
+}
+
+/* Update dropdown styling */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: #1a1a1a;
+    min-width: 300px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    z-index: 1000;
+    border-radius: 8px;
+    border: 1px solid #333;
+    padding: 15px;
+}
+
+.dropdown-content.show {
+    display: block;
+}
+
+#moduleForm {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#moduleForm input {
+    padding: 8px;
+    border: 1px solid #333;
+    border-radius: 4px;
+    background: #2a2a2a;
+    color: white;
+}
+
+.score-input {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    color: white;
+}
+
+.score-input input {
+    width: 80px;
+}
+
+.submit-btn {
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 8px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.submit-btn:hover {
+    background-color: #444;
+}
+
+/* Fix tooltip pinning */
+.tooltip.pinned {
+    pointer-events: auto;
+    background: rgba(26, 26, 26, 0.95);
+    border: 1px solid #333;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.light-mode .tooltip.pinned {
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid #ddd;
+}
+
+/* Edit module form styling */
+#editModuleForm {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#editModuleForm input {
+    padding: 8px;
+    border: 1px solid #333;
+    border-radius: 4px;
+    background: #2a2a2a;
+    color: white;
+}
+
+#editModuleForm button {
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 8px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#editModuleForm button:hover {
+    background-color: #444;
+}
+
+/* Edit button states */
+#editModule {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+#editModule:not([disabled]) {
+    opacity: 1;
+    cursor: pointer;
+}
+
+/* Update dropdown positioning */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+#editModuleDropdown.dropdown-content {
+    right: auto;  /* Remove right positioning */
+    left: 0;      /* Align with left edge of button */
+    transform: translateX(-75%);  /* Shift left to center over button */
+    min-width: 300px;
 }
