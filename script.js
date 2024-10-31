@@ -1013,6 +1013,7 @@ class ModuleCloud {
                 
                 // Check if we touched a module
                 const touchedModule = this.getHoveredModule(touchX, touchY);
+                const editModuleBtn = document.getElementById('editModule');
                 
                 if (touchedModule) {
                     if (this.activeModule === touchedModule) {
@@ -1021,20 +1022,22 @@ class ModuleCloud {
                             window.open(touchedModule.url, '_blank');
                         }
                     } else {
-                        // First tap - show tooltip
+                        // First tap - show tooltip and enable edit
                         this.activeModule = touchedModule;
                         this.pinnedTooltip = true;
+                        editModuleBtn.disabled = false;  // Enable edit button
                         this.showTooltip(touchedModule, touch.clientX, touch.clientY);
                     }
                 } else {
-                    // Tap on empty space - start rotation
+                    // Tap on empty space
                     this.isDragging = true;
                     this.lastMouseX = touchX;
                     this.lastMouseY = touchY;
-                    // Clear tooltip and selection
+                    // Clear tooltip, selection and disable edit
                     this.activeModule = null;
                     this.pinnedTooltip = false;
                     this.hideTooltip();
+                    editModuleBtn.disabled = true;  // Disable edit button
                 }
             } else if (e.touches.length === 2) {
                 // Two fingers - initialize pinch-to-zoom
@@ -1113,8 +1116,24 @@ class ModuleCloud {
         const worldX = rect.left + screenX;
         const worldY = rect.top + screenY;
 
-        this.tooltip.style.left = `${worldX + 20}px`;  // Offset from module
-        this.tooltip.style.top = `${worldY - 10}px`;   // Offset from module
+        // Check if we're on mobile
+        const isMobile = window.matchMedia('(max-width: 768px)').matches;
+        
+        if (isMobile) {
+            // Center the tooltip horizontally and position it below the module
+            const tooltipWidth = this.tooltip.offsetWidth;
+            const leftPosition = Math.max(10, Math.min(
+                window.innerWidth - tooltipWidth - 10,
+                worldX - (tooltipWidth / 2)
+            ));
+            
+            this.tooltip.style.left = `${leftPosition}px`;
+            this.tooltip.style.top = `${worldY + 30}px`; // Position below module
+        } else {
+            // Desktop positioning
+            this.tooltip.style.left = `${worldX + 20}px`;
+            this.tooltip.style.top = `${worldY - 10}px`;
+        }
     }
 
     async fetchModuleDescription(module) {
@@ -1167,3 +1186,50 @@ class ModuleCloud {
 }
 
 new ModuleCloud();
+
+// Add this to your existing JavaScript
+function setupMobileEditModule() {
+    const editModuleDropdown = document.getElementById('editModuleDropdown');
+    const body = document.body;
+
+    // Create overlay div
+    const overlay = document.createElement('div');
+    overlay.className = 'dropdown-overlay';
+    overlay.style.display = 'none';
+
+    // Add overlay to body
+    body.appendChild(overlay);
+
+    // Show overlay when dropdown opens
+    function showDropdown() {
+        editModuleDropdown.classList.add('show');
+        overlay.style.display = 'block';
+        body.style.overflow = 'hidden'; // Prevent background scrolling
+    }
+
+    // Hide overlay when dropdown closes
+    function hideDropdown() {
+        editModuleDropdown.classList.remove('show');
+        overlay.style.display = 'none';
+        body.style.overflow = ''; // Restore scrolling
+    }
+
+    // Close dropdown when clicking overlay
+    overlay.addEventListener('click', hideDropdown);
+
+    // Modify your existing edit button click handler
+    document.querySelector('#editModule').addEventListener('click', function(e) {
+        e.stopPropagation();
+        if (window.innerWidth <= 768) {
+            showDropdown();
+        }
+    });
+
+    // Prevent dropdown from closing when clicking inside it
+    editModuleDropdown.addEventListener('click', function(e) {
+        e.stopPropagation();
+    });
+}
+
+// Call this function when your page loads
+document.addEventListener('DOMContentLoaded', setupMobileEditModule);
