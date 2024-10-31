@@ -337,9 +337,23 @@ class ModuleCloud {
             const mouseX = e.clientX - rect.left;
             const mouseY = e.clientY - rect.top;
             
-            const hoveredModule = this.getHoveredModule(mouseX, mouseY);
-            if (hoveredModule && hoveredModule.url) {
-                window.open(hoveredModule.url, '_blank');
+            const clickedModule = this.getHoveredModule(mouseX, mouseY);
+            
+            if (clickedModule) {
+                if (this.activeModule === clickedModule) {
+                    // Second click - open URL
+                    window.open(clickedModule.url, '_blank');
+                } else {
+                    // First click - pin tooltip and enable edit button
+                    this.activeModule = clickedModule;
+                    this.showTooltip(clickedModule, e.clientX, e.clientY, true);
+                    document.getElementById('editModule').disabled = false;
+                }
+            } else {
+                // Clicking empty space - unpin and disable edit
+                this.activeModule = null;
+                this.hideTooltip();
+                document.getElementById('editModule').disabled = true;
             }
         };
 
@@ -436,6 +450,77 @@ class ModuleCloud {
             this.scale = Math.max(0.5, Math.min(2, this.scale));
             
         }, { passive: false });
+
+        // Add edit module dropdown handler
+        const editModuleBtn = document.getElementById('editModule');
+        const editDropdown = document.getElementById('editModuleDropdown');
+        
+        if (editModuleBtn && editDropdown) {
+            editModuleBtn.onclick = () => {
+                editDropdown.classList.toggle('show');
+                
+                // If we have an active module, populate the form
+                if (this.activeModule) {
+                    document.getElementById('editModuleName').value = this.activeModule.name;
+                    document.getElementById('editModuleUrl').value = this.activeModule.url;
+                    
+                    // Format categories and scores
+                    const categoriesScores = this.activeModule.categories
+                        .map(category => 
+                            `${category}:${Math.round(this.activeModule.scores[category] * 100)}`)
+                        .join(', ');
+                    document.getElementById('editModuleCategories').value = categoriesScores;
+                }
+            };
+
+            // Close dropdown when clicking outside
+            window.onclick = (event) => {
+                if (!event.target.matches('#editModule') && 
+                    !event.target.closest('#editModuleDropdown')) {
+                    editDropdown.classList.remove('show');
+                }
+            };
+        }
+
+        // Handle edit form submission
+        const editModuleForm = document.getElementById('editModuleForm');
+        if (editModuleForm) {
+            editModuleForm.onsubmit = (e) => {
+                e.preventDefault();
+                if (this.activeModule) {
+                    const url = document.getElementById('editModuleUrl').value;
+                    const categoriesString = document.getElementById('editModuleCategories').value;
+                    
+                    try {
+                        const { categories, scores } = this.parseCategoriesAndScores(categoriesString);
+                        
+                        // Update module
+                        this.activeModule.url = url;
+                        this.activeModule.categories = categories;
+                        this.activeModule.scores = scores;
+                        
+                        // Update both arrays
+                        const moduleIndex = this.modules.findIndex(m => m.name === this.activeModule.name);
+                        const defaultIndex = this.defaultModules.findIndex(m => m.name === this.activeModule.name);
+                        
+                        if (moduleIndex !== -1) this.modules[moduleIndex] = this.activeModule;
+                        if (defaultIndex !== -1) this.defaultModules[defaultIndex] = this.activeModule;
+                        
+                        // Refresh tooltip
+                        this.showTooltip(this.activeModule, 
+                            parseInt(this.tooltip.style.left), 
+                            parseInt(this.tooltip.style.top), 
+                            true);
+                        
+                        // Close dropdown
+                        document.getElementById('editModuleDropdown').classList.remove('show');
+                    } catch (error) {
+                        console.error('Error updating module:', error);
+                        alert('Error updating module. Please check the format.');
+                    }
+                }
+            };
+        }
     }
 
     adjustColor(color, amount) {
@@ -505,24 +590,48 @@ class ModuleCloud {
         }
     }
 
-    showTooltip(module, x, y) {
-        if (this.tooltip) {
-            // Format scores to show as points out of 100
-            const scoresList = Object.entries(module.scores)
-                .map(([category, score]) => `${category}: ${Math.round(score * 100)}pts`)
-                .join('<br>');
+    showTooltip(module, x, y, isPinned = false) {
+        if (!this.tooltip) return;
+        
+        // Get favicon
+        const logoUrl = module.url ? 
+            `https://www.google.com/s2/favicons?domain=${new URL(module.url).hostname}&sz=128` : 
+            'default-ai-logo.png';
+        
+        // Format scores list
+        const scoresList = Object.entries(module.scores)
+            .map(([category, score]) => 
+                `${category}: ${Math.round(score * 100)}%`)
+            .join('<br>');
 
-            const tooltipContent = `
-                <strong>${module.name}</strong>
-                <small>Categories: ${module.categories.join(', ')}<br>
-                ${scoresList}</small>
-            `;
-            
-            this.tooltip.innerHTML = tooltipContent;
-            this.tooltip.style.display = 'block';
-            this.tooltip.style.left = `${x + 10}px`;
-            this.tooltip.style.top = `${y + 10}px`;
-        }
+        const tooltipContent = `
+            <div class="tooltip-header">
+                <img src="${logoUrl}" 
+                     alt="${module.name} logo" 
+                     class="tooltip-logo"
+                     onerror="this.src='default-ai-logo.png'">
+                <h3 class="module-name">${module.name}</h3>
+            </div>
+            <div class="tooltip-body">
+                <p class="tooltip-description">${module.description || 'Advanced AI model'}</p>
+                <div class="tooltip-scores">
+                    <small>Categories: ${module.categories.join(', ')}<br>
+                    ${scoresList}</small>
+                </div>
+            </div>
+        `;
+        
+        this.tooltip.innerHTML = tooltipContent;
+        this.tooltip.style.display = 'block';
+        this.tooltip.style.left = `${x + 10}px`;
+        this.tooltip.style.top = `${y + 10}px`;
+
+        // Update tooltip click handler
+        this.tooltip.querySelector('.module-name').onclick = () => {
+            if (this.activeModule === module) {
+                window.open(module.url, '_blank');
+            }
+        };
     }
 
     hideTooltip() {
