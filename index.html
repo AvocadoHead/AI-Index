@@ -62,27 +62,31 @@
                     <button id="addModule" class="control-button">
                         Add<br>Module
                     </button>
-                    <div class="dropdown-content" id="editModuleDropdown">
-                        <form id="editModuleForm">
-                            <label for="editModuleName">Name</label>
-                            <input type="text" id="editModuleName" required readonly>
-                            
-                            <label for="editModuleUrl">URL</label>
-                            <input type="url" id="editModuleUrl" required>
-                            
-                            <label for="editModuleCategories">Categories and Scores (e.g., LLM:95, Chat:80)</label>
-                            <input type="text" id="editModuleCategories" required>
-                            
-                            <button type="submit">Save Changes</button>
+                    <div class="dropdown-content">
+                        <form id="moduleForm">
+                            <input type="text" id="moduleName" placeholder="Module Name" required>
+                            <input type="text" id="moduleUrl" placeholder="Module URL" required>
+                            <input type="text" id="moduleCategories" placeholder="Categories (e.g., chat:90, image:80)" required>
+                            <button type="submit" class="submit-btn">Add Module</button>
                         </form>
                     </div>
                 </div>
                 <button id="deleteModule" class="control-button">
                     Delete<br>Module
                 </button>
-                <button id="editModule" class="menu-button" disabled>
-                    Edit<br>Module
-                </button>
+                <div class="dropdown">
+                    <button id="editModule" class="control-button" disabled>
+                        Edit<br>Module
+                    </button>
+                    <div id="editModuleDropdown" class="dropdown-content">
+                        <form id="editModuleForm">
+                            <input type="text" id="editModuleName" placeholder="Module Name" required>
+                            <input type="text" id="editModuleUrl" placeholder="Module URL" required>
+                            <input type="text" id="editModuleCategories" placeholder="Categories (e.g., chat:90, image:80)" required>
+                            <button type="submit" class="submit-btn">Update Module</button>
+                        </form>
+                    </div>
+                </div>
             </div>
             <input type="file" id="fileInput" accept=".js,.txt" style="display: none;">
         </div>
