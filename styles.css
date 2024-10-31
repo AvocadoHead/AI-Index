@@ -143,33 +143,60 @@ canvas:active {
 .tooltip {
     position: fixed;
     display: none;
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(26, 26, 26, 0.95);
     color: white;
-    padding: 10px;
-    border-radius: 4px;
-    font-size: 14px;
+    padding: 15px;
+    border-radius: 8px;
     z-index: 1000;
     pointer-events: none;
-    max-width: 200px;
-    transition: all 0.1s ease-out;
-}
-
-.tooltip.pinned {
-    pointer-events: auto;
-    background: rgba(26, 26, 26, 0.95);
-    border: 1px solid #333;
+    max-width: 300px;
+    min-width: 200px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    transition: left 0.1s ease-out, top 0.1s ease-out;
 }
 
-.tooltip strong {
-    display: block;
-    margin-bottom: 5px;
+.tooltip-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
 }
 
-.tooltip small {
-    display: block;
-    opacity: 0.8;
+.tooltip-logo {
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    margin-right: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 2px;
+}
+
+.tooltip-body {
+    font-size: 14px;
     line-height: 1.4;
+    min-height: 50px;
+}
+
+.tooltip-body small {
+    display: block;
+    margin-top: 10px;
+    opacity: 0.8;
+}
+
+body.light-mode .tooltip {
+    background: rgba(255, 255, 255, 0.95);
+    color: black;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.module-name {
+    margin: 0;
+    font-size: 16px;
+}
+
+.tooltip-scores {
+    margin-top: 10px;
+    font-size: 12px;
+    opacity: 0.8;
 }
 
 /* Light mode tooltip */
@@ -788,4 +815,8 @@ body.light-mode .tooltip-logo {
     left: 0;      /* Align with left edge of button */
     transform: translateX(-75%);  /* Shift left to center over button */
     min-width: 300px;
+}
+
+.tooltip-body p {
+    margin: 0 0 10px 0;
 }
