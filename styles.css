@@ -820,3 +820,857 @@ body.light-mode .tooltip-logo {
 .tooltip-body p {
     margin: 0 0 10px 0;
 }
+
+/* Base responsive styles */
+@media screen and (max-width: 768px) {
+    /* Portrait mode */
+    @media (orientation: portrait) {
+        .sidebar {
+            width: 100px; /* Wider sidebar */
+            height: 100vh; /* Full height */
+            padding: 20px 10px;
+        }
+
+        .sidebar button {
+            font-size: 16px;
+            padding: 15px 10px;
+            margin: 8px 0;
+            width: 100%;
+            min-height: 50px; /* Taller buttons */
+        }
+
+        .top-menu, .bottom-menu {
+            width: calc(100% - 100px); /* Full width minus sidebar */
+            left: 100px;
+            height: 60px; /* Taller menus */
+            padding: 10px;
+        }
+
+        .top-menu button, .bottom-menu button {
+            font-size: 16px;
+            padding: 12px 20px;
+            min-height: 40px;
+            min-width: 100px;
+        }
+
+        /* Adjust dropdown content */
+        .dropdown-content {
+            width: 90vw;
+            max-width: none;
+            padding: 20px;
+        }
+
+        /* Make form elements bigger */
+        input[type="text"], input[type="url"] {
+            font-size: 16px;
+            padding: 12px;
+            margin: 8px 0;
+        }
+
+        /* Larger tooltip */
+        .tooltip {
+            min-width: 280px;
+            max-width: 90vw;
+            padding: 20px;
+            font-size: 16px;
+        }
+
+        .tooltip-header {
+            margin-bottom: 15px;
+        }
+
+        .tooltip-header strong {
+            font-size: 20px;
+        }
+
+        .tooltip-logo {
+            width: 48px;
+            height: 48px;
+            margin-right: 15px;
+        }
+
+        .tooltip-body p {
+            font-size: 16px;
+            line-height: 1.5;
+            margin: 12px 0;
+        }
+
+        .tooltip-body small {
+            font-size: 14px;
+            line-height: 1.4;
+        }
+    }
+
+    /* Landscape mode */
+    @media (orientation: landscape) {
+        .sidebar {
+            width: 80px;
+            padding: 15px 8px;
+        }
+
+        .sidebar button {
+            font-size: 14px;
+            padding: 12px 8px;
+            margin: 6px 0;
+        }
+
+        .top-menu, .bottom-menu {
+            height: 50px;
+            padding: 8px;
+        }
+
+        .top-menu button, .bottom-menu button {
+            font-size: 14px;
+            padding: 8px 15px;
+        }
+
+        .tooltip {
+            min-width: 240px;
+            padding: 15px;
+            font-size: 14px;
+        }
+
+        .tooltip-header strong {
+            font-size: 16px;
+        }
+
+        .tooltip-logo {
+            width: 32px;
+            height: 32px;
+            margin-right: 10px;
+        }
+    }
+}
+
+/* Additional touch-friendly adjustments */
+@media (hover: none) and (pointer: coarse) {
+    /* Make all clickable elements have larger touch targets */
+    button, 
+    input[type="button"],
+    input[type="submit"] {
+        min-height: 44px; /* Apple's recommended minimum */
+        min-width: 44px;
+    }
+
+    /* Add more space between clickable elements */
+    .sidebar button,
+    .top-menu button,
+    .bottom-menu button {
+        margin: 8px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    /* Controls/top menu */
+    body .controls {
+        height: 120px !important;
+        padding: 20px !important;
+        gap: 15px !important;
+    }
+
+    body .file-controls button,
+    body .module-controls button,
+    body .toggle-mode {
+        font-size: 36px !important;
+        padding: 20px 30px !important;
+        min-height: 80px !important;
+        min-width: 160px !important;
+    }
+
+    /* Module form container */
+    body .module-form-container {
+        padding: 30px !important;
+    }
+
+    body .module-form-container input,
+    body .module-form-container button {
+        font-size: 32px !important;
+        padding: 15px !important;
+        margin: 10px 0 !important;
+    }
+
+    /* Tooltip */
+    body .tooltip {
+        min-width: 95vw !important;
+        padding: 35px !important;
+        border-radius: 20px !important;
+        box-shadow: 0 6px 30px rgba(0,0,0,0.3) !important;
+        margin: 10px !important;
+    }
+
+    body .tooltip-header strong {
+        font-size: 42px !important;
+        font-weight: 600 !important;
+    }
+
+    body .tooltip-logo {
+        width: 96px !important;
+        height: 96px !important;
+        margin-right: 25px !important;
+    }
+
+    body .tooltip-body p {
+        font-size: 32px !important;
+        line-height: 1.6 !important;
+        margin: 25px 0 !important;
+    }
+
+    body .tooltip-body small {
+        font-size: 28px !important;
+        line-height: 1.5 !important;
+    }
+}
+
+/* Portrait mode specific */
+@media screen and (max-width: 768px) and (orientation: portrait) {
+    .tooltip {
+        min-width: 95vw;
+        max-height: 85vh;
+        overflow-y: auto;
+    }
+
+    .bottom-menu .info-text {
+        font-size: 32px;
+        line-height: 1.4;
+    }
+
+    .sidebar button {
+        font-size: 24px;
+        padding: 20px 15px;
+        margin: 10px 0;
+        min-height: 70px;
+    }
+}
+
+/* Mobile styles with higher specificity */
+@media only screen and (max-width: 768px) {
+    body .tooltip {
+        min-width: 95vw !important;
+        padding: 35px !important;
+        border-radius: 20px !important;
+        box-shadow: 0 6px 30px rgba(0,0,0,0.3) !important;
+        margin: 10px !important;
+        font-size: 32px !important;
+    }
+
+    body .tooltip-header {
+        margin-bottom: 30px !important;
+    }
+
+    body .tooltip-header strong {
+        font-size: 42px !important;
+        font-weight: 600 !important;
+    }
+
+    body .tooltip-logo {
+        width: 96px !important;
+        height: 96px !important;
+        margin-right: 25px !important;
+    }
+
+    body .tooltip-body p {
+        font-size: 32px !important;
+        line-height: 1.6 !important;
+        margin: 25px 0 !important;
+    }
+
+    body .tooltip-body small {
+        font-size: 28px !important;
+        line-height: 1.5 !important;
+        display: block !important;
+        margin-top: 20px !important;
+    }
+
+    /* Top and bottom menus */
+    body .top-menu,
+    body .bottom-menu {
+        height: 120px !important;
+        padding: 20px !important;
+    }
+
+    body .top-menu button,
+    body .bottom-menu button {
+        font-size: 36px !important;
+        padding: 20px 30px !important;
+        min-height: 80px !important;
+        min-width: 160px !important;
+    }
+
+    body .bottom-menu .info-text {
+        font-size: 36px !important;
+        line-height: 1.4 !important;
+    }
+
+    body .bottom-menu .info-symbol {
+        font-size: 42px !important;
+        margin: 0 15px !important;
+    }
+}
+
+/* Remove or comment out all other @media queries and add this at the very end of your CSS file */
+@media only screen and (max-width: 768px) {
+    /* Controls/top menu with high specificity */
+    body .controls {
+        height: 120px !important;
+        padding: 20px !important;
+        gap: 15px !important;
+        display: flex !important;
+        flex-direction: column !important; /* Stack buttons vertically on mobile */
+        align-items: stretch !important;
+        width: calc(100% - 40px) !important; /* Full width minus padding */
+    }
+
+    body .file-controls,
+    body .module-controls {
+        display: flex !important;
+        gap: 15px !important;
+        flex-wrap: wrap !important;
+    }
+
+    body .file-controls button,
+    body .module-controls button,
+    body .toggle-mode {
+        font-size: 36px !important;
+        padding: 20px 30px !important;
+        min-height: 80px !important;
+        min-width: 160px !important;
+        flex: 1 !important;
+    }
+
+    /* Super-sized tooltip */
+    body .tooltip {
+        min-width: 90vw !important;
+        max-width: 90vw !important;
+        padding: 35px !important;
+        border-radius: 20px !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        bottom: 120px !important;
+        background: rgba(26, 26, 26, 0.98) !important;
+        color: white !important;
+    }
+
+    body .tooltip-header {
+        margin-bottom: 30px !important;
+    }
+
+    body .tooltip-header strong {
+        font-size: 42px !important;
+        font-weight: 600 !important;
+    }
+
+    body .tooltip-logo {
+        width: 96px !important;
+        height: 96px !important;
+        margin-right: 25px !important;
+        background: rgba(255, 255, 255, 0.1) !important;
+    }
+
+    body .tooltip-body p {
+        font-size: 32px !important;
+        line-height: 1.6 !important;
+        margin: 25px 0 !important;
+    }
+
+    body .tooltip-body small {
+        font-size: 28px !important;
+        line-height: 1.5 !important;
+        display: block !important;
+        margin-top: 20px !important;
+    }
+
+    /* Sidebar adjustments */
+    body .sidebar {
+        padding: 20px 15px !important;
+        width: 120px !important;
+    }
+
+    body .sidebar button {
+        font-size: 24px !important;
+        padding: 20px 15px !important;
+        margin: 10px 0 !important;
+        min-height: 70px !important;
+    }
+}
+
+/* Mobile styles - highest specificity */
+@media only screen and (max-width: 768px) {
+    /* Top controls */
+    html body .controls {
+        width: 100% !important;
+        height: auto !important;
+        padding: 15px !important;
+        gap: 10px !important;
+        flex-direction: row !important;
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+        background: rgba(0, 0, 0, 0.8) !important;
+        backdrop-filter: blur(8px) !important;
+    }
+
+    /* Light mode top controls */
+    html body.light-mode .controls {
+        background: rgba(255, 255, 255, 0.8) !important;
+    }
+
+    html body .file-controls button,
+    html body .module-controls button,
+    html body .toggle-mode {
+        font-size: 20px !important; /* Slightly smaller text */
+        padding: 15px 20px !important;
+        min-height: 60px !important;
+        flex: 1 1 auto !important;
+        white-space: nowrap !important;
+        background: rgba(255, 255, 255, 0.1) !important;
+        color: white !important;
+    }
+
+    /* Light mode buttons */
+    html body.light-mode .file-controls button,
+    html body.light-mode .module-controls button,
+    html body.light-mode .toggle-mode {
+        background: rgba(0, 0, 0, 0.1) !important;
+        color: black !important;
+    }
+
+    /* Footer */
+    html body .footer {
+        width: 100% !important;
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        padding: 20px !important;
+        justify-content: center !important;
+        background: rgba(0, 0, 0, 0.8) !important;
+        backdrop-filter: blur(8px) !important;
+    }
+
+    /* Light mode footer */
+    html body.light-mode .footer {
+        background: rgba(255, 255, 255, 0.8) !important;
+    }
+
+    html body .contact-info {
+        font-size: 40px !important; /* Doubled size */
+    }
+
+    html body .contact-info a {
+        font-size: 40px !important; /* Doubled size */
+        padding: 10px !important;
+        color: rgba(255, 255, 255, 0.9) !important;
+    }
+
+    html body .social-icons {
+        gap: 30px !important;
+    }
+
+    html body .social-icons a {
+        font-size: 48px !important; /* Doubled size */
+        color: rgba(255, 255, 255, 0.9) !important;
+    }
+
+    /* Light mode footer text */
+    html body.light-mode .contact-info a,
+    html body.light-mode .social-icons a {
+        color: rgba(0, 0, 0, 0.9) !important;
+    }
+
+    /* Tooltip */
+    html body .tooltip {
+        min-width: 90vw !important;
+        max-width: 90vw !important;
+        padding: 25px !important;
+        border-radius: 15px !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        bottom: 100px !important;
+        background: rgba(26, 26, 26, 0.98) !important;
+        color: white !important;
+    }
+
+    /* Light mode tooltip */
+    html body.light-mode .tooltip {
+        background: rgba(255, 255, 255, 0.98) !important;
+        color: black !important;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15) !important;
+    }
+
+    html body .tooltip-header strong {
+        font-size: 28px !important;
+    }
+
+    html body .tooltip-logo {
+        width: 64px !important;
+        height: 64px !important;
+        margin-right: 20px !important;
+        background: rgba(255, 255, 255, 0.1) !important;
+    }
+
+    html body.light-mode .tooltip-logo {
+        background: rgba(0, 0, 0, 0.05) !important;
+    }
+
+    html body .tooltip-body p {
+        font-size: 22px !important;
+        line-height: 1.5 !important;
+        margin: 15px 0 !important;
+    }
+
+    html body .tooltip-body small {
+        font-size: 18px !important;
+        line-height: 1.4 !important;
+        margin-top: 15px !important;
+        opacity: 0.8 !important;
+    }
+}
+
+/* Even larger for very small screens */
+@media only screen and (max-width: 480px) {
+    html body .file-controls button,
+    html body .module-controls button,
+    html body .toggle-mode {
+        font-size: 18px !important; /* Even smaller for very small screens */
+        padding: 15px !important;
+        min-height: 60px !important;
+        width: calc(50% - 10px) !important;
+    }
+
+    html body .contact-info,
+    html body .contact-info a {
+        font-size: 36px !important;
+    }
+
+    html body .social-icons a {
+        font-size: 44px !important;
+    }
+}
+
+/* Smooth scaling for different screen sizes */
+@media only screen and (max-width: 1024px) {
+    /* Initial scaling for larger tablets/small desktops */
+    html body .controls {
+        padding: 12px !important;
+    }
+
+    html body .file-controls button,
+    html body .module-controls button,
+    html body .toggle-mode {
+        font-size: 16px !important;
+        padding: 12px 18px !important;
+        min-height: 50px !important;
+    }
+
+    html body .contact-info,
+    html body .contact-info a {
+        font-size: 20px !important;
+    }
+
+    html body .social-icons a {
+        font-size: 24px !important;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    /* Medium tablets */
+    html body .controls {
+        padding: 15px !important;
+    }
+
+    html body .file-controls button,
+    html body .module-controls button,
+    html body .toggle-mode {
+        font-size: 18px !important;
+        padding: 15px 20px !important;
+        min-height: 55px !important;
+    }
+
+    html body .contact-info,
+    html body .contact-info a {
+        font-size: 28px !important;
+    }
+
+    html body .social-icons a {
+        font-size: 32px !important;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    /* Smaller tablets and large phones */
+    html body .file-controls button,
+    html body .module-controls button,
+    html body .toggle-mode {
+        font-size: 20px !important;
+        padding: 15px 20px !important;
+        min-height: 60px !important;
+    }
+
+    html body .contact-info,
+    html body .contact-info a {
+        font-size: 32px !important;
+    }
+
+    html body .social-icons a {
+        font-size: 38px !important;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    /* Phones */
+    html body .file-controls button,
+    html body .module-controls button,
+    html body .toggle-mode {
+        font-size: 22px !important;
+        padding: 18px 22px !important;
+        min-height: 65px !important;
+    }
+
+    html body .contact-info,
+    html body .contact-info a {
+        font-size: 36px !important;
+    }
+
+    html body .social-icons a {
+        font-size: 42px !important;
+    }
+}
+
+/* Base tooltip styles that scale smoothly */
+@media only screen and (max-width: 1024px) {
+    html body .tooltip {
+        min-width: 70vw !important;
+        padding: 25px !important;
+    }
+
+    html body .tooltip-header strong {
+        font-size: 28px !important;
+    }
+
+    html body .tooltip-logo {
+        width: 64px !important;
+        height: 64px !important;
+    }
+
+    html body .tooltip-body p {
+        font-size: 24px !important;
+    }
+
+    html body .tooltip-body small {
+        font-size: 20px !important;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    html body .tooltip {
+        min-width: 85vw !important;
+        padding: 30px !important;
+    }
+
+    html body .tooltip-header strong {
+        font-size: 32px !important;
+    }
+
+    html body .tooltip-logo {
+        width: 76px !important;
+        height: 76px !important;
+    }
+
+    html body .tooltip-body p {
+        font-size: 28px !important;
+    }
+
+    html body .tooltip-body small {
+        font-size: 24px !important;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    html body .tooltip {
+        min-width: 92vw !important;
+        padding: 35px !important;
+    }
+
+    html body .tooltip-header strong {
+        font-size: 36px !important;
+    }
+
+    html body .tooltip-logo {
+        width: 88px !important;
+        height: 88px !important;
+    }
+
+    html body .tooltip-body p {
+        font-size: 32px !important;
+    }
+
+    html body .tooltip-body small {
+        font-size: 26px !important;
+    }
+}
+
+/* Smooth scaling for different screen sizes */
+@media only screen and (max-width: 1024px) {
+    html body .contact-info,
+    html body .contact-info a {
+        font-size: 24px !important;
+    }
+
+    html body .social-icons a {
+        font-size: 28px !important;
+    }
+}
+
+@media only screen and (max-width: 900px) {
+    html body .contact-info,
+    html body .contact-info a {
+        font-size: 28px !important;
+    }
+
+    html body .social-icons a {
+        font-size: 32px !important;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    html body .contact-info,
+    html body .contact-info a {
+        font-size: 32px !important;
+    }
+
+    html body .social-icons a {
+        font-size: 36px !important;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    html body .contact-info,
+    html body .contact-info a {
+        font-size: 36px !important;
+    }
+
+    html body .social-icons a {
+        font-size: 40px !important;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    html body .contact-info,
+    html body .contact-info a {
+        font-size: 40px !important;
+    }
+
+    html body .social-icons a {
+        font-size: 44px !important;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    /* Edit module dropdown improvements */
+    html body #editModuleDropdown.dropdown-content {
+        position: fixed !important;
+        top: 50% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) !important;
+        width: 90vw !important;
+        max-width: 90vw !important;
+        min-width: unset !important;
+        padding: 30px !important;
+        z-index: 2000 !important; /* Ensure it's above other elements */
+        border-radius: 15px !important;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3) !important;
+    }
+
+    /* Form elements inside edit module */
+    html body #editModuleForm input,
+    html body #editModuleForm textarea {
+        font-size: 24px !important;
+        padding: 15px !important;
+        margin: 10px 0 !important;
+        min-height: 60px !important;
+        border-radius: 10px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    html body #editModuleForm label {
+        font-size: 20px !important;
+        margin: 10px 0 5px !important;
+        display: block !important;
+    }
+
+    html body #editModuleForm button {
+        font-size: 24px !important;
+        padding: 20px !important;
+        min-height: 70px !important;
+        width: 100% !important;
+        margin-top: 20px !important;
+        border-radius: 10px !important;
+    }
+
+    /* Add overlay when dropdown is open */
+    html body .dropdown-overlay {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        background: rgba(0, 0, 0, 0.5) !important;
+        z-index: 1999 !important; /* Just below the dropdown */
+        backdrop-filter: blur(5px) !important;
+    }
+
+    /* Light mode adjustments */
+    html body.light-mode #editModuleDropdown.dropdown-content {
+        background: rgba(255, 255, 255, 0.95) !important;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2) !important;
+    }
+
+    html body.light-mode .dropdown-overlay {
+        background: rgba(255, 255, 255, 0.5) !important;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    /* Only modify the dropdown when in mobile view */
+    html body .module-controls .dropdown {
+        position: static !important; /* Allows dropdown to be positioned relative to viewport */
+    }
+
+    html body .module-controls .dropdown #editModuleDropdown.dropdown-content.show {
+        position: fixed !important;
+        top: 50% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) !important;
+        width: 90vw !important;
+        max-width: 90vw !important;
+        background: rgba(26, 26, 26, 0.98) !important;
+        padding: 30px !important;
+        z-index: 2000 !important;
+        border-radius: 15px !important;
+        display: block !important;
+    }
+
+    /* Form styling only in mobile view */
+    @media (max-width: 768px) {
+        html body #editModuleForm input {
+            width: 100% !important;
+            font-size: 22px !important;
+            padding: 12px !important;
+            margin: 10px 0 !important;
+            border-radius: 10px !important;
+        }
+
+        html body #editModuleForm .submit-btn {
+            width: 100% !important;
+            font-size: 24px !important;
+            padding: 20px !important;
+            margin-top: 20px !important;
+            border-radius: 10px !important;
+        }
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    html body .contact-info {
+        gap: 0px !important; /* Increased spacing for mobile */
+    }
+}
