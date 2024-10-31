@@ -1006,15 +1006,36 @@ class ModuleCloud {
         this.canvas.addEventListener('touchstart', (e) => {
             e.preventDefault();
             if (e.touches.length === 1) {
-                // Single touch - handle as potential tap
                 const touch = e.touches[0];
-                this.isDragging = true;
-                this.lastMouseX = touch.clientX - this.canvas.getBoundingClientRect().left;
-                this.lastMouseY = touch.clientY - this.canvas.getBoundingClientRect().top;
+                const rect = this.canvas.getBoundingClientRect();
+                const touchX = touch.clientX - rect.left;
+                const touchY = touch.clientY - rect.top;
                 
-                // Store touch start time and position for tap detection
-                this.touchStartTime = Date.now();
-                this.touchStartPos = { x: touch.clientX, y: touch.clientY };
+                // Check if we touched a module
+                const touchedModule = this.getHoveredModule(touchX, touchY);
+                
+                if (touchedModule) {
+                    if (this.activeModule === touchedModule) {
+                        // Second tap on same module - open URL
+                        if (touchedModule.url) {
+                            window.open(touchedModule.url, '_blank');
+                        }
+                    } else {
+                        // First tap - show tooltip
+                        this.activeModule = touchedModule;
+                        this.pinnedTooltip = true;
+                        this.showTooltip(touchedModule, touch.clientX, touch.clientY);
+                    }
+                } else {
+                    // Tap on empty space - start rotation
+                    this.isDragging = true;
+                    this.lastMouseX = touchX;
+                    this.lastMouseY = touchY;
+                    // Clear tooltip and selection
+                    this.activeModule = null;
+                    this.pinnedTooltip = false;
+                    this.hideTooltip();
+                }
             } else if (e.touches.length === 2) {
                 // Two fingers - initialize pinch-to-zoom
                 this.lastTouchDistance = this.getTouchDistance(e.touches);
@@ -1024,14 +1045,13 @@ class ModuleCloud {
         this.canvas.addEventListener('touchmove', (e) => {
             e.preventDefault();
             if (e.touches.length === 1 && this.isDragging) {
-                // Handle rotation
                 const touch = e.touches[0];
                 const rect = this.canvas.getBoundingClientRect();
-                const mouseX = touch.clientX - rect.left;
-                const mouseY = touch.clientY - rect.top;
+                const touchX = touch.clientX - rect.left;
+                const touchY = touch.clientY - rect.top;
 
-                const deltaX = mouseX - this.lastMouseX;
-                const deltaY = mouseY - this.lastMouseY;
+                const deltaX = touchX - this.lastMouseX;
+                const deltaY = touchY - this.lastMouseY;
                 
                 this.momentumX = deltaY * 0.0015;
                 this.momentumY = deltaX * 0.0015;
@@ -1039,17 +1059,14 @@ class ModuleCloud {
                 this.rotationX += this.momentumX;
                 this.rotationY += this.momentumY;
 
-                this.lastMouseX = mouseX;
-                this.lastMouseY = mouseY;
+                this.lastMouseX = touchX;
+                this.lastMouseY = touchY;
             } else if (e.touches.length === 2) {
                 // Handle pinch-to-zoom
                 const currentDistance = this.getTouchDistance(e.touches);
                 const delta = currentDistance - this.lastTouchDistance;
                 
-                // Adjust zoom sensitivity
                 this.scale *= (1 + delta * 0.01);
-                
-                // Limit zoom range
                 this.scale = Math.max(0.5, Math.min(2, this.scale));
                 
                 this.lastTouchDistance = currentDistance;
@@ -1058,23 +1075,9 @@ class ModuleCloud {
 
         this.canvas.addEventListener('touchend', (e) => {
             if (e.touches.length === 0) {
-                // Check if this was a tap (quick touch without much movement)
-                if (this.touchStartTime && Date.now() - this.touchStartTime < 300) {
-                    const touch = e.changedTouches[0];
-                    const rect = this.canvas.getBoundingClientRect();
-                    const mouseX = touch.clientX - rect.left;
-                    const mouseY = touch.clientY - rect.top;
-                    
-                    const hoveredModule = this.getHoveredModule(mouseX, mouseY);
-                    if (hoveredModule && hoveredModule.url) {
-                        window.open(hoveredModule.url, '_blank');
-                    }
-                }
-                
                 this.isDragging = false;
                 this.lastInteractionTime = Date.now();
             }
-            this.hideTooltip();
         });
     }
 
