@@ -125,6 +125,11 @@ class ModuleCloud {
         // Add toggle button and state
         this.isSidebarVisible = true;
         this.setupSidebarToggle();
+
+        // Add description cache
+        this.descriptionCache = new Map();
+        this.descriptionTimeout = null;
+        this.isRequestPending = false;
     }
 
     initializeFromModules(modules) {
@@ -661,26 +666,52 @@ class ModuleCloud {
         if (!this.tooltip) return;
         
         try {
-            const description = await this.fetchModuleDescription(module);
-            const faviconUrl = module.url ? 
-                `https://www.google.com/s2/favicons?domain=${new URL(module.url).hostname}&sz=128` : 
-                'data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🤖</text></svg>';
-            
+            // Combine categories and scores into single list
+            const categoriesWithScores = module.categories
+                .map(category => {
+                    const score = module.scores[category];
+                    return `• ${category}: ${score ? Math.round(score * 100) + '%' : 'N/A'}`;
+                })
+                .join('\n');
+
+            // Get description
+            const description = await this.getModuleDescription(module);
+
             const tooltipContent = `
                 <div class="tooltip-header">
-                    <img src="${faviconUrl}" 
+                    <img src="${this.getFaviconUrl(module.url)}" 
                          alt="${module.name} logo" 
                          class="tooltip-logo"
                          onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🤖</text></svg>'">
-                    <strong>${module.name}</strong>
+                    <h3 class="module-name">${module.name}</h3>
                 </div>
                 <div class="tooltip-body">
-                    <p>${description}</p>
+                    <p class="description">${description}</p>
+                    <div class="tooltip-metadata">
+                        <p><strong>Categories & Scores:</strong></p>
+                        <pre>${categoriesWithScores}</pre>
+                    </div>
                 </div>
             `;
             
             this.tooltip.innerHTML = tooltipContent;
             this.tooltip.style.display = 'block';
+            
+            // Position tooltip
+            const tooltipRect = this.tooltip.getBoundingClientRect();
+            const viewportWidth = window.innerWidth;
+            const viewportHeight = window.innerHeight;
+            
+            // Adjust x position if tooltip would overflow right edge
+            if (x + tooltipRect.width + 20 > viewportWidth) {
+                x = viewportWidth - tooltipRect.width - 20;
+            }
+            
+            // Adjust y position if tooltip would overflow bottom edge
+            if (y + tooltipRect.height + 20 > viewportHeight) {
+                y = viewportHeight - tooltipRect.height - 20;
+            }
+            
             this.tooltip.style.left = `${x + 10}px`;
             this.tooltip.style.top = `${y + 10}px`;
             
@@ -1189,6 +1220,134 @@ class ModuleCloud {
                 toggleButton.style.transform = 'translateY(-50%) rotate(0deg)';
             }
         });
+    }
+
+    getFaviconUrl(url) {
+        try {
+            if (!url) return 'data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🤖</text></svg>';
+            return `https://www.google.com/s2/favicons?domain=${new URL(url).hostname}&sz=128`;
+        } catch (error) {
+            return 'data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🤖</text></svg>';
+        }
+    }
+
+    async getModuleDescription(module) {
+        const API_KEY = 'AIzaSyBZrqpdFTOWJBibREV_ZqOjcHKLIBl-AzE';
+        const SEARCH_ENGINE_ID = 'e21d905aa4d5d49e9';
+        
+        try {
+            // Return cached description if available
+            if (this.descriptionCache.has(module.name)) {
+                return this.descriptionCache.get(module.name);
+            }
+
+            // If there's already a pending request, return default description
+            if (this.isRequestPending) {
+                return `${module.name} - AI-powered tool`;
+            }
+
+            this.isRequestPending = true;
+
+            const query = `${module.name} AI tool description`;
+            const url = `https://www.googleapis.com/customsearch/v1?key=${API_KEY}&cx=${SEARCH_ENGINE_ID}&q=${encodeURIComponent(query)}`;
+            
+            const response = await fetch(url);
+            
+            if (response.status === 429) {
+                throw new Error('Rate limit exceeded');
+            }
+            
+            const data = await response.json();
+            
+            let description = `${module.name} - AI-powered tool`;
+            
+            if (data.items && data.items[0]) {
+                description = data.items[0].snippet
+                    .replace(/\n/g, ' ')
+                    .replace(/\s+/g, ' ')
+                    .trim();
+            }
+
+            // Cache the result
+            this.descriptionCache.set(module.name, description);
+            
+            return description;
+        } catch (error) {
+            console.log('Error fetching description:', error);
+            return `${module.name} - AI-powered tool`;
+        } finally {
+            this.isRequestPending = false;
+            // Add a small delay before allowing next request
+            await new Promise(resolve => setTimeout(resolve, 100));
+        }
+    }
+
+    debounce(func, wait) {
+        let timeout;
+        return function executedFunction(...args) {
+            const later = () => {
+                clearTimeout(timeout);
+                func(...args);
+            };
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+        };
+    }
+
+    handleMouseMove = this.debounce((event) => {
+        const rect = this.canvas.getBoundingClientRect();
+        const x = event.clientX - rect.left;
+        const y = event.clientY - rect.top;
+        
+        const hoveredModule = this.findModuleAtPosition(x, y);
+        
+        if (hoveredModule) {
+            this.canvas.style.cursor = 'pointer';
+            
+            // Only update if hovering over a different module
+            if (this.lastHoveredModule?.name !== hoveredModule.name) {
+                this.lastHoveredModule = hoveredModule;
+                clearTimeout(this.descriptionTimeout);
+                
+                // Wait a bit before showing tooltip to prevent unnecessary API calls
+                this.descriptionTimeout = setTimeout(() => {
+                    this.showTooltip(hoveredModule, event.clientX, event.clientY);
+                }, 500); // Half second delay
+            }
+        } else {
+            this.canvas.style.cursor = 'grab';
+            this.hideTooltip();
+            this.lastHoveredModule = null;
+        }
+    }, 100); // Debounce mousemove events
+
+    findModuleAtPosition(mouseX, mouseY) {
+        // Convert screen coordinates to relative canvas coordinates
+        const rect = this.canvas.getBoundingClientRect();
+        const x = (mouseX - rect.left) * (this.canvas.width / rect.width);
+        const y = (mouseY - rect.top) * (this.canvas.height / rect.height);
+
+        // Check each module
+        for (const module of this.modules) {
+            // Get the module's screen position
+            const rotated = this.rotatePoint(module.x, module.y, module.z);
+            const screenX = this.canvas.width / 2 + rotated.x * this.scale;
+            const screenY = this.canvas.height / 2 + rotated.y * this.scale;
+
+            // Calculate distance from mouse to module center
+            const dx = x - screenX;
+            const dy = y - screenY;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+
+            // Check if mouse is within module's clickable area
+            // Adjust this value to change how close you need to be to trigger hover
+            const hitRadius = 30 * this.scale;
+            
+            if (distance < hitRadius) {
+                return module;
+            }
+        }
+        return null;
     }
 }
 
