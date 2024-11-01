@@ -121,6 +121,10 @@ class ModuleCloud {
         this.tooltipDebounceTimer = null;
         this.lastHoveredModule = null;
         this.tooltipDebounceDelay = 300; // Increased to 300ms for more stability
+
+        // Add toggle button and state
+        this.isSidebarVisible = true;
+        this.setupSidebarToggle();
     }
 
     initializeFromModules(modules) {
@@ -672,13 +676,6 @@ class ModuleCloud {
                 </div>
                 <div class="tooltip-body">
                     <p>${description}</p>
-                    <small>
-                        Categories: ${module.categories.join(', ')}<br>
-                        ${Object.entries(module.scores)
-                            .map(([category, score]) => 
-                                `${category}: ${Math.round(score * 100)}%`)
-                            .join('<br>')}
-                    </small>
                 </div>
             `;
             
@@ -1137,43 +1134,31 @@ class ModuleCloud {
     }
 
     async fetchModuleDescription(module) {
-        if (!module.url) return 'Advanced AI model';
-        
         try {
-            // Check cache first
-            if (this.moduleDescriptions.has(module.url)) {
-                return this.moduleDescriptions.get(module.url);
-            }
+            // Try to fetch metadata with no-cors mode to avoid CORS errors
+            const response = await fetch(module.url, {
+                mode: 'no-cors',
+                headers: {
+                    'Accept': 'text/html'
+                }
+            });
 
-            const response = await fetch(module.url);
-            const text = await response.text();
-            
-            // Parse the HTML
-            const parser = new DOMParser();
-            const doc = parser.parseFromString(text, 'text/html');
-            
-            // Try different meta tags in order of preference
-            const description = 
-                doc.querySelector('meta[name="description"]')?.getAttribute('content') ||
-                doc.querySelector('meta[property="og:description"]')?.getAttribute('content') ||
-                doc.querySelector('meta[name="twitter:description"]')?.getAttribute('content');
-                
-            if (description) {
-                // Clean and cache the description
-                const cleanDescription = description
-                    .replace(/\s+/g, ' ')
-                    .trim();
-                
-                this.moduleDescriptions.set(module.url, cleanDescription);
-                return cleanDescription;
-            }
-            
-            // If no description found, return the module name only
-            return module.name;
-            
+            // Since we can't read the response in no-cors mode,
+            // we'll use a simpler approach with just module data
+            const scoresList = Object.entries(module.scores)
+                .map(([category, score]) => `${category}: ${Math.round(score * 100)}%`)
+                .join('\n');
+
+            const domain = new URL(module.url).hostname.replace('www.', '');
+            return `${domain}\n\nCategories: ${module.categories.join(', ')}\n\nScores:\n${scoresList}`;
+
         } catch (error) {
-            console.error('Error fetching description:', error);
-            return module.name;
+            // Silently handle the error and return basic info
+            const scoresList = Object.entries(module.scores)
+                .map(([category, score]) => `${category}: ${Math.round(score * 100)}%`)
+                .join('\n');
+                
+            return `Categories: ${module.categories.join(', ')}\n\nScores:\n${scoresList}`;
         }
     }
 
@@ -1182,6 +1167,28 @@ class ModuleCloud {
             this.tooltip.style.left = `${x + 10}px`;
             this.tooltip.style.top = `${y + 10}px`;
         }
+    }
+
+    setupSidebarToggle() {
+        const toggleButton = document.createElement('button');
+        toggleButton.innerHTML = '›';
+        toggleButton.className = 'sidebar-toggle';
+        document.body.appendChild(toggleButton);
+
+        const sidebar = document.querySelector('.sidebar');
+        this.isSidebarVisible = false;
+
+        toggleButton.addEventListener('click', () => {
+            this.isSidebarVisible = !this.isSidebarVisible;
+            
+            if (this.isSidebarVisible) {
+                sidebar.classList.add('visible');
+                toggleButton.style.transform = 'translateY(-50%) rotate(180deg)';
+            } else {
+                sidebar.classList.remove('visible');
+                toggleButton.style.transform = 'translateY(-50%) rotate(0deg)';
+            }
+        });
     }
 }
 
