@@ -100,9 +100,30 @@ canvas:active {
     overflow-x: hidden;
 }
 
-/* When sidebar is visible */
 .sidebar.visible {
     transform: translateY(-50%) translateX(0);
+}
+
+.sidebar-toggle {
+    position: fixed;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+    z-index: 101;
+    border-radius: 0 4px 4px 0;
+    transition: all 0.3s ease;
+    font-size: 20px;
+    line-height: 1;
+    width: 24px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .sidebar button {
@@ -156,8 +177,8 @@ canvas:active {
     border-radius: 8px;
     z-index: 1000;
     pointer-events: none;
-    max-width: 300px;
-    min-width: 200px;
+    min-width: 250px;
+    max-width: 350px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     transition: left 0.1s ease-out, top 0.1s ease-out;
 }
@@ -180,37 +201,37 @@ canvas:active {
 .tooltip-body {
     font-size: 14px;
     line-height: 1.4;
-    min-height: 50px;
 }
 
-.tooltip-body small {
-    display: block;
+.tooltip-body p {
+    margin: 0 0 10px 0;
+}
+
+.tooltip-metadata {
     margin-top: 10px;
-    opacity: 0.8;
+}
+
+.tooltip-metadata pre {
+    margin: 5px 0 15px 0;
+    white-space: pre-wrap;
+    font-family: inherit;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.light-mode .tooltip-metadata pre {
+    color: rgba(0, 0, 0, 0.8);
+}
+
+.module-name {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 500;
 }
 
 body.light-mode .tooltip {
     background: rgba(255, 255, 255, 0.95);
     color: black;
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-}
-
-.module-name {
-    margin: 0;
-    font-size: 16px;
-}
-
-.tooltip-scores {
-    margin-top: 10px;
-    font-size: 12px;
-    opacity: 0.8;
-}
-
-/* Light mode tooltip */
-body.light-mode .tooltip {
-    background: rgba(255, 255, 255, 0.9);
-    color: black;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 .module-form-container {
@@ -329,19 +350,33 @@ body.light-mode .tooltip {
     bottom: 10px;
     right: 10px;
     display: flex;
-    align-items: center;
-    gap: 15px;
-    font-size: 12px;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
     z-index: 1000;
     background: rgba(0, 0, 0, 0.5);
-    padding: 8px;
+    padding: 8px 12px;
     border-radius: 4px;
+}
+
+.social-icons {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.social-icons a,
+.social-icons a:visited {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    transition: all 0.3s;
+    font-size: 20px;
 }
 
 .contact-info {
     display: flex;
-    flex-direction: column;
-    gap: 3px;
+    gap: 20px;
+    font-size: 12px;
 }
 
 .contact-info a {
@@ -352,25 +387,6 @@ body.light-mode .tooltip {
 
 .contact-info a:hover {
     color: white;
-}
-
-.social-icons {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-}
-
-.social-icons a,
-.social-icons a:visited {
-    color: rgba(255, 255, 255, 0.8);
-    text-decoration: none;
-    transition: all 0.3s;
-    font-size: 16px;
-}
-
-.social-icons a:hover {
-    color: white;
-    transform: translateY(-2px);
 }
 
 /* Light mode adjustments */
@@ -385,522 +401,122 @@ body.light-mode .social-icons a:visited {
 }
 
 body.light-mode .contact-info a:hover,
-body.light-mode .social-icons a:hover,
-body.light-mode .social-icons a:hover:visited {
+body.light-mode .social-icons a:hover {
     color: black;
 }
 
-.error-message {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    background: #ff4444;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 4px;
-    z-index: 1000;
-    animation: slideIn 0.3s ease-out;
-}
-
-@keyframes slideIn {
-    from { transform: translateX(100%); }
-    to { transform: translateX(0); }
-}
-
-.module-controls {
-    display: flex;
-    gap: 10px;  /* Space between buttons */
-}
-
-.control-button {
-    width: 70px;  /* Slightly smaller width */
-    height: 40px; /* Slightly smaller height */
-    padding: 2px;
-    margin: 0;
-    border: none;
-    border-radius: 3px;
-    background-color: #333;
-    color: white;
-    cursor: pointer;
-    font-family: 'Heebo', Arial, sans-serif;
-    font-size: 11px;
-    font-weight: 300; /* Thinner text */
-    line-height: 1.3;
-    text-align: center;
-    transition: all 0.2s ease;
-    letter-spacing: 0.5px; /* More elegant spacing */
-}
-
-.control-button:hover {
-    background-color: #444;
-}
-
-.control-button small {
-    font-size: 11px;  /* Smaller font for the first word */
-    opacity: 0.9;     /* Slightly dimmed */
-}
-
-.control-button:hover {
-    background-color: #444;
-}
-
-/* Elegant button styling */
-.control-button {
-    width: 70px;  /* Slightly smaller width */
-    height: 40px; /* Slightly smaller height */
-    padding: 2px;
-    margin: 0;
-    border: none;
-    border-radius: 3px;
-    background-color: #333;
-    color: white;
-    cursor: pointer;
-    font-family: 'Heebo', Arial, sans-serif;
-    font-size: 11px;
-    font-weight: 300; /* Thinner text */
-    line-height: 1.3;
-    text-align: center;
-    transition: all 0.2s ease;
-    letter-spacing: 0.5px; /* More elegant spacing */
-}
-
-.control-button:hover {
-    background-color: #444;
-}
-
-/* Controls layout */
-.controls {
-    display: flex;
-    gap: 8px;
-    padding: 8px;
-}
-
-.file-controls, .module-controls {
-    display: flex;
-    gap: 8px;
-}
-
-/* Dropdown styling */
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: #333;
-    min-width: 250px;
-    padding: 10px;
-    border-radius: 4px;
-    z-index: 1000;
-    margin-top: 4px;
-}
-
-.dropdown-content.show {
-    display: block;
-}
-
-/* Form styling */
-#moduleForm {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-#moduleForm input {
-    padding: 6px;
-    border: none;
-    border-radius: 3px;
-    background: #444;
-    color: white;
-    font-family: 'Heebo', Arial, sans-serif;
-    font-size: 12px;
-}
-
-#moduleForm input::placeholder {
-    color: #aaa;
-}
-
-#moduleForm button {
-    padding: 6px;
-    border: none;
-    border-radius: 3px;
-    background: #555;
-    color: white;
-    cursor: pointer;
-    font-family: 'Heebo', Arial, sans-serif;
-    font-size: 12px;
-    transition: background 0.2s;
-}
-
-#moduleForm button:hover {
-    background: #666;
-}
-
-/* Webkit browsers (Chrome, Safari, newer Edge) */
-.sidebar::-webkit-scrollbar {
-    width: 6px;  /* Slim width */
-}
-
-.sidebar::-webkit-scrollbar-track {
-    background: #1a1a1a;  /* Dark track */
-}
-
-.sidebar::-webkit-scrollbar-thumb {
-    background: #333;  /* Slightly lighter thumb */
-    border-radius: 3px;  /* Rounded corners */
-}
-
-.sidebar::-webkit-scrollbar-thumb:hover {
-    background: #444;  /* Slightly lighter on hover */
-}
-
-/* Firefox */
-.sidebar {
-    scrollbar-width: thin;  /* "thin" or "auto" */
-    scrollbar-color: #333 #1a1a1a;  /* thumb track */
-}
-
-.tooltip-logo {
-    width: 32px;
-    height: 32px;
-    border-radius: 6px;
-    margin-right: 10px;
-    object-fit: cover;
-    background: rgba(255, 255, 255, 0.1);
-    padding: 2px;
-}
-
-body.light-mode .tooltip-logo {
-    background: rgba(0, 0, 0, 0.05);
-}
-
-.menu-button:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-}
-
-.menu-button {
-    font-size: 11px;
-}
-
-#editModuleDropdown {
-    display: none;
-    position: absolute;
-    background-color: #333;
-    min-width: 300px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    padding: 12px;
-    z-index: 1;
-    border-radius: 4px;
-}
-
-#editModuleDropdown.show {
-    display: block;
-}
-
-#editModuleForm {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-#editModuleForm input {
-    padding: 8px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 4px;
-    background: rgba(255, 255, 255, 0.1);
-    color: white;
-}
-
-#editModuleForm label {
-    font-size: 12px;
-    color: #fff;
-}
-
-#editModuleForm button {
-    margin-top: 8px;
-    padding: 8px;
-    background: #2196F3;
-    border: none;
-    border-radius: 4px;
-    color: white;
-    cursor: pointer;
-}
-
-#editModuleForm button:hover {
-    background: #1976D2;
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #1a1a1a;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-    border-radius: 4px;
-    padding: 8px;
-}
-
-.dropdown-content.show {
-    display: block;
-}
-
-.dropdown-content form {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.dropdown-content input,
-.dropdown-content textarea {
-    background-color: #2a2a2a;
-    border: 1px solid #3a3a3a;
-    color: #ffffff;
-    padding: 8px;
-    border-radius: 4px;
-}
-
-.dropdown-content button {
-    background-color: #3a3a3a;
-    color: #ffffff;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-.dropdown-content button:hover {
-    background-color: #4a4a4a;
-}
-
-.tooltip.pinned {
-    pointer-events: auto;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    border: 1px solid #3a3a3a;
-}
-
-/* Update dropdown styling */
-.dropdown-content {
-    display: none;
-    position: absolute;
-    right: 0;
-    background-color: #1a1a1a;
-    min-width: 300px;
-    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-    z-index: 1000;
-    border-radius: 8px;
-    border: 1px solid #333;
-    padding: 15px;
-}
-
-.dropdown-content.show {
-    display: block;
-}
-
-#moduleForm {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-#moduleForm input {
-    padding: 8px;
-    border: 1px solid #333;
-    border-radius: 4px;
-    background: #2a2a2a;
-    color: white;
-}
-
-.score-input {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 10px;
-    color: white;
-}
-
-.score-input input {
-    width: 80px;
-}
-
-.submit-btn {
-    background-color: #333;
-    color: white;
-    border: none;
-    padding: 8px;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-.submit-btn:hover {
-    background-color: #444;
-}
-
-/* Fix tooltip pinning */
-.tooltip.pinned {
-    pointer-events: auto;
-    background: rgba(26, 26, 26, 0.95);
-    border: 1px solid #333;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-}
-
-.light-mode .tooltip.pinned {
-    background: rgba(255, 255, 255, 0.95);
-    border: 1px solid #ddd;
-}
-
-/* Edit module form styling */
-#editModuleForm {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-#editModuleForm input {
-    padding: 8px;
-    border: 1px solid #333;
-    border-radius: 4px;
-    background: #2a2a2a;
-    color: white;
-}
-
-#editModuleForm button {
-    background-color: #333;
-    color: white;
-    border: none;
-    padding: 8px;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-#editModuleForm button:hover {
-    background-color: #444;
-}
-
-/* Edit button states */
-#editModule {
-    opacity: 0.5;
-    cursor: not-allowed;
-}
-
-#editModule:not([disabled]) {
-    opacity: 1;
-    cursor: pointer;
-}
-
-/* Update dropdown positioning */
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
-
-#editModuleDropdown.dropdown-content {
-    right: auto;  /* Remove right positioning */
-    left: 0;      /* Align with left edge of button */
-    transform: translateX(-75%);  /* Shift left to center over button */
-    min-width: 300px;
-}
-
-.tooltip-body p {
-    margin: 0 0 10px 0;
-}
-
-.sidebar-toggle {
-    position: fixed;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(0, 0, 0, 0.7);
-    color: white;
-    border: none;
-    padding: 8px;
-    cursor: pointer;
-    z-index: 101;
-    border-radius: 0 4px 4px 0;
-    transition: all 0.3s ease;
-    font-size: 20px;
-    line-height: 1;
-    width: 24px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.sidebar-toggle:hover {
-    background: rgba(0, 0, 0, 0.8);
-    width: 28px; /* Slightly wider on hover */
-}
-
-/* Light mode styles */
-body.light-mode .sidebar-toggle {
-    background: rgba(255, 255, 255, 0.9);
-    color: black;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-body.light-mode .sidebar-toggle:hover {
-    background: rgba(255, 255, 255, 1);
-}
-
-/* Make sure sidebar is above canvas but below controls */
-#moduleCloud {
-    z-index: 1;
-}
-
-.sidebar {
-    z-index: 2;
-}
-
-.controls {
-    z-index: 3;
-}
-
-/* Adjust sidebar position for mobile */
-@media (max-width: 768px) {
-    .sidebar {
-        left: 10px;
-        max-width: 80vw;
-    }
-    
-    .sidebar-toggle {
-        padding: 12px 16px; /* Larger touch target for mobile */
-    }
-}
-
+/* Mobile adjustments */
 @media (max-width: 520px) {
-    .control-button {
-        width: 50px;  /* Reduced from 70px */
-        height: 35px; /* Slightly reduced height */
-        font-size: 10px; /* Smaller font */
-        padding: 1px;
+    .footer {
+        padding: 12px;
+        gap: 12px;
     }
 
-    .controls {
-        gap: 4px; /* Reduce gap between buttons */
-        padding: 4px; /* Reduce padding around control group */
+    .social-icons a,
+    .social-icons a:visited {
+        font-size: 24px;
     }
 
-    .file-controls, .module-controls {
-        gap: 4px; /* Reduce gap between button groups */
+    .contact-info {
+        font-size: 14px;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: flex-end;
     }
 }
 
-/* For even smaller screens */
+/* Very small screens */
 @media (max-width: 380px) {
-    .control-button {
-        width: 40px;  /* Even smaller */
-        height: 32px;
-        font-size: 9px;
+    .contact-info {
+        gap: 10px;
+    }
+}
+
+.social-icons a,
+.social-icons a:visited {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    transition: all 0.3s;
+    font-size: 24px;
+}
+
+.profile-logo {
+    font-size: 26px;
+}
+
+/* Mobile adjustments */
+@media (max-width: 520px) {
+    .social-icons a,
+    .social-icons a:visited {
+        font-size: 32px;
     }
 
-    .controls {
-        gap: 2px;
-        padding: 2px;
+    .profile-logo {
+        font-size: 34px;
+    }
+
+    /* Ensure sidebar is usable on mobile */
+    .sidebar button {
+        font-size: 20px;
+        padding: 8px 16px;
+    }
+
+    .sidebar-toggle {
+        width: 40px;
+        height: 60px;
+        font-size: 32px;
+    }
+}
+
+/* Desktop sizes */
+.social-icons a,
+.social-icons a:visited {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    transition: all 0.3s;
+    font-size: 24px;
+}
+
+.profile-logo {
+    font-size: 26px;
+}
+
+/* Tablet/Medium screens */
+@media (max-width: 768px) {
+    .social-icons a,
+    .social-icons a:visited {
+        font-size: 22px;
+    }
+
+    .profile-logo {
+        font-size: 24px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 520px) {
+    .social-icons a,
+    .social-icons a:visited {
+        font-size: 20px;
+    }
+
+    .profile-logo {
+        font-size: 22px;
+    }
+}
+
+/* Very small screens */
+@media (max-width: 380px) {
+    .social-icons a,
+    .social-icons a:visited {
+        font-size: 18px;
+    }
+
+    .profile-logo {
+        font-size: 20px;
+    }
+
+    .social-icons {
+        gap: 12px; /* Reduce gap between icons */
     }
 }
