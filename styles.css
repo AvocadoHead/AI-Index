@@ -24,12 +24,14 @@ canvas:active {
 
 .controls {
     position: fixed;
-    top: 20px;
-    right: 20px;
+    top: 10px;
+    left: 10px;
+    z-index: 1000;
     display: flex;
-    gap: 8px;
-    z-index: 100;
-    padding: 8px;
+    gap: 10px;
+    flex-wrap: wrap;
+    max-width: calc(100% - 20px);
+    padding: 5px;
 }
 
 .file-controls, .module-controls {
@@ -639,12 +641,14 @@ body.light-mode .social-icons a:hover {
 /* Update the controls container */
 .controls {
     position: fixed;
-    top: 20px;
-    right: 20px;
+    top: 10px;
+    left: 10px;
+    z-index: 1000;
     display: flex;
-    gap: 8px;
-    z-index: 100;
-    padding: 8px;
+    gap: 10px;
+    flex-wrap: wrap;
+    max-width: calc(100% - 20px);
+    padding: 5px;
 }
 
 /* Style all control buttons consistently */
@@ -703,4 +707,28 @@ body.light-mode .social-icons a:hover {
 .rtl .control-button {
     font-family: 'Heebo', Arial, sans-serif;
     direction: rtl;
+}
+
+/* Adjust button sizes for mobile */
+@media screen and (max-width: 480px) {
+    .controls {
+        gap: 5px; /* Reduce gap between buttons */
+    }
+
+    .control-button,
+    #saveFile,
+    #loadFile,
+    #editModule,
+    #deleteModule {
+        padding: 8px 12px; /* Keep reasonable touch target size */
+        font-size: 14px;
+        min-width: auto; /* Allow buttons to be narrower */
+    }
+}
+
+/* For very narrow screens */
+@media screen and (max-width: 360px) {
+    .controls {
+        gap: 4px;
+    }
 }
