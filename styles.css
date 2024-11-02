@@ -732,3 +732,16 @@ body.light-mode .social-icons a:hover {
         gap: 4px;
     }
 }
+
+.mini-tooltip {
+    background: transparent !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    border: none !important;
+}
+
+.mini-tooltip img {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+}
