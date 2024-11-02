@@ -745,3 +745,14 @@ body.light-mode .social-icons a:hover {
     height: 32px;
     object-fit: contain;
 }
+
+#tooltip {
+    pointer-events: auto;  /* Make sure tooltip can receive events */
+    z-index: 1000;        /* Ensure tooltip is above canvas */
+}
+
+#moduleCloud {
+    touch-action: none;   /* Prevent default touch actions */
+    position: relative;   /* Ensure proper stacking context */
+    z-index: 1;
+}
