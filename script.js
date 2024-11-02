@@ -221,6 +221,12 @@ class ModuleCloud {
         };
 
         this.setupDarkModeToggle();
+
+        // Disable edit button initially
+        const editButton = document.getElementById('editModule');
+        if (editButton) {
+            editButton.disabled = true;
+        }
     }
 
     initializeFromModules(modules) {
@@ -472,24 +478,17 @@ class ModuleCloud {
             const editModuleBtn = document.getElementById('editModule');
             
             if (clickedModule) {
-                if (this.activeModule === clickedModule) {
-                    // Second click - open URL
-                    if (clickedModule.url) {
-                        window.open(clickedModule.url, '_blank');
-                    }
-                } else {
-                    // First click - select module and pin tooltip
-                    this.activeModule = clickedModule;
-                    this.pinnedTooltip = true;
-                    editModuleBtn.disabled = false;
-                    this.showTooltip(clickedModule, e.clientX, e.clientY);
-                }
+                // Enable edit button when a module is selected
+                editModuleBtn.disabled = false;
+                this.activeModule = clickedModule;
+                this.pinnedTooltip = true;
+                this.showTooltip(clickedModule, e.clientX, e.clientY);
             } else {
-                // Click on empty space - unpin tooltip and deselect module
+                // Disable edit button when clicking empty space
+                editModuleBtn.disabled = true;
                 this.activeModule = null;
                 this.pinnedTooltip = false;
                 this.hideTooltip();
-                editModuleBtn.disabled = true;
             }
         };
 
@@ -671,31 +670,31 @@ class ModuleCloud {
         return `#${((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1)}`;
     }
 
-    handleMouseMove(event) {
+    handleMouseMove = (event) => {
         const rect = this.canvas.getBoundingClientRect();
         const mouseX = event.clientX - rect.left;
         const mouseY = event.clientY - rect.top;
 
-        if (this.isDragging) {
-            const deltaX = mouseX - this.lastMouseX;
-            const deltaY = mouseY - this.lastMouseY;
+        if (!this.isDragging) {
+            const hoveredModule = this.getHoveredModule(mouseX, mouseY);
             
-            // Increase sensitivity and reverse X rotation for more natural feel
-            this.momentumX = -deltaY * 0.005; // Increased from 0.003
-            this.momentumY = deltaX * 0.005;  // Increased from 0.003
-            
-            this.rotationX += this.momentumX;
-            this.rotationY += this.momentumY;
-
-            // Update last position after applying movement
-            this.lastMouseX = mouseX;
-            this.lastMouseY = mouseY;
+            if (hoveredModule) {
+                this.canvas.style.cursor = 'pointer';
+                
+                // Only update if hovering over a different module
+                if (this.lastHoveredModule?.name !== hoveredModule.name) {
+                    this.lastHoveredModule = hoveredModule;
+                    this.showTooltip(hoveredModule, event.clientX, event.clientY);
+                }
+            } else {
+                this.canvas.style.cursor = 'grab';
+                if (!this.pinnedTooltip) {
+                    this.hideTooltip();
+                }
+                this.lastHoveredModule = null;
+            }
         }
-
-        // Handle hover detection separately from dragging
-        const hoveredModule = this.getHoveredModule(mouseX, mouseY);
-        this.canvas.style.cursor = hoveredModule ? 'pointer' : (this.isDragging ? 'grabbing' : 'grab');
-    }
+    };
 
     handleTouchStart(e) {
         e.preventDefault();
