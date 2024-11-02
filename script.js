@@ -225,7 +225,7 @@ class ModuleCloud {
 
         this.setupDarkModeToggle();
 
-        // Initialize edit button state
+        // Initial state: no module highlighted = button grey
         const editButton = document.getElementById('editModule');
         if (editButton) {
             editButton.disabled = true;
@@ -590,8 +590,7 @@ class ModuleCloud {
             const totalMovement = Math.abs(touchEndX - this.touchStartX) + 
                                 Math.abs(touchEndY - this.touchStartY);
 
-            if (touchDuration < 200 && totalMovement < 10) {
-                // It's a clean tap
+            if (touchDuration < 1000 && totalMovement < 10) {  // Handle taps
                 const rect = this.canvas.getBoundingClientRect();
                 const x = touchEndX - rect.left;
                 const y = touchEndY - rect.top;
@@ -599,34 +598,38 @@ class ModuleCloud {
                 const tappedModule = this.getHoveredModule(x, y);
                 
                 if (tappedModule) {
-                    // Prevent the default click behavior
-                    e.preventDefault();
-                    
-                    // Always just select and show tooltip first
-                    if (tappedModule !== this.activeModule) {
+                    if (this.activeModule !== tappedModule) {
                         this.activeModule = tappedModule;
                         this.showTooltip(tappedModule, touchEndX, touchEndY);
+                        // Enable edit button on selection
+                        const editButton = document.getElementById('editModule');
+                        if (editButton) {
+                            editButton.disabled = false;
+                            editButton.classList.remove('disabled');
+                            editButton.style.opacity = '1';
+                        }
+                    } else if (touchDuration > 800) {
+                        if (tappedModule.url) {
+                            window.open(tappedModule.url, '_blank');
+                        }
                     }
                 } else {
-                    // Tap on empty space - clear selection
-                    this.activeModule = null;
+                    this.handleModuleSelection(x, y);  // This will handle deselection
                     this.hideTooltip();
                 }
-                
-                this.updateEditButton();
-            } else {
-                // Swipe momentum code - unchanged
-                const dx = touchEndX - this.touchStartX;
-                const dy = touchEndY - this.touchStartY;
-                
-                const momentumMultiplier = 0.001;
-                this.momentumX = dy * momentumMultiplier;
-                this.momentumY = dx * momentumMultiplier;
-                
-                const maxMomentum = 0.02;
-                this.momentumX = Math.max(Math.min(this.momentumX, maxMomentum), -maxMomentum);
-                this.momentumY = Math.max(Math.min(this.momentumY, maxMomentum), -maxMomentum);
             }
+
+            // Always apply momentum for swipes
+            const dx = touchEndX - this.touchStartX;
+            const dy = touchEndY - this.touchStartY;
+            
+            const momentumMultiplier = 0.001;
+            this.momentumX = dy * momentumMultiplier;
+            this.momentumY = dx * momentumMultiplier;
+            
+            const maxMomentum = 0.02;
+            this.momentumX = Math.max(Math.min(this.momentumX, maxMomentum), -maxMomentum);
+            this.momentumY = Math.max(Math.min(this.momentumY, maxMomentum), -maxMomentum);
         });
 
         // Prevent default touch behaviors
@@ -779,6 +782,22 @@ class ModuleCloud {
         this.canvas.addEventListener('touchend', (e) => {
             this.handleTouchEnd(e);
         });
+
+        // Add click/touch listener for sidebar auto-close
+        document.addEventListener('touchend', (event) => {
+            const sidebar = document.querySelector('.sidebar');
+            const sidebarToggle = document.querySelector('.sidebar-toggle');
+            
+            if (sidebar.classList.contains('visible') && 
+                !sidebar.contains(event.target) && 
+                event.target !== sidebarToggle) {
+                    
+                sidebar.classList.remove('visible');
+                if (sidebarToggle) {
+                    sidebarToggle.style.transform = 'translateY(-50%) rotate(0deg)';
+                }
+            }
+        });
     }
 
     handleTouchStart(event) {
@@ -813,7 +832,7 @@ class ModuleCloud {
         const totalMovement = Math.abs(touchEndX - this.touchStartX) + 
                             Math.abs(touchEndY - this.touchStartY);
 
-        if (touchDuration < 200 && totalMovement < 10) {
+        if (touchDuration < 1000 && totalMovement < 10) {  // Handle taps
             const rect = this.canvas.getBoundingClientRect();
             const x = touchEndX - rect.left;
             const y = touchEndY - rect.top;
@@ -821,19 +840,32 @@ class ModuleCloud {
             const tappedModule = this.getHoveredModule(x, y);
             
             if (tappedModule) {
-                if (tappedModule === this.activeModule && tappedModule.url) {
-                    window.open(tappedModule.url, '_blank');
-                } else {
-                    this.activeModule = tappedModule;
+                if (this.activeModule !== tappedModule) {
+                    // Use the existing selection handler that was working
+                    this.handleModuleSelection(x, y);
                     this.showTooltip(tappedModule, touchEndX, touchEndY);
+                } else if (touchDuration > 800) {
+                    if (tappedModule.url) {
+                        window.open(tappedModule.url, '_blank');
+                    }
                 }
             } else {
-                this.activeModule = null;
+                this.handleModuleSelection(x, y);  // This will handle deselection
                 this.hideTooltip();
             }
-            
-            this.updateEditButton();
         }
+
+        // Always apply momentum for swipes
+        const dx = touchEndX - this.touchStartX;
+        const dy = touchEndY - this.touchStartY;
+        
+        const momentumMultiplier = 0.001;
+        this.momentumX = dy * momentumMultiplier;
+        this.momentumY = dx * momentumMultiplier;
+        
+        const maxMomentum = 0.02;
+        this.momentumX = Math.max(Math.min(this.momentumX, maxMomentum), -maxMomentum);
+        this.momentumY = Math.max(Math.min(this.momentumY, maxMomentum), -maxMomentum);
     }
 
     updateEditButton() {
@@ -877,36 +909,7 @@ class ModuleCloud {
 
     handleModuleSelection(x, y) {
         const hoveredModule = this.getHoveredModule(x, y);
-        const editButton = document.getElementById('editModule');
-        
-        if (hoveredModule) {
-            if (this.activeModule === hoveredModule) {
-                // Second tap - open URL
-                if (hoveredModule.url) {
-                    window.open(hoveredModule.url, '_blank');
-                }
-            } else {
-                // First tap - select module
-                this.activeModule = hoveredModule;
-                this.showTooltip(hoveredModule, x, y);
-                // Enable edit button
-                if (editButton) {
-                    editButton.disabled = false;
-                    editButton.classList.remove('disabled');
-                    editButton.style.opacity = '1';
-                }
-            }
-        } else {
-            // Tap outside - deselect
-            this.activeModule = null;
-            this.hideTooltip();
-            // Disable edit button
-            if (editButton) {
-                editButton.disabled = true;
-                editButton.classList.add('disabled');
-                editButton.style.opacity = '0.5';
-            }
-        }
+        this.handleModuleActivation(hoveredModule, x, y);
     }
 
     adjustColor(color, amount) {
@@ -1253,45 +1256,14 @@ class ModuleCloud {
     setupTouchEvents() {
         this.canvas.addEventListener('touchstart', (e) => {
             e.preventDefault();
-            if (e.touches.length === 1) {
-                const touch = e.touches[0];
-                const rect = this.canvas.getBoundingClientRect();
-                const touchX = touch.clientX - rect.left;
-                const touchY = touch.clientY - rect.top;
-                
-                // Check if we touched a module
-                const touchedModule = this.getHoveredModule(touchX, touchY);
-                const editModuleBtn = document.getElementById('editModule');
-                
-                if (touchedModule) {
-                    if (this.activeModule === touchedModule) {
-                        // Second tap on same module - open URL
-                        if (touchedModule.url) {
-                            window.open(touchedModule.url, '_blank');
-                        }
-                    } else {
-                        // First tap - show tooltip and enable edit
-                        this.activeModule = touchedModule;
-                        this.pinnedTooltip = true;
-                        editModuleBtn.disabled = false;  // Enable edit button
-                        this.showTooltip(touchedModule, touch.clientX, touch.clientY);
-                    }
-                } else {
-                    // Tap on empty space
-                    this.isDragging = true;
-                    this.lastMouseX = touchX;
-                    this.lastMouseY = touchY;
-                    // Clear tooltip, selection and disable edit
-                    this.activeModule = null;
-                    this.pinnedTooltip = false;
-                    this.hideTooltip();
-                    editModuleBtn.disabled = true;  // Disable edit button
-                }
-            } else if (e.touches.length === 2) {
-                // Two fingers - initialize pinch-to-zoom
-                this.lastTouchDistance = this.getTouchDistance(e.touches);
-            }
-        }, { passive: false });
+            const touch = e.touches[0];
+            const rect = this.canvas.getBoundingClientRect();
+            const touchX = touch.clientX - rect.left;
+            const touchY = touch.clientY - rect.top;
+            
+            const touchedModule = this.getHoveredModule(touchX, touchY);
+            this.handleModuleActivation(touchedModule, touch.clientX, touch.clientY);
+        });
 
         this.canvas.addEventListener('touchmove', (e) => {
             e.preventDefault();
@@ -1642,6 +1614,32 @@ class ModuleCloud {
         if (!this.canOpenUrl) {
             event.preventDefault();
             return false;
+        }
+    }
+
+    // New helper method to handle all module selection logic
+    handleModuleActivation(module, x, y) {
+        const editButton = document.getElementById('editModule');
+        
+        if (module) {
+            if (this.activeModule === module) {
+                // Second interaction - open URL
+                if (module.url) {
+                    window.open(module.url, '_blank');
+                }
+            } else {
+                // First interaction - select module
+                this.activeModule = module;
+                editButton.disabled = false;
+                editButton.style.opacity = '1';
+                this.showTooltip(module, x, y);
+            }
+        } else {
+            // No module - deselect
+            this.activeModule = null;
+            this.hideTooltip();
+            editButton.disabled = true;
+            editButton.style.opacity = '0.5';
         }
     }
 }
