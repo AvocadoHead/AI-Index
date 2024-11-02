@@ -234,6 +234,13 @@ class ModuleCloud {
 
         this.editMode = false;
         this.activeModule = null;
+
+        // Add touch-related properties
+        this.lastTouchX = 0;
+        this.lastTouchY = 0;
+        this.touchStartX = 0;
+        this.touchStartY = 0;
+        this.touchStartTime = 0;
     }
 
     initializeFromModules(modules) {
@@ -442,9 +449,25 @@ class ModuleCloud {
             }
         });
 
-        this.canvas.addEventListener('mouseup', () => {
+        this.canvas.addEventListener('mouseup', (e) => {
+            if (!this.isDragging) {
+                // It was a click, not a drag
+                const rect = this.canvas.getBoundingClientRect();
+                const mouseX = e.clientX - rect.left;
+                const mouseY = e.clientY - rect.top;
+                this.handleModuleSelection(mouseX, mouseY);
+            }
+            
+            // End drag state but don't clear selection/tooltip
             this.isDragging = false;
             this.canvas.style.cursor = 'grab';
+            
+            // Add final momentum
+            const deltaTime = Date.now() - this.lastInteractionTime;
+            if (deltaTime < 100) { // Only add momentum for quick movements
+                this.momentumX *= 2; // Boost final momentum
+                this.momentumY *= 2;
+            }
         });
 
         this.canvas.addEventListener('mouseleave', () => {
@@ -552,10 +575,37 @@ class ModuleCloud {
             }
         }, { passive: false });
 
-        this.canvas.addEventListener('touchend', () => {
-            this.isDragging = false;
+        this.canvas.addEventListener('touchend', (e) => {
+            const touchEndTime = Date.now();
+            const touchDuration = touchEndTime - this.touchStartTime;
+
+            if (touchDuration < 200) {
+                // It's a tap, handle module selection
+                const rect = this.canvas.getBoundingClientRect();
+                const x = event.changedTouches[0].clientX - rect.left;
+                const y = event.changedTouches[0].clientY - rect.top;
+                this.handleModuleSelection(x, y);
+            } else {
+                // It's a swipe, add gentle momentum
+                const touchEndX = event.changedTouches[0].clientX;
+                const touchEndY = event.changedTouches[0].clientY;
+                
+                // Calculate velocity based on total movement
+                const dx = touchEndX - this.touchStartX;
+                const dy = touchEndY - this.touchStartY;
+                
+                // Reduce the momentum significantly
+                const momentumMultiplier = 0.001; // Reduced from 0.05
+                this.momentumX = dy * momentumMultiplier;
+                this.momentumY = dx * momentumMultiplier;
+                
+                // Cap maximum momentum
+                const maxMomentum = 0.02; // Reduced from 0.05
+                this.momentumX = Math.max(Math.min(this.momentumX, maxMomentum), -maxMomentum);
+                this.momentumY = Math.max(Math.min(this.momentumY, maxMomentum), -maxMomentum);
+            }
+            
             this.lastInteractionTime = Date.now();
-            this.hideTooltip();
         });
 
         // Prevent default touch behaviors
@@ -679,6 +729,151 @@ class ModuleCloud {
                 }
             });
         }
+
+        // Add click listener for sidebar auto-close
+        document.addEventListener('click', (event) => {
+            const sidebar = document.querySelector('.sidebar');
+            const sidebarToggle = document.querySelector('.sidebar-toggle');
+            if (sidebar.classList.contains('visible') && 
+                !sidebar.contains(event.target) && 
+                event.target !== sidebarToggle) {
+                sidebar.classList.remove('visible');
+                if (sidebarToggle) {
+                    sidebarToggle.style.transform = 'translateY(-50%) rotate(0deg)';
+                }
+            }
+        });
+
+        // Update touch event handlers
+        this.canvas.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            this.handleTouchStart(e);
+        }, { passive: false });
+
+        this.canvas.addEventListener('touchmove', (e) => {
+            e.preventDefault();
+            this.handleTouchMove(e);
+        }, { passive: false });
+
+        this.canvas.addEventListener('touchend', (e) => {
+            this.handleTouchEnd(e);
+        });
+    }
+
+    handleTouchStart(event) {
+        this.lastTouchX = event.touches[0].clientX;
+        this.lastTouchY = event.touches[0].clientY;
+        this.touchStartX = this.lastTouchX;
+        this.touchStartY = this.lastTouchY;
+        this.touchStartTime = Date.now();
+    }
+
+    handleTouchMove(event) {
+        event.preventDefault();
+        const touchX = event.touches[0].clientX;
+        const touchY = event.touches[0].clientY;
+        const dx = touchX - this.lastTouchX;
+        const dy = touchY - this.lastTouchY;
+
+        this.rotationY += dx * 0.005;
+        this.rotationX -= dy * 0.005;
+
+        this.lastTouchX = touchX;
+        this.lastTouchY = touchY;
+    }
+
+    handleTouchEnd(event) {
+        const touchEndTime = Date.now();
+        const touchDuration = touchEndTime - this.touchStartTime;
+
+        if (touchDuration < 200) {
+            // It's a tap, handle module selection
+            const rect = this.canvas.getBoundingClientRect();
+            const x = event.changedTouches[0].clientX - rect.left;
+            const y = event.changedTouches[0].clientY - rect.top;
+            this.handleModuleSelection(x, y);
+        } else {
+            // It's a swipe, add gentle momentum
+            const touchEndX = event.changedTouches[0].clientX;
+            const touchEndY = event.changedTouches[0].clientY;
+            
+            // Calculate velocity based on total movement
+            const dx = touchEndX - this.touchStartX;
+            const dy = touchEndY - this.touchStartY;
+            
+            // Reduce the momentum significantly
+            const momentumMultiplier = 0.001; // Reduced from 0.05
+            this.momentumX = dy * momentumMultiplier;
+            this.momentumY = dx * momentumMultiplier;
+            
+            // Cap maximum momentum
+            const maxMomentum = 0.02; // Reduced from 0.05
+            this.momentumX = Math.max(Math.min(this.momentumX, maxMomentum), -maxMomentum);
+            this.momentumY = Math.max(Math.min(this.momentumY, maxMomentum), -maxMomentum);
+        }
+        
+        this.lastInteractionTime = Date.now();
+    }
+
+    updateEditButton() {
+        const editButton = document.getElementById('editModule');
+        const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+        if (editButton) {
+            if (this.activeModule || isMobile) {
+                editButton.disabled = false;
+                editButton.style.opacity = '1';
+            } else {
+                editButton.disabled = true;
+                editButton.style.opacity = '0.5';
+            }
+        }
+    }
+
+    animate() {
+        requestAnimationFrame(() => this.animate());
+        
+        // Update rotation with momentum
+        this.rotationY += this.momentumX;
+        this.rotationX += this.momentumY;
+
+        // Apply friction to momentum
+        this.momentumX *= 0.95;
+        this.momentumY *= 0.95;
+
+        // Clear canvas and draw modules
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+        this.modules.forEach(module => {
+            module.update();
+            this.drawModule(module);
+        });
+
+        // Update tooltip position if needed
+        if (this.activeModule && this.tooltip.style.display !== 'none') {
+            this.updateTooltipPosition(this.activeModule);
+        }
+    }
+
+    handleModuleSelection(x, y) {
+        const hoveredModule = this.getHoveredModule(x, y);
+        if (hoveredModule) {
+            if (this.activeModule === hoveredModule) {
+                // Second tap - open URL
+                if (hoveredModule.url) {
+                    window.open(hoveredModule.url, '_blank');
+                }
+            } else {
+                // First tap - select module
+                this.activeModule = hoveredModule;
+                this.showTooltip(hoveredModule, x, y);
+                this.updateEditButton();
+            }
+        } else {
+            // Tap outside - deselect
+            this.activeModule = null;
+            this.hideTooltip();
+            this.updateEditButton();
+        }
     }
 
     adjustColor(color, amount) {
@@ -700,29 +895,6 @@ class ModuleCloud {
             this.canvas.style.cursor = hoveredModule ? 'pointer' : 'grab';
         }
     };
-
-    handleTouchStart(e) {
-        e.preventDefault();
-        const touch = e.touches[0];
-        this.isDragging = true;
-        this.lastMousePos = { x: touch.clientX, y: touch.clientY };
-    }
-
-    handleTouchMove(e) {
-        e.preventDefault();
-        if (this.isDragging) {
-            const touch = e.touches[0];
-            const deltaX = touch.clientX - this.lastMousePos.x;
-            const deltaY = touch.clientY - this.lastMousePos.y;
-            this.rotation.x += deltaY * 0.005;
-            this.rotation.y += deltaX * 0.005;
-            this.lastMousePos = { x: touch.clientX, y: touch.clientY };
-        }
-    }
-
-    handleTouchEnd() {
-        this.isDragging = false;
-    }
 
     handleDoubleClick() {
         if (this.hoveredModule) {
@@ -856,51 +1028,6 @@ class ModuleCloud {
         });
         
         return hoveredModule;
-    }
-
-    animate() {
-        requestAnimationFrame(() => this.animate());
-        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-
-        // Apply momentum with friction when not dragging
-        if (!this.isDragging) {
-            this.momentumX *= this.friction;
-            this.momentumY *= this.friction;
-            this.rotationX += this.momentumX;
-            this.rotationY += this.momentumY;
-        }
-
-        // Update and draw modules
-        this.modules.forEach(module => {
-            module.update();
-            this.drawModule(module);
-        });
-    }
-
-    drawModuleShadow(module) {
-        const rotated = this.rotatePoint(module.x, module.y, module.z);
-        const scale = Math.max(0.2, (rotated.z + 400) / 600);
-        const shadowOffset = 50; // Distance of shadow from text
-        const shadowBlur = 20;   // Blur amount for shadow
-        
-        // Calculate shadow position
-        const shadowX = this.canvas.width / 2 + rotated.x;
-        const shadowY = this.canvas.height / 2 + rotated.y + shadowOffset;
-        
-        this.ctx.save();
-        
-        // Draw shadow
-        this.ctx.fillStyle = 'rgba(0, 0, 0, 0.1)'; // Very subtle shadow
-        this.ctx.shadowColor = 'rgba(0, 0, 0, 0.1)';
-        this.ctx.shadowBlur = shadowBlur * scale;
-        this.ctx.shadowOffsetY = 5 * scale;
-        
-        this.ctx.textAlign = 'center';
-        this.ctx.textBaseline = 'middle';
-        this.ctx.font = '16px Heebo';
-        this.ctx.fillText(module.name, shadowX, shadowY);
-        
-        this.ctx.restore();
     }
 
     saveModules() {
