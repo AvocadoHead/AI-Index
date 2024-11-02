@@ -65,6 +65,9 @@ class ModuleCloud {
         this.lastMouseY = 0;
         this.isDragging = false;
         this.tooltip = document.getElementById('tooltip');
+        if (!this.tooltip) {
+            console.error('Tooltip element not found!'); // Debug line
+        }
         this.autoRotationSpeedX = 0.0005; // Slower X rotation
         this.autoRotationSpeedY = 0.001;  // Slightly faster Y rotation
         this.lastInteractionTime = 0;
@@ -205,7 +208,7 @@ class ModuleCloud {
                 VID: 'VID | כלי וידאו',
                 'UI/UX': 'UI/UX | ממשק משתמש',
                 ANI: 'ANI | אנימציה',
-                FCE: 'FCE | עריכת פני',
+                FCE: 'FCE | עריכת ני',
                 SEA: 'SEA | חיפוש AI',
                 CON: 'CON | יצירת תוכן',
                 PRE: 'PRE | יצירת מצגות',
@@ -226,7 +229,11 @@ class ModuleCloud {
         const editButton = document.getElementById('editModule');
         if (editButton) {
             editButton.disabled = true;
+            editButton.classList.add('disabled');
         }
+
+        this.editMode = false;
+        this.activeModule = null;
     }
 
     initializeFromModules(modules) {
@@ -478,17 +485,30 @@ class ModuleCloud {
             const editModuleBtn = document.getElementById('editModule');
             
             if (clickedModule) {
-                // Enable edit button when a module is selected
-                editModuleBtn.disabled = false;
-                this.activeModule = clickedModule;
-                this.pinnedTooltip = true;
-                this.showTooltip(clickedModule, e.clientX, e.clientY);
+                if (this.activeModule === clickedModule) {
+                    // Second click - open URL
+                    if (clickedModule.url) {
+                        window.open(clickedModule.url, '_blank');
+                    }
+                } else {
+                    // First click or new module selection
+                    this.activeModule = clickedModule;
+                    editModuleBtn.disabled = false;
+                    editModuleBtn.style.opacity = '1';
+                    
+                    // Show new tooltip
+                    this.pinnedTooltip = true;
+                    this.showTooltip(clickedModule, e.clientX, e.clientY);
+                }
             } else {
-                // Disable edit button when clicking empty space
-                editModuleBtn.disabled = true;
-                this.activeModule = null;
-                this.pinnedTooltip = false;
-                this.hideTooltip();
+                // Only close on definitive click outside
+                if (!this.isDragging) {
+                    this.activeModule = null;
+                    this.pinnedTooltip = false;
+                    editModuleBtn.disabled = true;
+                    editModuleBtn.style.opacity = '0.5';
+                    this.hideTooltip();
+                }
             }
         };
 
@@ -671,28 +691,13 @@ class ModuleCloud {
     }
 
     handleMouseMove = (event) => {
-        const rect = this.canvas.getBoundingClientRect();
-        const mouseX = event.clientX - rect.left;
-        const mouseY = event.clientY - rect.top;
-
+        // Only handle cursor style changes
         if (!this.isDragging) {
+            const rect = this.canvas.getBoundingClientRect();
+            const mouseX = event.clientX - rect.left;
+            const mouseY = event.clientY - rect.top;
             const hoveredModule = this.getHoveredModule(mouseX, mouseY);
-            
-            if (hoveredModule) {
-                this.canvas.style.cursor = 'pointer';
-                
-                // Only update if hovering over a different module
-                if (this.lastHoveredModule?.name !== hoveredModule.name) {
-                    this.lastHoveredModule = hoveredModule;
-                    this.showTooltip(hoveredModule, event.clientX, event.clientY);
-                }
-            } else {
-                this.canvas.style.cursor = 'grab';
-                if (!this.pinnedTooltip) {
-                    this.hideTooltip();
-                }
-                this.lastHoveredModule = null;
-            }
+            this.canvas.style.cursor = hoveredModule ? 'pointer' : 'grab';
         }
     };
 
@@ -726,10 +731,9 @@ class ModuleCloud {
     }
 
     async showTooltip(module, x, y) {
-        if (!this.tooltip) return;
+        if (!this.tooltip || module !== this.activeModule) return;
         
         try {
-            // Combine categories and scores into single list
             const categoriesWithScores = module.categories
                 .map(category => {
                     const score = module.scores[category];
@@ -737,10 +741,7 @@ class ModuleCloud {
                 })
                 .join('\n');
 
-            // Get description
-            const description = await this.getModuleDescription(module);
-
-            const tooltipContent = `
+            const initialContent = `
                 <div class="tooltip-header">
                     <img src="${this.getFaviconUrl(module.url)}" 
                          alt="${module.name} logo" 
@@ -749,7 +750,9 @@ class ModuleCloud {
                     <h3 class="module-name">${module.name}</h3>
                 </div>
                 <div class="tooltip-body">
-                    <p class="description">${description}</p>
+                    <p class="description">
+                        ${this.currentLanguage === 'he' ? 'טוען תיאור...' : 'Loading description...'}
+                    </p>
                     <div class="tooltip-metadata">
                         <p><strong>Categories & Scores:</strong></p>
                         <pre>${categoriesWithScores}</pre>
@@ -757,33 +760,44 @@ class ModuleCloud {
                 </div>
             `;
             
-            this.tooltip.innerHTML = tooltipContent;
+            this.tooltip.innerHTML = initialContent;
             this.tooltip.style.display = 'block';
             
             // Position tooltip
-            const tooltipRect = this.tooltip.getBoundingClientRect();
             const viewportWidth = window.innerWidth;
             const viewportHeight = window.innerHeight;
             
-            // Adjust x position if tooltip would overflow right edge
-            if (x + tooltipRect.width + 20 > viewportWidth) {
-                x = viewportWidth - tooltipRect.width - 20;
+            let tooltipX = x + 20;
+            let tooltipY = y + 20;
+            
+            const tooltipRect = this.tooltip.getBoundingClientRect();
+            
+            if (tooltipX + tooltipRect.width > viewportWidth) {
+                tooltipX = viewportWidth - tooltipRect.width - 20;
             }
             
-            // Adjust y position if tooltip would overflow bottom edge
-            if (y + tooltipRect.height + 20 > viewportHeight) {
-                y = viewportHeight - tooltipRect.height - 20;
+            if (tooltipY + tooltipRect.height > viewportHeight) {
+                tooltipY = viewportHeight - tooltipRect.height - 20;
             }
             
-            this.tooltip.style.left = `${x + 10}px`;
-            this.tooltip.style.top = `${y + 10}px`;
+            this.tooltip.style.left = `${tooltipX}px`;
+            this.tooltip.style.top = `${tooltipY}px`;
             
+            // Only update description if this is still the active module
+            if (module === this.activeModule) {
+                const description = await this.getModuleDescription(module);
+                const descriptionElement = this.tooltip.querySelector('.description');
+                if (descriptionElement && module === this.activeModule) {
+                    descriptionElement.innerHTML = description;
+                }
+            }
         } catch (error) {
             console.error('Error showing tooltip:', error);
         }
     }
 
     hideTooltip() {
+        // Only hide if we're explicitly closing it
         if (this.tooltip && !this.pinnedTooltip) {
             this.tooltip.style.display = 'none';
         }
@@ -1050,6 +1064,13 @@ class ModuleCloud {
             centerY + (rotated.y * this.scale)
         );
         
+        // Set opacity based on whether module is active
+        if (this.activeModule && this.activeModule !== module) {
+            this.ctx.globalAlpha = document.body.classList.contains('light-mode') ? 0.2 : 0.3;
+        } else {
+            this.ctx.globalAlpha = 1;
+        }
+        
         this.ctx.fillStyle = document.body.classList.contains('light-mode') ? '#000000' : '#ffffff';
         this.ctx.textAlign = 'center';
         this.ctx.textBaseline = 'middle';
@@ -1210,33 +1231,58 @@ class ModuleCloud {
         }
     }
 
-    async fetchModuleDescription(module) {
+    async getModuleDescription(module) {
         try {
-            // Try to fetch metadata with no-cors mode to avoid CORS errors
-            const response = await fetch(module.url, {
-                mode: 'no-cors',
-                headers: {
-                    'Accept': 'text/html'
+            // Return cached description if available
+            if (this.descriptionCache.has(module.name + this.currentLanguage)) {
+                return this.descriptionCache.get(module.name + this.currentLanguage);
+            }
+
+            const proxyUrl = `https://api.microlink.io?url=${encodeURIComponent(module.url)}`;
+            const metaResponse = await fetch(proxyUrl);
+            const metadata = await metaResponse.json();
+
+            let description = metadata.data?.description || 
+                             metadata.data?.meta?.description;
+
+            if (!description) {
+                return this.getDefaultDescription(module);
+            }
+
+            // Translate description if in Hebrew mode
+            if (this.currentLanguage === 'he') {
+                try {
+                    const translateUrl = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=he&dt=t&q=${encodeURIComponent(description)}`;
+                    const translateResponse = await fetch(translateUrl);
+                    const translateData = await translateResponse.json();
+                    description = translateData[0][0][0];
+                } catch (error) {
+                    console.log('Translation error:', error);
+                    // Fall back to English if translation fails
                 }
-            });
+            }
 
-            // Since we can't read the response in no-cors mode,
-            // we'll use a simpler approach with just module data
-            const scoresList = Object.entries(module.scores)
-                .map(([category, score]) => `${category}: ${Math.round(score * 100)}%`)
-                .join('\n');
+            // Limit description length
+            if (description.length > 150) {
+                description = description.substring(0, 147) + '...';
+            }
 
-            const domain = new URL(module.url).hostname.replace('www.', '');
-            return `${domain}\n\nCategories: ${module.categories.join(', ')}\n\nScores:\n${scoresList}`;
-
+            // Cache the result with language key
+            this.descriptionCache.set(module.name + this.currentLanguage, description);
+            
+            return description;
         } catch (error) {
-            // Silently handle the error and return basic info
-            const scoresList = Object.entries(module.scores)
-                .map(([category, score]) => `${category}: ${Math.round(score * 100)}%`)
-                .join('\n');
-                
-            return `Categories: ${module.categories.join(', ')}\n\nScores:\n${scoresList}`;
+            console.log('Error fetching description:', error);
+            return this.getDefaultDescription(module);
         }
+    }
+
+    getDefaultDescription(module) {
+        const defaults = {
+            en: `${module.name} - AI-powered tool`,
+            he: `${module.name} - כלי מבוסס בינה מלאכותית`
+        };
+        return defaults[this.currentLanguage || 'en'];
     }
 
     updateTooltipPosition(x, y) {
@@ -1274,57 +1320,6 @@ class ModuleCloud {
             return `https://www.google.com/s2/favicons?domain=${new URL(url).hostname}&sz=128`;
         } catch (error) {
             return 'data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🤖</text></svg>';
-        }
-    }
-
-    async getModuleDescription(module) {
-        const API_KEY = 'AIzaSyBZrqpdFTOWJBibREV_ZqOjcHKLIBl-AzE';
-        const SEARCH_ENGINE_ID = 'e21d905aa4d5d49e9';
-        
-        try {
-            // Return cached description if available
-            if (this.descriptionCache.has(module.name)) {
-                return this.descriptionCache.get(module.name);
-            }
-
-            // If there's already a pending request, return default description
-            if (this.isRequestPending) {
-                return `${module.name} - AI-powered tool`;
-            }
-
-            this.isRequestPending = true;
-
-            const query = `${module.name} AI tool description`;
-            const url = `https://www.googleapis.com/customsearch/v1?key=${API_KEY}&cx=${SEARCH_ENGINE_ID}&q=${encodeURIComponent(query)}`;
-            
-            const response = await fetch(url);
-            
-            if (response.status === 429) {
-                throw new Error('Rate limit exceeded');
-            }
-            
-            const data = await response.json();
-            
-            let description = `${module.name} - AI-powered tool`;
-            
-            if (data.items && data.items[0]) {
-                description = data.items[0].snippet
-                    .replace(/\n/g, ' ')
-                    .replace(/\s+/g, ' ')
-                    .trim();
-            }
-
-            // Cache the result
-            this.descriptionCache.set(module.name, description);
-            
-            return description;
-        } catch (error) {
-            console.log('Error fetching description:', error);
-            return `${module.name} - AI-powered tool`;
-        } finally {
-            this.isRequestPending = false;
-            // Add a small delay before allowing next request
-            await new Promise(resolve => setTimeout(resolve, 100));
         }
     }
 
