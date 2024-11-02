@@ -756,3 +756,36 @@ body.light-mode .social-icons a:hover {
     position: relative;   /* Ensure proper stacking context */
     z-index: 1;
 }
+
+/* Add these specific styles for the edit button */
+#editModule {
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+    backdrop-filter: blur(8px);
+    transition: all 0.3s ease;
+}
+
+#editModule.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Light mode adjustments */
+.light-mode #editModule {
+    background: rgba(0, 0, 0, 0.1);
+    color: black;
+}
+
+/* Hover states */
+#editModule:not(.disabled):hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+.light-mode #editModule:not(.disabled):hover {
+    background: rgba(0, 0, 0, 0.2);
+}
