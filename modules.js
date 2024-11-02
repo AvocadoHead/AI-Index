@@ -72,7 +72,7 @@ const defaultModules = [
  	{ name: "Haiper", categories: ["T2V", "I2V", "VID"], url: "https://haiper.ai/", scores: { "T2V": 0.82, "I2V": 0.9, "VID": 0.92 } },
 
 // User Interface/User Experience Design (UX/UI)
-	{ name: "Mobirise", categories: ["LLM", "USE", "UI/UX"], url: "https://www.grammarly.com/", scores: { "LLM": 0.95, "USE": 0.9, "UI/UX": 0.9 } },
+	{ name: "Mobirise", categories: ["LLM", "USE", "UI/UX"], url: "https://mobirise.com/", scores: { "LLM": 0.95, "USE": 0.9, "UI/UX": 0.9 } },
 
 // Animation (ANI)
 	{ name: "Live Portrait", categories: ["ANI", "FCE"], url: "https://liveportrait.app/", scores: { "ANI": 0.95, "FCE": 0.96 } },
