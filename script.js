@@ -60,7 +60,7 @@ class ModuleCloud {
         this.momentumY = 0;
         this.baseRotationX = 0.0003; // Base auto-rotation speed X
         this.baseRotationY = 0.0005; // Base auto-rotation speed Y
-        this.friction = 0.98;        // How quickly momentum slows down
+        this.friction = 0.95;        // Slightly less friction
         this.lastMouseX = 0;
         this.lastMouseY = 0;
         this.isDragging = false;
@@ -69,7 +69,7 @@ class ModuleCloud {
         this.autoRotationSpeedY = 0.001;  // Slightly faster Y rotation
         this.lastInteractionTime = 0;
         this.interactionTimeout = 3000; // Time in ms before auto-rotation resumes
-        this.isAutoRotating = true;
+        this.isAutoRotating = false;
         this.scale = 1;
         this.lastTouchDistance = 0;
         this.lastClickTime = 0;
@@ -130,6 +130,97 @@ class ModuleCloud {
         this.descriptionCache = new Map();
         this.descriptionTimeout = null;
         this.isRequestPending = false;
+
+        this.baseFontSize = 18; // Add base font size
+        this.fontSizeMultiplier = 1; // Add multiplier for scaling
+        
+        this.setupTextControls();
+
+        this.currentLanguage = 'en';
+        this.translations = {
+            en: {
+                saveIndex: 'Save<br>Index',
+                loadIndex: 'Load<br>Index',
+                addModule: 'Add<br>Module',
+                editModule: 'Edit<br>Module',
+                deleteModule: 'Delete<br>Module'
+            },
+            he: {
+                saveIndex: 'שמור<br>אינדקס',
+                loadIndex: 'טען<br>אינדקס',
+                addModule: 'הוסף<br>מודול',
+                editModule: 'ערוך<br>מודול',
+                deleteModule: 'מחק<br>מודול'
+            }
+        };
+        
+        this.setupLanguageToggle();
+
+        this.dragSensitivity = 0.003; // Add this for better control
+
+        // Update translations with bilingual categories
+        this.categoryTranslations = {
+            en: {
+                all: 'All',
+                LLM: 'LLM | Language Models',
+                USE: 'USE | AI Tools',
+                T2I: 'T2I | Text to Image',
+                I2I: 'I2I | Image to Image',
+                T2V: 'T2V | Text to Video',
+                I2V: 'I2V | Image to Video',
+                V2V: 'V2V | Video Repaint',
+                '3D': '3D | 3D Tools',
+                DES: 'DES | Design',
+                UPS: 'UPS | Upscale/Enhance',
+                AUD: 'AUD | Audio',
+                VID: 'VID | Video Tools',
+                'UI/UX': 'UI/UX',
+                ANI: 'ANI | Animation',
+                FCE: 'FCE | Face Editing',
+                SEA: 'SEA | AI Search',
+                CON: 'CON | Content Generation',
+                PRE: 'PRE | Presentation Creation',
+                I23: 'I23 | Image to 3D',
+                T2S: 'T2S | Text to Speech',
+                S2T: 'S2T | Speech to Text',
+                VCL: 'VCL | Voice Cloning',
+                MUS: 'MUS | Music Generation',
+                DEV: 'DEV | Development',
+                GAM: 'GAM | Gaming',
+                ML: 'ML | Machine Learning'
+            },
+            he: {
+                all: 'הכל',
+                LLM: 'LLM | מודלי שפה',
+                USE: 'USE | כלי AI',
+                T2I: 'T2I | טקסט לתמונה',
+                I2I: 'I2I | תמונה לתמונה',
+                T2V: 'T2V | טקסט לוידאו',
+                I2V: 'I2V | תמונה לוידאו',
+                V2V: 'V2V | עריכת וידאו',
+                '3D': '3D | כלי תלת מימד',
+                DES: 'DES | עיצוב',
+                UPS: 'UPS | שיפור איכות',
+                AUD: 'AUD | שמע',
+                VID: 'VID | כלי וידאו',
+                'UI/UX': 'UI/UX | ממשק משתמש',
+                ANI: 'ANI | אנימציה',
+                FCE: 'FCE | עריכת פני',
+                SEA: 'SEA | חיפוש AI',
+                CON: 'CON | יצירת תוכן',
+                PRE: 'PRE | יצירת מצגות',
+                I23: 'I23 | תמונה לתלת מימד',
+                T2S: 'T2S | טקסט לדיבור',
+                S2T: 'S2T | דיבור לטקסט',
+                VCL: 'VCL | שכפול קול',
+                MUS: 'MUS | יצירת מוזיקה',
+                DEV: 'DEV | פיתוח',
+                GAM: 'GAM | משחקים',
+                ML: 'ML | למידת מכונה'
+            }
+        };
+
+        this.setupDarkModeToggle();
     }
 
     initializeFromModules(modules) {
@@ -315,58 +406,38 @@ class ModuleCloud {
         });
 
         // Mouse events for canvas
-        this.canvas.onmousedown = (e) => {
+        this.canvas.addEventListener('mousedown', (e) => {
             this.isDragging = true;
-            this.lastMouseX = e.clientX - this.canvas.getBoundingClientRect().left;
-            this.lastMouseY = e.clientY - this.canvas.getBoundingClientRect().top;
-        };
+            this.lastMouseX = e.clientX;
+            this.lastMouseY = e.clientY;
+            this.canvas.style.cursor = 'grabbing';
+        });
 
-        this.canvas.onmouseup = () => {
-            this.isDragging = false;
-            this.lastInteractionTime = Date.now();
-        };
-
-        this.canvas.onmousemove = (e) => {
-            const rect = this.canvas.getBoundingClientRect();
-            const mouseX = e.clientX - rect.left;
-            const mouseY = e.clientY - rect.top;
-
-            // Handle dragging
+        this.canvas.addEventListener('mousemove', (e) => {
             if (this.isDragging) {
-                const deltaX = mouseX - this.lastMouseX;
-                const deltaY = mouseY - this.lastMouseY;
+                const deltaX = e.clientX - this.lastMouseX;
+                const deltaY = e.clientY - this.lastMouseY;
                 
-                this.momentumX = deltaY * 0.001;
-                this.momentumY = deltaX * 0.001;
+                this.momentumX = deltaY * 0.005;
+                this.momentumY = deltaX * 0.005;
                 
                 this.rotationX += this.momentumX;
                 this.rotationY += this.momentumY;
-            } else if (!this.pinnedTooltip) { // Only process hover if tooltip isn't pinned
-                clearTimeout(this.tooltipDebounceTimer);
-                this.tooltipDebounceTimer = setTimeout(() => {
-                    const hoveredModule = this.getHoveredModule(mouseX, mouseY);
-                    if (hoveredModule && !this.pinnedTooltip) {
-                        if (this.lastHoveredModule !== hoveredModule) {
-                            this.lastHoveredModule = hoveredModule;
-                            this.showTooltip(hoveredModule, e.clientX, e.clientY, false);
-                        }
-                        this.canvas.style.cursor = 'pointer';
-                    } else if (!hoveredModule && !this.pinnedTooltip) {
-                        this.hideTooltip();
-                        this.lastHoveredModule = null;
-                        this.canvas.style.cursor = 'default';
-                    }
-                }, this.tooltipDebounceDelay);
+                
+                this.lastMouseX = e.clientX;
+                this.lastMouseY = e.clientY;
             }
+        });
 
-            this.lastMouseX = mouseX;
-            this.lastMouseY = mouseY;
-        };
-
-        this.canvas.onmouseleave = () => {
+        this.canvas.addEventListener('mouseup', () => {
             this.isDragging = false;
-            this.hideTooltip();
-        };
+            this.canvas.style.cursor = 'grab';
+        });
+
+        this.canvas.addEventListener('mouseleave', () => {
+            this.isDragging = false;
+            this.canvas.style.cursor = 'grab';
+        });
 
         // Resume auto-rotation when mouse is still
         let mouseTimeout;
@@ -605,32 +676,25 @@ class ModuleCloud {
         const mouseX = event.clientX - rect.left;
         const mouseY = event.clientY - rect.top;
 
-        // Handle dragging
         if (this.isDragging) {
             const deltaX = mouseX - this.lastMouseX;
             const deltaY = mouseY - this.lastMouseY;
             
-            this.momentumX = deltaY * 0.001;
-            this.momentumY = deltaX * 0.001;
+            // Increase sensitivity and reverse X rotation for more natural feel
+            this.momentumX = -deltaY * 0.005; // Increased from 0.003
+            this.momentumY = deltaX * 0.005;  // Increased from 0.003
             
             this.rotationX += this.momentumX;
             this.rotationY += this.momentumY;
+
+            // Update last position after applying movement
+            this.lastMouseX = mouseX;
+            this.lastMouseY = mouseY;
         }
 
-        // Handle hover - only show tooltip if not pinned
-        if (!this.pinnedTooltip) {
-            const hoveredModule = this.getHoveredModule(mouseX, mouseY);
-            if (hoveredModule) {
-                this.showTooltip(hoveredModule, event.clientX, event.clientY);
-                this.canvas.style.cursor = 'pointer';
-            } else {
-                this.hideTooltip();
-                this.canvas.style.cursor = 'default';
-            }
-        }
-
-        this.lastMouseX = mouseX;
-        this.lastMouseY = mouseY;
+        // Handle hover detection separately from dragging
+        const hoveredModule = this.getHoveredModule(mouseX, mouseY);
+        this.canvas.style.cursor = hoveredModule ? 'pointer' : (this.isDragging ? 'grabbing' : 'grab');
     }
 
     handleTouchStart(e) {
@@ -670,7 +734,7 @@ class ModuleCloud {
             const categoriesWithScores = module.categories
                 .map(category => {
                     const score = module.scores[category];
-                    return `• ${category}: ${score ? Math.round(score * 100) + '%' : 'N/A'}`;
+                    return ` ${category}: ${score ? Math.round(score * 100) + '%' : 'N/A'}`;
                 })
                 .join('\n');
 
@@ -782,39 +846,22 @@ class ModuleCloud {
     }
 
     animate() {
+        requestAnimationFrame(() => this.animate());
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-        
-        // Apply momentum and base rotation
+
+        // Apply momentum with friction when not dragging
         if (!this.isDragging) {
-            // Apply momentum with friction
             this.momentumX *= this.friction;
             this.momentumY *= this.friction;
-            
-            // Add base rotation
-            this.rotationX += this.baseRotationX + this.momentumX;
-            this.rotationY += this.baseRotationY + this.momentumY;
-        }
-        
-        if (this.initialized && this.modules.length > 0) {
-            const sortedModules = [...this.modules].sort((a, b) => {
-                const pointA = this.rotatePoint(a.x, a.y, a.z);
-                const pointB = this.rotatePoint(b.x, b.y, b.z);
-                return pointB.z - pointA.z;
-            });
-
-            sortedModules.forEach(module => {
-                if (module) {
-                    module.update();
-                    this.drawModule(module);
-                }
-            });
-        }
-        
-        if (this.activeModule && this.pinnedTooltip) {
-            this.updateTooltipPosition(this.activeModule);
+            this.rotationX += this.momentumX;
+            this.rotationY += this.momentumY;
         }
 
-        requestAnimationFrame(() => this.animate());
+        // Update and draw modules
+        this.modules.forEach(module => {
+            module.update();
+            this.drawModule(module);
+        });
     }
 
     drawModuleShadow(module) {
@@ -980,18 +1027,18 @@ class ModuleCloud {
     drawModule(module) {
         const rotated = this.rotatePoint(module.x, module.y, module.z);
         
-        // Calculate font size first
+        // Calculate font size with new multiplier
         const activeCategories = new Set(
             Array.from(document.querySelectorAll('.sidebar button.active'))
                 .map(btn => btn.dataset.category)
         );
         
-        // Default size
-        let fontSize = 18;
+        // Base size now uses multiplier
+        let fontSize = this.baseFontSize * this.fontSizeMultiplier;
         
         if (activeCategories.size > 0) {
             const score = module.getAverageScore(activeCategories);
-            fontSize = 14 + ((score - 0.8) * 110);
+            fontSize = (14 + ((score - 0.8) * 110)) * this.fontSizeMultiplier;
         }
         
         // Rest of the drawing code...
@@ -1292,7 +1339,7 @@ class ModuleCloud {
             clearTimeout(timeout);
             timeout = setTimeout(later, wait);
         };
-    }
+    };
 
     handleMouseMove = this.debounce((event) => {
         const rect = this.canvas.getBoundingClientRect();
@@ -1348,6 +1395,99 @@ class ModuleCloud {
             }
         }
         return null;
+    }
+
+    setupTextControls() {
+        const controls = document.createElement('div');
+        controls.className = 'text-size-controls';
+        controls.innerHTML = `
+            <button id="textIncrease" title="Increase Text Size">T+</button>
+            <button id="textDecrease" title="Decrease Text Size">T-</button>
+        `;
+
+        // Add to controls container instead of body
+        const controlsContainer = document.querySelector('.controls');
+        controlsContainer.insertBefore(controls, controlsContainer.firstChild);
+
+        document.getElementById('textIncrease').onclick = () => {
+            this.fontSizeMultiplier = Math.min(2, this.fontSizeMultiplier + 0.1);
+        };
+
+        document.getElementById('textDecrease').onclick = () => {
+            this.fontSizeMultiplier = Math.max(0.5, this.fontSizeMultiplier - 0.1);
+        };
+    }
+
+    setupLanguageToggle() {
+        const langButton = document.createElement('button');
+        langButton.className = 'language-toggle control-button';
+        langButton.textContent = 'ע';
+        langButton.title = 'Switch to Hebrew';
+        
+        // Add to controls container
+        const controls = document.querySelector('.controls');
+        controls.appendChild(langButton);
+
+        langButton.onclick = () => {
+            this.currentLanguage = this.currentLanguage === 'en' ? 'he' : 'en';
+            document.documentElement.setAttribute('lang', this.currentLanguage);
+            document.body.classList.toggle('rtl', this.currentLanguage === 'he');
+            this.updateLanguage();
+            
+            // Update button text and title
+            langButton.textContent = this.currentLanguage === 'en' ? 'ע' : 'A';
+            langButton.title = this.currentLanguage === 'en' ? 
+                'Switch to Hebrew' : 'Switch to English';
+        };
+    }
+
+    updateLanguage() {
+        // Update all elements with data-translate attribute
+        const elements = document.querySelectorAll('[data-translate]');
+        elements.forEach(element => {
+            const key = element.dataset.translate;
+            if (this.translations[this.currentLanguage][key]) {
+                element.innerHTML = this.translations[this.currentLanguage][key];
+            }
+        });
+        
+        // Update category buttons
+        this.updateCategoryLabels();
+    }
+
+    updateCategoryLabels() {
+        const buttons = document.querySelectorAll('.sidebar button');
+        buttons.forEach(button => {
+            const category = button.dataset.category;
+            // Store original English text if not already stored
+            if (!button.dataset.originalText) {
+                button.dataset.originalText = button.innerHTML;
+            }
+            
+            const translation = this.categoryTranslations[this.currentLanguage][category];
+            if (translation) {
+                button.innerHTML = translation;
+            }
+        });
+    }
+
+    setupDarkModeToggle() {
+        const toggleButton = document.createElement('button');
+        toggleButton.id = 'toggleMode';
+        toggleButton.className = 'toggle-mode control-button';
+        toggleButton.innerHTML = '🌓';
+        toggleButton.title = 'Toggle Light/Dark Mode';
+
+        // Add to controls container
+        const controls = document.querySelector('.controls');
+        controls.appendChild(toggleButton);
+
+        toggleButton.onclick = () => {
+            document.body.classList.toggle('light-mode');
+            this.canvas.style.backgroundColor = 
+                document.body.classList.contains('light-mode') ? 
+                '#ffffff' : '#1a1a1a';
+        };
     }
 }
 
