@@ -225,14 +225,14 @@ class ModuleCloud {
 
         this.setupDarkModeToggle();
 
-        // Disable edit button initially
+        // Initialize edit button state
         const editButton = document.getElementById('editModule');
         if (editButton) {
             editButton.disabled = true;
             editButton.classList.add('disabled');
+            editButton.style.opacity = '0.5';
         }
 
-        this.editMode = false;
         this.activeModule = null;
 
         // Add touch-related properties
@@ -241,6 +241,11 @@ class ModuleCloud {
         this.touchStartX = 0;
         this.touchStartY = 0;
         this.touchStartTime = 0;
+        this.lastTappedModule = null;
+        this.lastTapTime = 0;  // Add this new property
+        this.tapCount = 0;     // Add this new property
+        this.isFirstTap = true;  // Add this new property
+        this.canOpenUrl = false;  // Add this new property
     }
 
     initializeFromModules(modules) {
@@ -578,34 +583,50 @@ class ModuleCloud {
         this.canvas.addEventListener('touchend', (e) => {
             const touchEndTime = Date.now();
             const touchDuration = touchEndTime - this.touchStartTime;
+            const touchEndX = e.changedTouches[0].clientX;
+            const touchEndY = e.changedTouches[0].clientY;
+            
+            // Calculate total movement
+            const totalMovement = Math.abs(touchEndX - this.touchStartX) + 
+                                Math.abs(touchEndY - this.touchStartY);
 
-            if (touchDuration < 200) {
-                // It's a tap, handle module selection
+            if (touchDuration < 200 && totalMovement < 10) {
+                // It's a clean tap
                 const rect = this.canvas.getBoundingClientRect();
-                const x = event.changedTouches[0].clientX - rect.left;
-                const y = event.changedTouches[0].clientY - rect.top;
-                this.handleModuleSelection(x, y);
-            } else {
-                // It's a swipe, add gentle momentum
-                const touchEndX = event.changedTouches[0].clientX;
-                const touchEndY = event.changedTouches[0].clientY;
+                const x = touchEndX - rect.left;
+                const y = touchEndY - rect.top;
                 
-                // Calculate velocity based on total movement
+                const tappedModule = this.getHoveredModule(x, y);
+                
+                if (tappedModule) {
+                    // Prevent the default click behavior
+                    e.preventDefault();
+                    
+                    // Always just select and show tooltip first
+                    if (tappedModule !== this.activeModule) {
+                        this.activeModule = tappedModule;
+                        this.showTooltip(tappedModule, touchEndX, touchEndY);
+                    }
+                } else {
+                    // Tap on empty space - clear selection
+                    this.activeModule = null;
+                    this.hideTooltip();
+                }
+                
+                this.updateEditButton();
+            } else {
+                // Swipe momentum code - unchanged
                 const dx = touchEndX - this.touchStartX;
                 const dy = touchEndY - this.touchStartY;
                 
-                // Reduce the momentum significantly
-                const momentumMultiplier = 0.001; // Reduced from 0.05
+                const momentumMultiplier = 0.001;
                 this.momentumX = dy * momentumMultiplier;
                 this.momentumY = dx * momentumMultiplier;
                 
-                // Cap maximum momentum
-                const maxMomentum = 0.02; // Reduced from 0.05
+                const maxMomentum = 0.02;
                 this.momentumX = Math.max(Math.min(this.momentumX, maxMomentum), -maxMomentum);
                 this.momentumY = Math.max(Math.min(this.momentumY, maxMomentum), -maxMomentum);
             }
-            
-            this.lastInteractionTime = Date.now();
         });
 
         // Prevent default touch behaviors
@@ -761,6 +782,7 @@ class ModuleCloud {
     }
 
     handleTouchStart(event) {
+        event.preventDefault();  // Prevent default touch behavior
         this.lastTouchX = event.touches[0].clientX;
         this.lastTouchY = event.touches[0].clientY;
         this.touchStartX = this.lastTouchX;
@@ -785,46 +807,45 @@ class ModuleCloud {
     handleTouchEnd(event) {
         const touchEndTime = Date.now();
         const touchDuration = touchEndTime - this.touchStartTime;
-
-        if (touchDuration < 200) {
-            // It's a tap, handle module selection
-            const rect = this.canvas.getBoundingClientRect();
-            const x = event.changedTouches[0].clientX - rect.left;
-            const y = event.changedTouches[0].clientY - rect.top;
-            this.handleModuleSelection(x, y);
-        } else {
-            // It's a swipe, add gentle momentum
-            const touchEndX = event.changedTouches[0].clientX;
-            const touchEndY = event.changedTouches[0].clientY;
-            
-            // Calculate velocity based on total movement
-            const dx = touchEndX - this.touchStartX;
-            const dy = touchEndY - this.touchStartY;
-            
-            // Reduce the momentum significantly
-            const momentumMultiplier = 0.001; // Reduced from 0.05
-            this.momentumX = dy * momentumMultiplier;
-            this.momentumY = dx * momentumMultiplier;
-            
-            // Cap maximum momentum
-            const maxMomentum = 0.02; // Reduced from 0.05
-            this.momentumX = Math.max(Math.min(this.momentumX, maxMomentum), -maxMomentum);
-            this.momentumY = Math.max(Math.min(this.momentumY, maxMomentum), -maxMomentum);
-        }
+        const touchEndX = event.changedTouches[0].clientX;
+        const touchEndY = event.changedTouches[0].clientY;
         
-        this.lastInteractionTime = Date.now();
+        const totalMovement = Math.abs(touchEndX - this.touchStartX) + 
+                            Math.abs(touchEndY - this.touchStartY);
+
+        if (touchDuration < 200 && totalMovement < 10) {
+            const rect = this.canvas.getBoundingClientRect();
+            const x = touchEndX - rect.left;
+            const y = touchEndY - rect.top;
+            
+            const tappedModule = this.getHoveredModule(x, y);
+            
+            if (tappedModule) {
+                if (tappedModule === this.activeModule && tappedModule.url) {
+                    window.open(tappedModule.url, '_blank');
+                } else {
+                    this.activeModule = tappedModule;
+                    this.showTooltip(tappedModule, touchEndX, touchEndY);
+                }
+            } else {
+                this.activeModule = null;
+                this.hideTooltip();
+            }
+            
+            this.updateEditButton();
+        }
     }
 
     updateEditButton() {
         const editButton = document.getElementById('editModule');
-        const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-
         if (editButton) {
-            if (this.activeModule || isMobile) {
+            if (this.activeModule) {
                 editButton.disabled = false;
+                editButton.classList.remove('disabled');
                 editButton.style.opacity = '1';
             } else {
                 editButton.disabled = true;
+                editButton.classList.add('disabled');
                 editButton.style.opacity = '0.5';
             }
         }
@@ -856,6 +877,8 @@ class ModuleCloud {
 
     handleModuleSelection(x, y) {
         const hoveredModule = this.getHoveredModule(x, y);
+        const editButton = document.getElementById('editModule');
+        
         if (hoveredModule) {
             if (this.activeModule === hoveredModule) {
                 // Second tap - open URL
@@ -866,13 +889,23 @@ class ModuleCloud {
                 // First tap - select module
                 this.activeModule = hoveredModule;
                 this.showTooltip(hoveredModule, x, y);
-                this.updateEditButton();
+                // Enable edit button
+                if (editButton) {
+                    editButton.disabled = false;
+                    editButton.classList.remove('disabled');
+                    editButton.style.opacity = '1';
+                }
             }
         } else {
             // Tap outside - deselect
             this.activeModule = null;
             this.hideTooltip();
-            this.updateEditButton();
+            // Disable edit button
+            if (editButton) {
+                editButton.disabled = true;
+                editButton.classList.add('disabled');
+                editButton.style.opacity = '0.5';
+            }
         }
     }
 
@@ -903,68 +936,49 @@ class ModuleCloud {
     }
 
     async showTooltip(module, x, y) {
-        if (!this.tooltip || module !== this.activeModule) return;
+        if (!this.tooltip) return;
         
-        try {
-            const categoriesWithScores = module.categories
-                .map(category => {
-                    const score = module.scores[category];
-                    return ` ${category}: ${score ? Math.round(score * 100) + '%' : 'N/A'}`;
-                })
-                .join('\n');
+        // Restore original tooltip design
+        this.tooltip.innerHTML = `
+            <div class="tooltip-header">
+                <img src="${this.getFaviconUrl(module.url)}" 
+                     alt="${module.name} logo" 
+                     class="tooltip-logo"
+                     onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🤖</text></svg>'">
+                <h3 class="module-name">${module.name}</h3>
+            </div>
+            <div class="tooltip-body">
+                <p class="description">
+                    ${this.currentLanguage === 'he' ? 'טוען תיאור...' : 'Loading description...'}
+                </p>
+                <div class="tooltip-metadata">
+                    <p><strong>Categories & Scores:</strong></p>
+                    <pre>${module.categories
+                        .map(category => {
+                            const score = module.scores[category];
+                            return ` ${category}: ${score ? Math.round(score * 100) + '%' : 'N/A'}`;
+                        })
+                        .join('\n')}</pre>
+                </div>
+            </div>
+        `;
 
-            const initialContent = `
-                <div class="tooltip-header">
-                    <img src="${this.getFaviconUrl(module.url)}" 
-                         alt="${module.name} logo" 
-                         class="tooltip-logo"
-                         onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🤖</text></svg>'">
-                    <h3 class="module-name">${module.name}</h3>
-                </div>
-                <div class="tooltip-body">
-                    <p class="description">
-                        ${this.currentLanguage === 'he' ? 'טוען תיאור...' : 'Loading description...'}
-                    </p>
-                    <div class="tooltip-metadata">
-                        <p><strong>Categories & Scores:</strong></p>
-                        <pre>${categoriesWithScores}</pre>
-                    </div>
-                </div>
-            `;
-            
-            this.tooltip.innerHTML = initialContent;
-            this.tooltip.style.display = 'block';
-            
-            // Position tooltip
-            const viewportWidth = window.innerWidth;
-            const viewportHeight = window.innerHeight;
-            
-            let tooltipX = x + 20;
-            let tooltipY = y + 20;
-            
-            const tooltipRect = this.tooltip.getBoundingClientRect();
-            
-            if (tooltipX + tooltipRect.width > viewportWidth) {
-                tooltipX = viewportWidth - tooltipRect.width - 20;
-            }
-            
-            if (tooltipY + tooltipRect.height > viewportHeight) {
-                tooltipY = viewportHeight - tooltipRect.height - 20;
-            }
-            
-            this.tooltip.style.left = `${tooltipX}px`;
-            this.tooltip.style.top = `${tooltipY}px`;
-            
-            // Only update description if this is still the active module
-            if (module === this.activeModule) {
-                const description = await this.getModuleDescription(module);
-                const descriptionElement = this.tooltip.querySelector('.description');
-                if (descriptionElement && module === this.activeModule) {
-                    descriptionElement.innerHTML = description;
+        // Position tooltip
+        const padding = 10;
+        this.tooltip.style.display = 'block';
+        this.tooltip.style.left = `${x + padding}px`;
+        this.tooltip.style.top = `${y + padding}px`;
+
+        // Load description asynchronously
+        if (module === this.activeModule) {
+            this.getModuleDescription(module).then(description => {
+                if (module === this.activeModule) {
+                    const descriptionElement = this.tooltip.querySelector('.description');
+                    if (descriptionElement) {
+                        descriptionElement.innerHTML = description;
+                    }
                 }
-            }
-        } catch (error) {
-            console.error('Error showing tooltip:', error);
+            });
         }
     }
 
@@ -1013,21 +1027,33 @@ class ModuleCloud {
         return { x: tempX, y: tempY, z };
     }
 
-    getHoveredModule(mouseX, mouseY) {
-        const hoveredModule = this.modules.find(module => {
+    getHoveredModule(x, y) {
+        const isMobile = 'ontouchstart' in window;
+        const hitRadius = isMobile ? 50 : 30;
+        let closestModule = null;
+        let closestDistance = Infinity;
+        let closestZ = -Infinity;
+
+        for (const module of this.modules) {
             const rotated = this.rotatePoint(module.x, module.y, module.z);
-            const screenX = (this.canvas.width / 2 / window.devicePixelRatio) + (rotated.x * this.scale);
-            const screenY = (this.canvas.height / 2 / window.devicePixelRatio) + (rotated.y * this.scale);
-            
-            // Reduce hit area for more precise detection
-            const hitRadius = 15; // Reduced from 25 to 15 for more precise clicks
-            const dx = mouseX - screenX;
-            const dy = mouseY - screenY;
-            
-            return (dx * dx + dy * dy) < (hitRadius * hitRadius);
-        });
-        
-        return hoveredModule;
+            const screenX = this.canvas.width / 2 + rotated.x * this.scale;
+            const screenY = this.canvas.height / 2 + rotated.y * this.scale;
+
+            const dx = x - screenX;
+            const dy = y - screenY;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+
+            // Check if within hit radius and closer (more in front) than previous matches
+            if (distance < hitRadius * this.scale) {
+                if (rotated.z > closestZ || 
+                   (rotated.z === closestZ && distance < closestDistance)) {
+                    closestModule = module;
+                    closestDistance = distance;
+                    closestZ = rotated.z;
+                }
+            }
+        }
+        return closestModule;
     }
 
     saveModules() {
@@ -1610,6 +1636,14 @@ class ModuleCloud {
                 '#ffffff' : '#1a1a1a';
         };
     }
+
+    // Add this method to handle tooltip link clicks
+    handleTooltipClick(event) {
+        if (!this.canOpenUrl) {
+            event.preventDefault();
+            return false;
+        }
+    }
 }
 
 new ModuleCloud();
@@ -1618,6 +1652,7 @@ new ModuleCloud();
 function setupMobileEditModule() {
     const editModuleDropdown = document.getElementById('editModuleDropdown');
     const body = document.body;
+    const canvas = document.getElementById('moduleCloud');
 
     // Create overlay div
     const overlay = document.createElement('div');
@@ -1641,10 +1676,17 @@ function setupMobileEditModule() {
         body.style.overflow = ''; // Restore scrolling
     }
 
-    // Close dropdown when clicking overlay
+    // Close dropdown when clicking/tapping overlay or canvas
     overlay.addEventListener('click', hideDropdown);
+    overlay.addEventListener('touchend', hideDropdown);
+    canvas.addEventListener('touchend', (e) => {
+        if (editModuleDropdown.classList.contains('show')) {
+            hideDropdown();
+            e.preventDefault(); // Prevent other touch handlers
+        }
+    });
 
-    // Modify your existing edit button click handler
+    // Modify existing edit button click handler
     document.querySelector('#editModule').addEventListener('click', function(e) {
         e.stopPropagation();
         if (window.innerWidth <= 768) {
@@ -1654,6 +1696,9 @@ function setupMobileEditModule() {
 
     // Prevent dropdown from closing when clicking inside it
     editModuleDropdown.addEventListener('click', function(e) {
+        e.stopPropagation();
+    });
+    editModuleDropdown.addEventListener('touchend', function(e) {
         e.stopPropagation();
     });
 }
