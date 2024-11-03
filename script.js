@@ -282,13 +282,14 @@ class ModuleCloud {
         }
 
         // Save and load file buttons
-        const saveFile = document.getElementById('saveFile');
+        const saveFile = document.getElementById('saveIndex');
+        const loadFile = document.getElementById('loadIndex');
+        const fileInput = document.getElementById('fileInput');
+
         if (saveFile) {
             saveFile.onclick = () => this.saveModules();
         }
 
-        const loadFile = document.getElementById('loadFile');
-        const fileInput = document.getElementById('fileInput');
         if (loadFile && fileInput) {
             fileInput.setAttribute('accept', '.txt,.js,text/plain,text/javascript');
             loadFile.onclick = () => fileInput.click();
@@ -1022,7 +1023,7 @@ class ModuleCloud {
             return `\t{ name: "${module.name}", categories: [${categoriesStr}], url: "${module.url}", scores: { ${scoresStr} } }${comma}`;
         });
 
-        const fileContent = '[\n' + modulesLines.join('\n') + '\n]';
+        const fileContent = 'const defaultModules = [\n' + modulesLines.join('\n') + '\n];';
         
         // Prompt for filename
         let filename = prompt('Enter a name for your file:', 'my_modules');
@@ -1586,6 +1587,22 @@ class ModuleCloud {
             this.hideTooltip();
             editButton.disabled = true;
             editButton.style.opacity = '0.5';
+        }
+    }
+
+    // Add this method to the ModuleCloud class if it's missing
+    initializeFromModules(modules) {
+        try {
+            this.modules = modules.map(m => {
+                const module = new AIModule(m.name, m.categories, m.url, m.scores);
+                this.positionModuleInCloud(module);
+                return module;
+            });
+            this.defaultModules = [...this.modules];
+            this.initialized = true;
+        } catch (error) {
+            console.error('Error initializing modules:', error);
+            this.showError('Error loading modules');
         }
     }
 }
