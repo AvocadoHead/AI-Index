@@ -817,3 +817,21 @@ body.light-mode .social-icons a:hover {
     background: rgba(0, 0, 0, 0.1);  /* Light grey background */
     color: black;                     /* Dark text */
 }
+
+.tooltip-favicon, .tooltip-name {
+    text-decoration: none;
+    color: inherit;
+}
+
+.tooltip-favicon {
+    display: inline-block;
+    margin-right: 8px;
+}
+
+.tooltip-favicon img {
+    vertical-align: middle;
+}
+
+.tooltip-name:hover {
+    text-decoration: underline;
+}
