@@ -186,6 +186,8 @@ class ModuleCloud {
                 deleteModule: 'מחק<br>מודול'
             }
         };
+
+        this.descriptionCache = new Map();
     }
 
     loadDefaultModules() {
@@ -891,19 +893,23 @@ class ModuleCloud {
     async showTooltip(module, x, y) {
         if (!this.tooltip) return;
         
-        // Restore original tooltip design
+        const loadingText = this.currentLanguage === 'he' ? 'טוען...' : 'Loading...';
+        
         this.tooltip.innerHTML = `
             <div class="tooltip-header">
-                <img src="${this.getFaviconUrl(module.url)}" 
-                     alt="${module.name} logo" 
-                     class="tooltip-logo"
-                     onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🤖</text></svg>'">
-                <h3 class="module-name">${module.name}</h3>
+                <a href="${module.url}" target="_blank" class="tooltip-favicon">
+                    <img src="${this.getFaviconUrl(module.url)}" 
+                         width="16" height="16" 
+                         alt="${module.name} logo" 
+                         class="tooltip-logo"
+                         onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🤖</text></svg>'">
+                </a>
+                <a href="${module.url}" target="_blank" class="tooltip-name">
+                    <h3 class="module-name">${module.name}</h3>
+                </a>
             </div>
             <div class="tooltip-body">
-                <p class="description">
-                    ${this.currentLanguage === 'he' ? 'טוען תיאור...' : 'Loading description...'}
-                </p>
+                <p class="description">${loadingText}</p>
                 <div class="tooltip-metadata">
                     <p><strong>Categories & Scores:</strong></p>
                     <pre>${module.categories
@@ -922,17 +928,15 @@ class ModuleCloud {
         this.tooltip.style.left = `${x + padding}px`;
         this.tooltip.style.top = `${y + padding}px`;
 
-        // Load description asynchronously
-        if (module === this.activeModule) {
-            this.getModuleDescription(module).then(description => {
-                if (module === this.activeModule) {
-                    const descriptionElement = this.tooltip.querySelector('.description');
-                    if (descriptionElement) {
-                        descriptionElement.innerHTML = description;
-                    }
+        // Immediately try to get and update the description
+        this.getModuleDescription(module).then(description => {
+            if (this.tooltip.style.display !== 'none') {  // Only update if tooltip is still shown
+                const descriptionElement = this.tooltip.querySelector('.description');
+                if (descriptionElement) {
+                    descriptionElement.innerHTML = description;
                 }
-            });
-        }
+            }
+        });
     }
 
     hideTooltip() {
