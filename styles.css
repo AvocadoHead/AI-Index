@@ -84,26 +84,42 @@ canvas:active {
 
 .sidebar {
     position: fixed;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%) translateX(-100%);
+    left: -300px;
+    top: 0;
+    width: 300px;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
     transition: transform 0.3s ease;
-    z-index: 100;
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    padding: 15px;
-    background: rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(8px);
-    border-radius: 0 10px 10px 0;
-    max-height: 80vh;
     overflow-y: auto;
-    scrollbar-gutter: stable;
-    overflow-x: hidden;
+    z-index: 1000;
 }
 
 .sidebar.visible {
-    transform: translateY(-50%) translateX(0);
+    transform: translateX(300px);
+}
+
+.sidebar button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border-radius: 5px;
+}
+
+.sidebar button:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.sidebar button.active {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.4);
 }
 
 .sidebar-toggle {
@@ -111,63 +127,57 @@ canvas:active {
     left: 0;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0, 0.8);
     color: white;
     border: none;
-    padding: 8px;
+    padding: 10px 15px;
     cursor: pointer;
-    z-index: 101;
-    border-radius: 0 4px 4px 0;
-    transition: all 0.3s ease;
-    font-size: 20px;
-    line-height: 1;
-    width: 24px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    font-size: 24px;
+    z-index: 1001;
+    transition: transform 0.3s ease;
+    border-radius: 0 5px 5px 0;
+    backdrop-filter: blur(10px);
 }
 
-.sidebar button {
-    direction: ltr;
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    color: rgba(255, 255, 255, 0.9);
-    padding: 4px 10px;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    font-size: 10px;
-    text-align: left;
-    white-space: nowrap;
+/* Light mode adjustments */
+body.light-mode .sidebar {
+    background: rgba(255, 255, 255, 0.8);
 }
 
-.light-mode .sidebar button {
-    background: rgba(0, 0, 0, 0.05);
-    border: 1px solid rgba(0, 0, 0, 0.08);
-    color: rgba(0, 0, 0, 0.8);
-}
-
-.sidebar button:hover {
-    background: rgba(255, 255, 255, 0.15);
-    transform: translateX(5px);
-}
-
-.light-mode .sidebar button:hover {
-    background: rgba(0, 0, 0, 0.08);
-}
-
-.sidebar button.active {
-    background: rgba(255, 255, 255, 0.2);
-    border-color: rgba(255, 255, 255, 0.3);
-    color: white;
-    transform: translateX(8px);
-}
-
-.light-mode .sidebar button.active {
-    background: rgba(0, 0, 0, 0.1);
-    border-color: rgba(0, 0, 0, 0.2);
+body.light-mode .sidebar button {
     color: black;
+    border-color: rgba(0, 0, 0, 0.2);
+}
+
+body.light-mode .sidebar button:hover {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+body.light-mode .sidebar button.active {
+    background: rgba(0, 0, 0, 0.2);
+    border-color: rgba(0, 0, 0, 0.4);
+}
+
+body.light-mode .sidebar-toggle {
+    background: rgba(255, 255, 255, 0.8);
+    color: black;
+}
+
+/* RTL Support */
+body.rtl .sidebar {
+    right: auto;
+    left: auto;
+}
+
+body.rtl .sidebar.visible {
+    left: auto;
+    right: 0;
+}
+
+body.rtl .sidebar-toggle {
+    left: auto;
+    right: 0;
+    border-radius: 5px 0 0 5px;
 }
 
 .tooltip {
@@ -655,8 +665,9 @@ body.light-mode .social-icons a:hover {
 .file-controls button,
 .text-size-controls button,
 .language-toggle,
-.toggle-mode {
-    background: rgba(255, 255, 255, 0.1);
+.toggle-mode,
+#editModule {
+    background: rgba(0, 0, 0, 0.8);
     border: none;
     padding: 8px 16px;
     border-radius: 8px;
@@ -672,7 +683,8 @@ body.light-mode .social-icons a:hover {
 .light-mode .file-controls button,
 .light-mode .text-size-controls button,
 .light-mode .language-toggle,
-.light-mode .toggle-mode {
+.light-mode .toggle-mode,
+.light-mode #editModule {
     background: rgba(0, 0, 0, 0.1);
     color: black;
 }
@@ -681,7 +693,8 @@ body.light-mode .social-icons a:hover {
 .file-controls button:hover,
 .text-size-controls button:hover,
 .language-toggle:hover,
-.toggle-mode:hover {
+.toggle-mode:hover,
+#editModule:not(.disabled):hover {
     background: rgba(255, 255, 255, 0.2);
     transform: translateY(-2px);
 }
@@ -689,13 +702,34 @@ body.light-mode .social-icons a:hover {
 .light-mode .file-controls button:hover,
 .light-mode .text-size-controls button:hover,
 .light-mode .language-toggle:hover,
-.light-mode .toggle-mode:hover {
+.light-mode .toggle-mode:hover,
+.light-mode #editModule:not(.disabled):hover {
     background: rgba(0, 0, 0, 0.2);
+}
+
+/* Disabled state for edit button */
+#editModule.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Controls container */
+.controls {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 1000;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    max-width: calc(100% - 20px);
+    padding: 5px;
 }
 
 /* Add to your existing CSS */
 .control-button {
-    height: 60px; /* Set a fixed height for all control buttons */
+    height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -709,27 +743,17 @@ body.light-mode .social-icons a:hover {
     direction: rtl;
 }
 
-/* Adjust button sizes for mobile */
+/* Mobile adjustments */
 @media screen and (max-width: 480px) {
     .controls {
-        gap: 5px; /* Reduce gap between buttons */
+        gap: 5px;
     }
 
     .control-button,
-    #saveFile,
-    #loadFile,
-    #editModule,
-    #deleteModule {
-        padding: 8px 12px; /* Keep reasonable touch target size */
+    #editModule {
+        padding: 8px 12px;
         font-size: 14px;
-        min-width: auto; /* Allow buttons to be narrower */
-    }
-}
-
-/* For very narrow screens */
-@media screen and (max-width: 360px) {
-    .controls {
-        gap: 4px;
+        min-width: auto;
     }
 }
 
@@ -757,9 +781,9 @@ body.light-mode .social-icons a:hover {
     z-index: 1;
 }
 
-/* Add these specific styles for the edit button */
+/* Edit module button styling */
 #editModule {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.1);  /* Default dark mode state */
     border: none;
     padding: 8px 16px;
     border-radius: 8px;
@@ -769,23 +793,27 @@ body.light-mode .social-icons a:hover {
     transition: all 0.3s ease;
 }
 
+#editModule:disabled,
 #editModule.disabled {
     opacity: 0.5;
     cursor: not-allowed;
 }
 
+/* Active state in dark mode */
+#editModule:not(:disabled) {
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    opacity: 1;
+}
+
 /* Light mode adjustments */
 .light-mode #editModule {
-    background: rgba(0, 0, 0, 0.1);
+    background: rgba(0, 0, 0, 0.1);  /* Default light mode state */
     color: black;
 }
 
-/* Hover states */
-#editModule:not(.disabled):hover {
-    background: rgba(255, 255, 255, 0.2);
-    transform: translateY(-2px);
-}
-
-.light-mode #editModule:not(.disabled):hover {
-    background: rgba(0, 0, 0, 0.2);
+/* Active state in light mode */
+.light-mode #editModule:not(:disabled) {
+    background: rgba(0, 0, 0, 0.1);  /* Light grey background */
+    color: black;                     /* Dark text */
 }
