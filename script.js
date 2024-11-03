@@ -58,110 +58,50 @@ class ModuleCloud {
         this.rotationY = 0;
         this.momentumX = 0;
         this.momentumY = 0;
-        this.baseRotationX = 0.0003; // Base auto-rotation speed X
-        this.baseRotationY = 0.0005; // Base auto-rotation speed Y
-        this.friction = 0.95;        // Slightly less friction
+        this.baseRotationX = 0.0003;
+        this.baseRotationY = 0.0005;
+        this.friction = 0.95;
         this.lastMouseX = 0;
         this.lastMouseY = 0;
         this.isDragging = false;
         this.tooltip = document.getElementById('tooltip');
-        if (!this.tooltip) {
-            console.error('Tooltip element not found!'); // Debug line
-        }
-        this.autoRotationSpeedX = 0.0005; // Slower X rotation
-        this.autoRotationSpeedY = 0.001;  // Slightly faster Y rotation
+        this.autoRotationSpeedX = 0.0005;
+        this.autoRotationSpeedY = 0.001;
         this.lastInteractionTime = 0;
-        this.interactionTimeout = 3000; // Time in ms before auto-rotation resumes
+        this.interactionTimeout = 3000;
         this.isAutoRotating = false;
         this.scale = 1;
         this.lastTouchDistance = 0;
         this.lastClickTime = 0;
         this.lastClickedModule = null;
-        this.clickDelay = 300; // milliseconds between clicks
+        this.clickDelay = 300;
         
-        this.GOOGLE_API_KEY = 'YOUR_API_KEY'; // You'll need to get a Google API key
-        
+        // Initialize core functionality
         this.initializeCanvas();
         this.setupEventListeners();
-
-        // Initialize with empty arrays
-        this.modules = [];
-        this.defaultModules = [];
+        this.setupTouchEvents();
         
+        // Initialize state
+        this.activeModule = null;
+        this.pinnedTooltip = false;
+        this.moduleDescriptions = new Map();
+        
+        // Start animation loop
+        this.animate();
+        
+        // Load modules if available
         if (typeof defaultModules !== 'undefined') {
-            console.log('Found modules file, attempting to load...');
-            try {
-                // Ensure we're getting all entries
-                const moduleCount = defaultModules.length;
-                console.log(`Total modules in file: ${moduleCount}`);
-                
-                this.modules = defaultModules.map((m, index) => {
-                    if (!m.name || !m.categories || !m.url || !m.scores) {
-                        console.warn(`Module at index ${index} is missing required fields:`, m);
-                        return null;
-                    }
-                    const module = new AIModule(m.name, m.categories, m.url, m.scores);
-                    this.positionModuleInCloud(module);
-                    return module;
-                }).filter(m => m !== null); // Remove any null entries
-                
-                console.log(`Successfully loaded ${this.modules.length} modules`);
-                this.defaultModules = [...this.modules];
-                this.initialized = true;
-            } catch (error) {
-                console.error('Error during module loading:', error);
-            }
+            this.loadDefaultModules();
         }
 
-        this.animate();
-
-        // Add touch event listeners
-        this.setupTouchEvents();
-
-        this.activeModule = null;  // Track active (selected) module
-        this.pinnedTooltip = false;  // Track if tooltip is pinned
-        this.moduleDescriptions = new Map();
-        this.tooltipDebounceTimer = null;
-        this.lastHoveredModule = null;
-        this.tooltipDebounceDelay = 300; // Increased to 300ms for more stability
-
-        // Add toggle button and state
-        this.isSidebarVisible = true;
-        this.setupSidebarToggle();
-
-        // Add description cache
-        this.descriptionCache = new Map();
-        this.descriptionTimeout = null;
-        this.isRequestPending = false;
-
-        this.baseFontSize = 18; // Add base font size
-        this.fontSizeMultiplier = 1; // Add multiplier for scaling
+        // Add font size properties
+        this.baseFontSize = 14;
+        this.fontSizeMultiplier = 1;
         
+        // Setup text controls
         this.setupTextControls();
 
-        this.currentLanguage = 'en';
-        this.translations = {
-            en: {
-                saveIndex: 'Save<br>Index',
-                loadIndex: 'Load<br>Index',
-                addModule: 'Add<br>Module',
-                editModule: 'Edit<br>Module',
-                deleteModule: 'Delete<br>Module'
-            },
-            he: {
-                saveIndex: 'שמור<br>אינדקס',
-                loadIndex: 'טען<br>אינדקס',
-                addModule: 'הוסף<br>מודול',
-                editModule: 'ערוך<br>מודול',
-                deleteModule: 'מחק<br>מודול'
-            }
-        };
-        
-        this.setupLanguageToggle();
-
-        this.dragSensitivity = 0.003; // Add this for better control
-
-        // Update translations with bilingual categories
+        // Add translations for categories
         this.categoryTranslations = {
             en: {
                 all: 'All',
@@ -208,7 +148,7 @@ class ModuleCloud {
                 VID: 'VID | כלי וידאו',
                 'UI/UX': 'UI/UX | ממשק משתמש',
                 ANI: 'ANI | אנימציה',
-                FCE: 'FCE | עריכת ני',
+                FCE: 'FCE | עריכת פנים',
                 SEA: 'SEA | חיפוש AI',
                 CON: 'CON | יצירת תוכן',
                 PRE: 'PRE | יצירת מצגות',
@@ -222,43 +162,55 @@ class ModuleCloud {
                 ML: 'ML | למידת מכונה'
             }
         };
+        
+        // Setup sidebar toggle
+        this.setupSidebarToggle();
 
+        // Setup UI controls
+        this.setupLanguageToggle();
         this.setupDarkModeToggle();
 
-        // Initial state: no module highlighted = button grey
-        const editButton = document.getElementById('editModule');
-        if (editButton) {
-            editButton.disabled = true;
-            editButton.classList.add('disabled');
-            editButton.style.opacity = '0.5';
-        }
-
-        this.activeModule = null;
-
-        // Add touch-related properties
-        this.lastTouchX = 0;
-        this.lastTouchY = 0;
-        this.touchStartX = 0;
-        this.touchStartY = 0;
-        this.touchStartTime = 0;
-        this.lastTappedModule = null;
-        this.lastTapTime = 0;  // Add this new property
-        this.tapCount = 0;     // Add this new property
-        this.isFirstTap = true;  // Add this new property
-        this.canOpenUrl = false;  // Add this new property
+        this.translations = {
+            en: {
+                saveIndex: 'Save<br>Index',
+                loadIndex: 'Load<br>Index',
+                addModule: 'Add<br>Module',
+                editModule: 'Edit<br>Module',
+                deleteModule: 'Delete<br>Module'
+            },
+            he: {
+                saveIndex: 'שמור<br>אינדקס',
+                loadIndex: 'טען<br>אינדקס',
+                addModule: 'הוסף<br>מודול',
+                editModule: 'ערוך<br>מודול',
+                deleteModule: 'מחק<br>מודול'
+            }
+        };
     }
 
-    initializeFromModules(modules) {
+    loadDefaultModules() {
+        console.log('Found modules file, attempting to load...');
         try {
-            this.modules = modules.map(m => {
-                const module = new AIModule(m.name, m.categories, m.url, m.scores);
-                this.positionModuleInCloud(module);
-                return module;
-            });
+            const moduleCount = defaultModules.length;
+            console.log(`Total modules in file: ${moduleCount}`);
+            
+            this.modules = defaultModules
+                .map((m, index) => {
+                    if (!m.name || !m.categories || !m.url || !m.scores) {
+                        console.warn(`Module at index ${index} is missing required fields:`, m);
+                        return null;
+                    }
+                    const module = new AIModule(m.name, m.categories, m.url, m.scores);
+                    this.positionModuleInCloud(module);
+                    return module;
+                })
+                .filter(m => m !== null);
+            
+            console.log(`Successfully loaded ${this.modules.length} modules`);
             this.defaultModules = [...this.modules];
             this.initialized = true;
         } catch (error) {
-            console.error('Error initializing modules:', error);
+            console.error('Error during module loading:', error);
             this.showError('Error loading modules');
         }
     }
@@ -391,12 +343,9 @@ class ModuleCloud {
                 } else if (e.shiftKey) {
                     // Shift+click for multi-select
                     if (button.classList.contains('active')) {
-                        // Remove this category if already selected
                         button.classList.remove('active');
                     } else {
-                        // Add this category
                         button.classList.add('active');
-                        // Remove 'all' selection if it was active
                         document.querySelector('.sidebar button[data-category="all"]')
                             ?.classList.remove('active');
                     }
@@ -1196,21 +1145,20 @@ class ModuleCloud {
     drawModule(module) {
         const rotated = this.rotatePoint(module.x, module.y, module.z);
         
-        // Calculate font size with new multiplier
+        // Calculate font size based on scores
         const activeCategories = new Set(
             Array.from(document.querySelectorAll('.sidebar button.active'))
                 .map(btn => btn.dataset.category)
         );
         
-        // Base size now uses multiplier
-        let fontSize = this.baseFontSize * this.fontSizeMultiplier;
+        // Base size calculation with multiplier
+        let fontSize = 14 * this.fontSizeMultiplier;
         
         if (activeCategories.size > 0) {
             const score = module.getAverageScore(activeCategories);
             fontSize = (14 + ((score - 0.8) * 110)) * this.fontSizeMultiplier;
         }
         
-        // Rest of the drawing code...
         const centerX = this.canvas.width / (2 * window.devicePixelRatio);
         const centerY = this.canvas.height / (2 * window.devicePixelRatio);
         
@@ -1539,24 +1487,46 @@ class ModuleCloud {
 
     setupLanguageToggle() {
         const langButton = document.createElement('button');
-        langButton.className = 'language-toggle control-button';
+        langButton.className = 'control-button language-toggle';
         langButton.textContent = 'ע';
         langButton.title = 'Switch to Hebrew';
         
-        // Add to controls container
         const controls = document.querySelector('.controls');
         controls.appendChild(langButton);
 
         langButton.onclick = () => {
             this.currentLanguage = this.currentLanguage === 'en' ? 'he' : 'en';
             document.documentElement.setAttribute('lang', this.currentLanguage);
-            document.body.classList.toggle('rtl', this.currentLanguage === 'he');
-            this.updateLanguage();
             
-            // Update button text and title
+            // Don't toggle RTL class on the entire body
+            // Only apply RTL to specific text elements that need it
+            document.querySelectorAll('.needs-rtl').forEach(el => {
+                el.dir = this.currentLanguage === 'he' ? 'rtl' : 'ltr';
+            });
+            
+            this.updateLanguage();
+            this.updateCategoryLabels();
+            
             langButton.textContent = this.currentLanguage === 'en' ? 'ע' : 'A';
             langButton.title = this.currentLanguage === 'en' ? 
                 'Switch to Hebrew' : 'Switch to English';
+        };
+    }
+
+    setupDarkModeToggle() {
+        const darkModeButton = document.createElement('button');
+        darkModeButton.className = 'control-button toggle-mode';
+        darkModeButton.innerHTML = '🌓';
+        darkModeButton.title = 'Toggle Dark Mode';
+
+        const controls = document.querySelector('.controls');
+        controls.appendChild(darkModeButton);
+
+        darkModeButton.onclick = () => {
+            document.body.classList.toggle('light-mode');
+            this.canvas.style.backgroundColor = 
+                document.body.classList.contains('light-mode') ? 
+                '#ffffff' : '#1a1a1a';
         };
     }
 
@@ -1578,35 +1548,11 @@ class ModuleCloud {
         const buttons = document.querySelectorAll('.sidebar button');
         buttons.forEach(button => {
             const category = button.dataset.category;
-            // Store original English text if not already stored
-            if (!button.dataset.originalText) {
-                button.dataset.originalText = button.innerHTML;
-            }
-            
             const translation = this.categoryTranslations[this.currentLanguage][category];
             if (translation) {
                 button.innerHTML = translation;
             }
         });
-    }
-
-    setupDarkModeToggle() {
-        const toggleButton = document.createElement('button');
-        toggleButton.id = 'toggleMode';
-        toggleButton.className = 'toggle-mode control-button';
-        toggleButton.innerHTML = '🌓';
-        toggleButton.title = 'Toggle Light/Dark Mode';
-
-        // Add to controls container
-        const controls = document.querySelector('.controls');
-        controls.appendChild(toggleButton);
-
-        toggleButton.onclick = () => {
-            document.body.classList.toggle('light-mode');
-            this.canvas.style.backgroundColor = 
-                document.body.classList.contains('light-mode') ? 
-                '#ffffff' : '#1a1a1a';
-        };
     }
 
     // Add this method to handle tooltip link clicks
@@ -1644,62 +1590,7 @@ class ModuleCloud {
     }
 }
 
-new ModuleCloud();
-
-// Add this to your existing JavaScript
-function setupMobileEditModule() {
-    const editModuleDropdown = document.getElementById('editModuleDropdown');
-    const body = document.body;
-    const canvas = document.getElementById('moduleCloud');
-
-    // Create overlay div
-    const overlay = document.createElement('div');
-    overlay.className = 'dropdown-overlay';
-    overlay.style.display = 'none';
-
-    // Add overlay to body
-    body.appendChild(overlay);
-
-    // Show overlay when dropdown opens
-    function showDropdown() {
-        editModuleDropdown.classList.add('show');
-        overlay.style.display = 'block';
-        body.style.overflow = 'hidden'; // Prevent background scrolling
-    }
-
-    // Hide overlay when dropdown closes
-    function hideDropdown() {
-        editModuleDropdown.classList.remove('show');
-        overlay.style.display = 'none';
-        body.style.overflow = ''; // Restore scrolling
-    }
-
-    // Close dropdown when clicking/tapping overlay or canvas
-    overlay.addEventListener('click', hideDropdown);
-    overlay.addEventListener('touchend', hideDropdown);
-    canvas.addEventListener('touchend', (e) => {
-        if (editModuleDropdown.classList.contains('show')) {
-            hideDropdown();
-            e.preventDefault(); // Prevent other touch handlers
-        }
-    });
-
-    // Modify existing edit button click handler
-    document.querySelector('#editModule').addEventListener('click', function(e) {
-        e.stopPropagation();
-        if (window.innerWidth <= 768) {
-            showDropdown();
-        }
-    });
-
-    // Prevent dropdown from closing when clicking inside it
-    editModuleDropdown.addEventListener('click', function(e) {
-        e.stopPropagation();
-    });
-    editModuleDropdown.addEventListener('touchend', function(e) {
-        e.stopPropagation();
-    });
-}
-
-// Call this function when your page loads
-document.addEventListener('DOMContentLoaded', setupMobileEditModule);
+// Initialize the cloud when the document is ready
+document.addEventListener('DOMContentLoaded', () => {
+    window.moduleCloud = new ModuleCloud();
+});
