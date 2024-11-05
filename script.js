@@ -1374,19 +1374,34 @@ class ModuleCloud {
         const toggleButton = document.createElement('button');
         toggleButton.innerHTML = '›';
         toggleButton.className = 'sidebar-toggle';
-        document.body.appendChild(toggleButton);
-
+        
+        // Create container and restructure elements
+        const sidebarContainer = document.createElement('div');
+        sidebarContainer.className = 'sidebar-container';
+        
+        // Get existing sidebar
         const sidebar = document.querySelector('.sidebar');
+        
+        // Remove sidebar from its current position
+        sidebar.parentNode.removeChild(sidebar);
+        
+        // Add sidebar and toggle button to container
+        sidebarContainer.appendChild(sidebar);
+        sidebarContainer.appendChild(toggleButton);
+        
+        // Add container to body
+        document.body.appendChild(sidebarContainer);
+
         this.isSidebarVisible = false;
 
         toggleButton.addEventListener('click', () => {
             this.isSidebarVisible = !this.isSidebarVisible;
             
             if (this.isSidebarVisible) {
-                sidebar.classList.add('visible');
+                sidebarContainer.classList.add('visible');
                 toggleButton.style.transform = 'translateY(-50%) rotate(180deg)';
             } else {
-                sidebar.classList.remove('visible');
+                sidebarContainer.classList.remove('visible');
                 toggleButton.style.transform = 'translateY(-50%) rotate(0deg)';
             }
         });
