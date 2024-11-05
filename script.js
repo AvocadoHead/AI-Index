@@ -1405,6 +1405,17 @@ class ModuleCloud {
                 toggleButton.style.transform = 'translateY(-50%) rotate(0deg)';
             }
         });
+
+        // Add click listener for sidebar auto-close
+        document.addEventListener('click', (event) => {
+            if (this.isSidebarVisible && 
+                !sidebarContainer.contains(event.target) && 
+                event.target !== toggleButton) {
+                this.isSidebarVisible = false;
+                sidebarContainer.classList.remove('visible');
+                toggleButton.style.transform = 'translateY(-50%) rotate(0deg)';
+            }
+        });
     }
 
     getFaviconUrl(url) {
