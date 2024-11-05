@@ -83,16 +83,37 @@ canvas:active {
 }
 
 .sidebar {
-    position: fixed;
-    left: -300px;
-    top: 0;
+    position: relative;
     width: 300px;
     height: 100%;
     background: rgba(0, 0, 0, 0.8);
     backdrop-filter: blur(10px);
-    transition: transform 0.3s ease;
     overflow-y: auto;
-    z-index: 1000;
+    scrollbar-width: thin;
+    scrollbar-color: #666 transparent;
+    direction: rtl;
+}
+
+.sidebar > * {
+    direction: ltr;
+}
+
+.sidebar::-webkit-scrollbar {
+    width: 6px;
+    background-color: transparent;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    background-color: #666;
+    border-radius: 3px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+body.light-mode .sidebar::-webkit-scrollbar-thumb {
+    background-color: #999;
 }
 
 .sidebar.visible {
@@ -123,8 +144,8 @@ canvas:active {
 }
 
 .sidebar-toggle {
-    position: fixed;
-    left: 0;
+    position: absolute;
+    left: 100%;
     top: 50%;
     transform: translateY(-50%);
     background: rgba(0, 0, 0, 0.8);
@@ -133,10 +154,12 @@ canvas:active {
     padding: 10px 15px;
     cursor: pointer;
     font-size: 24px;
-    z-index: 1001;
-    transition: transform 0.3s ease;
     border-radius: 0 5px 5px 0;
     backdrop-filter: blur(10px);
+}
+
+.sidebar.visible + .sidebar-toggle {
+    transform: translate(300px, -50%);
 }
 
 /* Light mode adjustments */
@@ -164,20 +187,23 @@ body.light-mode .sidebar-toggle {
 }
 
 /* RTL Support */
-body.rtl .sidebar {
-    right: auto;
+body.rtl .sidebar-container {
     left: auto;
+    right: -300px;
 }
 
-body.rtl .sidebar.visible {
-    left: auto;
-    right: 0;
+body.rtl .sidebar-container.visible {
+    transform: translateX(-300px);
 }
 
 body.rtl .sidebar-toggle {
     left: auto;
-    right: 0;
+    right: 100%;
     border-radius: 5px 0 0 5px;
+}
+
+body.rtl .sidebar.visible + .sidebar-toggle {
+    transform: translate(-300px, -50%);
 }
 
 .tooltip {
@@ -834,4 +860,53 @@ body.light-mode .social-icons a:hover {
 
 .tooltip-name:hover {
     text-decoration: underline;
+}
+
+/* Add a container for both sidebar and toggle */
+.sidebar-container {
+    position: fixed;
+    left: -300px;
+    top: 0;
+    height: 100%;
+    z-index: 1001;
+    transition: transform 0.3s ease;
+}
+
+.sidebar-container.visible {
+    transform: translateX(300px);
+}
+
+.sidebar-toggle {
+    position: absolute;
+    left: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 24px;
+    border-radius: 0 5px 5px 0;
+    backdrop-filter: blur(10px);
+}
+
+/* RTL Support */
+body.rtl .sidebar-container {
+    left: auto;
+    right: -300px;
+}
+
+body.rtl .sidebar-container.visible {
+    transform: translateX(-300px);
+}
+
+body.rtl .sidebar-toggle {
+    left: auto;
+    right: 100%;
+    border-radius: 5px 0 0 5px;
+}
+
+body.rtl .sidebar.visible + .sidebar-toggle {
+    transform: translate(-300px, -50%);
 }
