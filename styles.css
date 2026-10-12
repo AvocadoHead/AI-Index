@@ -1019,11 +1019,11 @@ h1 {font-size:38px;letter-spacing:-.8px;font-weight:600;}
 .layout-toolbar button {border:1px solid var(--line);border-radius:7px;background:transparent;padding:4px 13px;font-size:14px;min-height:40px;}
 .layout-toolbar button[aria-pressed=true] {background:#e5eae7;border-color:#8ca299;}
 .sphere-hint {font-size:13px;color:var(--muted);margin:6px 0;}
-.sphere-stage {height:min(760px,75vh);min-height:460px;position:relative;isolation:isolate;touch-action:none;border-top:1px solid var(--line);background:radial-gradient(ellipse at center,#edf2eb88,transparent 65%);cursor:grab;}
+.sphere-stage {height:min(760px,75vh);min-height:460px;position:relative;isolation:isolate;touch-action:none;border-top:1px solid var(--line);background:linear-gradient(155deg,#fff 15%,#f7f9fc 100%);cursor:grab;}
 .sphere-stage[data-dragging] {cursor:grabbing;}
 #sphereCanvas {position:absolute;inset:0;width:100%;height:100%;pointer-events:none;}
 .sphere-stage:not(.atlas-mode) .tool-grid {display:block;border:0;background:none;padding:0;}
-.sphere-stage:not(.atlas-mode) .tool-label {position:absolute;transform:translate(-50%,-50%);width:max-content;max-width:calc(100% - 24px);padding:2px 5px;text-shadow:0 1px 5px var(--paper),0 -1px 5px var(--paper);}
+.sphere-stage:not(.atlas-mode) .tool-label {position:absolute;transform:translate(-50%,-50%);width:max-content;max-width:calc(100% - 24px);padding:2px 5px;text-shadow:none;}
 .sphere-stage:not(.atlas-mode) .tool-label h3 {font-size:clamp(16px,calc(var(--score-size)*.82),29px);}
 .sphere-stage:not(.atlas-mode) .tool-label:hover {background:#faf9f6ed;}
 .sphere-stage.atlas-mode {height:auto;min-height:0;touch-action:pan-y;cursor:auto;}
@@ -1041,3 +1041,16 @@ h1 {font-size:38px;letter-spacing:-.8px;font-weight:600;}
  .atlas-mode .tool-grid {columns:1;}
 }
 @media(max-width:620px){.sphere-stage {height:420px;min-height:420px;}}
+
+/* Clean light canvas: no glow, blur, or text halo. */
+:root {--paper:#fff;}
+.sphere-stage .tool-label {text-shadow:none;filter:none;}
+.sphere-stage .tool-card {--tone:#3d5e53;}
+.sphere-stage .tool-card[data-category=platforms] {--tone:#285c56;}
+.sphere-stage .tool-card[data-category=video] {--tone:#704d3d;}
+.sphere-stage .tool-card[data-category=audio] {--tone:#624978;}
+.sphere-stage .tool-card[data-category=design] {--tone:#3d6070;}
+.sphere-stage .tool-card[data-category=workflow] {--tone:#605730;}
+.sphere-stage .tool-card[data-category=text] {--tone:#435a81;}
+.sphere-stage .tool-card[data-category=spatial] {--tone:#744c5e;}
+.sphere-stage:not(.atlas-mode) .tool-label:hover {background:#edf2f5;}

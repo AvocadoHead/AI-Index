@@ -113,7 +113,7 @@
   function hideQuick(){clearTimeout(quickTimer);quick.hidden=true;quickPinned=false;if(quickTrigger)quickTrigger.removeAttribute('aria-describedby');}
   function scheduleQuickClose(){clearTimeout(quickTimer);quickTimer=setTimeout(()=>{if(!quickPinned&&!quick.matches(':hover')&&!quick.contains(doc.activeElement))hideQuick()},180);}
   function showQuick(record,trigger,pinned){
-    if(el('detailDialog').open||performance.now()<Number(el('sphereStage').dataset.suppressUntil||0))return;
+    if(el('sphereStage').dataset.inertia||el('detailDialog').open||performance.now()<Number(el('sphereStage').dataset.suppressUntil||0))return;
     sphere?.setPlaying(false);clearTimeout(quickTimer);quickPinned=pinned;quickTrigger=trigger;quick.replaceChildren();
     const close=node('button','×','quick-close');close.type='button';close.setAttribute('aria-label',t('close'));close.addEventListener('click',()=>{hideQuick();trigger.focus();hideQuick()});
     const title=node('h2',record.name);title.dir='auto';
@@ -143,7 +143,7 @@
     button.addEventListener('keydown',event=>{if(event.key==='Tab'&&!event.shiftKey&&!quick.hidden&&quickTrigger===button){event.preventDefault();quick.querySelector('.primary-button').focus()}});button.addEventListener('pointerenter',event=>{if(event.pointerType==='mouse'&&!el('sphereStage').dataset.dragging)showQuick(record,button,false)});button.addEventListener('focus',()=>showQuick(record,button,false));button.addEventListener('pointerleave',scheduleQuickClose);button.addEventListener('click',()=>showQuick(record,button,true));article.append(button);return article;
   }
   function renderResults() {
-    hideQuick();const selected=selectRecords(records,state);
+    hideQuick();sphere?.setPlaying(false);const selected=selectRecords(records,state);
     if(layout==='sphere')el('toolGrid').replaceChildren(...interleave(selected).map(card));else {const groups=[];for(const key of Object.keys(tasks).filter(k=>k!=='all')){const members=selected.filter(record=>record.primaryTask===key);if(!members.length)continue;const group=node('section',undefined,'atlas-group');const heading=node('h2',tasks[key][state.language]+' · '+members.length);const labels=node('div',undefined,'atlas-labels');labels.append(...members.map(card));group.append(heading,labels);groups.push(group)}el('toolGrid').replaceChildren(...groups)}
     sphere?.draw();el('resultsCount').textContent=t('result')(selected.length);el('emptyState').hidden=selected.length>0;el('clearSearch').hidden=!state.query;el('resetFilters').hidden=!(state.query || state.selectedTasks.length || state.status!=='all');
     el('mobileTask').value=state.task;
@@ -203,7 +203,7 @@
   sphere=new root.ToolSphere({stage:el('sphereStage'),canvas:el('sphereCanvas'),grid:el('toolGrid'),onFallback:fallback,onMove:hideQuick});
   sphere.setRecords(interleave(records).map(record=>record.id),root.curatedToolIds||[]);
   el('sphereLayout').addEventListener('click',()=>applyLayout('sphere'));el('atlasLayout').addEventListener('click',()=>applyLayout('atlas'));
-  el('motionToggle').addEventListener('click',()=>sphere.setPlaying(!sphere.playing));
+  el('motionToggle').addEventListener('click',()=>sphere.setPlaying(!(sphere.playing||sphere.inertial)));
   el('sphereStage').addEventListener('sphere-motion',event=>{el('motionToggle').textContent=event.detail?'Ⅱ':'▶';el('motionToggle').setAttribute('aria-pressed',String(event.detail));});
   el('motionToggle').setAttribute('aria-label',state.language==='he'?'הפעלה או עצירה של סיבוב':'Play or pause rotation');el('motionToggle').disabled=sphere.reduced.matches;
   el('resetSphere').addEventListener('click',()=>sphere.reset());

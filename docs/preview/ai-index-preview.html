@@ -1026,11 +1026,11 @@ h1 {font-size:38px;letter-spacing:-.8px;font-weight:600;}
 .layout-toolbar button {border:1px solid var(--line);border-radius:7px;background:transparent;padding:4px 13px;font-size:14px;min-height:40px;}
 .layout-toolbar button[aria-pressed=true] {background:#e5eae7;border-color:#8ca299;}
 .sphere-hint {font-size:13px;color:var(--muted);margin:6px 0;}
-.sphere-stage {height:min(760px,75vh);min-height:460px;position:relative;isolation:isolate;touch-action:none;border-top:1px solid var(--line);background:radial-gradient(ellipse at center,#edf2eb88,transparent 65%);cursor:grab;}
+.sphere-stage {height:min(760px,75vh);min-height:460px;position:relative;isolation:isolate;touch-action:none;border-top:1px solid var(--line);background:linear-gradient(155deg,#fff 15%,#f7f9fc 100%);cursor:grab;}
 .sphere-stage[data-dragging] {cursor:grabbing;}
 #sphereCanvas {position:absolute;inset:0;width:100%;height:100%;pointer-events:none;}
 .sphere-stage:not(.atlas-mode) .tool-grid {display:block;border:0;background:none;padding:0;}
-.sphere-stage:not(.atlas-mode) .tool-label {position:absolute;transform:translate(-50%,-50%);width:max-content;max-width:calc(100% - 24px);padding:2px 5px;text-shadow:0 1px 5px var(--paper),0 -1px 5px var(--paper);}
+.sphere-stage:not(.atlas-mode) .tool-label {position:absolute;transform:translate(-50%,-50%);width:max-content;max-width:calc(100% - 24px);padding:2px 5px;text-shadow:none;}
 .sphere-stage:not(.atlas-mode) .tool-label h3 {font-size:clamp(16px,calc(var(--score-size)*.82),29px);}
 .sphere-stage:not(.atlas-mode) .tool-label:hover {background:#faf9f6ed;}
 .sphere-stage.atlas-mode {height:auto;min-height:0;touch-action:pan-y;cursor:auto;}
@@ -1048,6 +1048,19 @@ h1 {font-size:38px;letter-spacing:-.8px;font-weight:600;}
  .atlas-mode .tool-grid {columns:1;}
 }
 @media(max-width:620px){.sphere-stage {height:420px;min-height:420px;}}
+
+/* Clean light canvas: no glow, blur, or text halo. */
+:root {--paper:#fff;}
+.sphere-stage .tool-label {text-shadow:none;filter:none;}
+.sphere-stage .tool-card {--tone:#3d5e53;}
+.sphere-stage .tool-card[data-category=platforms] {--tone:#285c56;}
+.sphere-stage .tool-card[data-category=video] {--tone:#704d3d;}
+.sphere-stage .tool-card[data-category=audio] {--tone:#624978;}
+.sphere-stage .tool-card[data-category=design] {--tone:#3d6070;}
+.sphere-stage .tool-card[data-category=workflow] {--tone:#605730;}
+.sphere-stage .tool-card[data-category=text] {--tone:#435a81;}
+.sphere-stage .tool-card[data-category=spatial] {--tone:#744c5e;}
+.sphere-stage:not(.atlas-mode) .tool-label:hover {background:#edf2f5;}
 </style>
 <!-- Assistant SIL Open Font License 1.1
 Copyright 2020 The Assistant Project Authors (https://github.com/hafontia/Assistant).
@@ -5581,22 +5594,23 @@ window.curatedToolIds=['weavy','kolbo-ai','comfyui','remotion','figma-make','ai-
  const golden=Math.PI*(3-Math.sqrt(5));
  function point(index,count){const y=1-2*(index+.5)/count,r=Math.sqrt(1-y*y),a=index*golden;return [Math.cos(a)*r,y,Math.sin(a)*r];}
  function rotate(p,rx,ry){const x=p[0]*Math.cos(ry)-p[2]*Math.sin(ry),z=p[2]*Math.cos(ry)+p[0]*Math.sin(ry);return [x,p[1]*Math.cos(rx)-z*Math.sin(rx),p[1]*Math.sin(rx)+z*Math.cos(rx)];}
- root.SphereMath={point,rotate};
+ function inertiaStep(velocity,elapsed){const decay=Math.exp(-Math.max(0,elapsed)/360);return {velocity:velocity*decay,delta:velocity*360*(1-decay)};}
+ root.SphereMath={point,rotate,inertiaStep};
  root.ToolSphere=class {
   constructor({stage,canvas,grid,onFallback,onMove}){
-   Object.assign(this,{stage,canvas,grid,onFallback,onMove});this.rx=.15;this.ry=.35;this.playing=false;this.enabled=true;this.slots=new Map();this.frame=0;this.reduced=matchMedia('(prefers-reduced-motion: reduce)');
+   Object.assign(this,{stage,canvas,grid,onFallback,onMove});this.rx=.15;this.ry=.35;this.playing=false;this.inertial=false;this.enabled=true;this.slots=new Map();this.frame=0;this.reduced=matchMedia('(prefers-reduced-motion: reduce)');
    try{this.gl=canvas.getContext('webgl',{alpha:true,antialias:true,preserveDrawingBuffer:true});if(!this.gl)throw Error('WebGL unavailable');this.initGL();}catch(error){this.failed=true;onFallback(error.message);return;}
    canvas.addEventListener('webglcontextlost',event=>{event.preventDefault();this.failed=true;this.setPlaying(false);onFallback('context-lost')});
    this.reduced.addEventListener('change',()=>{if(this.reduced.matches)this.setPlaying(false)});
    this.resize=new ResizeObserver(()=>this.draw());this.resize.observe(stage);
    let drag=null,suppress=0;
-   stage.addEventListener('pointerdown',event=>{if(!this.enabled||event.button!==0)return;this.setPlaying(false);drag={id:event.pointerId,x:event.clientX,y:event.clientY,rx:this.rx,ry:this.ry,moved:false};});
-   stage.addEventListener('pointermove',event=>{if(!drag||drag.id!==event.pointerId)return;const dx=event.clientX-drag.x,dy=event.clientY-drag.y;if(Math.hypot(dx,dy)>7){drag.moved=true;stage.setPointerCapture(event.pointerId);stage.dataset.dragging='true';onMove();this.ry=drag.ry+dx*.006;this.rx=Math.max(-1.3,Math.min(1.3,drag.rx+dy*.006));this.draw();}});
-   const end=event=>{if(!drag||drag.id!==event.pointerId)return;if(drag.moved){suppress=performance.now()+500;stage.dataset.suppressUntil=String(suppress);}drag=null;delete stage.dataset.dragging;if(stage.hasPointerCapture(event.pointerId))stage.releasePointerCapture(event.pointerId);};
+   stage.addEventListener('pointerdown',event=>{if(!this.enabled||event.button!==0)return;this.setPlaying(false);drag={id:event.pointerId,x:event.clientX,y:event.clientY,rx:this.rx,ry:this.ry,moved:false,lastX:event.clientX,lastY:event.clientY,time:event.timeStamp,vx:0,vy:0};});
+   stage.addEventListener('pointermove',event=>{if(!drag||drag.id!==event.pointerId)return;const dx=event.clientX-drag.x,dy=event.clientY-drag.y;if(Math.hypot(dx,dy)>7){const elapsed=Math.max(8,event.timeStamp-drag.time);drag.vx=Math.max(-.003,Math.min(.003,(event.clientY-drag.lastY)*.006/elapsed));drag.vy=Math.max(-.003,Math.min(.003,(event.clientX-drag.lastX)*.006/elapsed));drag.lastX=event.clientX;drag.lastY=event.clientY;drag.time=event.timeStamp;drag.moved=true;stage.setPointerCapture(event.pointerId);stage.dataset.dragging='true';onMove();this.ry=drag.ry+dx*.006;this.rx=Math.max(-1.3,Math.min(1.3,drag.rx+dy*.006));this.draw();}});
+   const end=event=>{if(!drag||drag.id!==event.pointerId)return;if(drag.moved){suppress=performance.now()+500;stage.dataset.suppressUntil=String(suppress);if(event.type==='pointerup'){const age=Math.max(0,event.timeStamp-drag.time);const decay=Math.exp(-age/90);this.startInertia(drag.vx*decay,drag.vy*decay);}}drag=null;delete stage.dataset.dragging;if(stage.hasPointerCapture(event.pointerId))stage.releasePointerCapture(event.pointerId);};
    stage.addEventListener('pointerup',end);stage.addEventListener('pointercancel',end);
    stage.addEventListener('click',event=>{if(performance.now()<suppress){event.preventDefault();event.stopImmediatePropagation()}},true);
    stage.addEventListener('keydown',event=>{if(event.target!==stage)return;const moves={ArrowLeft:[0,-.2],ArrowRight:[0,.2],ArrowUp:[-.2,0],ArrowDown:[.2,0]};if(moves[event.key]){event.preventDefault();this.setPlaying(false);this.rx+=moves[event.key][0];this.ry+=moves[event.key][1];onMove();this.draw()}if(event.key==='Home'){event.preventDefault();this.reset()}});
-   stage.addEventListener('focusin',()=>this.setPlaying(false));stage.addEventListener('pointerenter',()=>this.setPlaying(false));
+   stage.addEventListener('focusin',()=>this.setPlaying(false));stage.addEventListener('pointerenter',()=>{if(this.playing)this.setPlaying(false)});document.addEventListener('visibilitychange',()=>{if(document.hidden)this.setPlaying(false)});
   }
   initGL(){
    const gl=this.gl;
@@ -5609,7 +5623,14 @@ window.curatedToolIds=['weavy','kolbo-ai','comfyui','remotion','figma-make','ai-
   }
   setRecords(ids,priority=[]){if(!this.slots.size){const first=ids.filter(id=>priority.includes(id)),rest=ids.filter(id=>!priority.includes(id));for(const group of [first,rest])group.forEach((id,index)=>this.slots.set(id,point(index,group.length)));}this.draw();}
   setEnabled(value){this.enabled=value;if(!value)this.setPlaying(false);this.draw();}
-  setPlaying(value){this.playing=Boolean(value&&!this.reduced.matches&&!this.failed&&this.enabled);this.stage.dispatchEvent(new CustomEvent('sphere-motion',{detail:this.playing}));cancelAnimationFrame(this.frame);if(this.playing){let last=performance.now();const step=now=>{if(!this.playing)return;this.ry+=(now-last)*.000055;last=now;this.draw();this.frame=requestAnimationFrame(step)};this.frame=requestAnimationFrame(step);}}
+  setPlaying(value){this.stopInertia();this.playing=Boolean(value&&!this.reduced.matches&&!this.failed&&this.enabled);this.stage.dispatchEvent(new CustomEvent('sphere-motion',{detail:this.playing}));cancelAnimationFrame(this.frame);if(this.playing){let last=performance.now();const step=now=>{if(!this.playing)return;this.ry+=(now-last)*.000055;last=now;this.draw();this.frame=requestAnimationFrame(step)};this.frame=requestAnimationFrame(step);}}
+  stopInertia(){this.inertial=false;delete this.stage.dataset.inertia;cancelAnimationFrame(this.frame);}
+  startInertia(vx,vy){
+   if(this.reduced.matches||this.failed||!this.enabled||Math.hypot(vx,vy)<.000015)return;
+   this.stopInertia();this.inertial=true;this.stage.dataset.inertia='true';this.stage.dispatchEvent(new CustomEvent('sphere-motion',{detail:true}));let last=performance.now();
+   const step=now=>{if(!this.inertial)return;const dt=Math.min(64,now-last);last=now;const x=inertiaStep(vx,dt),y=inertiaStep(vy,dt);vx=x.velocity;vy=y.velocity;this.rx=Math.max(-1.3,Math.min(1.3,this.rx+x.delta));this.ry+=y.delta;if(Math.abs(this.rx)>=1.3)vx=0;this.draw();if(Math.hypot(vx,vy)<.000015){this.stopInertia();this.stage.dispatchEvent(new CustomEvent('sphere-motion',{detail:false}));return;}this.frame=requestAnimationFrame(step)};
+   this.frame=requestAnimationFrame(step);
+  }
   reset(){this.setPlaying(false);this.rx=.15;this.ry=.35;this.onMove();this.draw();}
   draw(){
    if(!this.enabled||this.failed||!this.gl)return;
@@ -5622,7 +5643,7 @@ window.curatedToolIds=['weavy','kolbo-ai','comfyui','remotion','figma-make','ai-
     const width=Math.min(button.offsetWidth,w-24),height=Math.max(44,button.offsetHeight),x=Math.max(width/2+6,Math.min(w-width/2-6,w/2+p[0]*radius)),y=h/2-p[1]*radius;
     const box={x:x-width/2,y:y-height/2,w:width,h:height};const focused=button===document.activeElement;
     const overlap=occupied.some(b=>box.x<b.x+b.w+5&&box.x+box.w+5>b.x&&box.y<b.y+b.h&&box.y+box.h>b.y);
-    const show=focused||(!overlap&&p[2]>-.38);button.style.visibility=show?'visible':'hidden';button.tabIndex=show?0:-1;button.style.left=x+'px';button.style.top=y+'px';button.style.zIndex=String(20+Math.round(p[2]*10));button.style.opacity=show?String(.72+.28*(p[2]+1)/2):'0';button.dataset.depth=p[2].toFixed(3);
+    const show=focused||(!overlap&&p[2]>-.38);button.style.visibility=show?'visible':'hidden';button.tabIndex=show?0:-1;button.style.left=x+'px';button.style.top=y+'px';button.style.zIndex=String(20+Math.round(p[2]*10));button.style.opacity=show?String(.92+.08*(p[2]+1)/2):'0';button.dataset.depth=p[2].toFixed(3);
     if(show){occupied.push(box);visible++;}
    }
    this.stage.dataset.visible=String(visible);this.stage.dataset.rotation=this.rx.toFixed(3)+','+this.ry.toFixed(3);
@@ -5747,7 +5768,7 @@ window.curatedToolIds=['weavy','kolbo-ai','comfyui','remotion','figma-make','ai-
   function hideQuick(){clearTimeout(quickTimer);quick.hidden=true;quickPinned=false;if(quickTrigger)quickTrigger.removeAttribute('aria-describedby');}
   function scheduleQuickClose(){clearTimeout(quickTimer);quickTimer=setTimeout(()=>{if(!quickPinned&&!quick.matches(':hover')&&!quick.contains(doc.activeElement))hideQuick()},180);}
   function showQuick(record,trigger,pinned){
-    if(el('detailDialog').open||performance.now()<Number(el('sphereStage').dataset.suppressUntil||0))return;
+    if(el('sphereStage').dataset.inertia||el('detailDialog').open||performance.now()<Number(el('sphereStage').dataset.suppressUntil||0))return;
     sphere?.setPlaying(false);clearTimeout(quickTimer);quickPinned=pinned;quickTrigger=trigger;quick.replaceChildren();
     const close=node('button','×','quick-close');close.type='button';close.setAttribute('aria-label',t('close'));close.addEventListener('click',()=>{hideQuick();trigger.focus();hideQuick()});
     const title=node('h2',record.name);title.dir='auto';
@@ -5777,7 +5798,7 @@ window.curatedToolIds=['weavy','kolbo-ai','comfyui','remotion','figma-make','ai-
     button.addEventListener('keydown',event=>{if(event.key==='Tab'&&!event.shiftKey&&!quick.hidden&&quickTrigger===button){event.preventDefault();quick.querySelector('.primary-button').focus()}});button.addEventListener('pointerenter',event=>{if(event.pointerType==='mouse'&&!el('sphereStage').dataset.dragging)showQuick(record,button,false)});button.addEventListener('focus',()=>showQuick(record,button,false));button.addEventListener('pointerleave',scheduleQuickClose);button.addEventListener('click',()=>showQuick(record,button,true));article.append(button);return article;
   }
   function renderResults() {
-    hideQuick();const selected=selectRecords(records,state);
+    hideQuick();sphere?.setPlaying(false);const selected=selectRecords(records,state);
     if(layout==='sphere')el('toolGrid').replaceChildren(...interleave(selected).map(card));else {const groups=[];for(const key of Object.keys(tasks).filter(k=>k!=='all')){const members=selected.filter(record=>record.primaryTask===key);if(!members.length)continue;const group=node('section',undefined,'atlas-group');const heading=node('h2',tasks[key][state.language]+' · '+members.length);const labels=node('div',undefined,'atlas-labels');labels.append(...members.map(card));group.append(heading,labels);groups.push(group)}el('toolGrid').replaceChildren(...groups)}
     sphere?.draw();el('resultsCount').textContent=t('result')(selected.length);el('emptyState').hidden=selected.length>0;el('clearSearch').hidden=!state.query;el('resetFilters').hidden=!(state.query || state.selectedTasks.length || state.status!=='all');
     el('mobileTask').value=state.task;
@@ -5837,7 +5858,7 @@ window.curatedToolIds=['weavy','kolbo-ai','comfyui','remotion','figma-make','ai-
   sphere=new root.ToolSphere({stage:el('sphereStage'),canvas:el('sphereCanvas'),grid:el('toolGrid'),onFallback:fallback,onMove:hideQuick});
   sphere.setRecords(interleave(records).map(record=>record.id),root.curatedToolIds||[]);
   el('sphereLayout').addEventListener('click',()=>applyLayout('sphere'));el('atlasLayout').addEventListener('click',()=>applyLayout('atlas'));
-  el('motionToggle').addEventListener('click',()=>sphere.setPlaying(!sphere.playing));
+  el('motionToggle').addEventListener('click',()=>sphere.setPlaying(!(sphere.playing||sphere.inertial)));
   el('sphereStage').addEventListener('sphere-motion',event=>{el('motionToggle').textContent=event.detail?'Ⅱ':'▶';el('motionToggle').setAttribute('aria-pressed',String(event.detail));});
   el('motionToggle').setAttribute('aria-label',state.language==='he'?'הפעלה או עצירה של סיבוב':'Play or pause rotation');el('motionToggle').disabled=sphere.reduced.matches;
   el('resetSphere').addEventListener('click',()=>sphere.reset());

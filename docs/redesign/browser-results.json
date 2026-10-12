@@ -22,6 +22,10 @@
       "rotation": "0.150,0.350",
       "domains": 6
     },
+    "appearance": {
+      "noHalos": true,
+      "contrast": 5.784342590453763
+    },
     "name": "360-he",
     "searchAndCombinedFilters": true,
     "clearAndEmptyResults": true,
@@ -52,6 +56,10 @@
       "visible": 11,
       "rotation": "0.150,0.350",
       "domains": 6
+    },
+    "appearance": {
+      "noHalos": true,
+      "contrast": 5.784342590453763
     },
     "name": "360-en",
     "searchAndCombinedFilters": true,
@@ -84,6 +92,10 @@
       "rotation": "0.150,0.350",
       "domains": 6
     },
+    "appearance": {
+      "noHalos": true,
+      "contrast": 6.143138344889307
+    },
     "name": "390-he",
     "searchAndCombinedFilters": true,
     "clearAndEmptyResults": true,
@@ -115,6 +127,10 @@
       "rotation": "0.150,0.350",
       "domains": 6
     },
+    "appearance": {
+      "noHalos": true,
+      "contrast": 6.143138344889307
+    },
     "name": "390-en",
     "searchAndCombinedFilters": true,
     "clearAndEmptyResults": true,
@@ -128,7 +144,7 @@
     "direction": "rtl",
     "count": 131,
     "width": 768,
-    "scrollWidth": 768,
+    "scrollWidth": 753,
     "errors": [],
     "columns": 1,
     "font": true,
@@ -146,6 +162,10 @@
       "rotation": "0.150,0.350",
       "domains": 7
     },
+    "appearance": {
+      "noHalos": true,
+      "contrast": 5.784342590453763
+    },
     "name": "768-he",
     "searchAndCombinedFilters": true,
     "clearAndEmptyResults": true,
@@ -159,7 +179,7 @@
     "direction": "ltr",
     "count": 131,
     "width": 768,
-    "scrollWidth": 768,
+    "scrollWidth": 753,
     "errors": [],
     "columns": 1,
     "font": true,
@@ -177,6 +197,10 @@
       "rotation": "0.150,0.350",
       "domains": 7
     },
+    "appearance": {
+      "noHalos": true,
+      "contrast": 5.784342590453763
+    },
     "name": "768-en",
     "searchAndCombinedFilters": true,
     "clearAndEmptyResults": true,
@@ -190,7 +214,7 @@
     "direction": "rtl",
     "count": 131,
     "width": 1440,
-    "scrollWidth": 1440,
+    "scrollWidth": 1425,
     "errors": [],
     "columns": 1,
     "font": true,
@@ -208,6 +232,10 @@
       "rotation": "0.150,0.350",
       "domains": 7
     },
+    "appearance": {
+      "noHalos": true,
+      "contrast": 6.143138344889307
+    },
     "name": "1440-he",
     "searchAndCombinedFilters": true,
     "clearAndEmptyResults": true,
@@ -221,7 +249,7 @@
     "direction": "ltr",
     "count": 131,
     "width": 1440,
-    "scrollWidth": 1440,
+    "scrollWidth": 1425,
     "errors": [],
     "columns": 1,
     "font": true,
@@ -238,6 +266,10 @@
       "visible": 27,
       "rotation": "0.150,0.350",
       "domains": 7
+    },
+    "appearance": {
+      "noHalos": true,
+      "contrast": 6.143138344889307
     },
     "name": "1440-en",
     "searchAndCombinedFilters": true,

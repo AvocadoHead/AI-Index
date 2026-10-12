@@ -4,22 +4,23 @@
  const golden=Math.PI*(3-Math.sqrt(5));
  function point(index,count){const y=1-2*(index+.5)/count,r=Math.sqrt(1-y*y),a=index*golden;return [Math.cos(a)*r,y,Math.sin(a)*r];}
  function rotate(p,rx,ry){const x=p[0]*Math.cos(ry)-p[2]*Math.sin(ry),z=p[2]*Math.cos(ry)+p[0]*Math.sin(ry);return [x,p[1]*Math.cos(rx)-z*Math.sin(rx),p[1]*Math.sin(rx)+z*Math.cos(rx)];}
- root.SphereMath={point,rotate};
+ function inertiaStep(velocity,elapsed){const decay=Math.exp(-Math.max(0,elapsed)/360);return {velocity:velocity*decay,delta:velocity*360*(1-decay)};}
+ root.SphereMath={point,rotate,inertiaStep};
  root.ToolSphere=class {
   constructor({stage,canvas,grid,onFallback,onMove}){
-   Object.assign(this,{stage,canvas,grid,onFallback,onMove});this.rx=.15;this.ry=.35;this.playing=false;this.enabled=true;this.slots=new Map();this.frame=0;this.reduced=matchMedia('(prefers-reduced-motion: reduce)');
+   Object.assign(this,{stage,canvas,grid,onFallback,onMove});this.rx=.15;this.ry=.35;this.playing=false;this.inertial=false;this.enabled=true;this.slots=new Map();this.frame=0;this.reduced=matchMedia('(prefers-reduced-motion: reduce)');
    try{this.gl=canvas.getContext('webgl',{alpha:true,antialias:true,preserveDrawingBuffer:true});if(!this.gl)throw Error('WebGL unavailable');this.initGL();}catch(error){this.failed=true;onFallback(error.message);return;}
    canvas.addEventListener('webglcontextlost',event=>{event.preventDefault();this.failed=true;this.setPlaying(false);onFallback('context-lost')});
    this.reduced.addEventListener('change',()=>{if(this.reduced.matches)this.setPlaying(false)});
    this.resize=new ResizeObserver(()=>this.draw());this.resize.observe(stage);
    let drag=null,suppress=0;
-   stage.addEventListener('pointerdown',event=>{if(!this.enabled||event.button!==0)return;this.setPlaying(false);drag={id:event.pointerId,x:event.clientX,y:event.clientY,rx:this.rx,ry:this.ry,moved:false};});
-   stage.addEventListener('pointermove',event=>{if(!drag||drag.id!==event.pointerId)return;const dx=event.clientX-drag.x,dy=event.clientY-drag.y;if(Math.hypot(dx,dy)>7){drag.moved=true;stage.setPointerCapture(event.pointerId);stage.dataset.dragging='true';onMove();this.ry=drag.ry+dx*.006;this.rx=Math.max(-1.3,Math.min(1.3,drag.rx+dy*.006));this.draw();}});
-   const end=event=>{if(!drag||drag.id!==event.pointerId)return;if(drag.moved){suppress=performance.now()+500;stage.dataset.suppressUntil=String(suppress);}drag=null;delete stage.dataset.dragging;if(stage.hasPointerCapture(event.pointerId))stage.releasePointerCapture(event.pointerId);};
+   stage.addEventListener('pointerdown',event=>{if(!this.enabled||event.button!==0)return;this.setPlaying(false);drag={id:event.pointerId,x:event.clientX,y:event.clientY,rx:this.rx,ry:this.ry,moved:false,lastX:event.clientX,lastY:event.clientY,time:event.timeStamp,vx:0,vy:0};});
+   stage.addEventListener('pointermove',event=>{if(!drag||drag.id!==event.pointerId)return;const dx=event.clientX-drag.x,dy=event.clientY-drag.y;if(Math.hypot(dx,dy)>7){const elapsed=Math.max(8,event.timeStamp-drag.time);drag.vx=Math.max(-.003,Math.min(.003,(event.clientY-drag.lastY)*.006/elapsed));drag.vy=Math.max(-.003,Math.min(.003,(event.clientX-drag.lastX)*.006/elapsed));drag.lastX=event.clientX;drag.lastY=event.clientY;drag.time=event.timeStamp;drag.moved=true;stage.setPointerCapture(event.pointerId);stage.dataset.dragging='true';onMove();this.ry=drag.ry+dx*.006;this.rx=Math.max(-1.3,Math.min(1.3,drag.rx+dy*.006));this.draw();}});
+   const end=event=>{if(!drag||drag.id!==event.pointerId)return;if(drag.moved){suppress=performance.now()+500;stage.dataset.suppressUntil=String(suppress);if(event.type==='pointerup'){const age=Math.max(0,event.timeStamp-drag.time);const decay=Math.exp(-age/90);this.startInertia(drag.vx*decay,drag.vy*decay);}}drag=null;delete stage.dataset.dragging;if(stage.hasPointerCapture(event.pointerId))stage.releasePointerCapture(event.pointerId);};
    stage.addEventListener('pointerup',end);stage.addEventListener('pointercancel',end);
    stage.addEventListener('click',event=>{if(performance.now()<suppress){event.preventDefault();event.stopImmediatePropagation()}},true);
    stage.addEventListener('keydown',event=>{if(event.target!==stage)return;const moves={ArrowLeft:[0,-.2],ArrowRight:[0,.2],ArrowUp:[-.2,0],ArrowDown:[.2,0]};if(moves[event.key]){event.preventDefault();this.setPlaying(false);this.rx+=moves[event.key][0];this.ry+=moves[event.key][1];onMove();this.draw()}if(event.key==='Home'){event.preventDefault();this.reset()}});
-   stage.addEventListener('focusin',()=>this.setPlaying(false));stage.addEventListener('pointerenter',()=>this.setPlaying(false));
+   stage.addEventListener('focusin',()=>this.setPlaying(false));stage.addEventListener('pointerenter',()=>{if(this.playing)this.setPlaying(false)});document.addEventListener('visibilitychange',()=>{if(document.hidden)this.setPlaying(false)});
   }
   initGL(){
    const gl=this.gl;
@@ -32,7 +33,14 @@
   }
   setRecords(ids,priority=[]){if(!this.slots.size){const first=ids.filter(id=>priority.includes(id)),rest=ids.filter(id=>!priority.includes(id));for(const group of [first,rest])group.forEach((id,index)=>this.slots.set(id,point(index,group.length)));}this.draw();}
   setEnabled(value){this.enabled=value;if(!value)this.setPlaying(false);this.draw();}
-  setPlaying(value){this.playing=Boolean(value&&!this.reduced.matches&&!this.failed&&this.enabled);this.stage.dispatchEvent(new CustomEvent('sphere-motion',{detail:this.playing}));cancelAnimationFrame(this.frame);if(this.playing){let last=performance.now();const step=now=>{if(!this.playing)return;this.ry+=(now-last)*.000055;last=now;this.draw();this.frame=requestAnimationFrame(step)};this.frame=requestAnimationFrame(step);}}
+  setPlaying(value){this.stopInertia();this.playing=Boolean(value&&!this.reduced.matches&&!this.failed&&this.enabled);this.stage.dispatchEvent(new CustomEvent('sphere-motion',{detail:this.playing}));cancelAnimationFrame(this.frame);if(this.playing){let last=performance.now();const step=now=>{if(!this.playing)return;this.ry+=(now-last)*.000055;last=now;this.draw();this.frame=requestAnimationFrame(step)};this.frame=requestAnimationFrame(step);}}
+  stopInertia(){this.inertial=false;delete this.stage.dataset.inertia;cancelAnimationFrame(this.frame);}
+  startInertia(vx,vy){
+   if(this.reduced.matches||this.failed||!this.enabled||Math.hypot(vx,vy)<.000015)return;
+   this.stopInertia();this.inertial=true;this.stage.dataset.inertia='true';this.stage.dispatchEvent(new CustomEvent('sphere-motion',{detail:true}));let last=performance.now();
+   const step=now=>{if(!this.inertial)return;const dt=Math.min(64,now-last);last=now;const x=inertiaStep(vx,dt),y=inertiaStep(vy,dt);vx=x.velocity;vy=y.velocity;this.rx=Math.max(-1.3,Math.min(1.3,this.rx+x.delta));this.ry+=y.delta;if(Math.abs(this.rx)>=1.3)vx=0;this.draw();if(Math.hypot(vx,vy)<.000015){this.stopInertia();this.stage.dispatchEvent(new CustomEvent('sphere-motion',{detail:false}));return;}this.frame=requestAnimationFrame(step)};
+   this.frame=requestAnimationFrame(step);
+  }
   reset(){this.setPlaying(false);this.rx=.15;this.ry=.35;this.onMove();this.draw();}
   draw(){
    if(!this.enabled||this.failed||!this.gl)return;
@@ -45,7 +53,7 @@
     const width=Math.min(button.offsetWidth,w-24),height=Math.max(44,button.offsetHeight),x=Math.max(width/2+6,Math.min(w-width/2-6,w/2+p[0]*radius)),y=h/2-p[1]*radius;
     const box={x:x-width/2,y:y-height/2,w:width,h:height};const focused=button===document.activeElement;
     const overlap=occupied.some(b=>box.x<b.x+b.w+5&&box.x+box.w+5>b.x&&box.y<b.y+b.h&&box.y+box.h>b.y);
-    const show=focused||(!overlap&&p[2]>-.38);button.style.visibility=show?'visible':'hidden';button.tabIndex=show?0:-1;button.style.left=x+'px';button.style.top=y+'px';button.style.zIndex=String(20+Math.round(p[2]*10));button.style.opacity=show?String(.72+.28*(p[2]+1)/2):'0';button.dataset.depth=p[2].toFixed(3);
+    const show=focused||(!overlap&&p[2]>-.38);button.style.visibility=show?'visible':'hidden';button.tabIndex=show?0:-1;button.style.left=x+'px';button.style.top=y+'px';button.style.zIndex=String(20+Math.round(p[2]*10));button.style.opacity=show?String(.92+.08*(p[2]+1)/2):'0';button.dataset.depth=p[2].toFixed(3);
     if(show){occupied.push(box);visible++;}
    }
    this.stage.dataset.visible=String(visible);this.stage.dataset.rotation=this.rx.toFixed(3)+','+this.ry.toFixed(3);

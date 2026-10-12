@@ -22,3 +22,12 @@ test('curation is reversible, broad and independent of lifecycle or verification
  assert.equal(records.find(r=>r.id==='ai-011').name,'Anthropic Claude 3.5 Sonnet');
  assert.equal(context.window.defaultModules.length,120);
 });
+
+test('inertia damping is time based, bounded and settles naturally',()=>{
+ const whole=geometry.inertiaStep(.003,160),first=geometry.inertiaStep(.003,80),second=geometry.inertiaStep(first.velocity,80);
+ assert.ok(Math.abs(whole.delta-first.delta-second.delta)<1e-12);
+ assert.ok(Math.abs(whole.velocity-second.velocity)<1e-12);
+ let velocity=.003,total=0;for(let i=0;i<160;i++){const next=geometry.inertiaStep(velocity,16);assert.ok(next.velocity<=velocity);total+=next.delta;velocity=next.velocity;}
+ assert.ok(velocity<.000015);assert.ok(total<1.08);assert.ok(total>1);
+ assert.equal(geometry.inertiaStep(0,16).delta,0);
+});

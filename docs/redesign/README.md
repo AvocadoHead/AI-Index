@@ -8,7 +8,9 @@ The original used Canvas 2D to project rotating 3D points, rather than WebGL. It
 
 The default is now a true WebGL wireframe sphere with accessible HTML labels projected onto the same geometry. Deterministic Fibonacci placement replaces random positioning; filters retain positions. Front-to-back overlap handling keeps visible labels readable and gives their full label a real click/touch target. Occluded labels can be reached by rotating or switching to Atlas. The starting orientation shows 11–14 labels on mobile, 23 on tablet and 27 on desktop, across six or seven domains. Rotation exposes the remaining labels.
 
-Motion is off by default. Drag to rotate, use the left/right controls, or focus the sphere and use arrow keys. Center restores the stable initial orientation. Optional play stops on interaction; reduced-motion preference prevents autoplay. A 7px drag threshold and post-drag click suppression distinguish rotating from selecting. Pointer hover and keyboard focus show a concise summary; tapping pins it. Tab reaches its detail action; Enter opens the detail dialog; Escape dismisses and restores focus.
+The canvas uses a white-to-light-gray gradient and darker category colors with no text glow or halos. Tested visible-label contrast is at least 5.78:1 against the darker gradient stop.
+
+Motion is off on load. Drag release restores the original sense of momentum with bounded velocity (up to 0.003 radians/ms per axis), time-based exponential damping (360ms decay constant), and a small stop threshold. It settles without requiring constant rotation. New touch, Pause, Center, keyboard controls, layout/filter changes and hidden-page state stop it immediately. Reduced motion disables the release coast as well as autoplay. Drag to rotate, use the left/right controls, or focus the sphere and use arrow keys. Center restores the stable initial orientation. Optional play stops on interaction; reduced-motion preference prevents autoplay. A 7px drag threshold and post-drag click suppression distinguish rotating from selecting. Pointer hover and keyboard focus show a concise summary; tapping pins it. Tab reaches its detail action; Enter opens the detail dialog; Escape dismisses and restores focus.
 
 **Atlas**, the alternative layout, is an ordered set of domain sections with compact selectable labels and counts. It provides direct access to all matching labels without rotation. WebGL initialization failure or context loss automatically selects Atlas with an explanation. Search, category combinations, verification and scope remain shared across both layouts.
 
@@ -48,9 +50,9 @@ Estimated sizing uses original category scores relevant to combined domain filte
 
 ## Verification
 
-- `node --test tests/*.test.mjs`: 25 tests pass, including original catalog regressions, deterministic sphere geometry, reversible curation and broad category/search reachability.
+- `node --test tests/*.test.mjs`: 26 tests pass, including original catalog regressions, deterministic sphere geometry, frame-rate-independent inertia damping, reversible curation and broad category/search reachability.
 - `node scripts/catalog.mjs`: 131 records, 31 reviewed; all 120 legacy records unchanged.
-- Isolated headless Chrome with a temporary profile, never the personal browser. Eight 360/390/768/1440 RTL/LTR configurations validate sphere rendering, actual mouse drag, mobile touch drag versus tap, summaries/details, layout changes, shared filters, focus, Escape, font loading, text/target sizes and no overflow. Context loss falls back to Atlas with all entries retained.
+- Isolated headless Chrome with a temporary profile, never the personal browser. Eight 360/390/768/1440 RTL/LTR configurations validate sphere rendering, actual mouse/touch drag-release coasting and settling, interruption by new touch, Pause/Center, reduced-motion drag without coasting, drag versus tap, summaries/details, layout changes, shared filters, focus, Escape, font loading, text/target sizes and no overflow. Context loss falls back to Atlas with all entries retained.
 - Separate unsupported-WebGL and reduced-motion scenarios pass. The generated standalone HTML passes the same browser suite with all HTTP(S) requests blocked. [Machine-readable evidence](results.json).
 - Rendered mobile, tablet, desktop, summary and Atlas screenshots were inspected. Physical-device and screen-reader testing is not exhaustive.
 
