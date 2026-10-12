@@ -1,5 +1,6 @@
 class AIModule {
-    constructor(name, categories, url, scores = {}) {
+    constructor(name, categories, url, scores = {}, id = null) {
+        this.id = id;
         this.name = name;
         this.categories = categories;
         this.url = url;
@@ -202,7 +203,7 @@ class ModuleCloud {
                         console.warn(`Module at index ${index} is missing required fields:`, m);
                         return null;
                     }
-                    const module = new AIModule(m.name, m.categories, m.url, m.scores);
+                    const module = new AIModule(m.name, m.categories, m.url, m.scores, m.id);
                     this.positionModuleInCloud(module);
                     return module;
                 })
@@ -468,7 +469,7 @@ class ModuleCloud {
                 if (this.activeModule === clickedModule) {
                     // Second click - open URL
                     if (clickedModule.url) {
-                        window.open(clickedModule.url, '_blank');
+                        this.openModule(clickedModule);
                     }
                 } else {
                     // First click or new module selection
@@ -562,7 +563,7 @@ class ModuleCloud {
                         }
                     } else if (touchDuration > 800) {
                         if (tappedModule.url) {
-                            window.open(tappedModule.url, '_blank');
+                            this.openModule(tappedModule);
                         }
                     }
                 } else {
@@ -798,7 +799,7 @@ class ModuleCloud {
                     this.showTooltip(tappedModule, touchEndX, touchEndY);
                 } else if (touchDuration > 800) {
                     if (tappedModule.url) {
-                        window.open(tappedModule.url, '_blank');
+                        this.openModule(tappedModule);
                     }
                 }
             } else {
@@ -886,8 +887,21 @@ class ModuleCloud {
 
     handleDoubleClick() {
         if (this.hoveredModule) {
-            window.open(this.hoveredModule.url, '_blank');
+            this.openModule(this.hoveredModule);
         }
+    }
+
+    getModuleUrl(module) {
+        if (window.catalogMetadata) return window.catalogMetadata.destination(module);
+        try {
+            const url = new URL(module.url);
+            return ['https:', 'http:'].includes(url.protocol) ? url.href : null;
+        } catch { return null; }
+    }
+
+    openModule(module) {
+        const url = this.getModuleUrl(module);
+        if (url) window.open(url, '_blank', 'noopener,noreferrer');
     }
 
     async showTooltip(module, x, y) {
@@ -895,32 +909,50 @@ class ModuleCloud {
         
         const loadingText = this.currentLanguage === 'he' ? 'טוען...' : 'Loading...';
         
-        this.tooltip.innerHTML = `
-            <div class="tooltip-header">
-                <a href="${module.url}" target="_blank" class="tooltip-favicon">
-                    <img src="${this.getFaviconUrl(module.url)}" 
-                         width="16" height="16" 
-                         alt="${module.name} logo" 
-                         class="tooltip-logo"
-                         onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🤖</text></svg>'">
-                </a>
-                <a href="${module.url}" target="_blank" class="tooltip-name">
-                    <h3 class="module-name">${module.name}</h3>
-                </a>
-            </div>
-            <div class="tooltip-body">
-                <p class="description">${loadingText}</p>
-                <div class="tooltip-metadata">
-                    <p><strong>Categories & Scores:</strong></p>
-                    <pre>${module.categories
-                        .map(category => {
-                            const score = module.scores[category];
-                            return ` ${category}: ${score ? Math.round(score * 100) + '%' : 'N/A'}`;
-                        })
-                        .join('\n')}</pre>
-                </div>
-            </div>
-        `;
+        this.tooltip.replaceChildren();
+        const header = document.createElement('div');
+        header.className = 'tooltip-header';
+        const url = this.getModuleUrl(module);
+        const link = document.createElement(url ? 'a' : 'span');
+        if (url) { link.href = url; link.target = '_blank'; link.rel = 'noopener noreferrer'; }
+        if (url) {
+            const icon = document.createElement('img');
+            icon.src = this.getFaviconUrl(url);
+            icon.width = 16;
+            icon.height = 16;
+            icon.alt = '';
+            icon.className = 'tooltip-logo';
+            icon.onerror = () => { icon.hidden = true; };
+            header.appendChild(icon);
+        }
+        link.className = 'tooltip-name';
+        const title = document.createElement('h3');
+        title.className = 'module-name';
+        const metadata = window.catalogMetadata?.get(module);
+        title.textContent = metadata?.verifiedAt ? metadata.name : module.name;
+        link.appendChild(title);
+        header.appendChild(link);
+        this.tooltip.appendChild(header);
+        const body = document.createElement('div');
+        body.className = 'tooltip-body';
+        const description = document.createElement('p');
+        description.className = 'description';
+        description.textContent = loadingText;
+        description.lang = metadata?.descriptionLanguage || this.currentLanguage || 'en';
+        description.dir = description.lang === 'he' ? 'rtl' : 'ltr';
+        body.appendChild(description);
+        const label = document.createElement('p');
+        label.textContent = window.catalogMetadata?.translate('legacyScores') || 'Legacy categories & editorial scores:';
+        body.appendChild(label);
+        const scores = document.createElement('pre');
+        scores.textContent = module.categories.map(category => {
+            const score = module.scores[category];
+            return `${category}: ${score === undefined ? 'N/A' : Math.round(score * 100) + '%'}`;
+        }).join('\n');
+        body.appendChild(scores);
+        this.tooltip.appendChild(body);
+
+        window.catalogMetadata?.render(this.tooltip, module);
 
         // Position tooltip
         const padding = 10;
@@ -928,12 +960,13 @@ class ModuleCloud {
         this.tooltip.style.left = `${x + padding}px`;
         this.tooltip.style.top = `${y + padding}px`;
 
-        // Immediately try to get and update the description
+        this.tooltipModule = module;
+        // Use reviewed local descriptions; no third-party scraping or translation.
         this.getModuleDescription(module).then(description => {
-            if (this.tooltip.style.display !== 'none') {  // Only update if tooltip is still shown
+            if (this.tooltip.style.display !== 'none' && this.tooltipModule === module) {
                 const descriptionElement = this.tooltip.querySelector('.description');
                 if (descriptionElement) {
-                    descriptionElement.innerHTML = description;
+                    descriptionElement.textContent = description;
                 }
             }
         });
@@ -1014,21 +1047,12 @@ class ModuleCloud {
     }
 
     saveModules() {
-        // Create file content
-        const modulesLines = this.modules.map((module, index) => {
-            const categoriesStr = module.categories.map(cat => `"${cat}"`).join(', ');
-            const scoresStr = Object.entries(module.scores)
-                .map(([cat, score]) => `"${cat}": ${score}`)
-                .join(', ');
-            
-            // Add comma only if it's not the last item
-            const comma = index === this.modules.length - 1 ? '' : ',';
-            
-            return `\t{ name: "${module.name}", categories: [${categoriesStr}], url: "${module.url}", scores: { ${scoresStr} } }${comma}`;
-        });
+        // Keep the legacy JavaScript format and preserve IDs; escape user text safely.
+        const records = this.modules.map(({id, name, categories, url, scores}) => ({
+            id, name, categories, url, scores
+        }));
+        const fileContent = 'const defaultModules = ' + JSON.stringify(records, null, 2) + ';';
 
-        const fileContent = 'const defaultModules = [\n' + modulesLines.join('\n') + '\n];';
-        
         // Prompt for filename
         let filename = prompt('Enter a name for your file:', 'my_modules');
         if (!filename) return; // User cancelled
@@ -1310,57 +1334,10 @@ class ModuleCloud {
     }
 
     async getModuleDescription(module) {
-        try {
-            // Return cached description if available
-            if (this.descriptionCache.has(module.name + this.currentLanguage)) {
-                return this.descriptionCache.get(module.name + this.currentLanguage);
-            }
-
-            const proxyUrl = `https://api.microlink.io?url=${encodeURIComponent(module.url)}`;
-            const metaResponse = await fetch(proxyUrl);
-            const metadata = await metaResponse.json();
-
-            let description = metadata.data?.description || 
-                             metadata.data?.meta?.description;
-
-            if (!description) {
-                return this.getDefaultDescription(module);
-            }
-
-            // Translate description if in Hebrew mode
-            if (this.currentLanguage === 'he') {
-                try {
-                    const translateUrl = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=he&dt=t&q=${encodeURIComponent(description)}`;
-                    const translateResponse = await fetch(translateUrl);
-                    const translateData = await translateResponse.json();
-                    description = translateData[0][0][0];
-                } catch (error) {
-                    console.log('Translation error:', error);
-                    // Fall back to English if translation fails
-                }
-            }
-
-            // Limit description length
-            if (description.length > 150) {
-                description = description.substring(0, 147) + '...';
-            }
-
-            // Cache the result with language key
-            this.descriptionCache.set(module.name + this.currentLanguage, description);
-            
-            return description;
-        } catch (error) {
-            console.log('Error fetching description:', error);
-            return this.getDefaultDescription(module);
-        }
-    }
-
-    getDefaultDescription(module) {
-        const defaults = {
-            en: `${module.name} - AI-powered tool`,
-            he: `${module.name} - כלי מבוסס בינה מלאכותית`
-        };
-        return defaults[this.currentLanguage || 'en'];
+        const metadata = window.catalogMetadata?.get(module);
+        return metadata?.description || (this.currentLanguage === 'he'
+            ? 'התיאור ממתין לאימות ממקור רשמי.'
+            : 'Description awaiting official-source verification.');
     }
 
     updateTooltipPosition(x, y) {
@@ -1517,6 +1494,7 @@ class ModuleCloud {
     }
 
     setupLanguageToggle() {
+        this.currentLanguage = document.documentElement.lang === 'he' ? 'he' : 'en';
         const langButton = document.createElement('button');
         langButton.className = 'control-button language-toggle';
         langButton.textContent = 'ע';
@@ -1571,8 +1549,12 @@ class ModuleCloud {
             }
         });
         
-        // Update category buttons
+        // Update category buttons and the reviewed reference's interface labels.
         this.updateCategoryLabels();
+        window.catalogMetadata?.refresh();
+        if (this.tooltipModule && this.tooltip.style.display !== 'none') {
+            this.showTooltip(this.tooltipModule, parseFloat(this.tooltip.style.left) - 10, parseFloat(this.tooltip.style.top) - 10);
+        }
     }
 
     updateCategoryLabels() {
@@ -1602,7 +1584,7 @@ class ModuleCloud {
             if (this.activeModule === module) {
                 // Second interaction - open URL
                 if (module.url) {
-                    window.open(module.url, '_blank');
+                    this.openModule(module);
                 }
             } else {
                 // First interaction - select module
@@ -1624,7 +1606,7 @@ class ModuleCloud {
     initializeFromModules(modules) {
         try {
             this.modules = modules.map(m => {
-                const module = new AIModule(m.name, m.categories, m.url, m.scores);
+                const module = new AIModule(m.name, m.categories, m.url, m.scores, m.id);
                 this.positionModuleInCloud(module);
                 return module;
             });

@@ -1,0 +1,82 @@
+[
+  {
+    "name": "desktop",
+    "viewport": [
+      1440,
+      900
+    ],
+    "errors": [],
+    "modules": 120,
+    "language": "en",
+    "summary": "Reviewed reference · 29 tools",
+    "placeholder": "Name, vendor or description",
+    "matches": "1 matching tools",
+    "descriptionDirection": "rtl",
+    "bundlePresent": true,
+    "directoryBounds": {
+      "x": 1008,
+      "y": 90,
+      "width": 416,
+      "height": 710,
+      "top": 90,
+      "right": 1424,
+      "bottom": 800,
+      "left": 1008
+    },
+    "nanoDestination": "https://gemini.google/overview/image-generation/",
+    "retiredDestination": null
+  },
+  {
+    "name": "mobile-hebrew",
+    "viewport": [
+      390,
+      844
+    ],
+    "errors": [],
+    "modules": 120,
+    "language": "he",
+    "summary": "מידע שנבדק · 29 כלים",
+    "placeholder": "שם, ספק או תיאור",
+    "matches": "1 כלים תואמים",
+    "descriptionDirection": "rtl",
+    "bundlePresent": true,
+    "directoryBounds": {
+      "x": 16,
+      "y": 177,
+      "width": 358,
+      "height": 567,
+      "top": 177,
+      "right": 374,
+      "bottom": 744,
+      "left": 16
+    },
+    "nanoDestination": "https://gemini.google/overview/image-generation/",
+    "retiredDestination": null
+  },
+  {
+    "name": "missing-bundle",
+    "viewport": [
+      1440,
+      900
+    ],
+    "errors": [],
+    "modules": 120,
+    "language": "en",
+    "summary": "Reviewed reference · 0 tools",
+    "placeholder": "Name, vendor or description",
+    "matches": "0 matching tools",
+    "bundlePresent": false,
+    "directoryBounds": {
+      "x": 1008,
+      "y": 90,
+      "width": 416,
+      "height": 289,
+      "top": 90,
+      "right": 1424,
+      "bottom": 379,
+      "left": 1008
+    },
+    "nanoDestination": "https://banana.dev/",
+    "retiredDestination": "https://www.invisionapp.com/"
+  }
+]
