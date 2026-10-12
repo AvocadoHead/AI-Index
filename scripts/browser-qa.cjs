@@ -27,9 +27,12 @@ const timeout=setTimeout(()=>{chrome.kill();console.error('QA timed out');proces
   await send('Page.navigate',{url:pathToFileURL(path.join(root,'index.html')).href},sessionId);
   await evaluate("new Promise((resolve,reject)=>{let n=0;const timer=setInterval(()=>{if(document.querySelectorAll('.tool-card').length===130){clearInterval(timer);document.fonts.ready.then(resolve)}else if(++n>100){clearInterval(timer);reject(new Error('Directory did not initialize '+window.qaErrors))}},50)})");
   if(language==='en')await evaluate("document.getElementById('languageToggle').click()");
-  const initial=await evaluate(`({language:document.documentElement.lang,direction:document.documentElement.dir,count:document.querySelectorAll('.tool-card').length,width:innerWidth,scrollWidth:document.documentElement.scrollWidth,errors:qaErrors,columns:getComputedStyle(document.getElementById('toolGrid')).gridTemplateColumns.split(' ').length})`);
+  const initial=await evaluate(`({language:document.documentElement.lang,direction:document.documentElement.dir,count:document.querySelectorAll('.tool-card').length,width:innerWidth,scrollWidth:document.documentElement.scrollWidth,errors:qaErrors,columns:Number(getComputedStyle(document.getElementById('toolGrid')).columnCount)})`);
   assert.equal(initial.language,language);assert.equal(initial.count,130);assert.equal(initial.width,width);assert.ok(initial.scrollWidth<=width,JSON.stringify(initial));assert.deepEqual(initial.errors,[]);
-  if(width===390 || width===1440)await screenshot('-directory');
+  await screenshot('-directory');
+  const atlas=await evaluate(`(()=>{const labels=[...document.querySelectorAll('.tool-label')];return {font:document.fonts.check('16px Assistant'),fontLoaded:[...document.fonts].some(f=>f.family==='Assistant'&&f.status==='loaded'),minFont:Math.min(...labels.map(b=>parseFloat(getComputedStyle(b.querySelector('h3')).fontSize))),minTouch:Math.min(...labels.map(b=>b.getBoundingClientRect().height)),sizesMatch:labels.every(b=>{const score=b.parentElement.dataset.score;return b.style.getPropertyValue('--score-size')===DirectoryData.scoreSize(score==='unrated'?null:Number(score))+'px'}),visible:labels.filter(b=>b.getBoundingClientRect().bottom<=innerHeight).length}})()`);
+  assert.ok(atlas.font&&atlas.fontLoaded);assert.ok(atlas.minFont>=16);assert.ok(atlas.minTouch>=44);assert.ok(atlas.sizesMatch);assert.ok(atlas.visible>=(width>=1000?30:10),JSON.stringify(atlas));
+  const groupFilter=await evaluate("(()=>{document.querySelector('.group-heading button').click();return {groups:document.querySelectorAll('.map-group').length,task:document.getElementById('mobileTask').value}})()");assert.equal(groupFilter.groups,1);assert.equal(groupFilter.task,'image');await evaluate("document.getElementById('resetFilters').click()");
   // Compose search + task + verification, then verify an empty intersection and reset.
   const filtered=await evaluate(`(()=>{const input=document.getElementById('searchInput');input.value='weavy';input.dispatchEvent(new Event('input'));if(innerWidth<620){const task=document.getElementById('mobileTask');task.value='workflow';task.dispatchEvent(new Event('change'))}else document.querySelector('[data-task=workflow]').click();const select=document.getElementById('statusFilter');select.value='checked';select.dispatchEvent(new Event('change'));return {count:document.querySelectorAll('.tool-card').length,name:document.querySelector('.tool-card h3')?.textContent}})()`);
   assert.deepEqual(filtered,{count:1,name:'Figma Weave'});
@@ -57,13 +60,28 @@ const timeout=setTimeout(()=>{chrome.kill();console.error('QA timed out');proces
   await send('Input.dispatchKeyEvent',{type:'keyDown',key:'Escape',code:'Escape',windowsVirtualKeyCode:27},sessionId);await send('Input.dispatchKeyEvent',{type:'keyUp',key:'Escape',code:'Escape',windowsVirtualKeyCode:27},sessionId);
   await evaluate("new Promise(resolve=>setTimeout(resolve,100))");assert.equal(await evaluate("document.getElementById('detailDialog').open"),false);assert.equal(await evaluate("document.activeElement===document.querySelector('.tool-card button')"),true,JSON.stringify(await evaluate("({active:document.activeElement.outerHTML,focused:document.hasFocus(),open:document.getElementById('detailDialog').open})")));
   for(let i=0;i<3;i++){await evaluate("document.querySelector('.tool-card button').click();document.getElementById('closeDialog').click()");await evaluate("new Promise(resolve=>setTimeout(resolve,20))");assert.equal(await evaluate("document.getElementById('detailDialog').open"),false);}
+  // Repeated actual touch input on a fresh isolated mobile surface.
+  if(width<620){
+   await send('Emulation.setTouchEmulationEnabled',{enabled:true},sessionId);
+   for(let i=0;i<3;i++){
+    const point=await evaluate("(()=>{const b=document.querySelector('.tool-label');b.scrollIntoView({block:'center'});const r=b.getBoundingClientRect();return {x:r.x+r.width/2,y:r.y+r.height/2}})()");
+    await send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[point]},sessionId);await send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]},sessionId);
+    assert.equal(await evaluate("document.getElementById('detailDialog').open"),true);
+    await send('Input.dispatchKeyEvent',{type:'keyDown',key:'Escape',code:'Escape',windowsVirtualKeyCode:27},sessionId);await send('Input.dispatchKeyEvent',{type:'keyUp',key:'Escape',code:'Escape',windowsVirtualKeyCode:27},sessionId);
+    await evaluate("new Promise(resolve=>setTimeout(resolve,30))");assert.equal(await evaluate("document.activeElement===document.querySelector('.tool-label')"),true);
+   }
+  }
   // Retired entry has no launch button; provenance and old scores remain accessible.
   const retired=await evaluate(`(()=>{const input=document.getElementById('searchInput');input.value='InVision';input.dispatchEvent(new Event('input'));document.querySelector('.tool-card button').click();return {launches:document.querySelectorAll('#detailContent .primary-button').length,scores:document.querySelectorAll('.historical-scores span').length,sources:document.querySelectorAll('.source-list a').length}})()`);
   assert.equal(retired.launches,0);assert.equal(retired.scores,2);assert.equal(retired.sources,1);
   await evaluate("document.getElementById('closeDialog').click();document.getElementById('resetFilters').click();document.getElementById('workflowOpen').click()");assert.equal(await evaluate("document.getElementById('detailDialog').open"),true);
   await evaluate("document.getElementById('closeDialog').click()");
   assert.deepEqual(await evaluate('qaErrors'),[]);
-  results.push({...initial,name,searchAndCombinedFilters:true,clearAndEmptyResults:true,dialogAndEscape:true,keyboardFocusContained:true,repeatedNavigation:true,retiredProvenance:true});
+  results.push({...initial,...atlas,name,searchAndCombinedFilters:true,clearAndEmptyResults:true,dialogAndEscape:true,keyboardFocusContained:true,repeatedNavigation:true,retiredProvenance:true});
+  if(width===1440&&language==='en'){
+   await send('Page.navigate',{url:pathToFileURL(path.join(root,'legacy.html')).href},sessionId);
+   await evaluate("new Promise(resolve=>setTimeout(resolve,1500))");await screenshot('-original');
+  }
   console.log('PASS '+name);await send('Target.closeTarget',{targetId});
  }
  fs.writeFileSync(path.join(output,'results.json'),JSON.stringify(results,null,2)+'\n');

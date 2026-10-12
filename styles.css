@@ -1,3 +1,4 @@
+@font-face {font-family:Assistant;src:url("assets/fonts/Assistant.ttf") format("truetype");font-weight:200 800;font-display:swap;}
 :root {
   --paper:#f6f5ef;
   --white:#fff;
@@ -8,7 +9,7 @@
   --soft:#edf1e8;
   --radius:18px;
   color-scheme:light;
-  font-family:Heebo,Arial,sans-serif;
+  font-family:Assistant,Arial,sans-serif;
   color:var(--ink);
   background:var(--paper);
   font-synthesis:none;
@@ -315,144 +316,6 @@ select {
   font-size:13px;
   text-decoration:underline;
   padding:0;
-}
-.tool-grid {
-  display:grid;
-  grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:18px;
-}
-.tool-card {
-  background:var(--white);
-  border:1px solid var(--line);
-  border-radius:var(--radius);
-  padding:24px;
-  display:flex;
-  flex-direction:column;
-  min-width:0;
-  position:relative;
-  transition:border-color .15s,transform .15s;
-}
-.tool-card:hover {
-  border-color:#a3b49b;
-  transform:translateY(-2px);
-}
-.card-top {
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:8px;
-  margin-bottom:24px;
-}
-.monogram {
-  height:44px;
-  width:44px;
-  border-radius:12px;
-  background:var(--soft);
-  display:grid;
-  place-items:center;
-  flex-shrink:0;
-  font-family:Arial,sans-serif;
-  font-size:17px;
-  font-weight:700;
-  direction:ltr;
-}
-.monogram[data-tone="1"] {
-  background:#eee7e0;
-  color:#82634f;
-}
-.monogram[data-tone="2"] {
-  background:#e5e9f2;
-  color:#506680;
-}
-.monogram[data-tone="3"] {
-  background:#ebe7f0;
-  color:#79658d;
-}
-.badge {
-  font-size:11px;
-  font-weight:500;
-  border-radius:20px;
-  padding:5px 9px;
-  line-height:1.2;
-  display:inline-flex;
-  gap:5px;
-  align-items:center;
-  white-space:nowrap;
-}
-.badge.checked {
-  background:#edf3e7;
-  color:#426237;
-}
-.badge.pending {
-  background:#f3f1eb;
-  color:#776e5f;
-}
-.badge.retired {
-  background:#f6eae5;
-  color:#9b573d;
-}
-.tool-card h3 {
-  font-size:22px;
-  font-weight:600;
-  letter-spacing:-.45px;
-  margin:0;
-  line-height:1.25;
-  overflow-wrap:anywhere;
-}
-.card-provider {
-  font-size:12px;
-  color:var(--muted);
-  margin:7px 0 0;
-}
-.card-description {
-  font-size:15px;
-  line-height:1.7;
-  color:var(--muted);
-  margin:16px 0 18px;
-  display:-webkit-box;
-  -webkit-line-clamp:3;
-  -webkit-box-orient:vertical;
-  overflow:hidden;
-  min-height:76px;
-}
-.card-tags {
-  display:flex;
-  gap:7px;
-  flex-wrap:wrap;
-  margin-top:auto;
-  padding-bottom:21px;
-}
-.card-tag {
-  font-size:11px;
-  color:#66725f;
-  padding:3px 8px;
-  border:1px solid #e9ede4;
-  border-radius:5px;
-}
-.card-bottom {
-  border-top:1px solid #edf0e9;
-  padding-top:15px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:8px;
-}
-.card-bottom time {
-  font-size:11px;
-  color:var(--muted);
-}
-.card-bottom button {
-  background:transparent;
-  min-height:36px;
-  padding:0;
-  font-size:13px;
-  font-weight:600;
-}
-.card-bottom button:after {
-  content:'↗';
-  display:inline-block;
-  margin-inline-start:10px;
-  font-size:18px;
 }
 .empty-state {
   text-align:center;
@@ -1041,4 +904,62 @@ html[dir=ltr] .tool-card h3,html[dir=ltr] .card-provider,html[dir=ltr] .detail-h
   .results-actions select {
     font-size:12px;
   }
+}
+
+/* Compact, selectable typographic atlas. Color identifies categories, never verification. */
+:root {--paper:#faf9f6;--ink:#303b3a;--muted:#65706e;--line:#e1e4df;}
+.site-header {min-height:72px;}
+.brand-mark {background:#e7ebe3;color:#4c655b;border-radius:50%;}
+.hero {padding-block:24px 18px;gap:24px;align-items:center;}
+.hero .eyebrow {margin-bottom:8px;font-size:12px;}
+h1 {font-size:38px;letter-spacing:-.8px;font-weight:600;}
+.hero-description {font-size:16px;margin-top:8px;line-height:1.4;}
+.hero-note {min-width:170px;padding-inline-start:20px;}
+.note-number {font-size:28px;letter-spacing:0;}
+.hero-note p {display:inline;font-size:13px;margin-inline-start:6px;}
+.hero-note a {margin-top:4px;}
+.search-box {padding:0 14px;border-radius:8px;}
+.status-control {padding:3px 12px;border-radius:8px;}
+.task-filter {padding-block:8px;gap:2px;}
+.task-chip {padding:4px 12px;min-height:40px;}
+.results-toolbar {padding-block:4px;}
+.map-legend {font-size:13px;color:var(--muted);margin:0 0 14px;line-height:1.5;}
+.tool-grid {display:block;columns:3;column-gap:28px;}
+.map-group {--tone:#536d64;break-inside:avoid;margin:0 0 22px;border-top:2px solid color-mix(in srgb,var(--tone) 40%,transparent);}
+.map-group[data-category=video] {--tone:#876756;}
+.map-group[data-category=audio] {--tone:#756387;}
+.map-group[data-category=design] {--tone:#577685;}
+.map-group[data-category=workflow] {--tone:#766d46;}
+.map-group[data-category=text] {--tone:#596c94;}
+.map-group[data-category=spatial] {--tone:#8a6574;}
+.group-heading {margin:0 0 3px;font-size:15px;font-weight:600;}
+.group-heading button {display:flex;align-items:center;gap:10px;background:transparent;color:var(--tone);padding:0;min-height:40px;}
+.group-count {font-size:12px;font-weight:400;color:var(--muted);}
+.label-cloud {display:flex;flex-wrap:wrap;align-items:baseline;gap:0 12px;}
+.tool-card {display:contents;}
+.tool-label {display:inline-flex;max-width:100%;align-items:baseline;gap:3px;min-height:44px;padding:3px 0;background:transparent;color:var(--tone);text-align:start;border-radius:3px;user-select:text;}
+.tool-label:hover {color:var(--ink);background:color-mix(in srgb,var(--tone) 8%,transparent);}
+.tool-label h3 {font-size:var(--score-size);font-weight:500;line-height:1.15;letter-spacing:-.55px;margin:0;overflow-wrap:anywhere;}
+.verification-mark,.unrated-mark {font-size:11px;align-self:flex-start;margin-top:4px;color:var(--muted);}
+.method {margin-top:28px;}
+.badge {font-size:12px;}
+@media(max-width:1000px) {.tool-grid {columns:2;} .wrap {width:calc(100% - 40px);}}
+@media(max-width:620px) {
+ .wrap {width:calc(100% - 28px);}
+ .site-header {min-height:60px;}
+ .brand-sub {font-size:8px;}
+ .hero {padding-block:16px 12px;display:block;}
+ h1 {font-size:29px;letter-spacing:-.4px;}
+ .hero .eyebrow,.hero-note,.hero-description {display:none;}
+ .search-row {gap:6px;}
+ .status-control,.mobile-task-control {padding:3px 8px;border-radius:6px;}
+ .status-control select,.mobile-task-control select {min-height:44px;}
+ .results-toolbar {padding-block:0;}
+ .map-legend {font-size:12px;margin:0 0 12px;}
+ .tool-grid {columns:1;}
+ .map-group {margin-bottom:16px;}
+ .label-cloud {gap:0 12px;}
+ .tool-label h3 {font-size:max(16px,calc(var(--score-size) * .8));letter-spacing:-.3px;}
+ .tool-label {padding:4px 0;}
+ .group-heading button {min-height:44px;}
 }

@@ -46,3 +46,11 @@ test('verified corrections, retirement and fallback destinations are retained',(
  const fallback=api.createRecords(context.window.defaultModules,undefined);assert.equal(fallback.length,120);assert.ok(fallback.every(r=>!r.checked));
  assert.equal(api.destination({status:'uncertain',checked:false,original:{url:'javascript:alert(1)'}}),null);
 });
+
+test('estimated averages preserve originals, stay independent of verification, and never fabricate missing scores',()=>{
+ for(const record of records){const values=Object.values(record.original?.scores || {});assert.equal(api.estimatedScore(record),values.length?values.reduce((a,b)=>a+b,0)/values.length:null);}
+ assert.equal(api.estimatedScore({checked:true}),null);
+ assert.equal(api.estimatedScore({original:{scores:{image:0}}}),0);
+ assert.ok(api.scoreSize(.95)>api.scoreSize(.85));
+ const record=records.find(r=>r.original);assert.equal(api.estimatedScore({...record,checked:!record.checked}),api.estimatedScore(record));
+});

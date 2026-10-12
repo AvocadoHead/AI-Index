@@ -6,9 +6,6 @@
   <meta name="description" content="A thoughtful directory of creative AI tools, with dated official sources and clear verification status.">
   <title>AI Index — כלים לעבודה יצירתית</title>
   <link rel="stylesheet" href="styles.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <script src="modules.js" defer></script>
   <script src="catalog-data.js" defer></script>
   <script src="directory.js" defer></script>
@@ -26,7 +23,7 @@
     <section class="hero wrap" aria-labelledby="heroTitle">
       <div class="hero-copy">
         <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span><span data-i18n="eyebrow">מפת כלים לעבודה יצירתית</span></p>
-        <h1 id="heroTitle"><span data-i18n="heroOne">הכלי הנכון.</span><br><span class="hero-accent" data-i18n="heroTwo">לשלב הבא שלך.</span></h1>
+        <h1 id="heroTitle"><span data-i18n="heroOne">הכלי הנכון.</span> <span class="hero-accent" data-i18n="heroTwo">לשלב הבא שלך.</span></h1>
         <p class="hero-description" data-i18n="intro">מתמונה ראשונה ועד גימור אחרון. חפשו לפי המשימה, הכירו את המגבלות ובדקו את המקור לפני שבוחרים.</p>
       </div>
       <div class="hero-note"><span class="note-number" id="recordCount">130</span><p data-i18n="note">כלים ומודלים, במקום אחד.</p><span id="checkedSummary"></span><a href="#method" data-i18n="whatChecked">מה בדיוק נבדק? ↙</a></div>
@@ -45,6 +42,7 @@
       </div>
       <div class="task-filter" id="taskFilters" role="group" aria-label="סינון לפי משימה"></div>
       <div class="results-toolbar"><p id="resultsCount" role="status" aria-live="polite"></p><div class="results-actions"><button id="resetFilters" type="button" hidden data-i18n="reset">איפוס סינון</button><label for="sortOrder" class="sr-only" data-i18n="sort">סדר התוצאות</label><select id="sortOrder"><option value="reviewed">נבדקו תחילה</option><option value="name">לפי שם</option></select></div></div>
+      <p class="map-legend" data-i18n="mapLegend"></p>
       <div id="toolGrid" class="tool-grid"></div>
       <div id="emptyState" class="empty-state" hidden><span aria-hidden="true">⌕</span><h3 data-i18n="emptyTitle">לא מצאנו התאמה הפעם.</h3><p data-i18n="emptyDescription">נסו מילה אחרת או הרחיבו את הסינון.</p><button id="emptyReset" type="button" class="primary-button" data-i18n="showAll">הצגת כל הכלים</button></div>
       <noscript><p>יש להפעיל JavaScript כדי לחפש באינדקס. Enable JavaScript to browse the directory.</p><a href="data/catalog.json">Catalog data</a></noscript>

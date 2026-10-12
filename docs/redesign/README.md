@@ -1,28 +1,34 @@
-# Directory redesign review
+# Typographic atlas revision
 
-The previous interface placed a dense animated cloud behind a separate narrow reference panel. On mobile, wrapping controls competed for space with that panel. The redesign makes all 130 identities one searchable directory, with explicit status and task filters, readable cards and a focused detail dialog.
+The original cloud made many tools visible at once and used estimated scores to size text. This revision restores that overview with selectable HTML labels in quiet category colors, compact headings, and on-demand details. The large hero and individual tool cards are removed.
 
-## Interaction and layout
+Assistant is self-hosted from the [Google Fonts Assistant source](https://github.com/google/fonts/tree/main/ofl/assistant), under the bundled [SIL Open Font License](../../assets/fonts/OFL.txt). No external font request is needed.
 
-- Hebrew-first RTL and English LTR layouts, with English display summaries translated from the preserved reviewed descriptions. Canonical source notes remain in their original language and use appropriate direction.
-- Desktop task chips become native task/verification selectors on mobile. No sideways-scrolling navigation or fixed overlay toolbar.
-- Explicit “reviewed first” or alphabetical ordering. Scores never influence ordering or card prominence.
-- Source links, model observations, limitations, uncertainties and historical scores use progressive disclosure inside the detail dialog. Original scores retain the historical/non-benchmark disclaimer.
-- Native modal semantics, visible focus, explicit Tab/Shift+Tab cycling, Escape dismissal and focus restoration. Clear and empty-result actions return focus to search.
-- The previous cloud/local editing UI remains at `legacy.html`, with a return link. Its script and behavior tests remain intact. The pre-existing local JavaScript `eval` importer is confined to that original view and remains deferred.
+## Reading the map
+
+- Label size uses the arithmetic average of the original record's estimated scores, matching the original all-category averaging principle. Desktop sizing is `16 + 60 × clamp(average − 0.75, 0, 0.25)` pixels; mobile uses 80%, with a 16px reading floor. The readable floor does not change stored scores.
+- Unrated additions have a neutral 17px size (16px on mobile) and a diamond; no score is invented. Hover or accessible labels expose the exact original estimated average. Full original category scores remain in details.
+- Check marks indicate dated source review, independently of score, color and size. A cross marks retired tools. These are not current benchmarks or recommendations.
+- Each identity appears once in the overview, in its first matching broad task group. A category filter includes every matching tool, including cross-category tools. Names, sources and original categories remain available in details.
+- Mobile uses a single wrapping field with native category and verification selectors; tablet has two columns and desktop three. All labels have at least 44px touch height and remain selectable.
 
 ## Screenshots
 
-[Desktop Hebrew](desktop-he.png) · [Desktop English](desktop-en.png) · [Mobile Hebrew](mobile-he.png) · [Mobile English](mobile-en.png) · [Mobile detail](mobile-detail.png)
+| Width | Hebrew RTL | English LTR |
+| --- | --- | --- |
+| 360 | [Overview](360-he-directory.png) | [Overview](360-en-directory.png) |
+| 390 | [Overview](390-he-directory.png) | [Overview](390-en-directory.png) |
+| 768 | [Overview](768-he-directory.png) | [Overview](768-en-directory.png) |
+| 1440 | [Overview](1440-he-directory.png) | [Overview](1440-en-directory.png) |
 
-## Verification
+[Mobile details](390-en-detail.png) · [Original cloud reference](1440-en-original.png)
 
-`node scripts/catalog.mjs` validates the unchanged canonical data. All 14 prior catalog tests remain; six additional directory tests check identity preservation, corrected taxonomy, compound search/filtering, Hebrew/English search, ordering and destination handling.
+## Validation
 
-`node scripts/browser-qa.cjs` uses an installed Chrome executable in headless mode with a fresh temporary profile. Set `CHROME_BIN` if needed and `QA_OUTPUT` to select an evidence directory. It installs no dependencies. The suite checks 360px, 390px, 768px and 1440px widths in both languages: search, task/status intersections, filter resets, empty results, language switching, detail opening/closing, keyboard focus/Tab/Escape, repeated navigation, retired-entry behavior, source disclosure and horizontal overflow. The browser screenshots were visually inspected.
+`node --test tests/*.test.mjs`: all 21 tests pass, including the 14 original catalog regressions. `node scripts/catalog.mjs` confirms 130 identities, 29 checked including retired InVision, 101 unverified, and unchanged legacy records. Canonical data files and sources are unchanged.
 
-Canonical JSON, generated data, the original 120 records, their scores and all verification dates/sources are unchanged. The directory represents 130 identities: 29 checked (including retired InVision), 101 unverified. Ten reviewed references have no historical cloud entry or invented scores.
+`QA_OUTPUT=docs/redesign node scripts/browser-qa.cjs`: all eight width/language combinations pass using installed headless Chrome with a fresh temporary profile, without accessing the personal browser. [Machine-readable results](results.json) include successful Assistant loading, score-size mapping, no horizontal overflow, 16px minimum mobile text and 44px minimum targets. Desktop shows 86 labels in its initial 1440×1100 viewport; mobile shows 18–20 in 360/390×844.
 
-Reviewed task filters use reviewed capabilities; unverified task groupings derive only from original category labels. [Browser result matrix](browser-results.json) records all eight viewport/language runs.
+Coverage includes compound search/category/status filters, category-heading exploration, clear/reset/empty results, language preservation, dialog details/sources/scores, repeated touch open/Escape/focus return, repeated button close, Tab focus containment, and retired launch suppression. Screenshots were inspected at mobile, tablet and desktop sizes, in RTL and LTR, including details and the original cloud. Emulation is not a physical-device or screen-reader audit.
 
-No new services, trackers, storage, hosting changes or production deployment. The new landing page omits the old analytics tag and external icon stylesheet; it uses the site's existing Google Fonts provider with system-font fallbacks. The original view retains its pre-existing resources. Physical-device gestures and assistive-technology narration are not exhaustively tested.
+Draft PR only. No merge, deployment, new service or tracker. Screenshots are repository artifacts; no Library upload is claimed.
