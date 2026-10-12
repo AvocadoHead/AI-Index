@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="styles.css">
   <script src="modules.js" defer></script>
   <script src="catalog-data.js" defer></script>
+  <script src="official-summaries.js" defer></script>
   <script src="curation.js" defer></script>
   <script src="sphere.js" defer></script>
   <script src="directory.js" defer></script>
@@ -22,14 +23,7 @@
     </nav>
   </header>
   <main>
-    <section class="hero wrap" aria-labelledby="heroTitle">
-      <div class="hero-copy">
-        <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span><span data-i18n="eyebrow">מפת כלים לעבודה יצירתית</span></p>
-        <h1 id="heroTitle"><span data-i18n="heroOne">הכלי הנכון.</span> <span class="hero-accent" data-i18n="heroTwo">לשלב הבא שלך.</span></h1>
-        <p class="hero-description" data-i18n="intro">מתמונה ראשונה ועד גימור אחרון. חפשו לפי המשימה, הכירו את המגבלות ובדקו את המקור לפני שבוחרים.</p>
-      </div>
-      <div class="hero-note"><span class="note-number" id="recordCount">130</span><p data-i18n="note">כלים ומודלים, במקום אחד.</p><span id="checkedSummary"></span><a href="#method" data-i18n="whatChecked">מה בדיוק נבדק? ↙</a></div>
-    </section>
+    <div hidden><span id="recordCount"></span><span id="checkedSummary"></span></div>
     <section id="catalog" class="catalog wrap" aria-labelledby="catalogHeading">
       <h2 id="catalogHeading" class="sr-only" data-i18n="directory">ספריית הכלים</h2>
       <div class="search-row">
@@ -39,21 +33,21 @@
           <input id="searchInput" type="search" autocomplete="off" placeholder="שם כלי, ספק או תיאור…">
           <button id="clearSearch" type="button" class="clear-search" aria-label="ניקוי החיפוש" hidden>×</button>
         </div>
-        <div class="status-control"><label for="statusFilter" data-i18n="verification">מצב בדיקה</label><select id="statusFilter"><option value="all">כל הרשומות</option><option value="checked">נבדקו במקור רשמי</option><option value="pending">ממתינות לבדיקה</option><option value="retired">כלים שהופסקו</option></select></div>
-        <div class="mobile-task-control"><label for="mobileTask" data-i18n="taskLabel">המשימה שלי</label><select id="mobileTask"></select></div>
+        <button id="categoryOpen" class="category-open" type="button" aria-haspopup="dialog" aria-controls="categoryDialog" aria-expanded="false"><span aria-hidden="true">☰</span> <span data-i18n="categoriesMenu">קטגוריות</span><span id="categoryCount" hidden></span></button>
       </div>
-      <div class="task-filter" id="taskFilters" role="group" aria-label="סינון לפי משימה"></div>
-      <div class="results-toolbar"><p id="resultsCount" role="status" aria-live="polite"></p><div class="results-actions"><label class="sr-only" for="scopeFilter">Display scope</label><select id="scopeFilter"><option value="curated">נקודת פתיחה</option><option value="current">תצוגה נוכחית</option><option value="all">הכול והארכיון</option><option value="archived">ארכיון</option></select><button id="resetFilters" type="button" hidden data-i18n="reset">איפוס סינון</button><label for="sortOrder" class="sr-only" data-i18n="sort">סדר התוצאות</label><select id="sortOrder"><option value="reviewed">נבדקו תחילה</option><option value="name">לפי שם</option></select></div></div>
-      <div class="layout-toolbar"><div role="group" aria-label="Layout"><button id="sphereLayout" type="button" aria-pressed="true">◉ <span data-i18n="sphereLayout">ספירה</span></button><button id="atlasLayout" type="button" aria-pressed="false">☷ <span data-i18n="atlasLayout">אטלס</span></button></div><div id="motionControls"><button id="rotateLeft" type="button" aria-label="Rotate left">←</button><button id="motionToggle" type="button" aria-pressed="false">▶</button><button id="rotateRight" type="button" aria-label="Rotate right">→</button><button id="resetSphere" type="button" data-i18n="resetSphere">מרכוז</button></div></div>
-      <p id="sphereHint" class="sphere-hint" data-i18n="sphereHint"></p><p id="sphereFallback" role="status" hidden></p>
-      <p class="map-legend" data-i18n="mapLegend"></p>
-      <div id="sphereStage" class="sphere-stage" tabindex="0" aria-label="Interactive tool sphere"><canvas id="sphereCanvas" aria-hidden="true"></canvas><div id="toolGrid" class="tool-grid"></div></div>
+      <div class="overview-bar"><p id="resultsCount" role="status" aria-live="polite"></p><div class="layout-toolbar" role="group" aria-label="Layout"><button id="sphereLayout" type="button" aria-pressed="true"><span data-i18n="sphereLayout">ספירה</span></button><button id="atlasLayout" type="button" aria-pressed="false"><span data-i18n="atlasLayout">אטלס</span></button></div><button id="resetFilters" type="button" hidden data-i18n="reset">איפוס סינון</button></div>
+      <div id="motionControls" hidden><button id="rotateLeft" type="button">←</button><button id="motionToggle" type="button" aria-pressed="false">▶</button><button id="rotateRight" type="button">→</button><button id="resetSphere" type="button" data-i18n="resetSphere">מרכוז</button></div>
+      <p id="sphereHint" class="sr-only" data-i18n="sphereHint"></p><p id="sphereFallback" role="status" hidden></p>
+      <div id="sphereStage" class="sphere-stage" tabindex="0" aria-label="Interactive tool sphere" aria-describedby="sphereHint"><canvas id="sphereCanvas" aria-hidden="true"></canvas><div id="toolGrid" class="tool-grid"></div></div>
       <div id="emptyState" class="empty-state" hidden><span aria-hidden="true">⌕</span><h3 data-i18n="emptyTitle">לא מצאנו התאמה הפעם.</h3><p data-i18n="emptyDescription">נסו מילה אחרת או הרחיבו את הסינון.</p><button id="emptyReset" type="button" class="primary-button" data-i18n="showAll">הצגת כל הכלים</button></div>
       <noscript><p>יש להפעיל JavaScript כדי לחפש באינדקס. Enable JavaScript to browse the directory.</p><a href="data/catalog.json">Catalog data</a></noscript>
     </section>
     <section id="method" class="method wrap" aria-labelledby="methodTitle"><div><p class="eyebrow" data-i18n="methodEyebrow">בחירה טובה מתחילה במידע ברור</p><h2 id="methodTitle" data-i18n="methodTitle">מקורות, לא הבטחות.</h2></div><div class="method-copy"><p data-i18n="methodCopy">״נבדק״ אומר שבדקנו תיעוד רשמי בתאריך המצוין — לא שערכנו מבחן ביצועים. רשומות ותיקות עדיין מחכות לבדיקה; מודלים, זמינות ותנאים עשויים להשתנות.</p><p data-i18n="scoresCopy">הציונים הישנים נשמרו לעיון בפרטי הכלי. הם אינם דירוג איכות עדכני או המלצה חדשה.</p><button id="workflowOpen" class="text-button" type="button" data-i18n="workflowOpen">בדיקות שכדאי להכניס לתהליך העבודה ↗</button></div></section>
   </main>
   <footer class="site-footer wrap"><span dir="ltr">AI INDEX <span class="footer-by">/ Eyal Izenman</span></span><div><a href="legacy.html" data-i18n="legacy">תצוגה מקורית ועריכה מקומית</a><a href="data/catalog.json" data-i18n="data">נתוני האינדקס</a><a href="https://buymeacoffee.com/Optopia" target="_blank" rel="noopener noreferrer" data-i18n="support">תמיכה בפרויקט ↗</a></div></footer>
+  <dialog id="categoryDialog" class="category-drawer" aria-labelledby="categoryTitle"><div class="category-sheet"><header><h2 id="categoryTitle" data-i18n="categoriesMenu">קטגוריות</h2><button id="categoryClose" class="category-close" type="button" aria-label="Close categories">×</button></header><div class="task-filter" id="taskFilters" role="group" aria-label="סינון לפי משימה"></div><details class="refine-options"><summary data-i18n="refine">אפשרויות נוספות</summary>
+        <div class="status-control"><label for="statusFilter" data-i18n="verification">מצב בדיקה</label><select id="statusFilter"><option value="all">כל הרשומות</option><option value="checked">נבדקו במקור רשמי</option><option value="pending">ממתינות לבדיקה</option><option value="retired">כלים שהופסקו</option></select></div>
+<div class="drawer-field"><label for="scopeFilter" data-i18n="scopeLabel">אוסף</label><select id="scopeFilter"><option value="curated">נקודת פתיחה</option><option value="current">כל הנוכחיים</option><option value="all">הכול והארכיון</option><option value="archived">ארכיון</option></select></div><div class="drawer-field"><label for="sortOrder" data-i18n="sort">סדר התוצאות</label><select id="sortOrder"><option value="reviewed">נבדקו תחילה</option><option value="name">לפי שם</option></select></div></details><button id="categoryDone" class="category-done" type="button" data-i18n="showTools">הצגת הכלים</button><div hidden><select id="mobileTask"></select></div></div></dialog>
   <dialog id="detailDialog" aria-labelledby="detailTitle"><div class="dialog-shell"><button class="dialog-close" id="closeDialog" type="button" aria-label="סגירת פרטים">×</button><div id="detailContent"></div></div></dialog>
 </body>
 </html>

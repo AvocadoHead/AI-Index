@@ -8,7 +8,7 @@ const font=fs.readFileSync(path.join(root,'assets/fonts/Assistant.ttf')).toStrin
 const css=read('styles.css').replace('assets/fonts/Assistant.ttf','data:font/ttf;base64,'+font);
 html=html.replace('<link rel="stylesheet" href="styles.css">','<style>'+css+'</style>');
 html=html.replace(/  <script src="[^"]+" defer><\/script>\n/g,'');
-const scripts=['modules.js','catalog-data.js','curation.js','sphere.js','directory.js'].map(name=>'<script>\n'+read(name).replaceAll('</script','<\\/script')+'\n</script>').join('\n');
+const scripts=['modules.js','catalog-data.js','official-summaries.js','curation.js','sphere.js','directory.js'].map(name=>'<script>\n'+read(name).replaceAll('</script','<\\/script')+'\n</script>').join('\n');
 html=html.replace('</body>',scripts+'\n</body>');
 html=html.replaceAll('href="legacy.html"','href="https://github.com/AvocadoHead/AI-Index/tree/design/readable-directory"');
 html=html.replaceAll('href="data/catalog.json"','download="catalog.json" href="data:application/json;base64,'+Buffer.from(read('data/catalog.json')).toString('base64')+'"');
