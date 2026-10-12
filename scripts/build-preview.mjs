@@ -1,0 +1,16 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import {fileURLToPath} from 'node:url';
+const root=fileURLToPath(new URL('..',import.meta.url));
+const read=name=>fs.readFileSync(path.join(root,name),'utf8');
+let html=read('index.html');
+const font=fs.readFileSync(path.join(root,'assets/fonts/Assistant.ttf')).toString('base64');
+const css=read('styles.css').replace('assets/fonts/Assistant.ttf','data:font/ttf;base64,'+font);
+html=html.replace('<link rel="stylesheet" href="styles.css">','<style>'+css+'</style>');
+html=html.replace(/  <script src="[^"]+" defer><\/script>\n/g,'');
+const scripts=['modules.js','catalog-data.js','curation.js','sphere.js','directory.js'].map(name=>'<script>\n'+read(name).replaceAll('</script','<\\/script')+'\n</script>').join('\n');
+html=html.replace('</body>',scripts+'\n</body>');
+html=html.replaceAll('href="legacy.html"','href="https://github.com/AvocadoHead/AI-Index/tree/design/readable-directory"');
+html=html.replaceAll('href="data/catalog.json"','download="catalog.json" href="data:application/json;base64,'+Buffer.from(read('data/catalog.json')).toString('base64')+'"');
+html=html.replace('</head>','<!-- Assistant SIL Open Font License 1.1\n'+read('assets/fonts/OFL.txt').replaceAll('--','—')+'\n-->\n</head>');
+const destination=path.join(root,'docs/preview/ai-index-preview.html');fs.mkdirSync(path.dirname(destination),{recursive:true});fs.writeFileSync(destination,html);console.log('Built standalone HTML ('+Buffer.byteLength(html)+' bytes). Open the downloaded file in a browser; no server or network is required.');

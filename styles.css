@@ -1014,3 +1014,30 @@ h1 {font-size:38px;letter-spacing:-.8px;font-weight:600;}
 .task-chip[data-task=workflow] {--tone:#766d46;}
 .task-chip[data-task=text] {--tone:#596c94;}
 .task-chip[data-task=spatial] {--tone:#8a6574;}
+.layout-toolbar {display:flex;align-items:center;justify-content:space-between;gap:8px;margin:4px 0;}
+.layout-toolbar>div {display:flex;gap:4px;}
+.layout-toolbar button {border:1px solid var(--line);border-radius:7px;background:transparent;padding:4px 13px;font-size:14px;min-height:40px;}
+.layout-toolbar button[aria-pressed=true] {background:#e5eae7;border-color:#8ca299;}
+.sphere-hint {font-size:13px;color:var(--muted);margin:6px 0;}
+.sphere-stage {height:min(760px,75vh);min-height:460px;position:relative;isolation:isolate;touch-action:none;border-top:1px solid var(--line);background:radial-gradient(ellipse at center,#edf2eb88,transparent 65%);cursor:grab;}
+.sphere-stage[data-dragging] {cursor:grabbing;}
+#sphereCanvas {position:absolute;inset:0;width:100%;height:100%;pointer-events:none;}
+.sphere-stage:not(.atlas-mode) .tool-grid {display:block;border:0;background:none;padding:0;}
+.sphere-stage:not(.atlas-mode) .tool-label {position:absolute;transform:translate(-50%,-50%);width:max-content;max-width:calc(100% - 24px);padding:2px 5px;text-shadow:0 1px 5px var(--paper),0 -1px 5px var(--paper);}
+.sphere-stage:not(.atlas-mode) .tool-label h3 {font-size:clamp(16px,calc(var(--score-size)*.82),29px);}
+.sphere-stage:not(.atlas-mode) .tool-label:hover {background:#faf9f6ed;}
+.sphere-stage.atlas-mode {height:auto;min-height:0;touch-action:pan-y;cursor:auto;}
+.atlas-mode .tool-grid {display:block;columns:2;column-gap:28px;padding:8px 0;background:none;}
+.atlas-group {break-inside:avoid;border-bottom:1px solid var(--line);padding:10px 0 18px;}
+.atlas-group h2 {font-size:15px;color:var(--muted);font-weight:600;margin:0 0 8px;}
+.atlas-labels {display:flex;align-items:baseline;flex-wrap:wrap;gap:0 15px;}
+.atlas-labels .tool-label {position:static;visibility:visible!important;opacity:1!important;}
+[hidden] {display:none!important;}
+@media(max-width:620px){
+ .layout-toolbar button {padding:2px 9px;min-height:44px;font-size:13px;}
+ .sphere-stage {height:500px;min-height:500px;margin-inline:-6px;}
+ .sphere-stage:not(.atlas-mode) .tool-label h3 {font-size:clamp(16px,calc(var(--score-size)*.61),22px);}
+ .sphere-hint {font-size:11px;line-height:1.4;margin:3px 0;}
+ .atlas-mode .tool-grid {columns:1;}
+}
+@media(max-width:620px){.sphere-stage {height:420px;min-height:420px;}}

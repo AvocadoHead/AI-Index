@@ -3,7 +3,7 @@ const fs=require('node:fs'),path=require('node:path'),os=require('node:os');
 const {spawn}=require('node:child_process');
 const {pathToFileURL}=require('node:url');
 const assert=require('node:assert/strict');
-const root=path.resolve(__dirname,'..');
+const root=path.resolve(__dirname,'..');const entry=process.env.QA_ENTRY || 'index.html';
 const output=process.env.QA_OUTPUT || path.join(os.tmpdir(),'ai-index-design-evidence');fs.mkdirSync(output,{recursive:true});
 const executable=process.env.CHROME_BIN || '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
 if(!fs.existsSync(executable)) throw new Error('Set CHROME_BIN to an installed Chrome executable. No installation is performed.');
@@ -22,16 +22,27 @@ const timeout=setTimeout(()=>{chrome.kill();console.error('QA timed out');proces
   const {sessionId}=await send('Target.attachToTarget',{targetId,flatten:true});
   const evaluate=async expression=>{const result=await send('Runtime.evaluate',{expression,awaitPromise:true,returnByValue:true},sessionId);if(result.exceptionDetails)throw new Error(JSON.stringify(result.exceptionDetails));return result.result.value;};
   const screenshot=async suffix=>{const {data}=await send('Page.captureScreenshot',{format:'png'},sessionId);fs.writeFileSync(path.join(output,name+suffix+'.png'),Buffer.from(data,'base64'));};
-  await send('Page.enable',{},sessionId);await send('Page.bringToFront',{},sessionId);await send('Emulation.setDeviceMetricsOverride',{width,height:width>=1000?1100:844,deviceScaleFactor:1,mobile:width<620},sessionId);
+  await send('Network.enable',{},sessionId);if(process.env.QA_OFFLINE)await send('Network.setBlockedURLs',{urls:['http://*','https://*']},sessionId);await send('Page.enable',{},sessionId);await send('Page.bringToFront',{},sessionId);await send('Emulation.setDeviceMetricsOverride',{width,height:width>=1000?1100:844,deviceScaleFactor:1,mobile:width<620},sessionId);
   await send('Page.addScriptToEvaluateOnNewDocument',{source:"window.qaErrors=[];addEventListener('error',event=>{if(event.message)qaErrors.push(event.message)});"},sessionId);
-  await send('Page.navigate',{url:pathToFileURL(path.join(root,'index.html')).href},sessionId);
-  await evaluate("new Promise((resolve,reject)=>{let n=0;const timer=setInterval(()=>{if(document.querySelectorAll('.tool-card').length===131){clearInterval(timer);document.fonts.ready.then(resolve)}else if(++n>100){clearInterval(timer);reject(new Error('Directory did not initialize '+window.qaErrors))}},50)})");
+  await send('Page.navigate',{url:pathToFileURL(path.join(root,entry)).href},sessionId);
+  await evaluate("new Promise((resolve,reject)=>{let n=0;const timer=setInterval(()=>{if(document.querySelectorAll('.tool-card').length>0){clearInterval(timer);document.fonts.ready.then(resolve)}else if(++n>100){clearInterval(timer);reject(new Error('Directory did not initialize '+window.qaErrors))}},50)})");
   if(language==='en')await evaluate("document.getElementById('languageToggle').click()");
+  const sphereInitial=await evaluate(`({layout:document.getElementById('sphereLayout').getAttribute('aria-pressed'),fallback:!document.getElementById('sphereFallback').hidden,count:document.querySelectorAll('.tool-card').length,visible:Number(document.getElementById('sphereStage').dataset.visible),rotation:document.getElementById('sphereStage').dataset.rotation,domains:new Set([...document.querySelectorAll('.tool-label')].filter(b=>getComputedStyle(b).visibility==='visible').map(b=>b.parentElement.dataset.category)).size})`);
+  assert.equal(sphereInitial.layout,'true',JSON.stringify(sphereInitial));assert.equal(sphereInitial.count,51);assert.ok(sphereInitial.visible>=6,JSON.stringify(sphereInitial));assert.ok(sphereInitial.domains>=3,JSON.stringify(sphereInitial));await screenshot('-sphere');
+  const stagePoint=await evaluate("(()=>{const r=document.getElementById('sphereStage').getBoundingClientRect();return {x:r.x+r.width/2,y:r.y+70}})()");
+  await send('Input.dispatchMouseEvent',{type:'mouseMoved',...stagePoint},sessionId);await send('Input.dispatchMouseEvent',{type:'mousePressed',button:'left',clickCount:1,...stagePoint},sessionId);await send('Input.dispatchMouseEvent',{type:'mouseMoved',button:'left',buttons:1,x:stagePoint.x+65,y:stagePoint.y+30},sessionId);await send('Input.dispatchMouseEvent',{type:'mouseReleased',button:'left',clickCount:1,x:stagePoint.x+65,y:stagePoint.y+30},sessionId);
+  assert.notEqual(await evaluate("document.getElementById('sphereStage').dataset.rotation"),sphereInitial.rotation);assert.equal(await evaluate("document.getElementById('quickPreview').hidden"),true);
+  if(width<620){await send('Emulation.setTouchEmulationEnabled',{enabled:true},sessionId);const before=await evaluate("document.getElementById('sphereStage').dataset.rotation");await send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[stagePoint]},sessionId);await send('Input.dispatchTouchEvent',{type:'touchMove',touchPoints:[{x:stagePoint.x-45,y:stagePoint.y+15}]},sessionId);await send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]},sessionId);assert.notEqual(await evaluate("document.getElementById('sphereStage').dataset.rotation"),before);assert.equal(await evaluate("document.getElementById('quickPreview').hidden"),true);}
+  await evaluate("new Promise(resolve=>setTimeout(resolve,550))");
+  const labelPoint=await evaluate("(()=>{const b=[...document.querySelectorAll('.tool-label')].find(b=>getComputedStyle(b).visibility==='visible');b.scrollIntoView({block:'center'});const r=b.getBoundingClientRect();return {x:r.x+r.width/2,y:r.y+r.height/2}})()");
+  if(width<620){await send('Emulation.setTouchEmulationEnabled',{enabled:true},sessionId);await send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[labelPoint]},sessionId);await send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]},sessionId)}else {await send('Input.dispatchMouseEvent',{type:'mousePressed',button:'left',clickCount:1,...labelPoint},sessionId);await send('Input.dispatchMouseEvent',{type:'mouseReleased',button:'left',clickCount:1,...labelPoint},sessionId)}
+  assert.equal(await evaluate("document.getElementById('quickPreview').hidden"),false);await screenshot('-sphere-summary');await evaluate("document.querySelector('#quickPreview .primary-button').click()");assert.equal(await evaluate("document.getElementById('detailDialog').open"),true);await evaluate("document.getElementById('closeDialog').click()");
+  await evaluate("document.getElementById('atlasLayout').click();const scope=document.getElementById('scopeFilter');scope.value='all';scope.dispatchEvent(new Event('change'));scrollTo(0,0)");
   const initial=await evaluate(`({language:document.documentElement.lang,direction:document.documentElement.dir,count:document.querySelectorAll('.tool-card').length,width:innerWidth,scrollWidth:document.documentElement.scrollWidth,errors:qaErrors,columns:1})`);
   assert.equal(initial.language,language);assert.equal(initial.count,131);assert.equal(initial.width,width);assert.ok(initial.scrollWidth<=width,JSON.stringify(initial));assert.deepEqual(initial.errors,[]);
   await screenshot('-directory');
   const atlas=await evaluate(`(()=>{const labels=[...document.querySelectorAll('.tool-label')];return {font:document.fonts.check('16px Assistant'),fontLoaded:[...document.fonts].some(f=>f.family==='Assistant'&&f.status==='loaded'),minFont:Math.min(...labels.map(b=>parseFloat(getComputedStyle(b.querySelector('h3')).fontSize))),minTouch:Math.min(...labels.map(b=>b.getBoundingClientRect().height)),sizesMatch:labels.every(b=>{const score=b.parentElement.dataset.score;return b.style.getPropertyValue('--score-size')===DirectoryData.scoreSize(score==='unrated'?null:Number(score))+'px'}),visible:labels.filter(b=>b.getBoundingClientRect().bottom<=innerHeight).length,domains:new Set(labels.filter(b=>b.getBoundingClientRect().bottom<=innerHeight).map(b=>b.parentElement.dataset.category)).size}})()`);
-  assert.ok(atlas.font&&atlas.fontLoaded);assert.ok(atlas.minFont>=16);assert.ok(atlas.minTouch>=44);assert.ok(atlas.sizesMatch);assert.ok(atlas.domains>=6,JSON.stringify(atlas));assert.ok(atlas.visible>=(width>=1000?30:10),JSON.stringify(atlas));
+  assert.ok(atlas.font&&atlas.fontLoaded);assert.ok(atlas.minFont>=16);assert.ok(atlas.minTouch>=44);assert.ok(atlas.sizesMatch);assert.ok(atlas.visible>=(width>=1000?20:4),JSON.stringify(atlas));
   const hoverPoint=await evaluate("(()=>{const r=document.querySelector('.tool-label').getBoundingClientRect();return {x:r.x+r.width/2,y:r.y+r.height/2}})()");await send('Input.dispatchMouseEvent',{type:'mouseMoved',...hoverPoint},sessionId);assert.equal(await evaluate("document.getElementById('quickPreview').hidden"),false);await screenshot('-summary');
   await send('Input.dispatchKeyEvent',{type:'keyDown',key:'Escape',code:'Escape',windowsVirtualKeyCode:27},sessionId);await send('Input.dispatchKeyEvent',{type:'keyUp',key:'Escape',code:'Escape',windowsVirtualKeyCode:27},sessionId);
   await evaluate("document.querySelector('[data-task=audio]').click();document.querySelector('[data-task=video]').click()");assert.equal(await evaluate("document.querySelectorAll('.task-chip[aria-pressed=true]').length"),2);await evaluate("document.getElementById('resetFilters').click()");
@@ -83,12 +94,23 @@ const timeout=setTimeout(()=>{chrome.kill();console.error('QA timed out');proces
   await evaluate("document.getElementById('closeDialog').click();document.getElementById('resetFilters').click();document.getElementById('workflowOpen').click()");assert.equal(await evaluate("document.getElementById('detailDialog').open"),true);
   await evaluate("document.getElementById('closeDialog').click()");
   assert.deepEqual(await evaluate('qaErrors'),[]);
-  results.push({...initial,...atlas,name,searchAndCombinedFilters:true,clearAndEmptyResults:true,dialogAndEscape:true,keyboardFocusContained:true,repeatedNavigation:true,retiredProvenance:true});
+  results.push({...initial,...atlas,sphereInitial,name,searchAndCombinedFilters:true,clearAndEmptyResults:true,dialogAndEscape:true,keyboardFocusContained:true,repeatedNavigation:true,retiredProvenance:true});
+  await evaluate("document.getElementById('sphereLayout').click();document.getElementById('sphereCanvas').getContext('webgl').getExtension('WEBGL_lose_context').loseContext()");await evaluate("new Promise(resolve=>setTimeout(resolve,100))");assert.equal(await evaluate("document.getElementById('atlasLayout').getAttribute('aria-pressed')"),'true');assert.equal(await evaluate("document.getElementById('sphereLayout').disabled"),true);assert.equal(await evaluate("document.querySelectorAll('.tool-card').length"),131);
   if(width===1440&&language==='en'){
    await send('Page.navigate',{url:pathToFileURL(path.join(root,'legacy.html')).href},sessionId);
    await evaluate("new Promise(resolve=>setTimeout(resolve,1500))");await screenshot('-original');
   }
   console.log('PASS '+name);await send('Target.closeTarget',{targetId});
+ }
+ for(const mode of ['unsupported','reduced-motion']){
+  const {targetId}=await send('Target.createTarget',{url:'about:blank'});const {sessionId}=await send('Target.attachToTarget',{targetId,flatten:true});
+  const evaluate=async expression=>{const response=await send('Runtime.evaluate',{expression,awaitPromise:true,returnByValue:true},sessionId);if(response.exceptionDetails)throw Error(JSON.stringify(response.exceptionDetails));return response.result.value};
+  await send('Page.enable',{},sessionId);
+  if(mode==='unsupported')await send('Page.addScriptToEvaluateOnNewDocument',{source:"const original=HTMLCanvasElement.prototype.getContext;HTMLCanvasElement.prototype.getContext=function(type,...args){return type==='webgl'?null:original.call(this,type,...args)}"},sessionId);
+  else await send('Emulation.setEmulatedMedia',{features:[{name:'prefers-reduced-motion',value:'reduce'}]},sessionId);
+  await send('Page.navigate',{url:pathToFileURL(path.join(root,entry)).href},sessionId);await evaluate("new Promise(resolve=>{const timer=setInterval(()=>{if(document.querySelectorAll('.tool-card').length){clearInterval(timer);document.fonts.ready.then(resolve)}},30)})");
+  if(mode==='unsupported'){assert.equal(await evaluate("document.getElementById('atlasLayout').getAttribute('aria-pressed')"),'true');assert.equal(await evaluate("document.querySelectorAll('.tool-card').length"),51);await evaluate("document.querySelector('.tool-label').click()");assert.equal(await evaluate("document.getElementById('quickPreview').hidden"),false)}else {assert.equal(await evaluate("document.getElementById('motionToggle').disabled"),true);const rotation=await evaluate("document.getElementById('sphereStage').dataset.rotation");await evaluate("new Promise(resolve=>setTimeout(resolve,200))");assert.equal(await evaluate("document.getElementById('sphereStage').dataset.rotation"),rotation)}
+  console.log('PASS '+mode);await send('Target.closeTarget',{targetId});
  }
  fs.writeFileSync(path.join(output,'results.json'),JSON.stringify(results,null,2)+'\n');
  await send('Browser.close');clearTimeout(timeout);console.log('Evidence: '+output);
