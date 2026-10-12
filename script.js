@@ -942,7 +942,7 @@ class ModuleCloud {
         description.dir = description.lang === 'he' ? 'rtl' : 'ltr';
         body.appendChild(description);
         const label = document.createElement('p');
-        label.textContent = 'Legacy categories & editorial scores:';
+        label.textContent = window.catalogMetadata?.translate('legacyScores') || 'Legacy categories & editorial scores:';
         body.appendChild(label);
         const scores = document.createElement('pre');
         scores.textContent = module.categories.map(category => {
@@ -1494,6 +1494,7 @@ class ModuleCloud {
     }
 
     setupLanguageToggle() {
+        this.currentLanguage = document.documentElement.lang === 'he' ? 'he' : 'en';
         const langButton = document.createElement('button');
         langButton.className = 'control-button language-toggle';
         langButton.textContent = 'ע';
@@ -1548,8 +1549,12 @@ class ModuleCloud {
             }
         });
         
-        // Update category buttons
+        // Update category buttons and the reviewed reference's interface labels.
         this.updateCategoryLabels();
+        window.catalogMetadata?.refresh();
+        if (this.tooltipModule && this.tooltip.style.display !== 'none') {
+            this.showTooltip(this.tooltipModule, parseFloat(this.tooltip.style.left) - 10, parseFloat(this.tooltip.style.top) - 10);
+        }
     }
 
     updateCategoryLabels() {

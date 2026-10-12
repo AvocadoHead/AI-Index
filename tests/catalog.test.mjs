@@ -10,14 +10,14 @@ class Element {
     setAttribute(name, value) { this.attributes[name] = value; }
     addEventListener(name, callback) { this.events[name] = callback; }
     click() {}
-    querySelector(selector) { return this.children.find(node => `.${node.className}` === selector) || this.children.map(node => node.querySelector(selector)).find(Boolean); }
+    querySelector(selector) { return this.children.find(node => node.tag === selector || `.${node.className}` === selector) || this.children.map(node => node.querySelector(selector)).find(Boolean); }
 }
 function setup(catalog) {
     const ready = [], directory = new Element('details');
     const context = { window: {}, URL, Blob, document: { body: new Element('body'), addEventListener(name, callback) { ready.push(callback); }, createElement(tag) { return new Element(tag); }, getElementById() { return directory; } }, console };
     vm.runInNewContext(fs.readFileSync('modules.js', 'utf8'), context);
     if (catalog) context.window.aiCatalog = catalog;
-    else vm.runInNewContext(fs.readFileSync('catalog-data.js', 'utf8'), context);
+    else if (catalog !== null) vm.runInNewContext(fs.readFileSync('catalog-data.js', 'utf8'), context);
     vm.runInNewContext(fs.readFileSync('catalog.js', 'utf8'), context);
     vm.runInNewContext(fs.readFileSync('script.js', 'utf8') + '\nthis.AIModule = AIModule; this.ModuleCloud = ModuleCloud;', context);
     return {context, ready, directory};
@@ -154,4 +154,58 @@ test('validator rejects duplicate IDs, unsupported facts, unsafe sources and leg
         fs.appendFileSync(path.join(directory, 'modules.js'), '\nwindow.defaultModules[0].scores.AGENT = 0.01;');
         assert.notEqual(spawnSync(process.execPath, [path.join(directory,'scripts/catalog.mjs'),'--write']).status, 0);
     } finally { fs.rmSync(directory, {recursive:true, force:true}); }
+});
+
+test('truly absent metadata bundle initializes directory and keeps the legacy cloud usable', async () => {
+    const {context, ready, directory} = setup(null);
+    assert.equal(Object.hasOwn(context.window, 'aiCatalog'), false);
+    assert.doesNotThrow(() => ready[0]());
+    assert.equal(directory.children[0].textContent, 'Reviewed reference · 0 tools');
+    const cloud = Object.create(context.ModuleCloud.prototype);
+    context.defaultModules = context.window.defaultModules;
+    cloud.positionModuleInCloud = () => {};
+    cloud.showError = message => { throw new Error(message); };
+    cloud.loadDefaultModules();
+    assert.equal(cloud.modules.length, 120);
+    assert.equal(cloud.getModuleUrl(cloud.modules[0]), 'https://manus.ai/');
+    assert.match(await cloud.getModuleDescription(cloud.modules[0]), /awaiting official-source verification/);
+});
+
+test('Hebrew toggle refreshes reference labels and keeps the search and Hebrew descriptions', () => {
+    const {context, ready, directory} = setup();
+    ready[0]();
+    const search = directory.querySelector('input');
+    search.value = 'Weavy'; search.events.input();
+    context.document.documentElement = {lang: 'he'};
+    context.window.catalogMetadata.refresh();
+    assert.equal(directory.lang, 'he');
+    assert.equal(directory.dir, 'rtl');
+    assert.equal(directory.children[0].textContent, 'מידע שנבדק · 29 כלים');
+    assert.equal(directory.querySelector('input').value, 'Weavy');
+    assert.equal(directory.querySelector('input').placeholder, 'שם, ספק או תיאור');
+    const list = directory.children.find(node => node.tag === 'div');
+    assert.equal(list.children[0].textContent, '1 כלים תואמים');
+    assert.equal(list.children[1].children[0].textContent, 'Figma Weave · פעיל');
+    const description = list.children[1].children[1];
+    assert.equal(description.lang, 'he'); assert.equal(description.dir, 'rtl');
+    assert.ok(list.children[1].children.some(node => node.textContent?.includes('ספק: Figma')));
+});
+
+test('the actual language control switches to Hebrew on its first click and back to English', () => {
+    const {context, ready, directory} = setup();
+    ready[0]();
+    const controls = new Element('div');
+    context.document.documentElement = {lang:'en', setAttribute(key, value) { this[key] = value; }};
+    context.document.querySelector = () => controls;
+    context.document.querySelectorAll = () => [];
+    const cloud = Object.create(context.ModuleCloud.prototype);
+    cloud.translations = {en:{}, he:{}};
+    cloud.updateCategoryLabels = () => {};
+    cloud.setupLanguageToggle();
+    controls.children[0].onclick();
+    assert.equal(cloud.currentLanguage, 'he');
+    assert.equal(directory.children[0].textContent, 'מידע שנבדק · 29 כלים');
+    controls.children[0].onclick();
+    assert.equal(cloud.currentLanguage, 'en');
+    assert.equal(directory.children[0].textContent, 'Reviewed reference · 29 tools');
 });

@@ -18,7 +18,7 @@ The static cloud retains all 120 original names, URLs, categories, scores and or
 ## Automated checks
 
 - `node scripts/catalog.mjs`: 130 records valid, 29 checked; all 120 original records unchanged.
-- `node --test tests/*.test.mjs`: 11 terminal integration tests pass and cover both loading paths, IDs, category filtering and scores, edited/imported identities, local descriptions, corrected and retired destinations, safe tooltip text, Hebrew text direction, alias search, JavaScript export round-trip, missing metadata, and asynchronous tooltip race handling.
+- `node --test tests/*.test.mjs`: 14 terminal integration tests pass and cover both loading paths, IDs, category filtering and scores, edited/imported identities, local descriptions, corrected and retired destinations, safe tooltip text, Hebrew text direction, alias search, JavaScript export round-trip, missing metadata, and asynchronous tooltip race handling.
 - `node --check` passes for `modules.js`, `script.js`, `catalog.js` and generated `catalog-data.js`.
 - `git -c core.whitespace=cr-at-eol diff --check` passes (existing HTML/JS use CRLF).
 - An independent comparison against `origin/main:modules.js` confirmed baseline equality after excluding added IDs.
@@ -27,6 +27,17 @@ Read-only terminal spot checks returned HTTP 200 for Google's Gemini image page,
 
 ## Review limits
 
-No browser was opened, so layout, canvas gestures, focus behavior and mobile rendering still need visual review. No merge, deployment or hosted preview was performed. This is a dated documentation refresh, not a live updater. Descriptions no longer invoke scraping or machine-translation endpoints; existing unrelated site resources remain unchanged.
+Follow-up QA used installed Chrome in isolated headless mode with a fresh temporary profile and external networking blocked. Desktop (1440×900), mobile Hebrew (390×844), and a truly absent metadata bundle all loaded 120 cloud records with zero JavaScript runtime errors. Search, first-click language switching, Hebrew direction, corrected/retired destinations and reference-panel viewport bounds passed. No personal browser or profile was opened. No merge, deployment or hosted preview was performed. This is a dated documentation refresh, not a live updater. Descriptions no longer invoke scraping or machine-translation endpoints; existing unrelated site resources remain unchanged.
 
 The existing local JavaScript importer still evaluates uploaded files. Its format is retained for compatibility; redesigning import security is outside this refresh.
+
+## Follow-up regression evidence
+
+The absent-bundle fallback now guards workflow access. A regression removes `window.aiCatalog` entirely and executes directory initialization. The reference UI follows the existing language toggle, preserves the search query, and translates control and metadata labels. Language initialization now makes the first click switch to Hebrew. The panel stays below the toolbar when controls wrap on mobile.
+
+- [Desktop screenshot](qa/desktop.png)
+- [Mobile Hebrew screenshot](qa/mobile-hebrew.png)
+- [Missing-bundle screenshot](qa/missing-bundle.png)
+- [Headless smoke results](qa/results.json)
+
+External fonts, icons, analytics and favicons were intentionally blocked during isolated QA. Screenshots therefore demonstrate layout with available local fonts, not externally loaded font/icon fidelity. Canvas gestures, touch-device behavior and full keyboard navigation were not exhaustively tested. With the metadata bundle absent, the original legacy destinations remain available; reviewed corrections and retirement status require that bundle. The existing dense cloud layout and local `eval` importer remain deferred.
