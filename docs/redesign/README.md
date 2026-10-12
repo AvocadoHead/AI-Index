@@ -1,16 +1,42 @@
-# Typographic atlas revision
+# AI Index: original interaction restored
 
-The original cloud made many tools visible at once and used estimated scores to size text. This revision restores that overview with selectable HTML labels in quiet category colors, compact headings, and on-demand details. The large hero and individual tool cards are removed.
+## Audit: original versus the rejected directory
 
-Assistant is self-hosted from the [Google Fonts Assistant source](https://github.com/google/fonts/tree/main/ofl/assistant), under the bundled [SIL Open Font License](../../assets/fonts/OFL.txt). No external font request is needed.
+| Original behavior | What PR2 lost | Current restoration |
+| --- | --- | --- |
+| One field showed names from many domains together | Cards, then complete category columns, pushed most domains below the mobile fold | One wrapping typographic field interleaves eight domains; category color is keyed by the filter legend |
+| Original average/category estimates changed text size | Cards hid scores; the first atlas used only an overall average | Size reflects the original scores relevant to the chosen domains, or the overall average in All |
+| Category buttons could be combined | One exclusive task selector | Toggle any combination; matching is an explicit union, with search and verification applied together |
+| Hover exposed descriptions | A full dialog was required | Pointer hover and keyboard focus show a concise preview; tapping pins it; a separate action opens full details |
+| Compact controls left space for the tools | Hero, metadata and large gaps consumed the first screen | No hero; compact search, filters and legend above the shared field |
 
-## Reading the map
+The original canvas's 3D movement and overlapping text are not retained. Selectable DOM labels preserve the simultaneous overview with reliable keyboard focus and touch targets. The original implementation remains at `legacy.html`.
 
-- Label size uses the arithmetic average of the original record's estimated scores, matching the original all-category averaging principle. Desktop sizing is `16 + 60 × clamp(average − 0.75, 0, 0.25)` pixels; mobile uses 80%, with a 16px reading floor. The readable floor does not change stored scores.
-- Unrated additions have a neutral 17px size (16px on mobile) and a diamond; no score is invented. Hover or accessible labels expose the exact original estimated average. Full original category scores remain in details.
-- Check marks indicate dated source review, independently of score, color and size. A cross marks retired tools. These are not current benchmarks or recommendations.
-- Each identity appears once in the overview, in its first matching broad task group. A category filter includes every matching tool, including cross-category tools. Names, sources and original categories remain available in details.
-- Mobile uses a single wrapping field with native category and verification selectors; tablet has two columns and desktop three. All labels have at least 44px touch height and remain selectable.
+## Identity and evidence
+
+All 120 raw legacy entries, IDs, scores, URLs and categories are unchanged. All previous 130 catalog identities remain; Kolbo.AI adds one new unrated identity. Totals are now **131 identities, 31 source-reviewed (including retired InVision), 100 unverified**. Magnific's formerly unverified entry now has dated official-source metadata.
+
+Generation strings are removed from family-level labels (for example ChatGPT, Claude, Gemini, Veo, Wan and Udio), with the untouched historical name and scores in details. Dated model observations remain nested. Stable IDs deduplicate repeated appearances of the same family; matching a vendor name is never sufficient to merge distinct products. Google Flow remains separate from Veo; Stable Video's historical app entry remains distinct from the Stable Video Diffusion model entry. No provider or product has been merged on an unverified equivalence.
+
+Creative platforms are first-class: Weave, Kolbo, Magnific, Firefly, Krea and ComfyUI are discoverable through the Creative platforms filter. Their summaries distinguish workflow/platform products from model families. A platform offering a model does not make that model its own, nor imply API access.
+
+- **Nano Banana:** one family; Google documents 2.1, original Gemini 2.5 Flash Image, Pro, 2 and 2 Lite. No Nano Banana 2.5 claim. The old `banana.dev` developer scores are retained as provenance, but excluded from this corrected image-family label.
+- **Magnific:** current broad platform and historical upscaler scope are explained separately. Its old upscaler scores do not rank the broader platform.
+- **Kolbo:** vendor-described multi-model creative workspace, with Visual DNA and project context; unrated. No authenticated inventory/API call was made.
+- **Weave:** vendor model-catalog references are not an exhaustively validated live inventory; direct catalog retrieval failed in research. Third-party API permissions are distinct from the general catalog.
+- **Firefly:** the platform, Adobe-owned model families and third-party models remain distinct in the identity notes and model observations. Availability at a platform is not family-wide availability.
+
+Official URLs and checked dates are in each record's sources. Prior source references are retained. No private user preference has been published and no numeric score was added.
+
+## Visual rules and interaction
+
+Assistant is bundled locally from the [official Google Fonts repository](https://github.com/google/fonts/tree/main/ofl/assistant), under the [SIL Open Font License](../../assets/fonts/OFL.txt).
+
+Desktop label size is `16 + 80 × clamp(estimate − 0.75, 0, 0.25)` px. Mobile scales this to 72%, with a 16px minimum. The floor keeps low estimates readable without modifying the source values. Unrated labels use 17px/16px and a diamond. Hover labels expose the numerical estimate; source review is a separate check mark, retirement a cross. Color denotes domain, never score or verification.
+
+Category chips combine by union; search and status narrow that union. Labels are interleaved by primary domain so even mobile begins with multiple domains. The primary domain follows the first recorded capability/category, with explicitly identified creative platforms grouped as platforms. Cross-domain memberships remain available through all matching filters.
+
+Pointer hover or focus opens a nonmodal summary. Tap pins it. Tab from a focused label reaches the preview's detail action; Enter opens full details. Escape dismisses the preview or dialog and returns focus. Detail content includes sources, dates, uncertainties, observed generations and preserved original records.
 
 ## Screenshots
 
@@ -21,14 +47,16 @@ Assistant is self-hosted from the [Google Fonts Assistant source](https://github
 | 768 | [Overview](768-he-directory.png) | [Overview](768-en-directory.png) |
 | 1440 | [Overview](1440-he-directory.png) | [Overview](1440-en-directory.png) |
 
-[Mobile details](390-en-detail.png) · [Original cloud reference](1440-en-original.png)
+[Touch summary](390-he-summary.png) · [Desktop hover summary](1440-en-summary.png) · [Full details](390-en-detail.png) · [Original cloud reference](1440-en-original.png)
 
 ## Validation
 
-`node --test tests/*.test.mjs`: all 21 tests pass, including the 14 original catalog regressions. `node scripts/catalog.mjs` confirms 130 identities, 29 checked including retired InVision, 101 unverified, and unchanged legacy records. Canonical data files and sources are unchanged.
+`node --test tests/*.test.mjs`: 23 passing tests. The original 14 catalog regression tests remain, with reviewed-count expectations updated for new evidence. New coverage includes canonical family labels, duplicate stable IDs, distinct products/providers, unrated additions, withheld mismatched scores and selected-category scoring.
 
-`QA_OUTPUT=docs/redesign node scripts/browser-qa.cjs`: all eight width/language combinations pass using installed headless Chrome with a fresh temporary profile, without accessing the personal browser. [Machine-readable results](results.json) include successful Assistant loading, score-size mapping, no horizontal overflow, 16px minimum mobile text and 44px minimum targets. Desktop shows 86 labels in its initial 1440×1100 viewport; mobile shows 18–20 in 360/390×844.
+`node scripts/catalog.mjs`: 131 records, 31 source-reviewed, all 120 legacy records unchanged.
 
-Coverage includes compound search/category/status filters, category-heading exploration, clear/reset/empty results, language preservation, dialog details/sources/scores, repeated touch open/Escape/focus return, repeated button close, Tab focus containment, and retired launch suppression. Screenshots were inspected at mobile, tablet and desktop sizes, in RTL and LTR, including details and the original cloud. Emulation is not a physical-device or screen-reader audit.
+`QA_OUTPUT=docs/redesign node scripts/browser-qa.cjs`: isolated headless Chrome with a fresh temporary profile; no personal browser access. Eight configurations cover 360/390/768/1440, Hebrew RTL and English LTR. [Results](results.json) record visible label counts and domains, locally loaded Assistant, 16px minimum labels, 44px minimum targets, size mapping and no overflow.
 
-Draft PR only. No merge, deployment, new service or tracker. Screenshots are repository artifacts; no Library upload is claimed.
+Coverage includes real pointer hover, keyboard-focus previews with Tab/Enter, category combinations, search/status filters, empty/reset states, repeated emulated touch summary/detail/Escape cycles, focus restoration/containment, sources and disabled retired launches. Rendered mobile, tablet, desktop and summary screenshots were inspected. Physical devices and screen readers were not exhaustively tested.
+
+No merge or deployment. No new service, tracker, credentials or authenticated model inventory access. No Library delivery is claimed.

@@ -963,3 +963,54 @@ h1 {font-size:38px;letter-spacing:-.8px;font-weight:600;}
  .tool-label {padding:4px 0;}
  .group-heading button {min-height:44px;}
 }
+
+/* One shared field preserves the cloud's simultaneous multi-domain overview. */
+.hero {display:none;}
+.site-header {min-height:64px;border-bottom:0;}
+.catalog {padding-top:4px;}
+.search-row {gap:8px;}
+.search-box {max-width:620px;}
+.task-filter {gap:2px;border:0;padding-block:5px;}
+.task-chip {min-height:36px;border-radius:5px;padding:3px 10px;font-size:14px;}
+.task-chip[aria-pressed=true] {background:#e5eae7;color:#243e35;box-shadow:inset 0 -2px #58766b;}
+.results-toolbar {padding:0;}
+.map-legend {font-size:12px;max-width:900px;margin:0 0 12px;}
+.tool-grid {display:flex;columns:auto;flex-wrap:wrap;align-items:baseline;justify-content:center;gap:0 24px;padding:18px 12px 26px;border-block:1px solid var(--line);background:radial-gradient(ellipse at center,#eef2ed66,transparent 70%);}
+.tool-card {--tone:#536d64;display:contents;}
+.tool-card[data-category=video] {--tone:#876756;}
+.tool-card[data-category=audio] {--tone:#756387;}
+.tool-card[data-category=design] {--tone:#577685;}
+.tool-card[data-category=workflow] {--tone:#766d46;}
+.tool-card[data-category=text] {--tone:#596c94;}
+.tool-card[data-category=spatial] {--tone:#8a6574;}
+.tool-label {position:relative;min-height:44px;}
+.tool-label h3 {font-size:var(--score-size);font-weight:500;}
+#quickPreview {position:fixed;z-index:5;width:min(360px,calc(100vw - 24px));padding:20px;background:#fff;border:1px solid #d6ddd5;border-radius:12px;box-shadow:0 14px 50px #18372d25;color:var(--ink);}
+#quickPreview h2 {font-size:23px;margin:0 36px 8px 0;}
+#quickPreview p {font-size:15px;line-height:1.5;margin:10px 0;}
+#quickPreview .quick-context {font-size:12px;color:var(--muted);}
+#quickPreview .primary-button {display:block;width:100%;margin-top:12px;}
+.quick-close {position:absolute;inset-inline-end:8px;top:8px;background:transparent;width:36px;font-size:23px;}
+@media(max-width:620px){
+ .site-header {min-height:54px;}.brand-mark {width:32px;height:32px;}.method-link {display:none;}
+ .search-row {display:flex;}.search-box {padding-inline:8px;}.search-box input {font-size:15px;min-height:44px;}
+ .status-control {width:118px;flex-shrink:0;padding:0 5px;}.status-control label {display:none;}.status-control select {font-size:12px;}
+ .mobile-task-control {display:none;}
+ .task-filter {display:flex;gap:0;justify-content:center;padding:3px 0;}
+ .task-chip {min-height:44px;font-size:13px;padding:2px 8px;}
+ .map-legend {font-size:11px;margin-bottom:6px;line-height:1.4;}
+ .results-toolbar p {font-size:12px;}.results-actions select {font-size:11px;}
+ .tool-grid {padding:8px 0;gap:0 14px;justify-content:center;}
+ .tool-label h3 {font-size:max(16px,calc(var(--score-size) * .72));}
+ #quickPreview {top:auto!important;bottom:12px;left:12px!important;width:calc(100vw - 24px);}
+}
+#quickPreview h2 {margin:0 36px 8px;}
+.tool-card[data-category=platforms] {--tone:#3b716b;}
+.task-chip:not([data-task=all])::before {content:'';display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--tone,#536d64);margin-inline-end:5px;vertical-align:middle;}
+.task-chip[data-task=platforms] {--tone:#3b716b;}
+.task-chip[data-task=video] {--tone:#876756;}
+.task-chip[data-task=audio] {--tone:#756387;}
+.task-chip[data-task=design] {--tone:#577685;}
+.task-chip[data-task=workflow] {--tone:#766d46;}
+.task-chip[data-task=text] {--tone:#596c94;}
+.task-chip[data-task=spatial] {--tone:#8a6574;}

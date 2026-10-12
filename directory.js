@@ -2,6 +2,7 @@
 (function (root) {
   'use strict';
   const tasks = {
+    platforms:{he:'סביבות יצירה',en:'Creative platforms',keys:['workflow-platform','workflow-engine']},
     all: {he:'כל המשימות', en:'All tasks', keys:[]},
     image: {he:'תמונה ועריכה', en:'Image & editing', keys:['image-generation','image-editing','image-enhancement','product-photography','retouching','style-transfer','upscaling','T2I','I2I','UPS','VIS']},
     video: {he:'וידאו ותנועה', en:'Video & motion', keys:['video-generation','video-editing','video-enhancement','image-to-video','reference-video','native-audio-video','character-animation','animation','avatars','lipsync','motion-design','code-driven-video','vfx','T2V','I2V','V2V','VID','ANI','FCE']},
@@ -12,10 +13,12 @@
     spatial: {he:'תלת־ממד', en:'3D', keys:['3D','I23']}
   };
   const copy = {
-    he: {mapLegend:'גודל השם = ממוצע הציונים המוערכים המקוריים · ◇ ללא ציון · ✓ מקור נבדק · × הופסק. ציון אינו אימות או מבחן עדכני.',skip:'דילוג לכלים',about:'על האינדקס',eyebrow:'מפת כלים לעבודה יצירתית',heroOne:'מרחב הכלים',heroTwo:'ליצירה.',intro:'מבט רחב. כיוון חדש. בחרו שם כדי להעמיק.',note:'כלים ומודלים, במקום אחד.',checkedSummary:n=>`${n} עם מקור רשמי שנבדק`,whatChecked:'מה בדיוק נבדק? ↙',directory:'ספריית הכלים',searchLabel:'חיפוש כלים',placeholder:'שם כלי, ספק או תיאור…',clearSearch:'ניקוי החיפוש',verification:'מצב בדיקה',allStatus:'כל הרשומות',checkedStatus:'נבדקו במקור רשמי',pendingStatus:'ממתינות לבדיקה',retiredStatus:'כלים שהופסקו',filterLabel:'סינון לפי משימה',taskLabel:'המשימה שלי',reset:'איפוס סינון',sort:'סדר התוצאות',reviewedFirst:'נבדקו תחילה',byName:'לפי שם',result:n=>`${n} כלים ורשומות`,emptyTitle:'לא מצאנו התאמה הפעם.',emptyDescription:'נסו מילה אחרת או הרחיבו את הסינון.',showAll:'הצגת כל הכלים',methodEyebrow:'בחירה טובה מתחילה במידע ברור',methodTitle:'מקורות, לא הבטחות.',methodCopy:'״נבדק״ אומר שבדקנו תיעוד רשמי בתאריך המצוין — לא שערכנו מבחן ביצועים. רשומות ותיקות עדיין מחכות לבדיקה; מודלים, זמינות ותנאים עשויים להשתנות.',scoresCopy:'ממוצע הציונים המוערכים המקוריים קובע את גודל השם; כל הציונים נשמרו בפרטים. הם אינם דירוג איכות עדכני או המלצה חדשה.',workflowOpen:'בדיקות שכדאי להכניס לתהליך העבודה ↗',legacy:'תצוגה מקורית ועריכה מקומית',data:'נתוני האינדקס',support:'תמיכה בפרויקט ↗',close:'סגירת פרטים',checked:'מקור רשמי נבדק',pending:'טרם נבדק',retired:'הופסק',renamed:'שונה שם',uncertain:'לא ודאי',details:'להכיר את הכלי',pendingDescription:'רשומה מהאינדקס המקורי. התיאור, הזמינות והיכולות עדיין ממתינים לבדיקה ממקור רשמי.',legacyRecord:'רשומה ותיקה',checkedDate:'נבדק',notDated:'אין תאריך אימות',visit:'לאתר הרשמי ↗',visitLegacy:'לקישור המקורי · לא מאומת ↗',retiredNotice:'המוצר הופסק. קישורי המקור נשמרו לעיון.',limits:'מה חשוב לדעת',uncertainties:'מה עדיין לא ודאי',models:'מודלים וגרסאות שנצפו',sources:'מקורות ותאריך בדיקה',historical:'הרשומה המקורית והציונים הישנים',historicalNote:'נתונים היסטוריים שנשמרו מהאינדקס המקורי. לא מבחן ביצועים, דירוג עדכני או המלצה חדשה.',oldName:'השם המקורי',oldUrl:'הקישור המקורי',categories:'קטגוריות מקוריות',identity:'על המוצר והספק',vendor:'ספק',product:'מוצר',type:'סוג',noSources:'טרם צורפו מקורות רשמיים. אין להסיק מהקישור שהכלי פעיל.',modelNote:'תצפיות מתוארכות מתוך המקורות המצורפים, לא בדיקת איכות או הבטחה לזמינות בחשבון שלכם.',workflows:'לפני שמתחילים להפיק',workflowNote:'בדיקות עבודה כלליות. הן אינן תכונה מובטחת של מוצר מסוים, מבחן השוואתי או המלצה אישית.',nav:'ניווט ראשי',verifiedCount:'נבדקו',legacyLink:'פתיחת הרשומה המקורית ↗'},
-    en: {mapLegend:'Name size = average original estimated score · ◇ unrated · ✓ source checked · × retired. Scores are not verification or current benchmarks.',skip:'Skip to tools',about:'About the index',eyebrow:'A field guide for creative work',heroOne:'Tools for',heroTwo:'creative minds.',intro:'See the landscape. Find a direction. Select a name to explore.',note:'Tools and models, in one place.',checkedSummary:n=>`${n} checked against official sources`,whatChecked:'What does checked mean? ↗',directory:'Tool directory',searchLabel:'Search tools',placeholder:'Tool name, provider or description…',clearSearch:'Clear search',verification:'Verification',allStatus:'All records',checkedStatus:'Official sources checked',pendingStatus:'Awaiting review',retiredStatus:'Retired tools',filterLabel:'Filter by task',taskLabel:'My task',reset:'Reset filters',sort:'Sort results',reviewedFirst:'Reviewed first',byName:'Name A–Z',result:n=>`${n} tools & records`,emptyTitle:'No match this time.',emptyDescription:'Try another word or broaden your filters.',showAll:'Show all tools',methodEyebrow:'Better choices start with clear information',methodTitle:'Sources, not promises.',methodCopy:'“Checked” means official documentation was reviewed on the date shown—not that we ran a benchmark. Legacy records still await review; models, availability and terms can change.',scoresCopy:'Original estimated averages set label size; individual scores remain in details. They are not current quality rankings or new recommendations.',workflowOpen:'Checks worth adding to your workflow ↗',legacy:'Original view & local editing',data:'Catalog data',support:'Support the project ↗',close:'Close details',checked:'Official source checked',pending:'Not yet reviewed',retired:'Retired',renamed:'Renamed',uncertain:'Uncertain',details:'Explore tool',pendingDescription:'A record from the original index. Its description, availability and capabilities still await official-source review.',legacyRecord:'Legacy record',checkedDate:'Checked',notDated:'Not yet dated',visit:'Official website ↗',visitLegacy:'Original link · unverified ↗',retiredNotice:'This product has been retired. Its source links remain available for reference.',limits:'What to know',uncertainties:'What remains uncertain',models:'Observed models & versions',sources:'Sources & verification date',historical:'Original record & legacy scores',historicalNote:'Historical data preserved from the original index. Not a benchmark, current ranking or new recommendation.',oldName:'Original name',oldUrl:'Original URL',categories:'Original categories',identity:'Product & provider',vendor:'Provider',product:'Product',type:'Type',noSources:'Official sources have not been added yet. A link alone does not establish that a tool is active.',modelNote:'Dated observations from the listed sources, not a quality test or a guarantee of availability in your account.',workflows:'Before you start producing',workflowNote:'General production checks. Not guaranteed product features, comparative tests or personal recommendations.',nav:'Main navigation',verifiedCount:'checked',legacyLink:'Open original record ↗'}
+    he: {mapLegend:'גודל = הערכה מקורית בתחומים שנבחרו; אפשר לשלב מסננים · ◇ ללא ציון · ✓ מקור נבדק · × הופסק. ציון אינו אימות או מבחן עדכני.',skip:'דילוג לכלים',about:'על האינדקס',eyebrow:'מפת כלים לעבודה יצירתית',heroOne:'מרחב הכלים',heroTwo:'ליצירה.',intro:'מבט רחב. כיוון חדש. בחרו שם כדי להעמיק.',note:'כלים ומודלים, במקום אחד.',checkedSummary:n=>`${n} עם מקור רשמי שנבדק`,whatChecked:'מה בדיוק נבדק? ↙',directory:'ספריית הכלים',searchLabel:'חיפוש כלים',placeholder:'שם כלי, ספק או תיאור…',clearSearch:'ניקוי החיפוש',verification:'מצב בדיקה',allStatus:'כל הרשומות',checkedStatus:'נבדקו במקור רשמי',pendingStatus:'ממתינות לבדיקה',retiredStatus:'כלים שהופסקו',filterLabel:'סינון לפי משימה',taskLabel:'המשימה שלי',reset:'איפוס סינון',sort:'סדר התוצאות',reviewedFirst:'נבדקו תחילה',byName:'לפי שם',result:n=>`${n} כלים ורשומות`,emptyTitle:'לא מצאנו התאמה הפעם.',emptyDescription:'נסו מילה אחרת או הרחיבו את הסינון.',showAll:'הצגת כל הכלים',methodEyebrow:'בחירה טובה מתחילה במידע ברור',methodTitle:'מקורות, לא הבטחות.',methodCopy:'״נבדק״ אומר שבדקנו תיעוד רשמי בתאריך המצוין — לא שערכנו מבחן ביצועים. רשומות ותיקות עדיין מחכות לבדיקה; מודלים, זמינות ותנאים עשויים להשתנות.',scoresCopy:'ממוצע הציונים המוערכים המקוריים קובע את גודל השם; כל הציונים נשמרו בפרטים. הם אינם דירוג איכות עדכני או המלצה חדשה.',workflowOpen:'בדיקות שכדאי להכניס לתהליך העבודה ↗',legacy:'תצוגה מקורית ועריכה מקומית',data:'נתוני האינדקס',support:'תמיכה בפרויקט ↗',close:'סגירת פרטים',checked:'מקור רשמי נבדק',pending:'טרם נבדק',retired:'הופסק',renamed:'שונה שם',uncertain:'לא ודאי',details:'להכיר את הכלי',pendingDescription:'רשומה מהאינדקס המקורי. התיאור, הזמינות והיכולות עדיין ממתינים לבדיקה ממקור רשמי.',legacyRecord:'רשומה ותיקה',checkedDate:'נבדק',notDated:'אין תאריך אימות',visit:'לאתר הרשמי ↗',visitLegacy:'לקישור המקורי · לא מאומת ↗',retiredNotice:'המוצר הופסק. קישורי המקור נשמרו לעיון.',limits:'מה חשוב לדעת',uncertainties:'מה עדיין לא ודאי',models:'מודלים וגרסאות שנצפו',sources:'מקורות ותאריך בדיקה',historical:'הרשומה המקורית והציונים הישנים',historicalNote:'נתונים היסטוריים שנשמרו מהאינדקס המקורי. לא מבחן ביצועים, דירוג עדכני או המלצה חדשה.',oldName:'השם המקורי',oldUrl:'הקישור המקורי',categories:'קטגוריות מקוריות',identity:'על המוצר והספק',vendor:'ספק',product:'מוצר',type:'סוג',noSources:'טרם צורפו מקורות רשמיים. אין להסיק מהקישור שהכלי פעיל.',modelNote:'תצפיות מתוארכות מתוך המקורות המצורפים, לא בדיקת איכות או הבטחה לזמינות בחשבון שלכם.',workflows:'לפני שמתחילים להפיק',workflowNote:'בדיקות עבודה כלליות. הן אינן תכונה מובטחת של מוצר מסוים, מבחן השוואתי או המלצה אישית.',nav:'ניווט ראשי',verifiedCount:'נבדקו',legacyLink:'פתיחת הרשומה המקורית ↗'},
+    en: {mapLegend:'Size = original estimate for selected domains; combine filters · ◇ unrated · ✓ source checked · × retired. Scores are not verification or current benchmarks.',skip:'Skip to tools',about:'About the index',eyebrow:'A field guide for creative work',heroOne:'Tools for',heroTwo:'creative minds.',intro:'See the landscape. Find a direction. Select a name to explore.',note:'Tools and models, in one place.',checkedSummary:n=>`${n} checked against official sources`,whatChecked:'What does checked mean? ↗',directory:'Tool directory',searchLabel:'Search tools',placeholder:'Tool name, provider or description…',clearSearch:'Clear search',verification:'Verification',allStatus:'All records',checkedStatus:'Official sources checked',pendingStatus:'Awaiting review',retiredStatus:'Retired tools',filterLabel:'Filter by task',taskLabel:'My task',reset:'Reset filters',sort:'Sort results',reviewedFirst:'Reviewed first',byName:'Name A–Z',result:n=>`${n} tools & records`,emptyTitle:'No match this time.',emptyDescription:'Try another word or broaden your filters.',showAll:'Show all tools',methodEyebrow:'Better choices start with clear information',methodTitle:'Sources, not promises.',methodCopy:'“Checked” means official documentation was reviewed on the date shown—not that we ran a benchmark. Legacy records still await review; models, availability and terms can change.',scoresCopy:'Original estimated averages set label size; individual scores remain in details. They are not current quality rankings or new recommendations.',workflowOpen:'Checks worth adding to your workflow ↗',legacy:'Original view & local editing',data:'Catalog data',support:'Support the project ↗',close:'Close details',checked:'Official source checked',pending:'Not yet reviewed',retired:'Retired',renamed:'Renamed',uncertain:'Uncertain',details:'Explore tool',pendingDescription:'A record from the original index. Its description, availability and capabilities still await official-source review.',legacyRecord:'Legacy record',checkedDate:'Checked',notDated:'Not yet dated',visit:'Official website ↗',visitLegacy:'Original link · unverified ↗',retiredNotice:'This product has been retired. Its source links remain available for reference.',limits:'What to know',uncertainties:'What remains uncertain',models:'Observed models & versions',sources:'Sources & verification date',historical:'Original record & legacy scores',historicalNote:'Historical data preserved from the original index. Not a benchmark, current ranking or new recommendation.',oldName:'Original name',oldUrl:'Original URL',categories:'Original categories',identity:'Product & provider',vendor:'Provider',product:'Product',type:'Type',noSources:'Official sources have not been added yet. A link alone does not establish that a tool is active.',modelNote:'Dated observations from the listed sources, not a quality test or a guarantee of availability in your account.',workflows:'Before you start producing',workflowNote:'General production checks. Not guaranteed product features, comparative tests or personal recommendations.',nav:'Main navigation',verifiedCount:'checked',legacyLink:'Open original record ↗'}
   };
   const summariesEn = {
+    'kolbo-ai':'A multi-model creative workspace for image, video, audio, 3D and chat, with reusable workflows and project context, as described by its vendor.',
+    magnific:'A broad creative platform combining media tools and models. The original Magnific.ai upscalers are part of its offering; historical scores apply only to those tools.',
     'google-gemini-image':'Create and edit images conversationally, combine references, and adjust lighting, composition and details.',
     midjourney:'Explore visual directions, references and image edits in a creative image-making environment.',
     'adobe-firefly':'An integrated creative environment with Adobe and partner models, image and video editing, and shared idea boards.',
@@ -56,31 +59,43 @@
     return ids.map(id => {
       const original = originals.get(id), meta = metadata.get(id);
       const checked = Boolean(meta?.verifiedAt);
-      const capabilities = checked ? meta.capabilities || [] : original?.categories || [];
-      return {id, name: checked ? meta.name : original?.name || meta.name, original, meta, checked, status: checked ? meta.status : 'uncertain', tasks:Object.entries(tasks).filter(([key,task]) => key !== 'all' && capabilities.some(value => task.keys.includes(value))).map(([key]) => key)};
+      const capabilities = checked ? [...(meta.capabilities || [])] : [...(original?.categories || [])];
+      if(['weavy','comfyui','kolbo-ai','ai-037','ai-040','ai-036'].includes(id))capabilities.unshift(...(capabilities.includes('workflow-platform')?[]:['workflow-platform']));
+      return {id, primaryTask:id==='ai-119'?'design':Object.keys(tasks).find(key=>key!=='all' && tasks[key].keys.includes(capabilities[0])) || 'text', name: checked ? meta.name : original?.name || meta.name, original, meta, checked, status: checked ? meta.status : 'uncertain', tasks:Object.entries(tasks).filter(([key,task]) => key !== 'all' && capabilities.some(value => task.keys.includes(value))).map(([key]) => key)};
     });
   }
   function selectRecords(records, state) {
     const words = normalize(state.query).trim().split(/\s+/).filter(Boolean);
     return records.filter(record => {
-      if (state.task !== 'all' && !record.tasks.includes(state.task)) return false;
+      const chosen=state.selectedTasks || (state.task==='all'?[]:[state.task]);
+      if(chosen.length && !chosen.some(key=>record.tasks.includes(key)))return false;
       if (state.status === 'checked' && !record.checked) return false;
       if (state.status === 'pending' && record.checked) return false;
       if (state.status === 'retired' && record.status !== 'retired') return false;
-      const searchable = normalize([record.name,record.id,record.meta?.researchId,record.original?.name,record.meta?.vendor,record.meta?.product,record.meta?.description,summariesEn[record.meta?.researchId || record.id],...(record.meta?.aliases || []),...record.tasks.flatMap(key => [tasks[key].he,tasks[key].en])].join(' '));
+      const searchable = normalize([record.name,record.id,record.meta?.researchId,record.original?.name,record.legacyDisplayName,...(record.meta?.modelObservations || []).map(item=>item.name),record.meta?.vendor,record.meta?.product,record.meta?.description,summariesEn[record.meta?.researchId || record.id],...(record.meta?.aliases || []),...record.tasks.flatMap(key => [tasks[key].he,tasks[key].en])].join(' '));
       return words.every(word => searchable.includes(word));
     }).sort((a,b) => (state.sort === 'reviewed' ? Number(b.checked) - Number(a.checked) : 0) || a.name.localeCompare(b.name,'en'));
   }
   function destination(record) { return record.status === 'retired' ? null : safeUrl(record.checked ? record.meta.officialUrl || record.original?.url : record.original?.url); }
-  function estimatedScore(record) {
-    const values=Object.values(record.original?.scores || {}).filter(value=>typeof value==='number' && Number.isFinite(value));
+  function estimatedScore(record, selected=[]) {
+    if(['ai-006','ai-037'].includes(record.id))return null; // Legacy developer scores belong to the misidentified banana.dev record.
+    const values=Object.entries(record.original?.scores || {}).filter(([key])=>!selected.length || selected.some(task=>tasks[task]?.keys.includes(key))).map(([,value])=>value).filter(value=>typeof value==='number' && Number.isFinite(value));
     return values.length ? values.reduce((sum,value)=>sum+value,0)/values.length : null;
   }
-  function scoreSize(score) { return score===null ? 17 : 16+60*Math.max(0,Math.min(.25,score-.75)); }
-  root.DirectoryData = {createRecords,selectRecords,destination,normalize,tasks,estimatedScore,scoreSize};
+  function scoreSize(score) { return score===null ? 17 : 16+80*Math.max(0,Math.min(.25,score-.75)); }
+  const familyNames={'ai-009':'ChatGPT','ai-010':'DeepSeek','ai-011':'Claude','ai-012':'Gemini','ai-013':'Perplexity','ai-016':'Llama','ai-017':'Sora','ai-018':'Veo','ai-019':'Wan','ai-031':'FLUX','ai-055':'ElevenLabs','ai-057':'Udio','adobe-photoshop':'Photoshop','topaz-labs':'Topaz','bytedance-seedance':'Seedance','ai-006':'Nano Banana','ai-023':'Luma'};
+  function canonicalRecords(raw) {
+    // Stable record IDs identify families; generations are metadata, never new tiles.
+    // Do not merge separate products merely because they share a provider or a model.
+    const unique=new Map();
+    for(const record of raw){if(!unique.has(record.id))unique.set(record.id,{...record,name:familyNames[record.id] || record.name,legacyDisplayName:record.name});}
+    return [...unique.values()];
+  }
+  function interleave(records){const groups=new Map();records.forEach(r=>{const key=r.primaryTask;if(!groups.has(key))groups.set(key,[]);groups.get(key).push(r)});const result=[];while([...groups.values()].some(g=>g.length))for(const group of groups.values())if(group.length)result.push(group.shift());return result;}
+  root.DirectoryData = {canonicalRecords,interleave,createRecords,selectRecords,destination,normalize,tasks,estimatedScore,scoreSize};
   if (!root.document?.getElementById('toolGrid')) return;
-  const doc = root.document, records = createRecords(root.defaultModules || [],root.aiCatalog);
-  const state = {language:doc.documentElement.lang === 'he' ? 'he':'en',query:'',task:'all',status:'all',sort:'reviewed'};
+  const doc = root.document, records = canonicalRecords(createRecords(root.defaultModules || [],root.aiCatalog));
+  const state = {language:doc.documentElement.lang === 'he' ? 'he':'en',query:'',task:'all',status:'all',sort:'reviewed',selectedTasks:[]};
   const el = id => doc.getElementById(id), t = key => copy[state.language][key];
   let activeRecord = null, returnFocus = null;
   function node(tag,text,className) { const element=doc.createElement(tag); if(text !== undefined) element.textContent=text; if(className) element.className=className; return element; }
@@ -88,9 +103,30 @@
   function badge(record) { const status=record.status === 'retired'?'retired':record.checked?'checked':'pending'; return node('span',(status==='checked'?'✓ ':'')+t(status),'badge '+status); }
   function summary(record) { if(!record.checked || !record.meta.description) return {text:t('pendingDescription'),language:state.language}; const translated=summariesEn[record.meta.researchId || record.id]; return state.language==='en' && translated ? {text:translated,language:'en'} : {text:record.meta.description,language:record.meta.descriptionLanguage || 'he'}; }
   function link(text,url,className) { const a=node('a',text,className); a.href=url;a.target='_blank';a.rel='noopener noreferrer';return a; }
+  const quick=doc.createElement('aside');quick.id='quickPreview';quick.hidden=true;quick.setAttribute('aria-label','Tool summary');doc.body.append(quick);
+  let quickPinned=false,quickTrigger=null,quickTimer=null;
+  function hideQuick(){clearTimeout(quickTimer);quick.hidden=true;quickPinned=false;if(quickTrigger)quickTrigger.removeAttribute('aria-describedby');}
+  function scheduleQuickClose(){clearTimeout(quickTimer);quickTimer=setTimeout(()=>{if(!quickPinned&&!quick.matches(':hover')&&!quick.contains(doc.activeElement))hideQuick()},180);}
+  function showQuick(record,trigger,pinned){
+    if(el('detailDialog').open)return;
+    clearTimeout(quickTimer);quickPinned=pinned;quickTrigger=trigger;quick.replaceChildren();
+    const close=node('button','×','quick-close');close.type='button';close.setAttribute('aria-label',t('close'));close.addEventListener('click',()=>{hideQuick();trigger.focus();hideQuick()});
+    const title=node('h2',record.name);title.dir='auto';
+    const description=summary(record);const text=textLanguage(node('p',description.text),description.language);text.id='quickDescription';trigger.setAttribute('aria-describedby',text.id);
+    const kind=types[record.meta?.entityType || 'unknown']?.[state.language==='he'?0:1] || '';
+    const context=node('p',record.tasks.map(key=>tasks[key][state.language]).join(' · ')+' / '+kind,'quick-context');
+    const details=node('button',t('details')+' ↗','primary-button');details.type='button';details.addEventListener('click',()=>{hideQuick();openRecord(record,trigger)});
+    quick.append(close,title,context,text,badge(record),details);if(['ai-006','ai-037'].includes(record.id))quick.append(node('p',state.language==='he'?'ציון ותיק אינו חל על הזהות המתוקנת.':'Legacy score does not apply to this corrected identity.','quick-context'));quick.hidden=false;
+    const rect=trigger.getBoundingClientRect();quick.style.left=Math.max(12,Math.min(innerWidth-quick.offsetWidth-12,rect.left))+'px';quick.style.top=Math.max(12,Math.min(innerHeight-quick.offsetHeight-12,rect.bottom+8))+'px';
+  }
+  quick.addEventListener('pointerenter',()=>clearTimeout(quickTimer));quick.addEventListener('pointerleave',scheduleQuickClose);
+  doc.addEventListener('keydown',event=>{if(event.key==='Escape'&&!quick.hidden){event.preventDefault();const trigger=quickTrigger;hideQuick();trigger?.focus();hideQuick()}});
+  doc.addEventListener('pointerdown',event=>{if(!quick.contains(event.target)&&!event.target.closest('.tool-label'))hideQuick()});
+  doc.addEventListener('focusin',event=>{if(!quick.contains(event.target)&&!event.target.closest('.tool-label'))hideQuick()});
   function card(record) {
     const article=node('article',undefined,'tool-card');article.dataset.id=record.id;
-    const score=estimatedScore(record);article.dataset.score=score===null?'unrated':String(score);
+    article.dataset.category=record.primaryTask;
+    const score=estimatedScore(record,state.selectedTasks);article.dataset.score=score===null?'unrated':String(score);
     const button=node('button',undefined,'tool-label');button.type='button';
     button.style.setProperty('--score-size',scoreSize(score)+'px');
     const heading=node('h3',record.name);heading.dir='auto';
@@ -99,24 +135,13 @@
     button.title=scoreText+' · '+t(record.status==='retired'?'retired':record.checked?'checked':'pending');
     button.setAttribute('aria-label',record.name+' · '+button.title+' · '+t('details'));
     button.append(heading,mark);if(score===null){const unrated=node('span','◇','unrated-mark');unrated.setAttribute('aria-hidden','true');button.append(unrated);}
-    button.addEventListener('click',()=>openRecord(record,button));article.append(button);return article;
+    button.addEventListener('keydown',event=>{if(event.key==='Tab'&&!event.shiftKey&&!quick.hidden&&quickTrigger===button){event.preventDefault();quick.querySelector('.primary-button').focus()}});button.addEventListener('pointerenter',event=>{if(event.pointerType==='mouse')showQuick(record,button,false)});button.addEventListener('focus',()=>showQuick(record,button,false));button.addEventListener('pointerleave',scheduleQuickClose);button.addEventListener('click',()=>showQuick(record,button,true));article.append(button);return article;
   }
   function renderResults() {
-    const selected=selectRecords(records,state), groups=new Map();
-    for(const record of selected){const key=state.task==='all'?(record.tasks[0] || 'other'):state.task;if(!groups.has(key))groups.set(key,[]);groups.get(key).push(record);}
-    const sections=[];
-    for(const key of [...Object.keys(tasks).filter(key=>key!=='all'),'other']){
-      const items=groups.get(key);if(!items)continue;
-      const group=node('section',undefined,'map-group');group.dataset.category=key;
-      const heading=node('h2',undefined,'group-heading');const explore=node('button',tasks[key]?.[state.language] || (state.language==='he'?'כלים נוספים':'More tools'));
-      explore.type='button';explore.append(node('span',String(items.length),'group-count'));
-      explore.addEventListener('click',()=>{if(key==='other')return;state.task=state.task===key?'all':key;renderResults();(el('mobileTask').getClientRects().length?el('mobileTask'):doc.querySelector('.task-chip[aria-pressed=true]')).focus();});
-      if(key==='other')explore.disabled=true;
-      heading.append(explore);const cloud=node('div',undefined,'label-cloud');cloud.append(...items.map(card));group.append(heading,cloud);sections.push(group);
-    }
-    el('toolGrid').replaceChildren(...sections);el('resultsCount').textContent=t('result')(selected.length);el('emptyState').hidden=selected.length>0;el('clearSearch').hidden=!state.query;el('resetFilters').hidden=!(state.query || state.task!=='all' || state.status!=='all');
+    hideQuick();const selected=selectRecords(records,state);
+    el('toolGrid').replaceChildren(...interleave(selected).map(card));el('resultsCount').textContent=t('result')(selected.length);el('emptyState').hidden=selected.length>0;el('clearSearch').hidden=!state.query;el('resetFilters').hidden=!(state.query || state.selectedTasks.length || state.status!=='all');
     el('mobileTask').value=state.task;
-    doc.querySelectorAll('.task-chip').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.task===state.task)));
+    doc.querySelectorAll('.task-chip').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.task==='all'?!state.selectedTasks.length:state.selectedTasks.includes(button.dataset.task))));
   }
   function renderLanguage() {
     doc.documentElement.lang=state.language;doc.documentElement.dir=state.language==='he'?'rtl':'ltr';doc.title=state.language==='he'?'AI Index — כלים לעבודה יצירתית':'AI Index — A creative field guide';
@@ -124,8 +149,8 @@
     el('recordCount').textContent=records.length;el('checkedSummary').textContent=t('checkedSummary')(records.filter(record=>record.checked).length);el('searchInput').placeholder=t('placeholder');el('clearSearch').setAttribute('aria-label',t('clearSearch'));el('closeDialog').setAttribute('aria-label',t('close'));el('mainNav').setAttribute('aria-label',t('nav'));el('taskFilters').setAttribute('aria-label',t('filterLabel'));
     el('languageToggle').textContent=state.language==='he'?'EN ↔':'עב ↔';el('languageToggle').setAttribute('aria-label',state.language==='he'?'Switch to English':'מעבר לעברית');
     ['allStatus','checkedStatus','pendingStatus','retiredStatus'].forEach((key,index)=>el('statusFilter').options[index].textContent=t(key));['reviewedFirst','byName'].forEach((key,index)=>el('sortOrder').options[index].textContent=t(key));
-    el('mobileTask').replaceChildren(...Object.keys(tasks).map(key=>{const option=node('option',tasks[key][state.language]);option.value=key;return option;}));
-    el('taskFilters').replaceChildren(...Object.keys(tasks).map(key=>{const button=node('button',tasks[key][state.language],'task-chip');button.type='button';button.dataset.task=key;button.addEventListener('click',()=>{state.task=key;renderResults();});return button;}));
+    el('mobileTask').replaceChildren(...['all',...Object.keys(tasks).filter(key=>key!=='all')].map(key=>{const option=node('option',tasks[key][state.language]);option.value=key;return option;}));
+    el('taskFilters').replaceChildren(...['all',...Object.keys(tasks).filter(key=>key!=='all')].map(key=>{const button=node('button',tasks[key][state.language],'task-chip');button.type='button';button.dataset.task=key;button.addEventListener('click',()=>{state.selectedTasks=key==='all'?[]:state.selectedTasks.includes(key)?state.selectedTasks.filter(k=>k!==key):[...state.selectedTasks,key];state.task=state.selectedTasks.length===1?state.selectedTasks[0]:'all';renderResults();});return button;}));
     renderResults();
   }
   function section(title, collapsible=false) { const element=node(collapsible?'details':'section',undefined,'detail-section');element.append(node(collapsible?'summary':'h3',title));return element; }
@@ -147,10 +172,10 @@
     openDialog(trigger);
   }
   function openWorkflows(trigger){activeRecord=null;const content=el('detailContent');content.replaceChildren();const title=node('h2',t('workflows'));title.id='detailTitle';content.append(title,node('p',t('workflowNote'),'detail-description'));for(const workflow of root.aiCatalog?.workflows || []){const item=section(workflow.title);item.append(textLanguage(node('p',workflow.guidance),'en'));content.append(item);}openDialog(trigger);}
-  function reset(){state.query='';state.task='all';state.status='all';el('searchInput').value='';el('statusFilter').value='all';renderResults();el('searchInput').focus();}
+  function reset(){state.query='';state.task='all';state.selectedTasks=[];state.status='all';el('searchInput').value='';el('statusFilter').value='all';renderResults();el('searchInput').focus();}
   el('searchInput').addEventListener('input',event=>{state.query=event.target.value;renderResults();});
   el('clearSearch').addEventListener('click',()=>{state.query='';el('searchInput').value='';renderResults();el('searchInput').focus();});
-  el('mobileTask').addEventListener('change',event=>{state.task=event.target.value;renderResults();});
+  el('mobileTask').addEventListener('change',event=>{state.task=event.target.value;state.selectedTasks=state.task==='all'?[]:[state.task];renderResults();});
   el('statusFilter').addEventListener('change',event=>{state.status=event.target.value;renderResults();});el('sortOrder').addEventListener('change',event=>{state.sort=event.target.value;renderResults();});
   el('resetFilters').addEventListener('click',reset);el('emptyReset').addEventListener('click',reset);
   el('languageToggle').addEventListener('click',()=>{state.language=state.language==='he'?'en':'he';renderLanguage();});

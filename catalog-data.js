@@ -126,7 +126,7 @@ window.aiCatalog = {
       "id": "ai-006",
       "researchId": "google-gemini-image",
       "legacyName": "Nano Banana Pro",
-      "entityType": "product",
+      "entityType": "model-family",
       "vendor": "Google",
       "product": "Gemini image generation",
       "name": "Gemini · Nano Banana",
@@ -143,6 +143,14 @@ window.aiCatalog = {
         {
           "url": "https://helpx.adobe.com/creative-cloud/apps/generative-ai/non-adobe-models-in-adobe-products.html",
           "checkedAt": "2026-10-12"
+        },
+        {
+          "url": "https://ai.google.dev/gemini-api/docs/image-generation",
+          "checkedAt": "2026-10-12"
+        },
+        {
+          "url": "https://deepmind.google/models/model-cards/nano-banana-2-1/",
+          "checkedAt": "2026-10-12"
         }
       ],
       "modelObservations": [
@@ -150,19 +158,31 @@ window.aiCatalog = {
           "name": "Nano Banana 2.1",
           "vendor": "Google",
           "observedAt": "2026-10-12",
-          "note": "מודל תמונה שמוצג בגוף דף Gemini; התוכניות בתשלום מקבלות גישה מוגברת."
+          "note": "gemini-nano-banana-2.1; כרטיס המודל מתאריך 2026-10-06 מציין Gemini 3.6 Flash."
         },
         {
-          "name": "Nano Banana 2",
+          "name": "Nano Banana",
           "vendor": "Google",
           "observedAt": "2026-10-12",
-          "note": "מופיע בטבלת ההשוואה וגם בכותרת הדף."
+          "note": "Gemini 2.5 Flash Image — זהו שם הדור המקורי, לא Nano Banana 2.5."
         },
         {
           "name": "Nano Banana Pro",
           "vendor": "Google",
           "observedAt": "2026-10-12",
-          "note": "עדיין מוזכר כאפשרות Redo with Pro; Adobe מזהה אותו כ-Gemini 3."
+          "note": "Gemini 3 Pro Image"
+        },
+        {
+          "name": "Nano Banana 2",
+          "vendor": "Google",
+          "observedAt": "2026-10-12",
+          "note": "Gemini 3.1 Flash Image"
+        },
+        {
+          "name": "Nano Banana 2 Lite",
+          "vendor": "Google",
+          "observedAt": "2026-10-12",
+          "note": "Gemini 3.1 Flash Lite Image"
         }
       ],
       "limitations": [
@@ -186,7 +206,7 @@ window.aiCatalog = {
         "image-generation",
         "image-editing"
       ],
-      "identityNote": "יש להפריד בין הספק, המוצר ושמות המודלים שבשדה modelObservations; גרסת מודל אינה מזהה הרשומה."
+      "identityNote": "Nano Banana היא משפחת מודלים ליצירת תמונות של Google. הציונים המקוריים ברשומה התייחסו לקטגוריות פיתוח ולקישור banana.dev שאינו זהות המשפחה; הם נשמרים רק לתיעוד ואינם קובעים את גודל התווית."
     },
     {
       "id": "ai-007",
@@ -1220,27 +1240,47 @@ window.aiCatalog = {
     },
     {
       "id": "ai-037",
-      "researchId": null,
+      "researchId": "magnific",
       "legacyName": "Magnific.ai",
-      "entityType": "unknown",
-      "vendor": null,
-      "product": null,
-      "name": "Magnific.ai",
-      "officialUrl": null,
-      "description": null,
-      "descriptionLanguage": null,
-      "status": "uncertain",
-      "verifiedAt": null,
-      "sources": [],
+      "entityType": "platform",
+      "vendor": "Magnific",
+      "product": "Magnific",
+      "name": "Magnific",
+      "officialUrl": "https://www.magnific.com/",
+      "description": "פלטפורמת יצירה רחבה המשלבת מודלים וכלי מדיה. כלי ההגדלה המקוריים של Magnific.ai הם חלק מההיצע; הציונים הישנים שייכים להם בלבד.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-12",
+      "sources": [
+        {
+          "url": "https://www.magnific.com/magnific-ai",
+          "checkedAt": "2026-10-12"
+        },
+        {
+          "url": "https://www.magnific.com/ai/docs/unlimited-models",
+          "checkedAt": "2026-10-12"
+        }
+      ],
       "modelObservations": [],
-      "limitations": [],
+      "limitations": [
+        "תיאורי היצרן אינם מבחן ביצועים עצמאי."
+      ],
       "uncertainties": [
-        "Awaiting official-source verification."
+        "היצע המודלים והגישה אליהם תלויים בתוכנית ובמועד."
       ],
       "recommendation": null,
-      "aliases": [],
-      "capabilities": [],
-      "identityNote": null
+      "aliases": [
+        "Magnific.ai",
+        "Freepik"
+      ],
+      "capabilities": [
+        "workflow-platform",
+        "image-generation",
+        "image-editing",
+        "video-generation",
+        "upscaling"
+      ],
+      "identityNote": "הפלטפורמה הרחבה, לשעבר Freepik, נבדלת מחבילת כלי ההגדלה המקורית Magnific.ai. אין להחיל את הציון ההיסטורי של כלי ההגדלה על הפלטפורמה כולה."
     },
     {
       "id": "ai-038",
@@ -1311,6 +1351,14 @@ window.aiCatalog = {
         {
           "url": "https://helpx.adobe.com/creative-cloud/apps/generative-ai/non-adobe-models-in-adobe-products.html",
           "checkedAt": "2026-10-12"
+        },
+        {
+          "url": "https://helpx.adobe.com/sg/firefly/web/work-with-images/generate-images/generate-images-from-text-descriptions.html",
+          "checkedAt": "2026-10-12"
+        },
+        {
+          "url": "https://helpx.adobe.com/ie/creative-cloud/apps/generative-ai/non-adobe-models-in-adobe-products.html",
+          "checkedAt": "2026-10-12"
         }
       ],
       "modelObservations": [
@@ -1345,7 +1393,7 @@ window.aiCatalog = {
         "audio",
         "storyboarding"
       ],
-      "identityNote": "יש להפריד בין הספק, המוצר ושמות המודלים שבשדה modelObservations; גרסת מודל אינה מזהה הרשומה."
+      "identityNote": "Adobe Firefly הוא גם שם סביבת היצירה וגם מותג משפחות המודלים של Adobe. משפחות Image ו-Video מופיעות בתוך פרטי הפלטפורמה; מודלי שותפים נשארים משויכים לספקיהם. זמינות דרך Adobe אינה זהה להיסטוריית משפחת המודל."
     },
     {
       "id": "ai-041",
@@ -3758,13 +3806,22 @@ window.aiCatalog = {
         {
           "url": "https://help.figma.com/hc/en-us/articles/35965787376919-Figma-Weave-FAQ",
           "checkedAt": "2026-10-12"
+        },
+        {
+          "url": "https://content.weave.figma.com/models-pricing",
+          "checkedAt": "2026-10-12"
+        },
+        {
+          "url": "https://content.weave.figma.com/models-available-for-third-party-api-usage",
+          "checkedAt": "2026-10-12"
         }
       ],
       "modelObservations": [],
       "limitations": [
         "במסלול החינמי מפורסמים 150 קרדיטים לחודש ועד חמישה תהליכים; מודלי וידאו ומודלים מיובאים דורשים מסלול בתשלום.",
         "Figma Weave ו־Figma משתמשים כרגע במערכות חיוב וקרדיטים נפרדות.",
-        "זמינות, צריכת קרדיטים וזכויות שימוש עשויות להשתנות בין המודלים; אין להציג רישיון גורף לכל חומר קלט ופלט."
+        "זמינות, צריכת קרדיטים וזכויות שימוש עשויות להשתנות בין המודלים; אין להציג רישיון גורף לכל חומר קלט ופלט.",
+        "קטלוג המודלים שנצפה באינדקס החיפוש לא אומת כולו בשל כשל בשליפה ישירה. הרשאות API של צד שלישי נפרדות מהקטלוג המלא."
       ],
       "uncertainties": [
         "לא נבדקה זמינות של כל מודל בחשבון מסוים או תנאי כל ספק מודלים.",
@@ -4057,6 +4114,58 @@ window.aiCatalog = {
         "video-editing"
       ],
       "identityNote": "יש להפריד בין הספק, המוצר ושמות המודלים שבשדה modelObservations; גרסת מודל אינה מזהה הרשומה."
+    },
+    {
+      "id": "kolbo-ai",
+      "legacyName": null,
+      "researchId": "kolbo-ai",
+      "entityType": "workflow_platform",
+      "vendor": "Kolbo.AI",
+      "product": "Kolbo.AI",
+      "name": "Kolbo.AI",
+      "officialUrl": "https://kolbo.ai/",
+      "description": "סביבת יצירה מרובת מודלים לתמונה, וידאו, אודיו, תלת־ממד וצ׳אט, עם תהליכים חוזרים, פרויקטים והקשר יצירתי לפי תיעוד היצרן.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-12",
+      "sources": [
+        {
+          "url": "https://kolbo.ai/",
+          "checkedAt": "2026-10-12"
+        },
+        {
+          "url": "https://docs.kolbo.ai/image-tools/visual-dna",
+          "checkedAt": "2026-10-12"
+        },
+        {
+          "url": "https://docs.kolbo.ai/projects/project-knowledge",
+          "checkedAt": "2026-10-12"
+        },
+        {
+          "url": "https://docs.kolbo.ai/developer-api/models-and-pricing",
+          "checkedAt": "2026-10-12"
+        }
+      ],
+      "modelObservations": [],
+      "limitations": [
+        "יכולות מתוארות על ידי היצרן ולא נבדקו במבחן ביצועים.",
+        "לא בוצעה קריאה ל-API המאומת; רשימת המודלים החיה וההרשאות לא אומתו."
+      ],
+      "uncertainties": [
+        "דוגמאות בתיעוד אינן רשימת זמינות מלאה ועדכנית."
+      ],
+      "recommendation": null,
+      "aliases": [
+        "Kolbo"
+      ],
+      "capabilities": [
+        "workflow-platform",
+        "image-generation",
+        "video-generation",
+        "audio",
+        "3D"
+      ],
+      "identityNote": "סביבת עבודה ותזמור יצירתי, לא משפחת מודלים עצמאית. Visual DNA שומר הפניות לדמויות, מוצרים וסביבות; Project Knowledge מספק הקשר לפרויקטים."
     }
   ],
   "workflows": [
