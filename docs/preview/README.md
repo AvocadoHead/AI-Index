@@ -1,6 +1,6 @@
 # Interactive local review
 
-Download **ai-index-preview.html**, then open the downloaded file in a current browser. It is the working app, not a screenshot or GitHub code preview. The compact Atlas, optional sphere, rotation controls, summaries, full details, search, filters, scope/archive selector and Atlas layout work locally. No web server or installation is required.
+Download **ai-index-preview.html**, then open the downloaded file in a current browser. It is the working app, not a screenshot or GitHub code preview. The initial Sphere, compact Atlas alternative, rotation controls, summaries, full details, search, filters, scope/archive selector and Atlas layout work locally. No web server or installation is required.
 
 [Download the interactive HTML](https://github.com/AvocadoHead/AI-Index/raw/refs/heads/design/useful-visual-index/docs/preview/ai-index-preview.html)
 

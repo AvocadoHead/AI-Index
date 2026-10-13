@@ -1226,3 +1226,6 @@ html[dir=ltr] .creative-steps li {padding:0 0 22px 42px;}
 }
 
 @media(min-width:621px){.atlas-labels .tool-label h3{font-size:clamp(19px,calc(var(--score-size)*.70),27px);}}
+
+/* Leave space for the close control focus ring while scrolling long details. */
+.dialog-close{top:8px;}

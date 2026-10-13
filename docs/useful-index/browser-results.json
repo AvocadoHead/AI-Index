@@ -26,18 +26,19 @@
       "noHalos": true,
       "contrast": 6.325828986998668
     },
+    "initialSphere": true,
     "categoryDrawer": true,
     "unfolding": {
       "startJump": 0,
-      "reverseJump": 0.00005340576171875,
+      "reverseJump": 0.0000457763671875,
       "atlasReady": true,
       "settled": true,
       "scrollJump": 0,
       "animations": 0
     },
     "fadeEvidence": {
-      "maxJump": 0.1423145,
-      "partial": 1900,
+      "maxJump": 0.1494837,
+      "partial": 2209,
       "unsafe": 0
     },
     "name": "360-he",
@@ -75,6 +76,7 @@
       "noHalos": true,
       "contrast": 6.325828986998668
     },
+    "initialSphere": true,
     "categoryDrawer": true,
     "unfolding": {
       "startJump": 0,
@@ -85,8 +87,8 @@
       "animations": 0
     },
     "fadeEvidence": {
-      "maxJump": 0.14552559999999998,
-      "partial": 2006,
+      "maxJump": 0.3700302,
+      "partial": 2375,
       "unsafe": 0
     },
     "name": "360-en",
@@ -124,18 +126,19 @@
       "noHalos": true,
       "contrast": 6.325828986998668
     },
+    "initialSphere": true,
     "categoryDrawer": true,
     "unfolding": {
       "startJump": 0,
-      "reverseJump": 0.0000457763671875,
+      "reverseJump": 0.00006103515625,
       "atlasReady": true,
       "settled": true,
       "scrollJump": 0,
       "animations": 0
     },
     "fadeEvidence": {
-      "maxJump": 0.1456549,
-      "partial": 5137,
+      "maxJump": 0.15549100000000005,
+      "partial": 5174,
       "unsafe": 0
     },
     "name": "390-he",
@@ -173,18 +176,19 @@
       "noHalos": true,
       "contrast": 6.325828986998668
     },
+    "initialSphere": true,
     "categoryDrawer": true,
     "unfolding": {
       "startJump": 0,
-      "reverseJump": 0.00005340576171875,
+      "reverseJump": 0.0000457763671875,
       "atlasReady": true,
       "settled": true,
       "scrollJump": 0,
       "animations": 0
     },
     "fadeEvidence": {
-      "maxJump": 0.16174,
-      "partial": 5165,
+      "maxJump": 0.16026800000000002,
+      "partial": 5429,
       "unsafe": 0
     },
     "name": "390-en",
@@ -222,6 +226,7 @@
       "noHalos": true,
       "contrast": 6.411370255262491
     },
+    "initialSphere": true,
     "categoryDrawer": true,
     "unfolding": {
       "startJump": 0,
@@ -232,8 +237,8 @@
       "animations": 0
     },
     "fadeEvidence": {
-      "maxJump": 0.14032200000000006,
-      "partial": 1178,
+      "maxJump": 0.1490950000000001,
+      "partial": 1481,
       "unsafe": 0
     },
     "name": "768-he",
@@ -271,6 +276,7 @@
       "noHalos": true,
       "contrast": 6.411370255262491
     },
+    "initialSphere": true,
     "categoryDrawer": true,
     "unfolding": {
       "startJump": 0,
@@ -281,8 +287,8 @@
       "animations": 0
     },
     "fadeEvidence": {
-      "maxJump": 0.14313299999999995,
-      "partial": 1341,
+      "maxJump": 0.14452600000000004,
+      "partial": 1170,
       "unsafe": 0
     },
     "name": "768-en",
@@ -320,6 +326,7 @@
       "noHalos": true,
       "contrast": 6.113363445638549
     },
+    "initialSphere": true,
     "categoryDrawer": true,
     "unfolding": {
       "startJump": 0,
@@ -330,8 +337,8 @@
       "animations": 0
     },
     "fadeEvidence": {
-      "maxJump": 0.340506,
-      "partial": 2818,
+      "maxJump": 0.1899369999999999,
+      "partial": 3459,
       "unsafe": 0
     },
     "name": "1440-he",
@@ -369,6 +376,7 @@
       "noHalos": true,
       "contrast": 6.113363445638549
     },
+    "initialSphere": true,
     "categoryDrawer": true,
     "unfolding": {
       "startJump": 0,
@@ -379,8 +387,8 @@
       "animations": 0
     },
     "fadeEvidence": {
-      "maxJump": 0.16578899999999996,
-      "partial": 3289,
+      "maxJump": 0.16587399999999997,
+      "partial": 3461,
       "unsafe": 0
     },
     "name": "1440-en",

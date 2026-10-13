@@ -27,6 +27,11 @@ const timeout=setTimeout(()=>{chrome.kill();console.error('QA timed out');proces
   await send('Page.navigate',{url:process.env.QA_URL||pathToFileURL(path.join(root,entry)).href},sessionId);
   await evaluate("new Promise((resolve,reject)=>{let n=0;const timer=setInterval(()=>{if(document.querySelectorAll('.tool-card').length>0){clearInterval(timer);document.fonts.ready.then(resolve)}else if(++n>100){clearInterval(timer);reject(new Error('Directory did not initialize '+window.qaErrors))}},50)})");
   if(language==='en')await evaluate("document.getElementById('languageToggle').click()");
+  assert.equal(await evaluate("document.getElementById('sphereLayout').getAttribute('aria-pressed')"),'true','Sphere must be the initial supported layout');
+  assert.equal(await evaluate("document.getElementById('sphereCanvas').hidden"),false);await screenshot('-default');
+  await evaluate("document.getElementById('atlasLayout').click();new Promise(r=>setTimeout(r,850))");
+  // An explicit layout selection survives filtering and language changes in this session.
+  await evaluate("document.getElementById('languageToggle').click();document.getElementById('languageToggle').click()");
   const overview=await evaluate(`(()=>{const labels=[...document.querySelectorAll('.tool-label')];return {atlas:document.getElementById('atlasLayout').getAttribute('aria-pressed'),top:document.getElementById('sphereStage').getBoundingClientRect().top,visible:labels.filter(b=>b.getBoundingClientRect().bottom<=innerHeight).length}})()`);
   assert.equal(overview.atlas,'true');assert.ok(overview.visible>=(width>=1000?35:12),JSON.stringify(overview));await screenshot('-overview');
   await evaluate("document.getElementById('sphereLayout').click();new Promise(r=>setTimeout(r,850))");
@@ -144,7 +149,7 @@ const timeout=setTimeout(()=>{chrome.kill();console.error('QA timed out');proces
   assert.equal(await evaluate("/Eyal|אייל|Topaz/.test(document.getElementById('detailContent').textContent)"),false);
   await evaluate("document.getElementById('closeDialog').click();new Promise(r=>setTimeout(r,30))");assert.equal(await evaluate("document.activeElement.id"),'workflowOpen');
   assert.deepEqual(await evaluate('qaErrors'),[]);
-  results.push({...initial,...atlas,sphereInitial,appearance,categoryDrawer:true,unfolding,fadeEvidence,name,searchAndCombinedFilters:true,clearAndEmptyResults:true,dialogAndEscape:true,keyboardFocusContained:true,repeatedNavigation:true,retiredProvenance:true});
+  results.push({...initial,...atlas,sphereInitial,appearance,initialSphere:true,categoryDrawer:true,unfolding,fadeEvidence,name,searchAndCombinedFilters:true,clearAndEmptyResults:true,dialogAndEscape:true,keyboardFocusContained:true,repeatedNavigation:true,retiredProvenance:true});
   await evaluate("document.getElementById('sphereLayout').click();document.getElementById('sphereCanvas').getContext('webgl').getExtension('WEBGL_lose_context').loseContext()");await evaluate("new Promise(resolve=>setTimeout(resolve,100))");assert.equal(await evaluate("document.getElementById('atlasLayout').getAttribute('aria-pressed')"),'true');assert.equal(await evaluate("document.getElementById('sphereLayout').disabled"),true);assert.equal(await evaluate("document.querySelectorAll('.tool-card').length"),158);
   if(width===1440&&language==='en'){
    await send('Page.navigate',{url:pathToFileURL(path.join(root,'legacy.html')).href},sessionId);

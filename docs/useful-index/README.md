@@ -1,11 +1,12 @@
 # Useful visual index — draft review
 
-The default Atlas groups 66 starting tools into eight typographic clusters. Assistant is bundled from Google Fonts under SIL OFL. The sphere, inertia and reversible unfolding remain available. Search reaches the full catalog, while category filters expand beyond the starting set. A summary opens on hover/focus or a pinned click; mobile uses a bottom sheet. Details lead with purpose and an action, with sources and historical scores behind disclosures.
+Sphere is the initial view when WebGL is available. Atlas remains the accessible alternative and automatic WebGL fallback, grouping 66 starting tools into eight typographic clusters. Assistant is bundled from Google Fonts under SIL OFL. Sphere inertia and reversible unfolding remain available. Explicit layout selections survive filtering and language changes during the session; there was no persisted cross-session preference to preserve. Search reaches the full catalog, while category filters expand beyond the starting set. A summary opens on hover/focus or a pinned click; mobile uses a bottom sheet. Details lead with purpose and an action, with sources and historical scores behind disclosures.
 
 ## Review artifacts
 
 - [Download the self-contained interactive HTML](https://github.com/AvocadoHead/AI-Index/raw/refs/heads/design/useful-visual-index/docs/preview/ai-index-preview.html). Download and open it in a browser; GitHub's source viewer does not execute HTML.
-- [Desktop Hebrew](1440-900-he-overview.png) · [Desktop English](1440-900-en-overview.png)
+- [Initial mobile Sphere](390-844-he-sphere.png) · [Initial desktop Sphere](1440-900-en-sphere.png)
+- [Desktop Atlas, Hebrew](1440-900-he-overview.png) · [Desktop English](1440-900-en-overview.png)
 - [Mobile Hebrew](390-844-he-overview.png) · [Mobile English](390-844-en-overview.png) · [360px mobile](360-he-overview.png)
 - [Short 400×605 viewport](400-605-he-overview.png) · [768px tablet](768-en-overview.png)
 - [Mobile summary](390-844-he-summary.png) · [Mobile sphere](390-844-en-sphere.png) · [Desktop sphere](1440-900-he-sphere.png) · [Unfolding midpoint](390-he-unfold-340.png)
@@ -29,7 +30,8 @@ The workflow contains no personal attribution: multimodal low-resolution trials 
 - Isolated Chrome: 360, 390, 768 and 1440px, Hebrew RTL and English LTR; font loading, overflow, 44px label targets, score sizing, search/category/status combinations, summary/detail flows, Escape and focus, repeated touch/keyboard navigation, sphere inertia/fades and interrupted/reversed unfolding.
 - WebGL-unavailable fallback, WebGL context loss and reduced-motion paths pass.
 - Standalone HTML checked with HTTP(S) blocked at 400×605, 390×844 and 1440×900. Every one of the 158 details was checked in both languages against the audited text, without overflow or personal attribution.
-- At 400×605: 21 labels visible; at 390×844: 35; at 1440×900: 66 and all eight category headings. [Measurements](review-results.json) · [Browser regression results](browser-results.json).
+- Atlas overview counts at 400×605: 21 labels visible; at 390×844: 35; at 1440×900: 66 and all eight category headings. [Measurements](review-results.json) · [Browser regression results](browser-results.json).
+- Initial Sphere selection is asserted before every supported-device flow. The Atlas selection survives language changes. The scrolled mobile close-control focus ring remains inside the dialog; the English search placeholder fits and the original-index link is inside the sources disclosure.
 - Rendered screenshots were inspected. No personal browser profile was accessed.
 
 Reproduce with `node scripts/catalog.mjs`, `node scripts/editorial.mjs`, `node --test tests/*.test.mjs`, `node scripts/browser-qa.cjs` and `QA_ENTRY=docs/preview/ai-index-preview.html QA_OFFLINE=1 node scripts/review-screenshots.cjs`.

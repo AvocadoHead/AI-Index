@@ -26,13 +26,14 @@ const timeout=setTimeout(()=>{chrome.kill();console.error('QA timed out');proces
   await send('Page.navigate',{url:pathToFileURL(path.join(root,entry)).href},sessionId);
   await evaluate("new Promise(r=>{const t=setInterval(()=>{if(document.querySelector('.tool-label')){clearInterval(t);document.fonts.ready.then(r)}},30)})");
   if(language==='en')await evaluate("document.getElementById('languageToggle').click()");
+  assert.equal(await evaluate("document.getElementById('sphereLayout').getAttribute('aria-pressed')"),'true');await shot('sphere');
+  await evaluate("document.getElementById('atlasLayout').click();new Promise(r=>setTimeout(r,850))");
   const metrics=await evaluate(`(()=>{const labels=[...document.querySelectorAll('.tool-label')];return {top:document.getElementById('sphereStage').getBoundingClientRect().top,visible:labels.filter(b=>b.getBoundingClientRect().bottom<=innerHeight).length,categories:document.querySelectorAll('.atlas-group').length,overflow:document.documentElement.scrollWidth>innerWidth}})()`);
   assert.equal(metrics.overflow,false);assert.ok(metrics.visible>=12,JSON.stringify(metrics));if(width===1440){assert.equal(metrics.visible,66);assert.equal(metrics.categories,8);}await shot('overview');
-  await evaluate("document.getElementById('sphereLayout').click();new Promise(r=>setTimeout(r,850))");await shot('sphere');
-  await evaluate("document.getElementById('atlasLayout').click();new Promise(r=>setTimeout(r,850))");
+
   await evaluate("document.querySelector('[data-id=ai-029] .tool-label').click()");await shot('summary');
   await evaluate("document.querySelector('#quickPreview .quick-close').click();document.getElementById('workflowOpen').click()");await shot('workflow');
-  await evaluate("document.querySelector('#detailContent details').open=true;document.querySelector('#detailContent details').scrollIntoView({block:'start'})");await shot('routes');
+  await evaluate("document.querySelector('#detailContent details').open=true;document.querySelector('#detailContent details').scrollIntoView({block:'start'})");const closeBounds=await evaluate("(()=>{const b=document.getElementById('closeDialog').getBoundingClientRect(),d=document.getElementById('detailDialog').getBoundingClientRect();return {top:b.top-d.top,bottom:d.bottom-b.bottom}})()");assert.ok(closeBounds.top>=8&&closeBounds.bottom>=0,JSON.stringify(closeBounds));await shot('routes');
   await evaluate("document.querySelector('.workflow-tools button:last-child').click()");assert.equal(await evaluate("document.getElementById('detailTitle').textContent"),'Magnific Upscalers');await shot('upscaler');
   await evaluate("document.getElementById('closeDialog').click();new Promise(r=>setTimeout(r,30))");assert.equal(await evaluate("document.activeElement.id"),'workflowOpen');
   if(width===390){
