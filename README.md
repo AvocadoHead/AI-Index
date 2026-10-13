@@ -9,6 +9,7 @@ A static, bilingual directory of creative AI tools. Search by name or task, dist
 - `legacy.html`, `legacy-styles.css`, `script.js`, `catalog.js`: original cloud and local editing interface.
 - `modules.js`: all 120 preserved legacy entries and scores.
 - `data/catalog.json`: reviewed metadata and unverified placeholders; see [maintenance guide](data/README.md).
+- [Current draft review and screenshots](docs/useful-index/README.md).
 - [Redesign review and screenshots](docs/redesign/README.md).
 
 No build or dependency installation is required. Open `index.html` or serve the repository with a static server. GitHub Pages serves the existing `main` branch.
@@ -17,6 +18,7 @@ Checks:
 
 ```sh
 node scripts/catalog.mjs
+node scripts/editorial.mjs
 node --test tests/*.test.mjs
 ```
 

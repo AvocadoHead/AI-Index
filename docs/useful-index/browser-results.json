@@ -1,0 +1,402 @@
+[
+  {
+    "language": "he",
+    "direction": "rtl",
+    "count": 158,
+    "width": 360,
+    "scrollWidth": 360,
+    "errors": [],
+    "columns": 1,
+    "font": true,
+    "fontLoaded": true,
+    "minFont": 17,
+    "minTouch": 44,
+    "sizesMatch": true,
+    "visible": 44,
+    "domains": 2,
+    "sphereInitial": {
+      "layout": "true",
+      "fallback": false,
+      "count": 66,
+      "visible": 9,
+      "rotation": "0.150,0.350",
+      "domains": 6
+    },
+    "appearance": {
+      "noHalos": true,
+      "contrast": 6.325828986998668
+    },
+    "initialSphere": true,
+    "categoryDrawer": true,
+    "unfolding": {
+      "startJump": 0,
+      "reverseJump": 0.0000457763671875,
+      "atlasReady": true,
+      "settled": true,
+      "scrollJump": 0,
+      "animations": 0
+    },
+    "fadeEvidence": {
+      "maxJump": 0.1494837,
+      "partial": 2209,
+      "unsafe": 0
+    },
+    "name": "360-he",
+    "searchAndCombinedFilters": true,
+    "clearAndEmptyResults": true,
+    "dialogAndEscape": true,
+    "keyboardFocusContained": true,
+    "repeatedNavigation": true,
+    "retiredProvenance": true
+  },
+  {
+    "language": "en",
+    "direction": "ltr",
+    "count": 158,
+    "width": 360,
+    "scrollWidth": 360,
+    "errors": [],
+    "columns": 1,
+    "font": true,
+    "fontLoaded": true,
+    "minFont": 17,
+    "minTouch": 44,
+    "sizesMatch": true,
+    "visible": 44,
+    "domains": 2,
+    "sphereInitial": {
+      "layout": "true",
+      "fallback": false,
+      "count": 66,
+      "visible": 9,
+      "rotation": "0.150,0.350",
+      "domains": 6
+    },
+    "appearance": {
+      "noHalos": true,
+      "contrast": 6.325828986998668
+    },
+    "initialSphere": true,
+    "categoryDrawer": true,
+    "unfolding": {
+      "startJump": 0,
+      "reverseJump": 0.00006103515625,
+      "atlasReady": true,
+      "settled": true,
+      "scrollJump": 0,
+      "animations": 0
+    },
+    "fadeEvidence": {
+      "maxJump": 0.3700302,
+      "partial": 2375,
+      "unsafe": 0
+    },
+    "name": "360-en",
+    "searchAndCombinedFilters": true,
+    "clearAndEmptyResults": true,
+    "dialogAndEscape": true,
+    "keyboardFocusContained": true,
+    "repeatedNavigation": true,
+    "retiredProvenance": true
+  },
+  {
+    "language": "he",
+    "direction": "rtl",
+    "count": 158,
+    "width": 390,
+    "scrollWidth": 390,
+    "errors": [],
+    "columns": 1,
+    "font": true,
+    "fontLoaded": true,
+    "minFont": 17,
+    "minTouch": 44,
+    "sizesMatch": true,
+    "visible": 45,
+    "domains": 2,
+    "sphereInitial": {
+      "layout": "true",
+      "fallback": false,
+      "count": 66,
+      "visible": 10,
+      "rotation": "0.150,0.350",
+      "domains": 7
+    },
+    "appearance": {
+      "noHalos": true,
+      "contrast": 6.325828986998668
+    },
+    "initialSphere": true,
+    "categoryDrawer": true,
+    "unfolding": {
+      "startJump": 0,
+      "reverseJump": 0.00006103515625,
+      "atlasReady": true,
+      "settled": true,
+      "scrollJump": 0,
+      "animations": 0
+    },
+    "fadeEvidence": {
+      "maxJump": 0.15549100000000005,
+      "partial": 5174,
+      "unsafe": 0
+    },
+    "name": "390-he",
+    "searchAndCombinedFilters": true,
+    "clearAndEmptyResults": true,
+    "dialogAndEscape": true,
+    "keyboardFocusContained": true,
+    "repeatedNavigation": true,
+    "retiredProvenance": true
+  },
+  {
+    "language": "en",
+    "direction": "ltr",
+    "count": 158,
+    "width": 390,
+    "scrollWidth": 390,
+    "errors": [],
+    "columns": 1,
+    "font": true,
+    "fontLoaded": true,
+    "minFont": 17,
+    "minTouch": 44,
+    "sizesMatch": true,
+    "visible": 45,
+    "domains": 2,
+    "sphereInitial": {
+      "layout": "true",
+      "fallback": false,
+      "count": 66,
+      "visible": 10,
+      "rotation": "0.150,0.350",
+      "domains": 7
+    },
+    "appearance": {
+      "noHalos": true,
+      "contrast": 6.325828986998668
+    },
+    "initialSphere": true,
+    "categoryDrawer": true,
+    "unfolding": {
+      "startJump": 0,
+      "reverseJump": 0.0000457763671875,
+      "atlasReady": true,
+      "settled": true,
+      "scrollJump": 0,
+      "animations": 0
+    },
+    "fadeEvidence": {
+      "maxJump": 0.16026800000000002,
+      "partial": 5429,
+      "unsafe": 0
+    },
+    "name": "390-en",
+    "searchAndCombinedFilters": true,
+    "clearAndEmptyResults": true,
+    "dialogAndEscape": true,
+    "keyboardFocusContained": true,
+    "repeatedNavigation": true,
+    "retiredProvenance": true
+  },
+  {
+    "language": "he",
+    "direction": "rtl",
+    "count": 158,
+    "width": 768,
+    "scrollWidth": 768,
+    "errors": [],
+    "columns": 1,
+    "font": true,
+    "fontLoaded": true,
+    "minFont": 19,
+    "minTouch": 44,
+    "sizesMatch": true,
+    "visible": 62,
+    "domains": 4,
+    "sphereInitial": {
+      "layout": "true",
+      "fallback": false,
+      "count": 66,
+      "visible": 24,
+      "rotation": "0.150,0.350",
+      "domains": 7
+    },
+    "appearance": {
+      "noHalos": true,
+      "contrast": 6.411370255262491
+    },
+    "initialSphere": true,
+    "categoryDrawer": true,
+    "unfolding": {
+      "startJump": 0,
+      "reverseJump": 0.00018310546875,
+      "atlasReady": true,
+      "settled": true,
+      "scrollJump": 0,
+      "animations": 0
+    },
+    "fadeEvidence": {
+      "maxJump": 0.1490950000000001,
+      "partial": 1481,
+      "unsafe": 0
+    },
+    "name": "768-he",
+    "searchAndCombinedFilters": true,
+    "clearAndEmptyResults": true,
+    "dialogAndEscape": true,
+    "keyboardFocusContained": true,
+    "repeatedNavigation": true,
+    "retiredProvenance": true
+  },
+  {
+    "language": "en",
+    "direction": "ltr",
+    "count": 158,
+    "width": 768,
+    "scrollWidth": 768,
+    "errors": [],
+    "columns": 1,
+    "font": true,
+    "fontLoaded": true,
+    "minFont": 19,
+    "minTouch": 44,
+    "sizesMatch": true,
+    "visible": 62,
+    "domains": 4,
+    "sphereInitial": {
+      "layout": "true",
+      "fallback": false,
+      "count": 66,
+      "visible": 24,
+      "rotation": "0.150,0.350",
+      "domains": 7
+    },
+    "appearance": {
+      "noHalos": true,
+      "contrast": 6.411370255262491
+    },
+    "initialSphere": true,
+    "categoryDrawer": true,
+    "unfolding": {
+      "startJump": 0,
+      "reverseJump": 0.00018310546875,
+      "atlasReady": true,
+      "settled": true,
+      "scrollJump": 0,
+      "animations": 0
+    },
+    "fadeEvidence": {
+      "maxJump": 0.14452600000000004,
+      "partial": 1170,
+      "unsafe": 0
+    },
+    "name": "768-en",
+    "searchAndCombinedFilters": true,
+    "clearAndEmptyResults": true,
+    "dialogAndEscape": true,
+    "keyboardFocusContained": true,
+    "repeatedNavigation": true,
+    "retiredProvenance": true
+  },
+  {
+    "language": "he",
+    "direction": "rtl",
+    "count": 158,
+    "width": 1440,
+    "scrollWidth": 1440,
+    "errors": [],
+    "columns": 1,
+    "font": true,
+    "fontLoaded": true,
+    "minFont": 19,
+    "minTouch": 44,
+    "sizesMatch": true,
+    "visible": 153,
+    "domains": 8,
+    "sphereInitial": {
+      "layout": "true",
+      "fallback": false,
+      "count": 66,
+      "visible": 27,
+      "rotation": "0.150,0.350",
+      "domains": 8
+    },
+    "appearance": {
+      "noHalos": true,
+      "contrast": 6.113363445638549
+    },
+    "initialSphere": true,
+    "categoryDrawer": true,
+    "unfolding": {
+      "startJump": 0,
+      "reverseJump": 0.00018310546875,
+      "atlasReady": true,
+      "settled": true,
+      "scrollJump": 0,
+      "animations": 0
+    },
+    "fadeEvidence": {
+      "maxJump": 0.1899369999999999,
+      "partial": 3459,
+      "unsafe": 0
+    },
+    "name": "1440-he",
+    "searchAndCombinedFilters": true,
+    "clearAndEmptyResults": true,
+    "dialogAndEscape": true,
+    "keyboardFocusContained": true,
+    "repeatedNavigation": true,
+    "retiredProvenance": true
+  },
+  {
+    "language": "en",
+    "direction": "ltr",
+    "count": 158,
+    "width": 1440,
+    "scrollWidth": 1440,
+    "errors": [],
+    "columns": 1,
+    "font": true,
+    "fontLoaded": true,
+    "minFont": 19,
+    "minTouch": 44,
+    "sizesMatch": true,
+    "visible": 153,
+    "domains": 8,
+    "sphereInitial": {
+      "layout": "true",
+      "fallback": false,
+      "count": 66,
+      "visible": 27,
+      "rotation": "0.150,0.350",
+      "domains": 8
+    },
+    "appearance": {
+      "noHalos": true,
+      "contrast": 6.113363445638549
+    },
+    "initialSphere": true,
+    "categoryDrawer": true,
+    "unfolding": {
+      "startJump": 0,
+      "reverseJump": 0.00018310546875,
+      "atlasReady": true,
+      "settled": true,
+      "scrollJump": 0,
+      "animations": 0
+    },
+    "fadeEvidence": {
+      "maxJump": 0.16587399999999997,
+      "partial": 3461,
+      "unsafe": 0
+    },
+    "name": "1440-en",
+    "searchAndCombinedFilters": true,
+    "clearAndEmptyResults": true,
+    "dialogAndEscape": true,
+    "keyboardFocusContained": true,
+    "repeatedNavigation": true,
+    "retiredProvenance": true
+  }
+]

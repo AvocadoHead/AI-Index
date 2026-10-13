@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="styles.css">
   <script src="modules.js" defer></script>
   <script src="catalog-data.js" defer></script>
+  <script src="catalog-audit.js" defer></script>
   <script src="official-summaries.js" defer></script>
   <script src="creative-guide.js" defer></script>
   <script src="curation.js" defer></script>
@@ -20,14 +21,14 @@
   <header class="site-header wrap">
     <a class="wordmark" href="#" aria-label="AI Index"><span class="brand-mark" aria-hidden="true">ai</span><span dir="ltr">AI INDEX<span class="brand-sub">A CREATIVE FIELD GUIDE</span></span></a>
     <nav aria-label="ניווט ראשי" id="mainNav">
-      <a href="#method" class="method-link" data-i18n="about">על האינדקס</a>
+      <button id="workflowOpen" class="workflow-open" type="button">תהליך וידאו <span aria-hidden="true">↗</span></button>
       <button id="languageToggle" class="language-button" type="button" aria-label="Switch to English">EN <span aria-hidden="true">↔</span></button>
     </nav>
   </header>
   <main>
     <div hidden><span id="recordCount"></span><span id="checkedSummary"></span></div>
     <section id="catalog" class="catalog wrap" aria-labelledby="catalogHeading">
-      <h2 id="catalogHeading" class="sr-only" data-i18n="directory">ספריית הכלים</h2>
+      <div class="catalog-title"><h1 id="catalogHeading" data-i18n="directory">כלים ליצירה</h1><span class="catalog-caption" data-i18n="catalogCaption">מגלים, משווים, יוצרים</span></div>
       <div class="search-row">
         <div class="search-box">
           <svg aria-hidden="true" viewBox="0 0 24 24" fill="none"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 4.5 4.5"/></svg>
@@ -44,9 +45,9 @@
       <div id="emptyState" class="empty-state" hidden><span aria-hidden="true">⌕</span><h3 data-i18n="emptyTitle">לא מצאנו התאמה הפעם.</h3><p data-i18n="emptyDescription">נסו מילה אחרת או הרחיבו את הסינון.</p><button id="emptyReset" type="button" class="primary-button" data-i18n="showAll">הצגת כל הכלים</button></div>
       <noscript><p>יש להפעיל JavaScript כדי לחפש באינדקס. Enable JavaScript to browse the directory.</p><a href="data/catalog.json">Catalog data</a></noscript>
     </section>
-    <section id="method" class="method wrap" aria-labelledby="methodTitle"><div><p class="eyebrow" data-i18n="methodEyebrow">בחירה טובה מתחילה במידע ברור</p><h2 id="methodTitle" data-i18n="methodTitle">מקורות, לא הבטחות.</h2></div><div class="method-copy"><p data-i18n="methodCopy">״נבדק״ אומר שבדקנו תיעוד רשמי בתאריך המצוין — לא שערכנו מבחן ביצועים. רשומות ותיקות עדיין מחכות לבדיקה; מודלים, זמינות ותנאים עשויים להשתנות.</p><p data-i18n="scoresCopy">הציונים הישנים נשמרו לעיון בפרטי הכלי. הם אינם דירוג איכות עדכני או המלצה חדשה.</p><button id="workflowOpen" class="text-button" type="button" data-i18n="workflowOpen">בדיקות שכדאי להכניס לתהליך העבודה ↗</button></div></section>
+    <details id="method" class="method-note wrap"><summary data-i18n="about">על האינדקס</summary><p data-i18n="methodCopy"></p><p data-i18n="scoresCopy"></p><p><a href="legacy.html" data-i18n="legacy">האינדקס המקורי</a></p></details>
   </main>
-  <footer class="site-footer wrap"><span dir="ltr">AI INDEX <span class="footer-by">/ Eyal Izenman</span></span><div><a href="legacy.html" data-i18n="legacy">תצוגה מקורית ועריכה מקומית</a><a href="data/catalog.json" data-i18n="data">נתוני האינדקס</a><a href="https://buymeacoffee.com/Optopia" target="_blank" rel="noopener noreferrer" data-i18n="support">תמיכה בפרויקט ↗</a></div></footer>
+  <footer class="site-footer wrap"><span dir="ltr">AI INDEX </span><div><a href="data/catalog.json" data-i18n="data">נתוני האינדקס</a><a href="https://buymeacoffee.com/Optopia" target="_blank" rel="noopener noreferrer" data-i18n="support">תמיכה בפרויקט ↗</a></div></footer>
   <dialog id="categoryDialog" class="category-drawer" aria-labelledby="categoryTitle"><div class="category-sheet"><header><h2 id="categoryTitle" data-i18n="categoriesMenu">קטגוריות</h2><button id="categoryClose" class="category-close" type="button" aria-label="Close categories">×</button></header><div class="task-filter" id="taskFilters" role="group" aria-label="סינון לפי משימה"></div><details class="refine-options"><summary data-i18n="refine">אפשרויות נוספות</summary>
         <div class="status-control"><label for="statusFilter" data-i18n="verification">מצב בדיקה</label><select id="statusFilter"><option value="all">כל הרשומות</option><option value="checked">נבדקו במקור רשמי</option><option value="pending">ממתינות לבדיקה</option><option value="retired">כלים שהופסקו</option></select></div>
 <div class="drawer-field"><label for="scopeFilter" data-i18n="scopeLabel">אוסף</label><select id="scopeFilter"><option value="curated">נקודת פתיחה</option><option value="current">כל הנוכחיים</option><option value="all">הכול והארכיון</option><option value="archived">ארכיון</option></select></div><div class="drawer-field"><label for="sortOrder" data-i18n="sort">סדר התוצאות</label><select id="sortOrder"><option value="reviewed">נבדקו תחילה</option><option value="name">לפי שם</option></select></div></details><button id="categoryDone" class="category-done" type="button" data-i18n="showTools">הצגת הכלים</button><div hidden><select id="mobileTask"></select></div></div></dialog>
