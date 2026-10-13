@@ -1,0 +1,127 @@
+{
+  "checkedAt": "2026-10-13",
+  "attribution": "Eyal",
+  "models": {
+    "openai-chatgpt-images": [
+      {
+        "name": "GPT Image 2",
+        "en": "Image generation and editing with high-fidelity image inputs. Eyal’s first image choice for a beautiful, coherent finish.",
+        "he": "יצירת תמונות ועריכתן בעזרת תמונות ייחוס. הבחירה הראשונה של אייל לתמונה יפה, מגובשת ומלוטשת.",
+        "sources": [
+          "https://developers.openai.com/api/docs/models/gpt-image-2"
+        ]
+      }
+    ],
+    "ai-006": [
+      {
+        "name": "Nano Banana 2 / 2.5",
+        "en": "Nano Banana 2 supports 2K image output. Google marketing also uses “Nano Banana 2.5”; its exact developer-model mapping is unresolved. Do not equate it with Gemini 2.5 Flash. Eyal’s versatile second image choice.",
+        "he": "Nano Banana 2 תומך בתמונות ב־2K. השם Nano Banana 2.5 מופיע בשיווק של גוגל, אך ההתאמה המדויקת לשם מודל למפתחים אינה ברורה. אין לזהות אותו עם Gemini 2.5 Flash. הבחירה השנייה והגמישה של אייל לתמונות.",
+        "sources": [
+          "https://ai.google.dev/gemini-api/docs/image-generation",
+          "https://cloud.google.com/transform/widening-the-media-landscape-why-hollywood-and-games-are-rewriting-the-rules"
+        ]
+      }
+    ],
+    "ai-031": [
+      {
+        "name": "FLUX 3 Video",
+        "en": "Video with synchronized audio, keyframes and draft-to-final rendering; 720p–4K depends on the access route. Separately, FLUX is Eyal’s third image choice for a precise, clinical finish.",
+        "he": "וידאו עם קול מסונכרן, פריימים מנחים ומעבר מטיוטה לתוצר סופי; 720p–4K בהתאם למסלול הגישה. בנפרד, FLUX הוא הבחירה השלישית של אייל לתמונות בגימור מדויק וקליני.",
+        "sources": [
+          "https://bfl.ai/models/flux-3-video"
+        ]
+      }
+    ],
+    "bytedance-seedance": [
+      {
+        "name": "Seedance 2.5",
+        "en": "Supports image, video and audio references. Seedance is Eyal’s leading video family.",
+        "he": "תומך בתמונות, וידאו ואודיו כחומרי ייחוס. Seedance היא משפחת הווידאו המובילה בהמלצות של אייל.",
+        "sources": [
+          "https://seed.bytedance.com/en/blog/one-take-creation-flexible-referencing-introducing-seedance-2-5"
+        ]
+      },
+      {
+        "name": "Seedance 1.5 Pro",
+        "en": "Eyal’s economical 720p image-to-video trial route. Generates native audio; audio/video reference inputs belong to other versions, not this workflow.",
+        "he": "המסלול שאייל מציע לניסויי תמונה־לווידאו חסכוניים ב־720p. מפיק קול מקורי; קלטי ייחוס של אודיו או וידאו שייכים לגרסאות אחרות, לא לתהליך הזה.",
+        "sources": [
+          "https://seed.bytedance.com/en/seedance1_5_pro",
+          "https://docs.byteplus.com/en/docs/ModelArk/2168087"
+        ]
+      }
+    ],
+    "ai-019": [
+      {
+        "name": "Wan 3",
+        "en": "Eyal’s budget video choice. Confirm the available model version, settings and price in your access route.",
+        "he": "בחירת הווידאו התקציבית של אייל. יש לבדוק את הגרסה הזמינה, ההגדרות והמחיר במסלול הגישה שלכם.",
+        "sources": [
+          "https://modelstudio.console.alibabacloud.com/model-releases/wan3.0-video"
+        ]
+      }
+    ],
+    "ai-021": [
+      {
+        "name": "MiniMax H3",
+        "en": "Direct multimodal H3 accepts text, images, video and audio. It offers 768p/2K and high-resolution regeneration.",
+        "he": "H3 הישיר הוא מודל רב־אופני עם קלט טקסט, תמונות, וידאו ואודיו. מציע 768p/2K ויצירה מחדש ברזולוציה גבוהה.",
+        "sources": [
+          "https://www.minimax.io/blog/minimax-h3"
+        ]
+      },
+      {
+        "name": "MiniMax H3 Max",
+        "en": "A fal-post-trained variant for text/image-to-video at 480p or 768p, with native audio. Its listed inputs do not establish the full reference capabilities of direct H3.",
+        "he": "גרסה שעברה אימון נוסף ב־fal, לטקסט או תמונה לווידאו ב־480p או 768p, עם קול מקורי. רשימת הקלטים שלה אינה מעידה על כל יכולות הייחוס של H3 הישיר.",
+        "sources": [
+          "https://hailuoai.video/tools/minimax-h3-max"
+        ]
+      }
+    ],
+    "ai-037": [
+      {
+        "name": "Video finishing",
+        "en": "Magnific’s creative enhancement and the platform’s Topaz restoration offer different finishing approaches. Creative upscale may reinterpret details.",
+        "he": "העשרה יצירתית של Magnific ושחזור באמצעות Topaz בפלטפורמה מציעים גישות שונות לגימור. הגדלה יצירתית עלולה לפרש פרטים מחדש.",
+        "sources": [
+          "https://www.freepik.com/ai/video-upscaler"
+        ]
+      }
+    ]
+  },
+  "imageOrder": [
+    "openai-chatgpt-images",
+    "ai-006",
+    "ai-031"
+  ],
+  "he": {
+    "title": "תהליך היצירה של אייל",
+    "intro": "בחירות אישיות מתוך עבודה מעשית — לא ציוני מבחן. המחיר תלוי במסלול הגישה ובהגדרות.",
+    "images": "לתמונות: GPT Image 2 לגימור יפה ומגובש, אחריו Nano Banana לגמישות, ואז FLUX לדיוק וגימור קליני.",
+    "video": "לווידאו: Seedance מוביל בהמלצות של אייל, ו־Wan 3 הוא בחירה תקציבית. Kling ו־Runway הם חלופות חזקות; Higgsfield היא פלטפורמת יצירה, לא מודל בשם Premium.",
+    "steps": [
+      "צרו תמונת מוצא ב־Nano Banana 2, ברזולוציית 2K.",
+      "נסו תנועה ב־Seedance 1.5 Pro ב־720p. לסצנות מורכבות, נסו MiniMax ברזולוציה נמוכה המתאימה למסלול: H3 ישיר ב־768p או H3 Max ב־480p.",
+      "בחרו את הטייק החזק ביותר לפני הגימור.",
+      "השתמשו ביצירה מחדש ברזולוציה גבוהה, אם המסלול תומך בכך, או בהגדלה ב־Magnific."
+    ],
+    "caution": "יצירה מחדש והגדלה יצירתית עשויות לשנות פרטים. בדקו פנים, טקסט ומוצרים מול המקור.",
+    "notes": "גרסאות ומקורות"
+  },
+  "en": {
+    "title": "Eyal’s creative workflow",
+    "intro": "Personal choices from practical work, not benchmark scores. Pricing depends on access route and settings.",
+    "images": "For images: GPT Image 2 for a beautiful, coherent finish, then Nano Banana for versatility, then FLUX for a precise, clinical result.",
+    "video": "For video: Seedance leads Eyal’s recommendations; Wan 3 is his budget choice. Kling and Runway remain strong alternatives; Higgsfield is a creative platform, not a verified model named Premium.",
+    "steps": [
+      "Create a starting image with Nano Banana 2 at 2K.",
+      "Explore motion with Seedance 1.5 Pro at 720p. For complex scenes, try lower-resolution MiniMax: direct H3 at 768p, or H3 Max at 480p.",
+      "Select the strongest take before finishing.",
+      "Use supported high-resolution regeneration, or upscale with Magnific."
+    ],
+    "caution": "Regeneration and creative upscale can change details. Check faces, text and products against the original.",
+    "notes": "Versions and sources"
+  }
+}
