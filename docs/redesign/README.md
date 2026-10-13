@@ -6,9 +6,9 @@
 
 The original used Canvas 2D to project rotating 3D points, rather than WebGL. Its useful concept was a dense spherical overview, category filtering, score-sized names and hover summaries. The rejected directory removed that spatial interaction and pushed other domains below long category blocks.
 
-The default is now a true WebGL wireframe sphere with accessible HTML labels projected onto the same geometry. Deterministic Fibonacci placement replaces random positioning; filters retain positions. Front-to-back overlap handling keeps visible labels readable and gives their full label a real click/touch target. Occluded labels can be reached by rotating or switching to Atlas. The starting orientation shows 11–14 labels on mobile, 23 on tablet and 27 on desktop, across six or seven domains. Rotation exposes the remaining labels.
+The default is now a true WebGL wireframe sphere with accessible HTML labels projected onto the same geometry. Deterministic Fibonacci placement replaces random positioning; filters retain positions. Front-to-back overlap handling keeps visible labels readable and gives their full label a real click/touch target. Occluded labels can be reached by rotating or switching to Atlas. The starting orientation shows labels across multiple domains on mobile, tablet and desktop; the grouped Atlas exposes every match at once. Rotation exposes the remaining labels.
 
-The canvas uses a white-to-light-gray gradient and darker category colors with no text glow or halos. Tested visible-label contrast is at least 5.78:1 against the darker gradient stop.
+The canvas uses a white-to-light-gray gradient and darker category colors with no text glow or halos. Interactive labels meet the 4.5:1 contrast check against the darker gradient stop; faint transition labels are excluded from pointer and keyboard targets.
 
 Motion is off on load. Drag release restores the original sense of momentum with bounded velocity (up to 0.003 radians/ms per axis), time-based exponential damping (360ms decay constant), and a small stop threshold. It settles without requiring constant rotation. New touch, keyboard pause/center, layout/filter changes and hidden-page state stop it immediately. Reduced motion disables the release coast as well as autoplay. The primary interface contains search, an explicit Categories button, a subtle Sphere/Atlas switch and a result count. The previous visible arrow/center toolbar, instructional paragraphs and score-symbol legend are removed. Focus the sphere for keyboard controls: arrows rotate, Space plays/pauses, Home centers, and Escape stops motion. These instructions remain available to assistive technology without crowding the canvas. Optional play stops on interaction; reduced-motion preference prevents autoplay. A 7px drag threshold and post-drag click suppression distinguish rotating from selecting. Pointer hover and keyboard focus show a concise summary; tapping pins it. Tab reaches its detail action; Enter opens the detail dialog; Escape dismisses and restores focus.
 
@@ -62,10 +62,22 @@ Estimated sizing uses original category scores relevant to combined domain filte
 
 ## Verification
 
-- `node --test tests/*.test.mjs`: 27 tests pass, including original catalog regressions, deterministic sphere geometry, frame-rate-independent inertia damping, reversible curation, dated bilingual summary-cache integrity and broad category/search reachability.
+- `node --test tests/*.test.mjs`: 29 tests pass, including original catalog regressions, deterministic sphere geometry, frame-rate-independent inertia damping, reversible curation, dated bilingual summary-cache integrity and broad category/search reachability.
 - `node scripts/catalog.mjs`: 131 records, 31 reviewed; all 120 legacy records unchanged.
 - Isolated headless Chrome with a temporary profile, never the personal browser. Eight 360/390/768/1440 RTL/LTR configurations validate sphere rendering, actual mouse/touch drag-release coasting and settling, interruption by new touch, Pause/Center, reduced-motion drag without coasting, drag versus tap, summaries/details, layout changes, shared filters, focus, Escape, font loading, text/target sizes and no overflow. Context loss falls back to Atlas with all entries retained.
 - Separate unsupported-WebGL and reduced-motion scenarios pass. The generated standalone HTML passes the same browser suite with all HTTP(S) requests blocked. [Machine-readable evidence](results.json).
 - Rendered mobile, tablet, desktop, summary, category-drawer and Atlas screenshots were inspected. Physical-device and screen-reader testing is not exhaustive.
 
 No merge, production deployment, new hosting, trackers, credentials or access changes. The standalone HTML is a local interactive review route, not a hosted site.
+
+## Final rim-transition revision — 2026-10-13
+
+Labels now emerge through a smooth depth-based opacity curve instead of switching on at a fixed rear-depth threshold. Collision occlusion also dissolves with time-based damping, including after rotation settles. Pointer and keyboard targets require both a clear projected position and at least 90% opacity; focused labels remain readable. Reduced motion uses the spatial curve without extra temporal animation. Sphere inertia, geometry, typography, categories and catalog data are unchanged.
+
+The 29 unit/regression tests and all eight offline 360/390/768/1440 Hebrew/English browser configurations pass, plus unsupported WebGL, context loss and reduced motion. Frame-by-frame instrumentation verifies intermediate opacity, bounded changes and no hit/focus targets below the readability threshold. Rendered rotation sequences were inspected on mobile and desktop. [Results](rim-transition/results.json).
+
+Recorded mobile rotation frames: [0](rim-transition/390-he-rotation-0.png) · [1](rim-transition/390-he-rotation-1.png) · [2](rim-transition/390-he-rotation-2.png) · [3](rim-transition/390-he-rotation-3.png) · [4](rim-transition/390-he-rotation-4.png) · [5](rim-transition/390-he-rotation-5.png).
+
+Recorded desktop rotation frames: [0](rim-transition/1440-en-rotation-0.png) · [1](rim-transition/1440-en-rotation-1.png) · [2](rim-transition/1440-en-rotation-2.png) · [3](rim-transition/1440-en-rotation-3.png) · [4](rim-transition/1440-en-rotation-4.png) · [5](rim-transition/1440-en-rotation-5.png).
+
+Merge and deployment through the existing GitHub Pages configuration are now authorized after this focused fix. Deployment completion is verified separately from these pre-merge test results.

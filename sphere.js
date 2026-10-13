@@ -5,10 +5,13 @@
  function point(index,count){const y=1-2*(index+.5)/count,r=Math.sqrt(1-y*y),a=index*golden;return [Math.cos(a)*r,y,Math.sin(a)*r];}
  function rotate(p,rx,ry){const x=p[0]*Math.cos(ry)-p[2]*Math.sin(ry),z=p[2]*Math.cos(ry)+p[0]*Math.sin(ry);return [x,p[1]*Math.cos(rx)-z*Math.sin(rx),p[1]*Math.sin(rx)+z*Math.cos(rx)];}
  function inertiaStep(velocity,elapsed){const decay=Math.exp(-Math.max(0,elapsed)/360);return {velocity:velocity*decay,delta:velocity*360*(1-decay)};}
- root.SphereMath={point,rotate,inertiaStep};
+ // Zero slope at each end prevents a visible step as a point rounds the rim.
+ function rimOpacity(depth){const t=Math.max(0,Math.min(1,(depth+.30)/.55));return t*t*(3-2*t);}
+ function fadeStep(current,target,elapsed){const next=target+(current-target)*Math.exp(-Math.max(0,elapsed)/100);return Math.abs(next-target)<.002?target:next;}
+ root.SphereMath={point,rotate,inertiaStep,rimOpacity,fadeStep};
  root.ToolSphere=class {
   constructor({stage,canvas,grid,onFallback,onMove}){
-   Object.assign(this,{stage,canvas,grid,onFallback,onMove});this.rx=.15;this.ry=.35;this.playing=false;this.inertial=false;this.enabled=true;this.slots=new Map();this.frame=0;this.reduced=matchMedia('(prefers-reduced-motion: reduce)');
+   Object.assign(this,{stage,canvas,grid,onFallback,onMove});this.rx=.15;this.ry=.35;this.playing=false;this.inertial=false;this.enabled=true;this.slots=new Map();this.fades=new WeakMap();this.fadeFrame=0;this.lastDraw=0;this.frame=0;this.reduced=matchMedia('(prefers-reduced-motion: reduce)');
    try{this.gl=canvas.getContext('webgl',{alpha:true,antialias:true,preserveDrawingBuffer:true});if(!this.gl)throw Error('WebGL unavailable');this.initGL();}catch(error){this.failed=true;onFallback(error.message);return;}
    canvas.addEventListener('webglcontextlost',event=>{event.preventDefault();this.failed=true;this.setPlaying(false);onFallback('context-lost')});
    this.reduced.addEventListener('change',()=>{if(this.reduced.matches)this.setPlaying(false)});
@@ -43,7 +46,9 @@
   }
   reset(){this.setPlaying(false);this.rx=.15;this.ry=.35;this.onMove();this.draw();}
   draw(){
+   cancelAnimationFrame(this.fadeFrame);
    if(!this.enabled||this.failed||!this.gl)return;
+   const now=performance.now(),elapsed=this.lastDraw?Math.min(64,now-this.lastDraw):16;this.lastDraw=now;let fading=false;
    const w=this.stage.clientWidth,h=this.stage.clientHeight;if(!w||!h)return;
    const radius=Math.min(w*.43,h*.45),gl=this.gl,dpr=Math.min(devicePixelRatio||1,2);
    if(this.canvas.width!==Math.round(w*dpr)||this.canvas.height!==Math.round(h*dpr)){this.canvas.width=Math.round(w*dpr);this.canvas.height=Math.round(h*dpr)}
@@ -53,9 +58,18 @@
     const width=Math.min(button.offsetWidth,w-24),height=Math.max(44,button.offsetHeight),x=Math.max(width/2+6,Math.min(w-width/2-6,w/2+p[0]*radius)),y=h/2-p[1]*radius;
     const box={x:x-width/2,y:y-height/2,w:width,h:height};const focused=button===document.activeElement;
     const overlap=occupied.some(b=>box.x<b.x+b.w+5&&box.x+box.w+5>b.x&&box.y<b.y+b.h&&box.y+box.h>b.y);
-    const show=focused||(!overlap&&p[2]>-.38);button.style.visibility=show?'visible':'hidden';button.tabIndex=show?0:-1;button.style.left=x+'px';button.style.top=y+'px';button.style.zIndex=String(20+Math.round(p[2]*10));button.style.opacity=show?String(.92+.08*(p[2]+1)/2):'0';button.dataset.depth=p[2].toFixed(3);
-    if(show){occupied.push(box);visible++;}
+    const target=focused?1:overlap?0:rimOpacity(p[2]);
+    const previous=this.fades.get(button)??target;
+    // Collision changes also dissolve; faded/occluded labels cannot intercept a tap.
+    const alpha=focused?1:this.reduced.matches?target:fadeStep(previous,target,elapsed);
+    this.fades.set(button,alpha);if(alpha!==target)fading=true;
+    const interactive=focused||(target>=.9&&alpha>=.9),painted=alpha>0;
+    button.style.visibility=painted?'visible':'hidden';button.style.pointerEvents=interactive?'auto':'none';button.tabIndex=interactive?0:-1;button.setAttribute('aria-hidden',String(!interactive));
+    button.style.left=x+'px';button.style.top=y+'px';button.style.zIndex=String(20+Math.round(p[2]*10));button.style.opacity=String(alpha);button.dataset.depth=p[2].toFixed(3);
+    if(target>0)occupied.push(box);if(interactive)visible++;
+
    }
+   if(fading&&!this.reduced.matches)this.fadeFrame=requestAnimationFrame(()=>this.draw());
    this.stage.dataset.visible=String(visible);this.stage.dataset.rotation=this.rx.toFixed(3)+','+this.ry.toFixed(3);
   }
  };

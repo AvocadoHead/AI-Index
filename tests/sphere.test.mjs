@@ -31,3 +31,16 @@ test('inertia damping is time based, bounded and settles naturally',()=>{
  assert.ok(velocity<.000015);assert.ok(total<1.08);assert.ok(total>1);
  assert.equal(geometry.inertiaStep(0,16).delta,0);
 });
+
+
+test('rim emergence is continuous with smooth endpoints and no rear hit visibility',()=>{
+ assert.equal(geometry.rimOpacity(-1),0);assert.equal(geometry.rimOpacity(-.30),0);assert.equal(geometry.rimOpacity(.25),1);
+ let previous=0;
+ for(let z=-.30;z<=.251;z+=.001){const alpha=geometry.rimOpacity(z);assert.ok(alpha>=previous);assert.ok(alpha-previous<.003);previous=alpha;}
+ assert.ok(geometry.rimOpacity(-.299)<.00002);assert.ok(1-geometry.rimOpacity(.249)<.00002);
+});
+test('collision fades are continuous, time based and finish at their target',()=>{
+ const whole=geometry.fadeStep(0,1,32),half=geometry.fadeStep(0,1,16);
+ assert.ok(whole>0&&whole<1);assert.ok(Math.abs(whole-geometry.fadeStep(half,1,16))<1e-12);
+ let alpha=1;for(let i=0;i<50;i++)alpha=geometry.fadeStep(alpha,0,16);assert.equal(alpha,0);
+});
