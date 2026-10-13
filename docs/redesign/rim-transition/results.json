@@ -1,0 +1,330 @@
+[
+  {
+    "language": "he",
+    "direction": "rtl",
+    "count": 131,
+    "width": 360,
+    "scrollWidth": 360,
+    "errors": [],
+    "columns": 1,
+    "font": true,
+    "fontLoaded": true,
+    "minFont": 16,
+    "minTouch": 44,
+    "sizesMatch": true,
+    "visible": 35,
+    "domains": 2,
+    "sphereInitial": {
+      "layout": "true",
+      "fallback": false,
+      "count": 51,
+      "visible": 9,
+      "rotation": "0.150,0.350",
+      "domains": 5
+    },
+    "appearance": {
+      "noHalos": true,
+      "contrast": 6.218628011686809
+    },
+    "categoryDrawer": true,
+    "fadeEvidence": {
+      "maxJump": 0.14807099999999995,
+      "partial": 1435,
+      "unsafe": 0
+    },
+    "name": "360-he",
+    "searchAndCombinedFilters": true,
+    "clearAndEmptyResults": true,
+    "dialogAndEscape": true,
+    "keyboardFocusContained": true,
+    "repeatedNavigation": true,
+    "retiredProvenance": true
+  },
+  {
+    "language": "en",
+    "direction": "ltr",
+    "count": 131,
+    "width": 360,
+    "scrollWidth": 360,
+    "errors": [],
+    "columns": 1,
+    "font": true,
+    "fontLoaded": true,
+    "minFont": 16,
+    "minTouch": 44,
+    "sizesMatch": true,
+    "visible": 35,
+    "domains": 2,
+    "sphereInitial": {
+      "layout": "true",
+      "fallback": false,
+      "count": 51,
+      "visible": 9,
+      "rotation": "0.150,0.350",
+      "domains": 5
+    },
+    "appearance": {
+      "noHalos": true,
+      "contrast": 6.218628011686809
+    },
+    "categoryDrawer": true,
+    "fadeEvidence": {
+      "maxJump": 0.146385,
+      "partial": 1433,
+      "unsafe": 0
+    },
+    "name": "360-en",
+    "searchAndCombinedFilters": true,
+    "clearAndEmptyResults": true,
+    "dialogAndEscape": true,
+    "keyboardFocusContained": true,
+    "repeatedNavigation": true,
+    "retiredProvenance": true
+  },
+  {
+    "language": "he",
+    "direction": "rtl",
+    "count": 131,
+    "width": 390,
+    "scrollWidth": 390,
+    "errors": [],
+    "columns": 1,
+    "font": true,
+    "fontLoaded": true,
+    "minFont": 16,
+    "minTouch": 44,
+    "sizesMatch": true,
+    "visible": 35,
+    "domains": 2,
+    "sphereInitial": {
+      "layout": "true",
+      "fallback": false,
+      "count": 51,
+      "visible": 10,
+      "rotation": "0.150,0.350",
+      "domains": 7
+    },
+    "appearance": {
+      "noHalos": true,
+      "contrast": 6.218628011686809
+    },
+    "categoryDrawer": true,
+    "fadeEvidence": {
+      "maxJump": 0.156335,
+      "partial": 4243,
+      "unsafe": 0
+    },
+    "name": "390-he",
+    "searchAndCombinedFilters": true,
+    "clearAndEmptyResults": true,
+    "dialogAndEscape": true,
+    "keyboardFocusContained": true,
+    "repeatedNavigation": true,
+    "retiredProvenance": true
+  },
+  {
+    "language": "en",
+    "direction": "ltr",
+    "count": 131,
+    "width": 390,
+    "scrollWidth": 390,
+    "errors": [],
+    "columns": 1,
+    "font": true,
+    "fontLoaded": true,
+    "minFont": 16,
+    "minTouch": 44,
+    "sizesMatch": true,
+    "visible": 35,
+    "domains": 2,
+    "sphereInitial": {
+      "layout": "true",
+      "fallback": false,
+      "count": 51,
+      "visible": 10,
+      "rotation": "0.150,0.350",
+      "domains": 7
+    },
+    "appearance": {
+      "noHalos": true,
+      "contrast": 6.218628011686809
+    },
+    "categoryDrawer": true,
+    "fadeEvidence": {
+      "maxJump": 0.15380000000000005,
+      "partial": 4335,
+      "unsafe": 0
+    },
+    "name": "390-en",
+    "searchAndCombinedFilters": true,
+    "clearAndEmptyResults": true,
+    "dialogAndEscape": true,
+    "keyboardFocusContained": true,
+    "repeatedNavigation": true,
+    "retiredProvenance": true
+  },
+  {
+    "language": "he",
+    "direction": "rtl",
+    "count": 131,
+    "width": 768,
+    "scrollWidth": 753,
+    "errors": [],
+    "columns": 1,
+    "font": true,
+    "fontLoaded": true,
+    "minFont": 17,
+    "minTouch": 44,
+    "sizesMatch": true,
+    "visible": 45,
+    "domains": 4,
+    "sphereInitial": {
+      "layout": "true",
+      "fallback": false,
+      "count": 51,
+      "visible": 19,
+      "rotation": "0.150,0.350",
+      "domains": 7
+    },
+    "appearance": {
+      "noHalos": true,
+      "contrast": 6.411370255262491
+    },
+    "categoryDrawer": true,
+    "fadeEvidence": {
+      "maxJump": 0.15277699999999994,
+      "partial": 824,
+      "unsafe": 0
+    },
+    "name": "768-he",
+    "searchAndCombinedFilters": true,
+    "clearAndEmptyResults": true,
+    "dialogAndEscape": true,
+    "keyboardFocusContained": true,
+    "repeatedNavigation": true,
+    "retiredProvenance": true
+  },
+  {
+    "language": "en",
+    "direction": "ltr",
+    "count": 131,
+    "width": 768,
+    "scrollWidth": 753,
+    "errors": [],
+    "columns": 1,
+    "font": true,
+    "fontLoaded": true,
+    "minFont": 17,
+    "minTouch": 44,
+    "sizesMatch": true,
+    "visible": 45,
+    "domains": 4,
+    "sphereInitial": {
+      "layout": "true",
+      "fallback": false,
+      "count": 51,
+      "visible": 19,
+      "rotation": "0.150,0.350",
+      "domains": 7
+    },
+    "appearance": {
+      "noHalos": true,
+      "contrast": 6.411370255262491
+    },
+    "categoryDrawer": true,
+    "fadeEvidence": {
+      "maxJump": 0.1479870000000001,
+      "partial": 809,
+      "unsafe": 0
+    },
+    "name": "768-en",
+    "searchAndCombinedFilters": true,
+    "clearAndEmptyResults": true,
+    "dialogAndEscape": true,
+    "keyboardFocusContained": true,
+    "repeatedNavigation": true,
+    "retiredProvenance": true
+  },
+  {
+    "language": "he",
+    "direction": "rtl",
+    "count": 131,
+    "width": 1440,
+    "scrollWidth": 1425,
+    "errors": [],
+    "columns": 1,
+    "font": true,
+    "fontLoaded": true,
+    "minFont": 17,
+    "minTouch": 44,
+    "sizesMatch": true,
+    "visible": 112,
+    "domains": 7,
+    "sphereInitial": {
+      "layout": "true",
+      "fallback": false,
+      "count": 51,
+      "visible": 21,
+      "rotation": "0.150,0.350",
+      "domains": 7
+    },
+    "appearance": {
+      "noHalos": true,
+      "contrast": 6.218628011686809
+    },
+    "categoryDrawer": true,
+    "fadeEvidence": {
+      "maxJump": 0.26146499999999995,
+      "partial": 2325,
+      "unsafe": 0
+    },
+    "name": "1440-he",
+    "searchAndCombinedFilters": true,
+    "clearAndEmptyResults": true,
+    "dialogAndEscape": true,
+    "keyboardFocusContained": true,
+    "repeatedNavigation": true,
+    "retiredProvenance": true
+  },
+  {
+    "language": "en",
+    "direction": "ltr",
+    "count": 131,
+    "width": 1440,
+    "scrollWidth": 1425,
+    "errors": [],
+    "columns": 1,
+    "font": true,
+    "fontLoaded": true,
+    "minFont": 17,
+    "minTouch": 44,
+    "sizesMatch": true,
+    "visible": 112,
+    "domains": 7,
+    "sphereInitial": {
+      "layout": "true",
+      "fallback": false,
+      "count": 51,
+      "visible": 21,
+      "rotation": "0.150,0.350",
+      "domains": 7
+    },
+    "appearance": {
+      "noHalos": true,
+      "contrast": 6.218628011686809
+    },
+    "categoryDrawer": true,
+    "fadeEvidence": {
+      "maxJump": 0.149358,
+      "partial": 2683,
+      "unsafe": 0
+    },
+    "name": "1440-en",
+    "searchAndCombinedFilters": true,
+    "clearAndEmptyResults": true,
+    "dialogAndEscape": true,
+    "keyboardFocusContained": true,
+    "repeatedNavigation": true,
+    "retiredProvenance": true
+  }
+]

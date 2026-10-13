@@ -78,7 +78,7 @@ test('tooltip renders reviewed content as text and retains language, historical 
 test('reference directory is alphabetical, unranked and searchable by old aliases', () => {
     const {ready, directory} = setup();
     ready[0]();
-    assert.equal(directory.children[0].textContent, 'Reviewed reference · 29 tools');
+    assert.equal(directory.children[0].textContent, 'Reviewed reference · 31 tools');
     const search = directory.children.find(node => node.tag === 'label').children[0];
     search.value = 'Weavy'; search.events.input();
     const list = directory.children.find(node => node.tag === 'div');
@@ -180,7 +180,7 @@ test('Hebrew toggle refreshes reference labels and keeps the search and Hebrew d
     context.window.catalogMetadata.refresh();
     assert.equal(directory.lang, 'he');
     assert.equal(directory.dir, 'rtl');
-    assert.equal(directory.children[0].textContent, 'מידע שנבדק · 29 כלים');
+    assert.equal(directory.children[0].textContent, 'מידע שנבדק · 31 כלים');
     assert.equal(directory.querySelector('input').value, 'Weavy');
     assert.equal(directory.querySelector('input').placeholder, 'שם, ספק או תיאור');
     const list = directory.children.find(node => node.tag === 'div');
@@ -204,8 +204,8 @@ test('the actual language control switches to Hebrew on its first click and back
     cloud.setupLanguageToggle();
     controls.children[0].onclick();
     assert.equal(cloud.currentLanguage, 'he');
-    assert.equal(directory.children[0].textContent, 'מידע שנבדק · 29 כלים');
+    assert.equal(directory.children[0].textContent, 'מידע שנבדק · 31 כלים');
     controls.children[0].onclick();
     assert.equal(cloud.currentLanguage, 'en');
-    assert.equal(directory.children[0].textContent, 'Reviewed reference · 29 tools');
+    assert.equal(directory.children[0].textContent, 'Reviewed reference · 31 tools');
 });

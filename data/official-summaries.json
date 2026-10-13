@@ -1,0 +1,130 @@
+{
+  "ai-001": {
+    "en": "Executes tasks and automates workflows through an AI agent.",
+    "he": "סוכן AI לביצוע משימות ולאוטומציה של תהליכי עבודה.",
+    "source": "https://manus.im/",
+    "checkedAt": "2026-10-12",
+    "kind": "official-homepage-summary",
+    "observedDescription": "Manus is the action engine that goes beyond answers to execute tasks, automate workflows, and extend your human reach."
+  },
+  "ai-002": {
+    "en": "Build apps and websites from a description, without writing code.",
+    "he": "יצירת אפליקציות ואתרים מתוך תיאור, בלי לכתוב קוד.",
+    "source": "https://base44.com/",
+    "checkedAt": "2026-10-12",
+    "kind": "official-homepage-summary",
+    "observedDescription": "Base44 is a no-code AI development platform that turns builders’ ideas into fully functional apps and websites — no coding required."
+  },
+  "ai-004": {
+    "en": "Create websites and applications by describing what you want to build.",
+    "he": "יצירת אתרים ואפליקציות באמצעות תיאור של מה שרוצים לבנות.",
+    "source": "https://bolt.new",
+    "checkedAt": "2026-10-12",
+    "kind": "official-homepage-summary",
+    "observedDescription": "Build and scale high-performing websites & apps using your words. Join millions and start building today."
+  },
+  "ai-005": {
+    "en": "Create, edit and remix images with natural-language instructions and a visual editor.",
+    "he": "יצירה, עריכה ושילוב מחדש של תמונות באמצעות הנחיות מילוליות ועורך חזותי.",
+    "source": "https://app.reve.com/",
+    "checkedAt": "2026-10-12",
+    "kind": "official-homepage-summary",
+    "observedDescription": "Reve: Reimagine reality. Create, edit, and remix images. Combine natural-language edits with a drag-and-drop image editor."
+  },
+  "ai-007": {
+    "en": "An AI coding environment with agents that take on development tasks.",
+    "he": "סביבת פיתוח עם סוכני AI שמבצעים משימות כתיבת קוד.",
+    "source": "https://cursor.com",
+    "checkedAt": "2026-10-12",
+    "kind": "official-homepage-summary",
+    "observedDescription": "Built to make you extraordinarily productive, agents turn ideas into code. Accelerate development by handing off tasks to Cursor."
+  },
+  "ai-008": {
+    "en": "Turn a description into an app or website in a hosted development environment.",
+    "he": "הפיכת תיאור לאפליקציה או לאתר בסביבת פיתוח מקוונת.",
+    "source": "https://replit.com",
+    "checkedAt": "2026-10-12",
+    "kind": "official-homepage-summary",
+    "observedDescription": "Describe what you want. Replit builds it. Get a working app or website in minutes. No coding required."
+  },
+  "ai-009": {
+    "en": "Ask questions, write, create images and work with code in one conversational workspace.",
+    "he": "שאלות, כתיבה, יצירת תמונות ועבודה עם קוד בסביבת שיחה אחת.",
+    "source": "https://chatgpt.com/",
+    "checkedAt": "2026-10-12",
+    "kind": "official-homepage-summary",
+    "observedDescription": "Use ChatGPT to answer questions, write, create images, complete work, and code—all in one place. Get started for free or download the app."
+  },
+  "ai-010": {
+    "en": "AI models available through a conversational assistant and an API.",
+    "he": "מודלי AI הזמינים דרך עוזר שיחה ו־API.",
+    "source": "https://www.deepseek.com/",
+    "checkedAt": "2026-10-12",
+    "kind": "official-homepage-summary",
+    "observedDescription": "深度求索（DeepSeek），探索未至之境。专注于研究世界领先的通用人工智能底层模型与技术，开源 DeepSeek-V4、DeepSeek-R1 等前沿大模型。和 DeepSeek AI 对话，轻松接入 API。"
+  },
+  "ai-013": {
+    "en": "An AI answer engine for asking questions and exploring information.",
+    "he": "מנוע תשובות מבוסס AI לשאלות ולחקירת מידע.",
+    "source": "https://www.perplexity.ai/",
+    "checkedAt": "2026-10-12",
+    "kind": "official-homepage-summary",
+    "observedDescription": "Perplexity is a free AI-powered answer engine that provides accurate, trusted, and real-time answers to any question."
+  },
+  "ai-021": {
+    "en": "Create videos and images from text or photos, with tools for visual and social content.",
+    "he": "יצירת וידאו ותמונות מטקסט או מתמונות, עם כלים לתוכן חזותי ולרשתות חברתיות.",
+    "source": "https://hailuoai.video/",
+    "checkedAt": "2026-10-12",
+    "kind": "official-homepage-summary",
+    "observedDescription": "Create AI videos and images from text or photos with Hailuo AI. Explore video, image, and meme tools built for creators and social content online."
+  },
+  "ai-039": {
+    "en": "AI creative tools for visual content, design teams and marketing production.",
+    "he": "כלי יצירה מבוססי AI לתוכן חזותי, לצוותי עיצוב ולהפקות שיווק.",
+    "source": "https://leonardo.ai/",
+    "checkedAt": "2026-10-12",
+    "kind": "official-homepage-summary",
+    "observedDescription": "Scale campaigns and content production with Leonardo for Teams. AI creative tools for marketing and design leaders to deliver more, faster."
+  },
+  "ai-058": {
+    "en": "A research assistant for summarizing information and working with notes.",
+    "he": "עוזר מחקר לסיכום מידע ולעבודה עם הערות.",
+    "source": "https://notebook.google.com/",
+    "checkedAt": "2026-10-12",
+    "kind": "official-homepage-summary",
+    "observedDescription": "Use the power of AI for quick summarization and note taking, Gemini Notebook is your powerful virtual research assistant rooted in information you can trust."
+  },
+  "ai-069": {
+    "en": "An open-source speech-recognition model from OpenAI.",
+    "he": "מודל זיהוי דיבור בקוד פתוח של OpenAI.",
+    "source": "https://github.com/openai/whisper",
+    "checkedAt": "2026-10-12",
+    "kind": "official-homepage-summary",
+    "observedDescription": "Robust Speech Recognition via Large-Scale Weak Supervision - openai/whisper"
+  },
+  "ai-076": {
+    "en": "AI video generation and production, with research into interactive visual worlds.",
+    "he": "יצירה והפקה של וידאו באמצעות AI, לצד מחקר בעולמות חזותיים אינטראקטיביים.",
+    "source": "https://pixverse.ai/en",
+    "checkedAt": "2026-10-12",
+    "kind": "official-homepage-summary",
+    "observedDescription": "Proprietary AI research in video generation and production, extended into real-time worlds and interactive entertainment."
+  },
+  "ai-108": {
+    "en": "Generate 3D models from text or images and export them in common 3D formats.",
+    "he": "יצירת מודלים תלת־ממדיים מטקסט או מתמונות וייצוא לפורמטים נפוצים.",
+    "source": "https://www.meshy.ai/",
+    "checkedAt": "2026-10-12",
+    "kind": "official-homepage-summary",
+    "observedDescription": "Meshy's AI 3D model generator turns text and images into production-ready 3D models in 20-30 seconds. Export to FBX, OBJ, GLB, and STL formats. Try Meshy free."
+  },
+  "ai-114": {
+    "en": "A shared workspace connecting design, code and AI from initial concept to production.",
+    "he": "סביבת עבודה משותפת המחברת עיצוב, קוד ו־AI משלב הרעיון ועד להפקה.",
+    "source": "https://www.figma.com/",
+    "checkedAt": "2026-10-12",
+    "kind": "official-homepage-summary",
+    "observedDescription": "Figma is the canvas where design, code, and AI come together. From first idea to shipped product — go from concept to production with your whole team, in one place."
+  }
+}
