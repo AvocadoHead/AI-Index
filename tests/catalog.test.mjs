@@ -43,7 +43,7 @@ test('custom edits and unknown imported records do not inherit official evidence
 test('descriptions use reviewed local Hebrew or an honest fallback without fetching', async () => {
     const {context} = setup();
     const get = context.ModuleCloud.prototype.getModuleDescription;
-    assert.match(await get.call({currentLanguage:'en'}, getOriginal(context, 'Manus')), /awaiting official-source verification/);
+    assert.match(await get.call({currentLanguage:'en'}, getOriginal(context, 'Haiper')), /awaiting official-source verification/);
     assert.match(await get.call({currentLanguage:'en'}, {name:'Custom'}), /awaiting official-source verification/);
     const original = getOriginal(context, 'Nano Banana Pro');
     assert.equal(await get.call({currentLanguage:'he'}, original), context.window.catalogMetadata.get(original).description);
@@ -65,7 +65,7 @@ test('tooltip renders reviewed content as text and retains language, historical 
     cloud.tooltip = new Element('div'); cloud.currentLanguage = 'en';
     await cloud.showTooltip(getOriginal(context, 'Nano Banana Pro'), 10, 20);
     await Promise.resolve();
-    assert.equal(cloud.tooltip.querySelector('.module-name').textContent, 'Gemini · Nano Banana');
+    assert.equal(cloud.tooltip.querySelector('.module-name').textContent, 'Nano Banana');
     assert.equal(cloud.tooltip.querySelector('.description').lang, 'he');
     assert.equal(cloud.tooltip.querySelector('.description').dir, 'rtl');
     assert.ok(cloud.tooltip.querySelector('.catalog-facts').children.some(node => node.textContent?.includes('not verified benchmarks')));
@@ -78,7 +78,7 @@ test('tooltip renders reviewed content as text and retains language, historical 
 test('reference directory is alphabetical, unranked and searchable by old aliases', () => {
     const {ready, directory} = setup();
     ready[0]();
-    assert.equal(directory.children[0].textContent, 'Reviewed reference · 31 tools');
+    assert.equal(directory.children[0].textContent, 'Reviewed reference · 154 tools');
     const search = directory.children.find(node => node.tag === 'label').children[0];
     search.value = 'Weavy'; search.events.input();
     const list = directory.children.find(node => node.tag === 'div');
@@ -141,7 +141,7 @@ test('validator rejects duplicate IDs, unsupported facts, unsafe sources and leg
         const original = JSON.parse(fs.readFileSync('data/catalog.json', 'utf8'));
         for (const mutate of [
             data => { data.records[1].id = data.records[0].id; },
-            data => { data.records[0].status = 'active'; },
+            data => { data.records[0].verifiedAt = null; },
             data => { data.records.find(record => record.sources.length).sources[0].url = 'javascript:alert(1)'; },
             data => { data.records[0].recommendation = 'Best tool'; }
         ]) {
@@ -180,7 +180,7 @@ test('Hebrew toggle refreshes reference labels and keeps the search and Hebrew d
     context.window.catalogMetadata.refresh();
     assert.equal(directory.lang, 'he');
     assert.equal(directory.dir, 'rtl');
-    assert.equal(directory.children[0].textContent, 'מידע שנבדק · 31 כלים');
+    assert.equal(directory.children[0].textContent, 'מידע שנבדק · 154 כלים');
     assert.equal(directory.querySelector('input').value, 'Weavy');
     assert.equal(directory.querySelector('input').placeholder, 'שם, ספק או תיאור');
     const list = directory.children.find(node => node.tag === 'div');
@@ -204,8 +204,8 @@ test('the actual language control switches to Hebrew on its first click and back
     cloud.setupLanguageToggle();
     controls.children[0].onclick();
     assert.equal(cloud.currentLanguage, 'he');
-    assert.equal(directory.children[0].textContent, 'מידע שנבדק · 31 כלים');
+    assert.equal(directory.children[0].textContent, 'מידע שנבדק · 154 כלים');
     controls.children[0].onclick();
     assert.equal(cloud.currentLanguage, 'en');
-    assert.equal(directory.children[0].textContent, 'Reviewed reference · 31 tools');
+    assert.equal(directory.children[0].textContent, 'Reviewed reference · 154 tools');
 });

@@ -6,120 +6,153 @@ window.aiCatalog = {
       "id": "ai-001",
       "researchId": null,
       "legacyName": "Manus",
-      "entityType": "unknown",
+      "entityType": "platform",
       "vendor": null,
-      "product": null,
+      "product": "Manus",
       "name": "Manus",
-      "officialUrl": null,
-      "description": null,
-      "descriptionLanguage": null,
-      "status": "uncertain",
-      "verifiedAt": null,
-      "sources": [],
+      "officialUrl": "https://manus.im/",
+      "description": "סוכן לביצוע משימות מחקר ויצירה, בניית אתרים ומצגות ואוטומציה של עבודה בכלים מחוברים.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://manus.im/",
+          "checkedAt": "2026-10-13"
+        }
+      ],
       "modelObservations": [],
       "limitations": [],
-      "uncertainties": [
-        "Awaiting official-source verification."
-      ],
+      "uncertainties": [],
       "recommendation": null,
       "aliases": [],
-      "capabilities": [],
+      "capabilities": [
+        "automation",
+        "research",
+        "web-apps",
+        "presentations"
+      ],
       "identityNote": null
     },
     {
       "id": "ai-002",
       "researchId": null,
       "legacyName": "Base44",
-      "entityType": "unknown",
+      "entityType": "platform",
       "vendor": null,
-      "product": null,
+      "product": "Base44",
       "name": "Base44",
-      "officialUrl": null,
-      "description": null,
-      "descriptionLanguage": null,
-      "status": "uncertain",
-      "verifiedAt": null,
-      "sources": [],
+      "officialUrl": "https://base44.com/",
+      "description": "בניית אפליקציות ואתרים מתיאור מילולי, עם בסיס נתונים, התחברות משתמשים ואחסון מובנים.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://base44.com/",
+          "checkedAt": "2026-10-13"
+        }
+      ],
       "modelObservations": [],
       "limitations": [],
-      "uncertainties": [
-        "Awaiting official-source verification."
-      ],
+      "uncertainties": [],
       "recommendation": null,
       "aliases": [],
-      "capabilities": [],
+      "capabilities": [
+        "web-apps",
+        "code-assisted-creation"
+      ],
       "identityNote": null
     },
     {
       "id": "ai-003",
       "researchId": null,
       "legacyName": "Lovable",
-      "entityType": "unknown",
+      "entityType": "platform",
       "vendor": null,
-      "product": null,
+      "product": "Lovable",
       "name": "Lovable",
-      "officialUrl": null,
-      "description": null,
-      "descriptionLanguage": null,
-      "status": "uncertain",
-      "verifiedAt": null,
-      "sources": [],
+      "officialUrl": "https://lovable.dev/",
+      "description": "סביבת בנייה לאפליקציות ואתרים באמצעות שיחה, עם עריכת עיצוב, חיבור שירותים ופרסום.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://lovable.dev/",
+          "checkedAt": "2026-10-13"
+        }
+      ],
       "modelObservations": [],
       "limitations": [],
-      "uncertainties": [
-        "Awaiting official-source verification."
-      ],
+      "uncertainties": [],
       "recommendation": null,
       "aliases": [],
-      "capabilities": [],
+      "capabilities": [
+        "web-apps",
+        "ui-design"
+      ],
       "identityNote": null
     },
     {
       "id": "ai-004",
       "researchId": null,
       "legacyName": "Bolt.new",
-      "entityType": "unknown",
+      "entityType": "platform",
       "vendor": null,
-      "product": null,
-      "name": "Bolt.new",
-      "officialUrl": null,
-      "description": null,
-      "descriptionLanguage": null,
-      "status": "uncertain",
-      "verifiedAt": null,
-      "sources": [],
+      "product": "Bolt",
+      "name": "Bolt",
+      "officialUrl": "https://bolt.new/",
+      "description": "בניית אתרים ואפליקציות בשיחה, עם קוד ניתן לעריכה ושירותי אחסון, נתונים והתחברות משתמשים.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://bolt.new/",
+          "checkedAt": "2026-10-13"
+        }
+      ],
       "modelObservations": [],
       "limitations": [],
-      "uncertainties": [
-        "Awaiting official-source verification."
-      ],
+      "uncertainties": [],
       "recommendation": null,
-      "aliases": [],
-      "capabilities": [],
+      "aliases": [
+        "Bolt.new"
+      ],
+      "capabilities": [
+        "web-apps",
+        "ui-design"
+      ],
       "identityNote": null
     },
     {
       "id": "ai-005",
       "researchId": null,
       "legacyName": "Reve",
-      "entityType": "unknown",
+      "entityType": "product",
       "vendor": null,
-      "product": null,
+      "product": "Reve",
       "name": "Reve",
-      "officialUrl": null,
-      "description": null,
-      "descriptionLanguage": null,
-      "status": "uncertain",
-      "verifiedAt": null,
-      "sources": [],
+      "officialUrl": "https://help.reve.com/hc/en-us/articles/53569023228180-Downloading-Your-Reve-Assets",
+      "description": "שירות היצירה של Reve הופסק בספטמבר 2026. ניתן להוריד יצירות קיימות עד 31 באוקטובר 2026.",
+      "descriptionLanguage": "he",
+      "status": "retired",
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://help.reve.com/hc/en-us/articles/53569023228180-Downloading-Your-Reve-Assets",
+          "checkedAt": "2026-10-13"
+        }
+      ],
       "modelObservations": [],
       "limitations": [],
-      "uncertainties": [
-        "Awaiting official-source verification."
-      ],
+      "uncertainties": [],
       "recommendation": null,
       "aliases": [],
-      "capabilities": [],
+      "capabilities": [
+        "image-generation"
+      ],
       "identityNote": null
     },
     {
@@ -128,17 +161,17 @@ window.aiCatalog = {
       "legacyName": "Nano Banana Pro",
       "entityType": "model-family",
       "vendor": "Google",
-      "product": "Gemini image generation",
-      "name": "Gemini · Nano Banana",
+      "product": "Nano Banana",
+      "name": "Nano Banana",
       "officialUrl": "https://gemini.google/overview/image-generation/",
-      "description": "יצירה ועריכה של תמונות בשיחה, כולל שילוב תמונות ושינויים בתאורה, בקומפוזיציה ובפרטים.",
+      "description": "משפחת מודלי תמונה של Google ליצירה ולעריכה בשיחה, לשילוב רפרנסים ולתיקונים ממוקדים.",
       "descriptionLanguage": "he",
       "status": "active",
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-13",
       "sources": [
         {
           "url": "https://gemini.google/overview/image-generation/",
-          "checkedAt": "2026-10-12"
+          "checkedAt": "2026-10-13"
         },
         {
           "url": "https://helpx.adobe.com/creative-cloud/apps/generative-ai/non-adobe-models-in-adobe-products.html",
@@ -151,50 +184,35 @@ window.aiCatalog = {
         {
           "url": "https://deepmind.google/models/model-cards/nano-banana-2-1/",
           "checkedAt": "2026-10-12"
+        },
+        {
+          "url": "https://ai.google.dev/gemini-api/docs/models/gemini-nano-banana-2.1",
+          "checkedAt": "2026-10-13"
         }
       ],
       "modelObservations": [
         {
           "name": "Nano Banana 2.1",
           "vendor": "Google",
-          "observedAt": "2026-10-12",
-          "note": "gemini-nano-banana-2.1; כרטיס המודל מתאריך 2026-10-06 מציין Gemini 3.6 Flash."
+          "observedAt": "2026-10-13",
+          "note": "Official model ID: gemini-nano-banana-2.1; official indexed documentation checked."
         },
         {
-          "name": "Nano Banana",
+          "name": "Nano Banana 2.5",
           "vendor": "Google",
-          "observedAt": "2026-10-12",
-          "note": "Gemini 2.5 Flash Image — זהו שם הדור המקורי, לא Nano Banana 2.5."
+          "observedAt": "2026-10-13",
+          "note": "Dated Google Cloud marketing label; public API mapping unresolved."
         },
         {
           "name": "Nano Banana Pro",
           "vendor": "Google",
-          "observedAt": "2026-10-12",
-          "note": "Gemini 3 Pro Image"
-        },
-        {
-          "name": "Nano Banana 2",
-          "vendor": "Google",
-          "observedAt": "2026-10-12",
-          "note": "Gemini 3.1 Flash Image"
-        },
-        {
-          "name": "Nano Banana 2 Lite",
-          "vendor": "Google",
-          "observedAt": "2026-10-12",
-          "note": "Gemini 3.1 Flash Lite Image"
+          "observedAt": "2026-10-13",
+          "note": "Observed on the current consumer product page."
         }
       ],
-      "limitations": [
-        "גישה למודלים מתקדמים תלויה בתוכנית ובזמינות במדינה.",
-        "יש לבדוק ידנית טקסט, פרטי מוצר ועקביות בין תמונות."
-      ],
+      "limitations": [],
       "uncertainties": [
-        "לא נבדקה איכות עברית בתמונה.",
-        "אין להסיק שכינוי המודל זהה למזהה API; מיפוי Nano Banana 2.1 ל-API לא אומת.",
-        "Model names are observations from the listed official sources; they are not API identifiers or independently tested capabilities.",
-        "The original cloud label names a model/version; this reference describes its product or model family. Original categories and scores are historical.",
-        "יש לקשר ל-Google Gemini. banana.dev הוא ספק תשתית נפרד, ללא זיהוי כמודל Nano Banana."
+        "Nano Banana 2.5 is an observed marketing label, not a verified API mapping."
       ],
       "recommendation": null,
       "aliases": [
@@ -203,321 +221,405 @@ window.aiCatalog = {
         "Nano Banana 2"
       ],
       "capabilities": [
-        "image-generation",
-        "image-editing"
+        "image-generation"
       ],
-      "identityNote": "Nano Banana היא משפחת מודלים ליצירת תמונות של Google. הציונים המקוריים ברשומה התייחסו לקטגוריות פיתוח ולקישור banana.dev שאינו זהות המשפחה; הם נשמרים רק לתיעוד ואינם קובעים את גודל התווית."
+      "identityNote": null
     },
     {
       "id": "ai-007",
       "researchId": null,
       "legacyName": "Cursor",
-      "entityType": "unknown",
+      "entityType": "platform",
       "vendor": null,
-      "product": null,
+      "product": "Cursor",
       "name": "Cursor",
-      "officialUrl": null,
-      "description": null,
-      "descriptionLanguage": null,
-      "status": "uncertain",
-      "verifiedAt": null,
-      "sources": [],
+      "officialUrl": "https://cursor.com/",
+      "description": "סביבת פיתוח וסוכני קוד לתכנון, כתיבה, בדיקה וסקירת שינויים בפרויקטי תוכנה.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://cursor.com/",
+          "checkedAt": "2026-10-13"
+        }
+      ],
       "modelObservations": [],
       "limitations": [],
-      "uncertainties": [
-        "Awaiting official-source verification."
-      ],
+      "uncertainties": [],
       "recommendation": null,
       "aliases": [],
-      "capabilities": [],
+      "capabilities": [
+        "developer-workflow",
+        "code-assisted-creation"
+      ],
       "identityNote": null
     },
     {
       "id": "ai-008",
       "researchId": null,
       "legacyName": "Replit Agent",
-      "entityType": "unknown",
+      "entityType": "platform",
       "vendor": null,
-      "product": null,
+      "product": "Replit Agent",
       "name": "Replit Agent",
-      "officialUrl": null,
-      "description": null,
-      "descriptionLanguage": null,
-      "status": "uncertain",
-      "verifiedAt": null,
-      "sources": [],
+      "officialUrl": "https://replit.com/products/agent",
+      "description": "סוכן בסביבת Replit שבונה ומשנה אפליקציות מתוך שיחה, כולל בדיקות והכנה לפרסום.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://replit.com/products/agent",
+          "checkedAt": "2026-10-13"
+        }
+      ],
       "modelObservations": [],
       "limitations": [],
-      "uncertainties": [
-        "Awaiting official-source verification."
-      ],
+      "uncertainties": [],
       "recommendation": null,
       "aliases": [],
-      "capabilities": [],
+      "capabilities": [
+        "web-apps",
+        "developer-workflow"
+      ],
       "identityNote": null
     },
     {
       "id": "ai-009",
       "researchId": null,
       "legacyName": "ChatGPT (GPT-5.2)",
-      "entityType": "unknown",
+      "entityType": "product",
       "vendor": null,
-      "product": null,
-      "name": "ChatGPT (GPT-5.2)",
-      "officialUrl": null,
-      "description": null,
-      "descriptionLanguage": null,
+      "product": "ChatGPT · GPT-5.2",
+      "name": "ChatGPT · GPT-5.2",
+      "officialUrl": "https://help.openai.com/en/articles/6825453-chatgpt-release-notes",
+      "description": "רשומה היסטורית של ChatGPT עם GPT‑5.2. הדור הוסר מ־ChatGPT; מודל GPT‑5.2 עדיין מתועד בנפרד ב־API.",
+      "descriptionLanguage": "he",
       "status": "uncertain",
-      "verifiedAt": null,
-      "sources": [],
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://help.openai.com/en/articles/6825453-chatgpt-release-notes",
+          "checkedAt": "2026-10-13"
+        }
+      ],
       "modelObservations": [],
       "limitations": [],
-      "uncertainties": [
-        "Awaiting official-source verification."
-      ],
+      "uncertainties": [],
       "recommendation": null,
-      "aliases": [],
-      "capabilities": [],
+      "aliases": [
+        "ChatGPT (GPT-5.2)"
+      ],
+      "capabilities": [
+        "writing-assistance"
+      ],
       "identityNote": null
     },
     {
       "id": "ai-010",
       "researchId": null,
       "legacyName": "DeepThink (DeepSeek R1)",
-      "entityType": "unknown",
+      "entityType": "model-family",
       "vendor": null,
-      "product": null,
-      "name": "DeepThink (DeepSeek R1)",
-      "officialUrl": null,
-      "description": null,
-      "descriptionLanguage": null,
+      "product": "DeepSeek-R1",
+      "name": "DeepSeek-R1",
+      "officialUrl": "https://github.com/deepseek-ai/DeepSeek-R1",
+      "description": "משפחת מודלי חשיבה של DeepSeek שפורסמה במשקלים זמינים להורדה; נשמרת כאן כדור היסטורי.",
+      "descriptionLanguage": "he",
       "status": "uncertain",
-      "verifiedAt": null,
-      "sources": [],
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://github.com/deepseek-ai/DeepSeek-R1",
+          "checkedAt": "2026-10-13"
+        }
+      ],
       "modelObservations": [],
       "limitations": [],
-      "uncertainties": [
-        "Awaiting official-source verification."
-      ],
+      "uncertainties": [],
       "recommendation": null,
-      "aliases": [],
-      "capabilities": [],
+      "aliases": [
+        "DeepThink (DeepSeek R1)"
+      ],
+      "capabilities": [
+        "writing-assistance"
+      ],
       "identityNote": null
     },
     {
       "id": "ai-011",
       "researchId": null,
       "legacyName": "Anthropic Claude 3.5 Sonnet",
-      "entityType": "unknown",
+      "entityType": "model-family",
       "vendor": null,
-      "product": null,
-      "name": "Anthropic Claude 3.5 Sonnet",
-      "officialUrl": null,
-      "description": null,
-      "descriptionLanguage": null,
-      "status": "uncertain",
-      "verifiedAt": null,
-      "sources": [],
+      "product": "Claude 3.5 Sonnet",
+      "name": "Claude 3.5 Sonnet",
+      "officialUrl": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
+      "description": "דור קודם של מודל Claude לכתיבה ולתכנות. השירות הרשמי של Anthropic הפסיק אותו ב־28 באוקטובר 2025.",
+      "descriptionLanguage": "he",
+      "status": "retired",
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
+          "checkedAt": "2026-10-13"
+        }
+      ],
       "modelObservations": [],
       "limitations": [],
-      "uncertainties": [
-        "Awaiting official-source verification."
-      ],
+      "uncertainties": [],
       "recommendation": null,
-      "aliases": [],
-      "capabilities": [],
+      "aliases": [
+        "Anthropic Claude 3.5 Sonnet"
+      ],
+      "capabilities": [
+        "writing-assistance"
+      ],
       "identityNote": null
     },
     {
       "id": "ai-012",
       "researchId": null,
       "legacyName": "Google Gemini 2.0 Flash",
-      "entityType": "unknown",
+      "entityType": "model-family",
       "vendor": null,
-      "product": null,
-      "name": "Google Gemini 2.0 Flash",
-      "officialUrl": null,
-      "description": null,
-      "descriptionLanguage": null,
-      "status": "uncertain",
-      "verifiedAt": null,
-      "sources": [],
+      "product": "Gemini 2.0 Flash",
+      "name": "Gemini 2.0 Flash",
+      "officialUrl": "https://ai.google.dev/gemini-api/docs/deprecations",
+      "description": "דור קודם של מודל Gemini לעבודה עם טקסט וקלטים מרובים. נקודות ה־API שלו נסגרו ב־1 ביוני 2026.",
+      "descriptionLanguage": "he",
+      "status": "retired",
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://ai.google.dev/gemini-api/docs/deprecations",
+          "checkedAt": "2026-10-13"
+        }
+      ],
       "modelObservations": [],
       "limitations": [],
-      "uncertainties": [
-        "Awaiting official-source verification."
-      ],
+      "uncertainties": [],
       "recommendation": null,
-      "aliases": [],
-      "capabilities": [],
+      "aliases": [
+        "Google Gemini 2.0 Flash"
+      ],
+      "capabilities": [
+        "writing-assistance"
+      ],
       "identityNote": null
     },
     {
       "id": "ai-013",
       "researchId": null,
       "legacyName": "Perplexity Pro",
-      "entityType": "unknown",
+      "entityType": "product",
       "vendor": null,
-      "product": null,
+      "product": "Perplexity Pro",
       "name": "Perplexity Pro",
-      "officialUrl": null,
-      "description": null,
-      "descriptionLanguage": null,
-      "status": "uncertain",
-      "verifiedAt": null,
-      "sources": [],
+      "officialUrl": "https://www.perplexity.ai/help-center/en/articles/10352901-what-is-perplexity-pro",
+      "description": "תוכנית בתשלום של Perplexity לחיפוש ולמחקר עם מקורות, ניתוח קבצים וגישה מורחבת לכלי יצירה.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://www.perplexity.ai/help-center/en/articles/10352901-what-is-perplexity-pro",
+          "checkedAt": "2026-10-13"
+        }
+      ],
       "modelObservations": [],
       "limitations": [],
-      "uncertainties": [
-        "Awaiting official-source verification."
-      ],
+      "uncertainties": [],
       "recommendation": null,
       "aliases": [],
-      "capabilities": [],
+      "capabilities": [
+        "research",
+        "web-search",
+        "file-analysis"
+      ],
       "identityNote": null
     },
     {
       "id": "ai-014",
       "researchId": null,
       "legacyName": "Groq",
-      "entityType": "unknown",
+      "entityType": "platform",
       "vendor": null,
-      "product": null,
+      "product": "Groq",
       "name": "Groq",
-      "officialUrl": null,
-      "description": null,
-      "descriptionLanguage": null,
-      "status": "uncertain",
-      "verifiedAt": null,
-      "sources": [],
+      "officialUrl": "https://groq.com/platform",
+      "description": "תשתית ענן להפעלת מודלי AI דרך API, לשילוב יכולות מודלים במוצרים וביישומים.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://groq.com/platform",
+          "checkedAt": "2026-10-13"
+        }
+      ],
       "modelObservations": [],
       "limitations": [],
-      "uncertainties": [
-        "Awaiting official-source verification."
-      ],
+      "uncertainties": [],
       "recommendation": null,
       "aliases": [],
-      "capabilities": [],
+      "capabilities": [
+        "inference",
+        "developer-workflow"
+      ],
       "identityNote": null
     },
     {
       "id": "ai-015",
       "researchId": null,
       "legacyName": "Mistral",
-      "entityType": "unknown",
+      "entityType": "platform",
       "vendor": null,
-      "product": null,
-      "name": "Mistral",
-      "officialUrl": null,
-      "description": null,
-      "descriptionLanguage": null,
-      "status": "uncertain",
-      "verifiedAt": null,
-      "sources": [],
+      "product": "Mistral AI",
+      "name": "Mistral AI",
+      "officialUrl": "https://mistral.ai/",
+      "description": "ספקית מודלי AI וכלי פיתוח, עם שירותי API, התאמת מודלים ואפשרויות פריסה בענן או בתשתית הארגון.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://mistral.ai/",
+          "checkedAt": "2026-10-13"
+        }
+      ],
       "modelObservations": [],
       "limitations": [],
-      "uncertainties": [
-        "Awaiting official-source verification."
-      ],
+      "uncertainties": [],
       "recommendation": null,
-      "aliases": [],
-      "capabilities": [],
+      "aliases": [
+        "Mistral"
+      ],
+      "capabilities": [
+        "model-platform",
+        "developer-workflow"
+      ],
       "identityNote": null
     },
     {
       "id": "ai-016",
       "researchId": null,
       "legacyName": "LLaMA 3.1",
-      "entityType": "unknown",
+      "entityType": "model-family",
       "vendor": null,
-      "product": null,
-      "name": "LLaMA 3.1",
-      "officialUrl": null,
-      "description": null,
-      "descriptionLanguage": null,
+      "product": "Llama 3.1",
+      "name": "Llama 3.1",
+      "officialUrl": "https://huggingface.co/meta-llama/Llama-3.1-8B-Instruct",
+      "description": "דור של מודלי שפה של Meta משנת 2024, הזמין להורדה ולהרצה בכפוף לרישיון Llama.",
+      "descriptionLanguage": "he",
       "status": "uncertain",
-      "verifiedAt": null,
-      "sources": [],
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://huggingface.co/meta-llama/Llama-3.1-8B-Instruct",
+          "checkedAt": "2026-10-13"
+        }
+      ],
       "modelObservations": [],
       "limitations": [],
-      "uncertainties": [
-        "Awaiting official-source verification."
-      ],
+      "uncertainties": [],
       "recommendation": null,
-      "aliases": [],
-      "capabilities": [],
+      "aliases": [
+        "LLaMA 3.1"
+      ],
+      "capabilities": [
+        "writing-assistance"
+      ],
       "identityNote": null
     },
     {
       "id": "ai-017",
       "researchId": null,
       "legacyName": "Sora 2",
-      "entityType": "unknown",
+      "entityType": "product",
       "vendor": null,
-      "product": null,
+      "product": "Sora 2",
       "name": "Sora 2",
-      "officialUrl": null,
-      "description": null,
-      "descriptionLanguage": null,
-      "status": "uncertain",
-      "verifiedAt": null,
-      "sources": [],
+      "officialUrl": "https://help.openai.com/en/articles/20001152-what-to-know-about-the-sora-discontinuation",
+      "description": "שירות יצירת הווידאו של OpenAI שהופסק. הרשומה נשמרת לעיון היסטורי.",
+      "descriptionLanguage": "he",
+      "status": "retired",
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://help.openai.com/en/articles/20001152-what-to-know-about-the-sora-discontinuation",
+          "checkedAt": "2026-10-13"
+        }
+      ],
       "modelObservations": [],
       "limitations": [],
-      "uncertainties": [
-        "Awaiting official-source verification."
-      ],
+      "uncertainties": [],
       "recommendation": null,
       "aliases": [],
-      "capabilities": [],
+      "capabilities": [
+        "video-generation"
+      ],
       "identityNote": null
     },
     {
       "id": "ai-018",
       "researchId": null,
       "legacyName": "Veo3",
-      "entityType": "unknown",
+      "entityType": "model-family",
       "vendor": null,
-      "product": null,
-      "name": "Veo3",
-      "officialUrl": null,
-      "description": null,
-      "descriptionLanguage": null,
+      "product": "Veo 3",
+      "name": "Veo 3",
+      "officialUrl": "https://deepmind.google/models/veo/",
+      "description": "דור של מודל הווידאו של Google ליצירת קטעים מטקסט או מתמונה עם אודיו מסונכרן.",
+      "descriptionLanguage": "he",
       "status": "uncertain",
-      "verifiedAt": null,
-      "sources": [],
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://deepmind.google/models/veo/",
+          "checkedAt": "2026-10-13"
+        }
+      ],
       "modelObservations": [],
       "limitations": [],
-      "uncertainties": [
-        "Awaiting official-source verification."
-      ],
+      "uncertainties": [],
       "recommendation": null,
-      "aliases": [],
-      "capabilities": [],
+      "aliases": [
+        "Veo3"
+      ],
+      "capabilities": [
+        "video-generation"
+      ],
       "identityNote": null
     },
     {
       "id": "ai-019",
       "researchId": null,
       "legacyName": "Wan 2.1",
-      "entityType": "unknown",
+      "entityType": "model-family",
       "vendor": null,
-      "product": null,
+      "product": "Wan 2.1",
       "name": "Wan 2.1",
-      "officialUrl": null,
-      "description": null,
-      "descriptionLanguage": null,
-      "status": "uncertain",
-      "verifiedAt": null,
-      "sources": [],
+      "officialUrl": "https://github.com/Wan-Video/Wan2.1",
+      "description": "מודלים פתוחים מ־2025 ליצירה ולעריכת וידאו, עם גרסאות לטקסט, לתמונות ולפריימים מנחים להרצה עצמית.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://github.com/Wan-Video/Wan2.1",
+          "checkedAt": "2026-10-13"
+        }
+      ],
       "modelObservations": [],
       "limitations": [],
-      "uncertainties": [
-        "Awaiting official-source verification."
-      ],
+      "uncertainties": [],
       "recommendation": null,
       "aliases": [],
-      "capabilities": [],
+      "capabilities": [
+        "video-generation"
+      ],
       "identityNote": null
     },
     {
@@ -526,17 +628,17 @@ window.aiCatalog = {
       "legacyName": "Runway Gen-3 Alpha",
       "entityType": "platform",
       "vendor": "Runway AI, Inc.",
-      "product": "Runway Creative",
+      "product": "Runway",
       "name": "Runway",
       "officialUrl": "https://runway.com/product",
-      "description": "סביבת יצירה שמשלבת יצירת וידאו, עריכת חומר קיים והנפשת דמויות. Gen-4.5 יוצר מטקסט או מתמונה; Aleph 2.0 עורך וידאו; Act-Two מעביר ביצוע מצולם לדמות.",
+      "description": "סביבת יצירה לווידאו, תמונות ואודיו, עם מודלים של Runway ושותפים, עריכת שוטים, העברת ביצוע לדמות ותהליכים חוזרים.",
       "descriptionLanguage": "he",
       "status": "active",
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-13",
       "sources": [
         {
           "url": "https://runway.com/product",
-          "checkedAt": "2026-10-12"
+          "checkedAt": "2026-10-13"
         },
         {
           "url": "https://help.runwayml.com/hc/en-us/articles/46974685288467-Creating-with-Gen-4-5",
@@ -571,52 +673,53 @@ window.aiCatalog = {
           "note": "שם מאומת בתיעוד; היכולות והזמינות תלויות במצב ההפעלה."
         }
       ],
-      "limitations": [
-        "Gen-4.5 מתועד לקטעים של 2–10 שניות ב-720p ולמסלול Standard ומעלה.",
-        "Aleph 2.0 מתועד לעריכת קטעים עד 30 שניות ב-1080p; אין להשליך מגבלה זו על כל מודלי הפלטפורמה.",
-        "כל יצירה עשויה לדרוש ניסיונות נוספים; העלות והקלטים משתנים לפי המודל והיישום."
-      ],
-      "uncertainties": [
-        "לא בוצע מבחן איכות, מהירות או עקביות עצמאי.",
-        "איכות דיאלוג בעברית ותנאי שימוש לפרויקט מסוים לא נבדקו.",
-        "Model names are observations from the listed official sources; they are not API identifiers or independently tested capabilities.",
-        "The original cloud label names a model/version; this reference describes its product or model family. Original categories and scores are historical."
-      ],
+      "limitations": [],
+      "uncertainties": [],
       "recommendation": null,
       "aliases": [
         "RunwayML",
         "Runway Creative",
-        "https://runwayml.com/"
+        "https://runwayml.com/",
+        "Runway Gen-3 Alpha"
       ],
       "capabilities": [
+        "workflow-platform",
         "video-generation",
+        "image-generation",
         "video-editing",
         "character-animation"
       ],
-      "identityNote": "Runway הוא הספק והפלטפורמה; Gen-4.5, Aleph 2.0 ו-Act-Two הם כלים או מודלים בעלי תפקידים שונים. הפלטפורמה כוללת גם מודלים מספקים אחרים."
+      "identityNote": null
     },
     {
       "id": "ai-021",
       "researchId": null,
       "legacyName": "Hailuo MiniMax",
-      "entityType": "unknown",
+      "entityType": "platform",
       "vendor": null,
-      "product": null,
-      "name": "Hailuo MiniMax",
-      "officialUrl": null,
-      "description": null,
-      "descriptionLanguage": null,
-      "status": "uncertain",
-      "verifiedAt": null,
-      "sources": [],
+      "product": "Hailuo AI",
+      "name": "Hailuo AI",
+      "officialUrl": "https://hailuoai.video/",
+      "description": "יצירת וידאו עם אודיו מטקסט, תמונות, וידאו ואודיו כקלטי ייחוס. MiniMax H3 מאפשר ניסויים ב־768p והפקה ב־2K.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://www.minimax.io/blog/minimax-h3",
+          "checkedAt": "2026-10-13"
+        }
+      ],
       "modelObservations": [],
       "limitations": [],
-      "uncertainties": [
-        "Awaiting official-source verification."
-      ],
+      "uncertainties": [],
       "recommendation": null,
-      "aliases": [],
-      "capabilities": [],
+      "aliases": [
+        "Hailuo MiniMax"
+      ],
+      "capabilities": [
+        "video-generation"
+      ],
       "identityNote": null
     },
     {
@@ -628,14 +731,14 @@ window.aiCatalog = {
       "product": "Kling AI",
       "name": "Kling AI",
       "officialUrl": "https://klingai.com/",
-      "description": "כלי ליצירת וידאו מטקסט, מתמונות ומרפרנסים ולעריכה מונחית. הודעות החברה מתעדות את סדרת Kling 3.0 עם יצירת אודיו, שליטה בשוטים וקטעים של עד 15 שניות, ובהמשך את 3.0 Turbo.",
+      "description": "יצירת וידאו ותמונות עם רפרנסים, אודיו מקורי, שליטה בשוטים ועריכה; היכולות משתנות לפי הדגם והמסלול.",
       "descriptionLanguage": "he",
       "status": "active",
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-13",
       "sources": [
         {
           "url": "https://ir.kuaishou.com/news-releases/news-release-details/kling-ai-launches-30-model-ushering-era-where-everyone-can-be",
-          "checkedAt": "2026-10-12"
+          "checkedAt": "2026-10-13"
         },
         {
           "url": "https://ir.kuaishou.com/news-releases/news-release-details/kuaishou-technology-announces-second-quarter-and-interim-2026",
@@ -662,24 +765,14 @@ window.aiCatalog = {
           "note": "שם מאומת בתיעוד; היכולות והזמינות תלויות במצב ההפעלה."
         }
       ],
-      "limitations": [
-        "אתר Kling עצמו חסום לכלי המחקר ב-robots.txt; היכולות אומתו דרך הודעות הספק Kuaishou, ולא דרך הממשק.",
-        "החברה דיווחה על פלט 4K מקורי בסדרת 3.0, אך לא אומתו זמינותו לפי מסלול, מדינה או תת-מודל.",
-        "רשימת השפות בהכרזת 3.0 אינה מאמתת תמיכה בעברית."
-      ],
-      "uncertainties": [
-        "מחירים, מכסות, זמינות אזורית והפעלת 4K בחשבון לא אומתו.",
-        "לא בוצעה בדיקת איכות או סנכרון אודיו-וידאו.",
-        "Model names are observations from the listed official sources; they are not API identifiers or independently tested capabilities."
-      ],
+      "limitations": [],
+      "uncertainties": [],
       "recommendation": null,
       "aliases": [],
       "capabilities": [
-        "video-generation",
-        "character-animation",
-        "native-audio-video"
+        "video-generation"
       ],
-      "identityNote": "Kuaishou היא החברה; Kling AI הוא המוצר; Video 3.0, Video 3.0 Omni ו-3.0 Turbo הם שמות שונים שיש לשמר. Image 3.0 שייך לתמונות ולא לרשומת יכולות הווידאו."
+      "identityNote": null
     },
     {
       "id": "ai-023",
@@ -687,13 +780,13 @@ window.aiCatalog = {
       "legacyName": "Luma Dream Machine",
       "entityType": "platform",
       "vendor": "Luma",
-      "product": "Luma App",
-      "name": "Luma / Dream Machine",
-      "officialUrl": "https://lumalabs.ai/app",
-      "description": "סביבת היצירה של Luma, המוכרת גם בשם Dream Machine. מודל Ray3.2 מתועד עם יצירה ועריכת וידאו, עד 16 פריימי מפתח, העברת תנועה, שינוי פריים וייצוא HDR ו-EXR לתהליכי פוסט.",
+      "product": "Luma",
+      "name": "Luma",
+      "officialUrl": "https://app.lumalabs.ai/dream-machine",
+      "description": "סביבת יצירה לתמונה ולווידאו, עם סוכנים לתכנון ולהפקה, שינוי וידאו, פריימים מנחים והעברת תנועה.",
       "descriptionLanguage": "he",
       "status": "active",
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-13",
       "sources": [
         {
           "url": "https://lumalabs.ai/app",
@@ -705,7 +798,7 @@ window.aiCatalog = {
         },
         {
           "url": "https://lumalabs.ai/ray",
-          "checkedAt": "2026-10-12"
+          "checkedAt": "2026-10-13"
         },
         {
           "url": "https://lumalabs.ai/api",
@@ -720,29 +813,22 @@ window.aiCatalog = {
           "note": "שם מאומת בתיעוד; היכולות והזמינות תלויות במצב ההפעלה."
         }
       ],
-      "limitations": [
-        "המספר עד 20 שניות ב-1080p מאומת לזרימת Video-to-Video; אין להחילו אוטומטית על כל מצב יצירה.",
-        "דפי Ray3 ו-Ray3.14 ישנים עדיין מופיעים בחיפוש; המגבלות שלהם אינן תיאור מלא של Ray3.2.",
-        "פתיחה ישירה של חלק מדפי Luma נכשלה בגלל סוג תוכן text/markdown; האימות מבוסס על תוכן רשמי מאונדקס."
-      ],
-      "uncertainties": [
-        "מצב ההעברה המדויק של כל חשבון Dream Machine למוצר הנוכחי לא נבדק.",
-        "הפקת אודיו מקורי ב-Ray3.2 לא אומתה; אין לסמן תמיכה כזו.",
-        "לא נבדקו עקביות הדמויות או שימור ליפסינק בפועל.",
-        "Model names are observations from the listed official sources; they are not API identifiers or independently tested capabilities."
-      ],
+      "limitations": [],
+      "uncertainties": [],
       "recommendation": null,
       "aliases": [
         "Luma AI",
         "Dream Machine",
-        "Luma App"
+        "Luma App",
+        "Luma Dream Machine"
       ],
       "capabilities": [
+        "workflow-platform",
         "video-generation",
         "video-editing",
-        "vfx"
+        "image-generation"
       ],
-      "identityNote": "Luma היא החברה; Dream Machine הוא שם המוצר הוותיק; אתר החברה מציג כיום Luma App. Ray3.2 הוא מודל הווידאו. אין לכנות את Dream Machine גרסת מודל או לאחד את Ray3.14 עם Ray3.2."
+      "identityNote": null
     },
     {
       "id": "ai-024",
@@ -752,11 +838,11 @@ window.aiCatalog = {
       "vendor": "Pika",
       "product": "Pika",
       "name": "Pika",
-      "officialUrl": "https://pika.art/",
-      "description": "פלטפורמת יצירה לווידאו, תמונות וסאונד. Pika 2.5 יוצר קטעים מטקסט, מתמונה או מרצף של 2–5 פריימי מפתח; Pika Soundtrack מוסיף פסקול לווידאו קיים.",
+      "officialUrl": "https://create.pika.art/apps/pika-2-5",
+      "description": "יצירת וידאו מטקסט, מתמונה או מפריימים מנחים. מודל Pika 2.5 מפיק וידאו ללא קול; ניתן להוסיף אודיו בנפרד.",
       "descriptionLanguage": "he",
       "status": "active",
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-13",
       "sources": [
         {
           "url": "https://pika.art/",
@@ -764,7 +850,7 @@ window.aiCatalog = {
         },
         {
           "url": "https://create.pika.art/apps/pika-2-5",
-          "checkedAt": "2026-10-12"
+          "checkedAt": "2026-10-13"
         }
       ],
       "modelObservations": [
@@ -776,23 +862,17 @@ window.aiCatalog = {
         }
       ],
       "limitations": [
-        "Pika 2.5 מחזיר וידאו ללא קול; אין לבלבל אותו עם כלי האודיו הנפרדים בפלטפורמה.",
-        "טקסט בלבד יוצר 5 שניות; תמונה מאפשרת 5 או 10 שניות. משך רצף פריימים נקבע לפי המעברים.",
-        "רצף בן 5 פריימי מפתח מוגבל ל-720p, גם כשהמודל תומך ב-1080p במצבים אחרים."
+        "Pika 2.5 renders silent video; soundtrack is a separate step."
       ],
-      "uncertainties": [
-        "מכסות, זמני המתנה ותמחור לפי החשבון לא נבדקו.",
-        "לא בוצע מבחן תוצאה מול כלים אחרים.",
-        "Model names are observations from the listed official sources; they are not API identifiers or independently tested capabilities."
-      ],
+      "uncertainties": [],
       "recommendation": null,
-      "aliases": [],
-      "capabilities": [
-        "video-generation",
-        "image-to-video",
-        "animation"
+      "aliases": [
+        "Pika Labs"
       ],
-      "identityNote": "Pika הוא המוצר והמותג; Pika 2.5 הוא מודל של Pika. הפלטפורמה מציגה גם Seedance, MiniMax ומודלים של ספקים אחרים, שאינם מודלי Pika."
+      "capabilities": [
+        "video-generation"
+      ],
+      "identityNote": null
     },
     {
       "id": "ai-025",
@@ -822,120 +902,154 @@ window.aiCatalog = {
       "id": "ai-026",
       "researchId": null,
       "legacyName": "Kaiber",
-      "entityType": "unknown",
+      "entityType": "platform",
       "vendor": null,
-      "product": null,
+      "product": "Kaiber",
       "name": "Kaiber",
-      "officialUrl": null,
-      "description": null,
-      "descriptionLanguage": null,
-      "status": "uncertain",
-      "verifiedAt": null,
-      "sources": [],
+      "officialUrl": "https://kaiber.ai/",
+      "description": "סביבת יצירה עם Canvas לחיבור מודלים, Beat Sync להתאמת קטעים למוזיקה ועורך להרכבה ולגימור.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://kaiber.ai/",
+          "checkedAt": "2026-10-13"
+        }
+      ],
       "modelObservations": [],
       "limitations": [],
-      "uncertainties": [
-        "Awaiting official-source verification."
-      ],
+      "uncertainties": [],
       "recommendation": null,
       "aliases": [],
-      "capabilities": [],
+      "capabilities": [
+        "workflow-platform",
+        "video-generation",
+        "video-editing",
+        "image-generation"
+      ],
       "identityNote": null
     },
     {
       "id": "ai-027",
       "researchId": null,
       "legacyName": "Synthesia",
-      "entityType": "unknown",
+      "entityType": "product",
       "vendor": null,
-      "product": null,
+      "product": "Synthesia",
       "name": "Synthesia",
-      "officialUrl": null,
-      "description": null,
-      "descriptionLanguage": null,
-      "status": "uncertain",
-      "verifiedAt": null,
-      "sources": [],
+      "officialUrl": "https://www.synthesia.io/",
+      "description": "סרטוני הדרכה והסברה עם מגישים דיגיטליים, המרת תסריטים ומסמכים לווידאו, תרגום ודיבוב.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://www.synthesia.io/",
+          "checkedAt": "2026-10-13"
+        }
+      ],
       "modelObservations": [],
       "limitations": [],
-      "uncertainties": [
-        "Awaiting official-source verification."
-      ],
+      "uncertainties": [],
       "recommendation": null,
       "aliases": [],
-      "capabilities": [],
+      "capabilities": [
+        "video-generation"
+      ],
       "identityNote": null
     },
     {
       "id": "ai-028",
       "researchId": null,
       "legacyName": "Stable Video",
-      "entityType": "unknown",
+      "entityType": "product",
       "vendor": null,
-      "product": null,
+      "product": "Stable Video",
       "name": "Stable Video",
-      "officialUrl": null,
-      "description": null,
-      "descriptionLanguage": null,
+      "officialUrl": "https://www.stablevideo.com/",
+      "description": "קישור שירות הווידאו ההיסטורי מפנה כיום למודל Stable Video Diffusion להרצה עצמית.",
+      "descriptionLanguage": "he",
       "status": "uncertain",
-      "verifiedAt": null,
-      "sources": [],
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://www.stablevideo.com/",
+          "checkedAt": "2026-10-13"
+        }
+      ],
       "modelObservations": [],
       "limitations": [],
-      "uncertainties": [
-        "Awaiting official-source verification."
-      ],
+      "uncertainties": [],
       "recommendation": null,
       "aliases": [],
-      "capabilities": [],
+      "capabilities": [
+        "video-generation"
+      ],
       "identityNote": null
     },
     {
       "id": "ai-029",
       "researchId": null,
       "legacyName": "Kaps",
-      "entityType": "unknown",
-      "vendor": null,
-      "product": null,
+      "entityType": "product",
+      "vendor": "Kaps",
+      "product": "Kaps",
       "name": "Kaps",
-      "officialUrl": null,
-      "description": null,
-      "descriptionLanguage": null,
-      "status": "uncertain",
-      "verifiedAt": null,
-      "sources": [],
+      "officialUrl": "https://kaps.co.il/",
+      "description": "תוספים לכתוביות בעברית ולתמלול בתוך Premiere Pro, DaVinci Resolve ו־After Effects, לצד כלי חיתוך ותוכן קצר.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://kaps.co.il/",
+          "checkedAt": "2026-10-13"
+        }
+      ],
       "modelObservations": [],
       "limitations": [],
-      "uncertainties": [
-        "Awaiting official-source verification."
-      ],
+      "uncertainties": [],
       "recommendation": null,
-      "aliases": [],
-      "capabilities": [],
+      "aliases": [
+        "קאפס"
+      ],
+      "capabilities": [
+        "video-editing",
+        "transcription",
+        "subtitles"
+      ],
       "identityNote": null
     },
     {
       "id": "ai-030",
       "researchId": null,
       "legacyName": "Veed.io",
-      "entityType": "unknown",
+      "entityType": "product",
       "vendor": null,
-      "product": null,
-      "name": "Veed.io",
-      "officialUrl": null,
-      "description": null,
-      "descriptionLanguage": null,
-      "status": "uncertain",
-      "verifiedAt": null,
-      "sources": [],
+      "product": "VEED",
+      "name": "VEED",
+      "officialUrl": "https://www.veed.io/",
+      "description": "עורך וידאו מקוון לקליפים, כתוביות, תמלול, תרגום ודיבוב, עם אווטארים וכלי יצירה מבוססי AI.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://www.veed.io/",
+          "checkedAt": "2026-10-13"
+        }
+      ],
       "modelObservations": [],
       "limitations": [],
-      "uncertainties": [
-        "Awaiting official-source verification."
-      ],
+      "uncertainties": [],
       "recommendation": null,
-      "aliases": [],
-      "capabilities": [],
+      "aliases": [
+        "Veed.io"
+      ],
+      "capabilities": [
+        "video-generation"
+      ],
       "identityNote": null
     },
     {
@@ -944,13 +1058,13 @@ window.aiCatalog = {
       "legacyName": "Flux.1 Pro",
       "entityType": "model-family",
       "vendor": "Black Forest Labs",
-      "product": "BFL Playground / API",
-      "name": "FLUX · Black Forest Labs",
+      "product": "FLUX",
+      "name": "FLUX",
       "officialUrl": "https://bfl.ai/",
-      "description": "משפחת מודלים ליצירה ועריכה, עם Playground, API ואפשרויות אירוח עצמי לפי המודל והרישיון.",
+      "description": "משפחת מודלים ליצירת תמונות ווידאו ולעריכה בעזרת טקסט ורפרנסים; FLUX 3 כולל גם קול ותהליך מטיוטה לפלט מלא.",
       "descriptionLanguage": "he",
       "status": "active",
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-13",
       "sources": [
         {
           "url": "https://bfl.ai/",
@@ -959,6 +1073,10 @@ window.aiCatalog = {
         {
           "url": "https://docs.bfl.ai/quick_start/introduction",
           "checkedAt": "2026-10-12"
+        },
+        {
+          "url": "https://bfl.ai/models/flux-3-video",
+          "checkedAt": "2026-10-13"
         }
       ],
       "modelObservations": [
@@ -981,25 +1099,20 @@ window.aiCatalog = {
           "note": "משפחה נפרדת שמופיעה בתיעוד; אין להציג אותה כברירת המחדל היחידה."
         }
       ],
-      "limitations": [
-        "משקולות זמינות ותנאי שימוש אינם אחידים לכל מודל; יש לבדוק רישיון ספציפי.",
-        "API, אירוח עצמי ופלטפורמות צד שלישי הם מסלולי שימוש שונים."
-      ],
-      "uncertainties": [
-        "לא נבדקה גישה לכל גרסה בחשבון בפועל.",
-        "לא נבדקו דרישות חומרה או רישיון לכל משקל פתוח.",
-        "Model names are observations from the listed official sources; they are not API identifiers or independently tested capabilities.",
-        "The original cloud label names a model/version; this reference describes its product or model family. Original categories and scores are historical."
-      ],
+      "limitations": [],
+      "uncertainties": [],
       "recommendation": null,
-      "aliases": [],
+      "aliases": [
+        "Flux.1 Pro"
+      ],
       "capabilities": [
         "image-generation",
         "image-editing",
         "video-generation",
-        "developer-workflow"
+        "video-editing",
+        "native-audio-video"
       ],
-      "identityNote": "יש להפריד בין הספק, המוצר ושמות המודלים שבשדה modelObservations; גרסת מודל אינה מזהה הרשומה."
+      "identityNote": null
     },
     {
       "id": "ai-032",
@@ -1010,14 +1123,14 @@ window.aiCatalog = {
       "product": "Midjourney",
       "name": "Midjourney",
       "officialUrl": "https://www.midjourney.com/",
-      "description": "סביבת יצירה לפיתוח שפה חזותית, לוחות השראה ועריכת תמונות באמצעות רפרנסים והנחיות.",
+      "description": "סביבת יצירה ועריכה חזותית עם רפרנסים, סגנונות ולוחות השראה, לפיתוח כיוונים גרפיים ותמונות.",
       "descriptionLanguage": "he",
       "status": "active",
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-13",
       "sources": [
         {
           "url": "https://docs.midjourney.com/hc/en-us/articles/32199405667853-Version",
-          "checkedAt": "2026-10-12"
+          "checkedAt": "2026-10-13"
         },
         {
           "url": "https://docs.midjourney.com/hc/en-us/articles/32859204029709-Parameter-List",
@@ -1042,42 +1155,34 @@ window.aiCatalog = {
           "note": "עריכה ושילוב רפרנסים ב-V8; מחליף שם את Omni Reference, Character Reference ו-Retexture."
         }
       ],
-      "limitations": [
-        "יצירות עשויות להיות פומביות כברירת מחדל; Stealth מוגבל לתוכניות Pro ו-Mega.",
-        "גם עם Stealth, יצירה בערוץ Discord משותף נראית למשתתפים."
-      ],
-      "uncertainties": [
-        "לא נבדקה איכות עברית או נאמנות מוצר במבחן עצמאי.",
-        "תאימות פרמטרים תלויה בגרסת המודל.",
-        "Model names are observations from the listed official sources; they are not API identifiers or independently tested capabilities.",
-        "The original cloud label names a model/version; this reference describes its product or model family. Original categories and scores are historical."
-      ],
+      "limitations": [],
+      "uncertainties": [],
       "recommendation": null,
-      "aliases": [],
-      "capabilities": [
-        "image-generation",
-        "image-editing",
-        "art-direction"
+      "aliases": [
+        "Midjourney v6.1"
       ],
-      "identityNote": "יש להפריד בין הספק, המוצר ושמות המודלים שבשדה modelObservations; גרסת מודל אינה מזהה הרשומה."
+      "capabilities": [
+        "image-generation"
+      ],
+      "identityNote": null
     },
     {
       "id": "ai-033",
       "researchId": "recraft",
       "legacyName": "Recraft.ai v3",
-      "entityType": "platform",
+      "entityType": "product",
       "vendor": "Recraft",
-      "product": "Recraft Studio",
+      "product": "Recraft",
       "name": "Recraft",
       "officialUrl": "https://www.recraft.ai/",
-      "description": "יצירת תמונות ונכסים וקטוריים עם עריכה, סגנונות ופעולות הכנה לשימוש בעיצוב.",
+      "description": "יצירת תמונות, איורים וגרפיקה וקטורית, עם שליטה בסגנון, עריכה והכנת נכסים לעיצוב.",
       "descriptionLanguage": "he",
       "status": "active",
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-13",
       "sources": [
         {
           "url": "https://www.recraft.ai/",
-          "checkedAt": "2026-10-12"
+          "checkedAt": "2026-10-13"
         },
         {
           "url": "https://www.recraft.ai/pricing",
@@ -1092,42 +1197,40 @@ window.aiCatalog = {
           "note": "מוצג בדף הבית; Studio הוא המוצר, V4.1 הוא דור מודל."
         }
       ],
-      "limitations": [
-        "לפי תנאי התוכנית, פלט במסלול החינמי פומבי ואינו מורשה לשימוש מסחרי.",
-        "יש לבדוק ניקיון נתיבים, צבעים וטיפוגרפיה לפני מסירה."
-      ],
-      "uncertainties": [
-        "לא נבדק קובץ SVG בפועל.",
-        "המודל המתאים ביותר לכל סגנון לא נבחן השוואתית.",
-        "Model names are observations from the listed official sources; they are not API identifiers or independently tested capabilities.",
-        "The original cloud label names a model/version; this reference describes its product or model family. Original categories and scores are historical."
-      ],
+      "limitations": [],
+      "uncertainties": [],
       "recommendation": null,
-      "aliases": [],
+      "aliases": [
+        "Recraft.ai v3"
+      ],
       "capabilities": [
         "image-generation",
-        "vector-design",
-        "image-editing"
+        "image-editing",
+        "vector-design"
       ],
-      "identityNote": "יש להפריד בין הספק, המוצר ושמות המודלים שבשדה modelObservations; גרסת מודל אינה מזהה הרשומה."
+      "identityNote": null
     },
     {
       "id": "ai-034",
       "researchId": "ideogram",
       "legacyName": "Ideogram 2.0",
-      "entityType": "platform",
+      "entityType": "product",
       "vendor": "Ideogram",
-      "product": "Ideogram Creative",
+      "product": "Ideogram",
       "name": "Ideogram",
       "officialUrl": "https://ideogram.ai/",
-      "description": "סביבת יצירה ועריכה עם דגש על תמונות המשלבות טקסט, לצד כלים ממוקדים להתאמת נכסים.",
+      "description": "יצירה ועריכה של תמונות ועיצובים עם טקסט, כולל חילוץ טקסט לשכבות עריכות ושינוי רקע, צבעים ופורמט.",
       "descriptionLanguage": "he",
       "status": "active",
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-13",
       "sources": [
         {
           "url": "https://ideogram.ai/",
           "checkedAt": "2026-10-12"
+        },
+        {
+          "url": "https://ideogram.ai/features/text-layers/",
+          "checkedAt": "2026-10-13"
         }
       ],
       "modelObservations": [
@@ -1138,47 +1241,49 @@ window.aiCatalog = {
           "note": "מודלים המוצגים באתר בזמן הבדיקה; נפרדים ממוצר Creative ומה-API."
         }
       ],
-      "limitations": [
-        "טקסט שנוצר בתמונה עדיין דורש הגהה.",
-        "יצירה פרטית ועבודה צוותית תלויות בתוכנית; יש לבדוק את תנאי המודל הנבחר."
-      ],
-      "uncertainties": [
-        "לא נערך מבחן טיפוגרפיה בעברית.",
-        "המסלול והרישיון המדויקים לשימוש מקומי במשקולות לא נבדקו.",
-        "Model names are observations from the listed official sources; they are not API identifiers or independently tested capabilities.",
-        "The original cloud label names a model/version; this reference describes its product or model family. Original categories and scores are historical."
-      ],
+      "limitations": [],
+      "uncertainties": [],
       "recommendation": null,
-      "aliases": [],
+      "aliases": [
+        "Ideogram 2.0"
+      ],
       "capabilities": [
         "image-generation",
         "image-editing",
-        "typography"
+        "typography",
+        "background-removal"
       ],
-      "identityNote": "יש להפריד בין הספק, המוצר ושמות המודלים שבשדה modelObservations; גרסת מודל אינה מזהה הרשומה."
+      "identityNote": null
     },
     {
       "id": "ai-035",
       "researchId": null,
       "legacyName": "DALL-E 3",
-      "entityType": "unknown",
+      "entityType": "model-family",
       "vendor": null,
-      "product": null,
-      "name": "DALL-E 3",
-      "officialUrl": null,
-      "description": null,
-      "descriptionLanguage": null,
-      "status": "uncertain",
-      "verifiedAt": null,
-      "sources": [],
+      "product": "DALL·E 3",
+      "name": "DALL·E 3",
+      "officialUrl": "https://developers.openai.com/api/docs/deprecations",
+      "description": "מודל תמונה היסטורי של OpenAI. ה־API שלו הוסר במאי 2026; ChatGPT Images מופיע בנפרד.",
+      "descriptionLanguage": "he",
+      "status": "retired",
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://developers.openai.com/api/docs/deprecations",
+          "checkedAt": "2026-10-13"
+        }
+      ],
       "modelObservations": [],
       "limitations": [],
-      "uncertainties": [
-        "Awaiting official-source verification."
-      ],
+      "uncertainties": [],
       "recommendation": null,
-      "aliases": [],
-      "capabilities": [],
+      "aliases": [
+        "DALL-E 3"
+      ],
+      "capabilities": [
+        "image-generation"
+      ],
       "identityNote": null
     },
     {
@@ -1187,17 +1292,17 @@ window.aiCatalog = {
       "legacyName": "Krea.ai",
       "entityType": "platform",
       "vendor": "Krea",
-      "product": "Krea Creative Suite",
+      "product": "Krea",
       "name": "Krea",
       "officialUrl": "https://www.krea.ai/",
-      "description": "סביבת ניסוי חזותי בזמן אמת, יצירה ועריכה במספר מודלים, הגדלה ואימון התאמות חזותיות.",
+      "description": "סביבת יצירה מרובת מודלים לתמונה, וידאו ותלת־ממד, עם ניסוי בזמן אמת, הגדלה ותהליכים מבוססי צמתים.",
       "descriptionLanguage": "he",
       "status": "active",
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-13",
       "sources": [
         {
           "url": "https://www.krea.ai/",
-          "checkedAt": "2026-10-12"
+          "checkedAt": "2026-10-13"
         },
         {
           "url": "https://www.krea.ai/docs/",
@@ -1218,39 +1323,34 @@ window.aiCatalog = {
           "note": "Krea מארחת גם מודלי תמונה, וידאו והגדלה מספקים אחרים."
         }
       ],
-      "limitations": [
-        "מכסת compute והגישה לווידאו, אימון והגדלה משתנות בין תוכניות.",
-        "תכונות ותנאים עשויים להשתנות בין המודלים המאוחסנים."
-      ],
-      "uncertainties": [
-        "לא נבדקה תאימות workflow לייצוא חזרה לתוכנות העריכה של המשתמש.",
-        "טענות מהירות ומספרי מודלים באתר לא נבחנו עצמאית.",
-        "Model names are observations from the listed official sources; they are not API identifiers or independently tested capabilities."
-      ],
+      "limitations": [],
+      "uncertainties": [],
       "recommendation": null,
-      "aliases": [],
-      "capabilities": [
-        "image-generation",
-        "image-editing",
-        "video-generation",
-        "upscaling",
-        "realtime"
+      "aliases": [
+        "Krea.ai"
       ],
-      "identityNote": "יש להפריד בין הספק, המוצר ושמות המודלים שבשדה modelObservations; גרסת מודל אינה מזהה הרשומה."
+      "capabilities": [
+        "workflow-platform",
+        "image-generation",
+        "video-generation",
+        "3D",
+        "upscaling"
+      ],
+      "identityNote": null
     },
     {
       "id": "ai-037",
       "researchId": "magnific",
       "legacyName": "Magnific.ai",
-      "entityType": "platform",
+      "entityType": "product",
       "vendor": "Magnific",
-      "product": "Magnific",
-      "name": "Magnific",
-      "officialUrl": "https://www.magnific.com/",
-      "description": "פלטפורמת יצירה רחבה המשלבת מודלים וכלי מדיה. כלי ההגדלה המקוריים של Magnific.ai הם חלק מההיצע; הציונים הישנים שייכים להם בלבד.",
+      "product": "Magnific Upscalers",
+      "name": "Magnific Upscalers",
+      "officialUrl": "https://www.magnific.com/ai/docs/video-upscaler",
+      "description": "הגדלת תמונות ווידאו ושיפור פרטים. בווידאו ניתן להגדיל פלט נבחר עד 4K במצבי Precision או Creative.",
       "descriptionLanguage": "he",
       "status": "active",
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-13",
       "sources": [
         {
           "url": "https://www.magnific.com/magnific-ai",
@@ -1259,75 +1359,92 @@ window.aiCatalog = {
         {
           "url": "https://www.magnific.com/ai/docs/unlimited-models",
           "checkedAt": "2026-10-12"
+        },
+        {
+          "url": "https://www.magnific.com/ai/docs/video-upscaler",
+          "checkedAt": "2026-10-13"
         }
       ],
       "modelObservations": [],
-      "limitations": [
-        "תיאורי היצרן אינם מבחן ביצועים עצמאי."
-      ],
-      "uncertainties": [
-        "היצע המודלים והגישה אליהם תלויים בתוכנית ובמועד."
-      ],
+      "limitations": [],
+      "uncertainties": [],
       "recommendation": null,
       "aliases": [
         "Magnific.ai",
         "Freepik"
       ],
       "capabilities": [
-        "workflow-platform",
-        "image-generation",
-        "image-editing",
-        "video-generation",
-        "upscaling"
+        "image-enhancement",
+        "upscaling",
+        "video-enhancement"
       ],
-      "identityNote": "הפלטפורמה הרחבה, לשעבר Freepik, נבדלת מחבילת כלי ההגדלה המקורית Magnific.ai. אין להחיל את הציון ההיסטורי של כלי ההגדלה על הפלטפורמה כולה."
+      "identityNote": null
     },
     {
       "id": "ai-038",
       "researchId": null,
       "legacyName": "Fooocus",
-      "entityType": "unknown",
+      "entityType": "product",
       "vendor": null,
-      "product": null,
+      "product": "Fooocus",
       "name": "Fooocus",
-      "officialUrl": null,
-      "description": null,
-      "descriptionLanguage": null,
-      "status": "uncertain",
-      "verifiedAt": null,
-      "sources": [],
-      "modelObservations": [],
-      "limitations": [],
-      "uncertainties": [
-        "Awaiting official-source verification."
+      "officialUrl": "https://github.com/lllyasviel/Fooocus",
+      "description": "ממשק מקומי בקוד פתוח ליצירת תמונות עם SDXL, עריכה והגדלה. הפרויקט בתחזוקה מוגבלת לתיקוני תקלות.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://github.com/lllyasviel/Fooocus",
+          "checkedAt": "2026-10-13"
+        }
       ],
+      "modelObservations": [],
+      "limitations": [
+        "Limited long-term support: bug fixes for the SDXL application."
+      ],
+      "uncertainties": [],
       "recommendation": null,
       "aliases": [],
-      "capabilities": [],
+      "capabilities": [
+        "image-generation",
+        "image-editing",
+        "upscaling"
+      ],
       "identityNote": null
     },
     {
       "id": "ai-039",
       "researchId": null,
       "legacyName": "Leonardo.ai",
-      "entityType": "unknown",
+      "entityType": "platform",
       "vendor": null,
-      "product": null,
-      "name": "Leonardo.ai",
-      "officialUrl": null,
-      "description": null,
-      "descriptionLanguage": null,
-      "status": "uncertain",
-      "verifiedAt": null,
-      "sources": [],
+      "product": "Leonardo.Ai",
+      "name": "Leonardo.Ai",
+      "officialUrl": "https://leonardo.ai/",
+      "description": "סביבת יצירה לתמונות, וידאו ונכסים שיווקיים, עם מודלים פנימיים ומודלי שותפים וכלי עריכה.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://leonardo.ai/",
+          "checkedAt": "2026-10-13"
+        }
+      ],
       "modelObservations": [],
       "limitations": [],
-      "uncertainties": [
-        "Awaiting official-source verification."
-      ],
+      "uncertainties": [],
       "recommendation": null,
-      "aliases": [],
-      "capabilities": [],
+      "aliases": [
+        "Leonardo.ai"
+      ],
+      "capabilities": [
+        "workflow-platform",
+        "image-generation",
+        "image-editing",
+        "video-generation"
+      ],
       "identityNote": null
     },
     {
@@ -1336,17 +1453,17 @@ window.aiCatalog = {
       "legacyName": "Adobe Firefly",
       "entityType": "platform",
       "vendor": "Adobe",
-      "product": "Firefly",
+      "product": "Adobe Firefly",
       "name": "Adobe Firefly",
       "officialUrl": "https://www.adobe.com/products/firefly.html",
-      "description": "סביבת יצירה משולבת עם מודלים של Adobe ושל ספקים נוספים, עריכת תמונה ווידאו ולוחות רעיונות משותפים.",
+      "description": "סביבת יצירה לתמונה ולווידאו, עם מודלי Adobe ומודלי שותפים, עריכה, לוחות רעיונות ותהליכים חזותיים.",
       "descriptionLanguage": "he",
       "status": "active",
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-13",
       "sources": [
         {
           "url": "https://www.adobe.com/products/firefly.html",
-          "checkedAt": "2026-10-12"
+          "checkedAt": "2026-10-13"
         },
         {
           "url": "https://helpx.adobe.com/creative-cloud/apps/generative-ai/non-adobe-models-in-adobe-products.html",
@@ -1375,288 +1492,367 @@ window.aiCatalog = {
           "note": "בחירה במודלים חיצוניים; קטלוג המודלים תלוי במוצר ובאזור."
         }
       ],
-      "limitations": [
-        "קרדיטים וזמינות משתנים בין מודלים ותוכניות.",
-        "מודלי שותפים אינם מודלי Adobe; יש לבדוק תנאים והתאמה לכל פרויקט בנפרד."
-      ],
-      "uncertainties": [
-        "לא נבדקה זמינות כל מודל בחשבון הישראלי של המשתמש.",
-        "טענת Adobe לבטיחות מסחרית אינה מסקנה משפטית גורפת על כל מודל שותף.",
-        "Model names are observations from the listed official sources; they are not API identifiers or independently tested capabilities."
-      ],
+      "limitations": [],
+      "uncertainties": [],
       "recommendation": null,
       "aliases": [],
       "capabilities": [
+        "workflow-platform",
         "image-generation",
         "image-editing",
-        "video-generation",
-        "audio",
-        "storyboarding"
+        "video-generation"
       ],
-      "identityNote": "Adobe Firefly הוא גם שם סביבת היצירה וגם מותג משפחות המודלים של Adobe. משפחות Image ו-Video מופיעות בתוך פרטי הפלטפורמה; מודלי שותפים נשארים משויכים לספקיהם. זמינות דרך Adobe אינה זהה להיסטוריית משפחת המודל."
+      "identityNote": null
     },
     {
       "id": "ai-041",
       "researchId": null,
       "legacyName": "Vizcom",
-      "entityType": "unknown",
+      "entityType": "product",
       "vendor": null,
-      "product": null,
+      "product": "Vizcom",
       "name": "Vizcom",
-      "officialUrl": null,
-      "description": null,
-      "descriptionLanguage": null,
-      "status": "uncertain",
-      "verifiedAt": null,
-      "sources": [],
+      "officialUrl": "https://vizcom.com/",
+      "description": "הפיכת סקיצות והדמיות לרעיונות מוצר מפורטים, עם עריכה, שינוי מבט, המחשת תלת־ממד ותנועה.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://vizcom.com/",
+          "checkedAt": "2026-10-13"
+        }
+      ],
       "modelObservations": [],
       "limitations": [],
-      "uncertainties": [
-        "Awaiting official-source verification."
-      ],
+      "uncertainties": [],
       "recommendation": null,
       "aliases": [],
-      "capabilities": [],
+      "capabilities": [
+        "product-design",
+        "image-editing",
+        "3D"
+      ],
       "identityNote": null
     },
     {
       "id": "ai-042",
       "researchId": null,
       "legacyName": "newarc",
-      "entityType": "unknown",
+      "entityType": "product",
       "vendor": null,
-      "product": null,
-      "name": "newarc",
-      "officialUrl": null,
-      "description": null,
-      "descriptionLanguage": null,
-      "status": "uncertain",
-      "verifiedAt": null,
-      "sources": [],
+      "product": "NewArc.ai",
+      "name": "NewArc.ai",
+      "officialUrl": "https://www.newarc.ai/",
+      "description": "כלי לעיצוב אופנה ההופך סקיצות להדמיות, עם מדידה וירטואלית ויצירת וריאציות להצגת מוצרים.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://www.newarc.ai/",
+          "checkedAt": "2026-10-13"
+        }
+      ],
       "modelObservations": [],
       "limitations": [],
-      "uncertainties": [
-        "Awaiting official-source verification."
-      ],
+      "uncertainties": [],
       "recommendation": null,
-      "aliases": [],
-      "capabilities": [],
+      "aliases": [
+        "newarc"
+      ],
+      "capabilities": [
+        "image-editing",
+        "fashion-design",
+        "virtual-try-on"
+      ],
       "identityNote": null
     },
     {
       "id": "ai-043",
       "researchId": null,
       "legacyName": "Artflow",
-      "entityType": "unknown",
+      "entityType": "product",
       "vendor": null,
-      "product": null,
+      "product": "Artflow",
       "name": "Artflow",
-      "officialUrl": null,
-      "description": null,
-      "descriptionLanguage": null,
-      "status": "uncertain",
-      "verifiedAt": null,
-      "sources": [],
+      "officialUrl": "https://app.artflow.ai/",
+      "description": "יצירת תמונות וסרטונים סביב דמות עקבית שאומנה מתמונות, עם תבניות, עריכה וכלי גימור.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://app.artflow.ai/",
+          "checkedAt": "2026-10-13"
+        }
+      ],
       "modelObservations": [],
       "limitations": [],
-      "uncertainties": [
-        "Awaiting official-source verification."
-      ],
+      "uncertainties": [],
       "recommendation": null,
       "aliases": [],
-      "capabilities": [],
+      "capabilities": [
+        "image-generation",
+        "video-generation",
+        "character-consistency"
+      ],
       "identityNote": null
     },
     {
       "id": "ai-044",
       "researchId": null,
       "legacyName": "Canva Magic Studio",
-      "entityType": "unknown",
+      "entityType": "product",
       "vendor": null,
-      "product": null,
-      "name": "Canva Magic Studio",
-      "officialUrl": null,
-      "description": null,
-      "descriptionLanguage": null,
-      "status": "uncertain",
-      "verifiedAt": null,
-      "sources": [],
+      "product": "Canva AI",
+      "name": "Canva AI",
+      "officialUrl": "https://www.canva.com/canva-ai/",
+      "description": "כלי AI בתוך Canva ליצירת עיצובים, תמונות ותוכן ולעריכת נכסים ופריסות בתוך סביבת העבודה.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://www.canva.com/canva-ai/",
+          "checkedAt": "2026-10-13"
+        }
+      ],
       "modelObservations": [],
       "limitations": [],
-      "uncertainties": [
-        "Awaiting official-source verification."
-      ],
+      "uncertainties": [],
       "recommendation": null,
-      "aliases": [],
-      "capabilities": [],
+      "aliases": [
+        "Canva Magic Studio"
+      ],
+      "capabilities": [
+        "design",
+        "image-generation",
+        "image-editing",
+        "typography"
+      ],
       "identityNote": null
     },
     {
       "id": "ai-045",
       "researchId": null,
       "legacyName": "PhotoMaker",
-      "entityType": "unknown",
+      "entityType": "model-family",
       "vendor": null,
-      "product": null,
+      "product": "PhotoMaker",
       "name": "PhotoMaker",
-      "officialUrl": null,
-      "description": null,
-      "descriptionLanguage": null,
-      "status": "uncertain",
-      "verifiedAt": null,
-      "sources": [],
-      "modelObservations": [],
-      "limitations": [],
-      "uncertainties": [
-        "Awaiting official-source verification."
+      "officialUrl": "https://github.com/TencentARC/PhotoMaker",
+      "description": "רכיב בקוד פתוח ליצירת תמונות של אדם מרפרנסים, עם שמירה על זהות ושילוב כלי שליטה בתמונה.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://github.com/TencentARC/PhotoMaker",
+          "checkedAt": "2026-10-13"
+        }
       ],
+      "modelObservations": [],
+      "limitations": [
+        "PhotoMaker V2 dependencies include InsightFace; check the full pipeline licensing."
+      ],
+      "uncertainties": [],
       "recommendation": null,
       "aliases": [],
-      "capabilities": [],
+      "capabilities": [
+        "image-generation",
+        "character-consistency",
+        "model-adapter"
+      ],
       "identityNote": null
     },
     {
       "id": "ai-046",
       "researchId": null,
       "legacyName": "Astria",
-      "entityType": "unknown",
+      "entityType": "product",
       "vendor": null,
-      "product": null,
+      "product": "Astria",
       "name": "Astria",
-      "officialUrl": null,
-      "description": null,
-      "descriptionLanguage": null,
-      "status": "uncertain",
-      "verifiedAt": null,
-      "sources": [],
+      "officialUrl": "https://www.astria.ai/",
+      "description": "הפקת תמונות אופנה ודיוקנאות, אימון התאמות אישיות ויצירה ועריכה בסביבת עבודה או API.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://www.astria.ai/",
+          "checkedAt": "2026-10-13"
+        }
+      ],
       "modelObservations": [],
       "limitations": [],
-      "uncertainties": [
-        "Awaiting official-source verification."
-      ],
+      "uncertainties": [],
       "recommendation": null,
       "aliases": [],
-      "capabilities": [],
+      "capabilities": [
+        "image-generation",
+        "image-editing",
+        "fashion-design"
+      ],
       "identityNote": null
     },
     {
       "id": "ai-047",
       "researchId": null,
       "legacyName": "Sana",
-      "entityType": "unknown",
+      "entityType": "model-family",
       "vendor": null,
-      "product": null,
-      "name": "Sana",
-      "officialUrl": null,
-      "description": null,
-      "descriptionLanguage": null,
-      "status": "uncertain",
-      "verifiedAt": null,
-      "sources": [],
+      "product": "SANA",
+      "name": "SANA",
+      "officialUrl": "https://github.com/NVlabs/Sana",
+      "description": "משפחת מודלים וקוד מחקר ליצירת תמונות ווידאו ביעילות, עם משקולות ותהליכי אימון והרצה.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://github.com/NVlabs/Sana",
+          "checkedAt": "2026-10-13"
+        }
+      ],
       "modelObservations": [],
       "limitations": [],
-      "uncertainties": [
-        "Awaiting official-source verification."
-      ],
+      "uncertainties": [],
       "recommendation": null,
-      "aliases": [],
-      "capabilities": [],
+      "aliases": [
+        "Sana"
+      ],
+      "capabilities": [
+        "image-generation",
+        "video-generation",
+        "open-weights"
+      ],
       "identityNote": null
     },
     {
       "id": "ai-048",
       "researchId": null,
       "legacyName": "ControlNet",
-      "entityType": "unknown",
+      "entityType": "model-family",
       "vendor": null,
-      "product": null,
+      "product": "ControlNet",
       "name": "ControlNet",
-      "officialUrl": null,
-      "description": null,
-      "descriptionLanguage": null,
-      "status": "uncertain",
-      "verifiedAt": null,
-      "sources": [],
+      "officialUrl": "https://github.com/lllyasviel/ControlNet",
+      "description": "טכניקה ומודלים להכוונת יצירת תמונה באמצעות תנוחה, קווי מתאר, עומק ונתונים חזותיים נוספים.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://github.com/lllyasviel/ControlNet",
+          "checkedAt": "2026-10-13"
+        }
+      ],
       "modelObservations": [],
       "limitations": [],
-      "uncertainties": [
-        "Awaiting official-source verification."
-      ],
+      "uncertainties": [],
       "recommendation": null,
       "aliases": [],
-      "capabilities": [],
+      "capabilities": [
+        "image-editing",
+        "spatial-control",
+        "model-adapter"
+      ],
       "identityNote": null
     },
     {
       "id": "ai-049",
       "researchId": null,
       "legacyName": "InstructPix2Pix",
-      "entityType": "unknown",
+      "entityType": "model-family",
       "vendor": null,
-      "product": null,
+      "product": "InstructPix2Pix",
       "name": "InstructPix2Pix",
-      "officialUrl": null,
-      "description": null,
-      "descriptionLanguage": null,
-      "status": "uncertain",
-      "verifiedAt": null,
-      "sources": [],
+      "officialUrl": "https://github.com/timothybrooks/instruct-pix2pix",
+      "description": "מודל מחקר לעריכת תמונה באמצעות הוראה כתובה, עם קוד ומשקולות להרצה עצמית.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://github.com/timothybrooks/instruct-pix2pix",
+          "checkedAt": "2026-10-13"
+        }
+      ],
       "modelObservations": [],
       "limitations": [],
-      "uncertainties": [
-        "Awaiting official-source verification."
-      ],
+      "uncertainties": [],
       "recommendation": null,
       "aliases": [],
-      "capabilities": [],
+      "capabilities": [
+        "image-editing",
+        "research"
+      ],
       "identityNote": null
     },
     {
       "id": "ai-050",
       "researchId": null,
       "legacyName": "Segment Anything",
-      "entityType": "unknown",
+      "entityType": "model-family",
       "vendor": null,
-      "product": null,
-      "name": "Segment Anything",
-      "officialUrl": null,
-      "description": null,
-      "descriptionLanguage": null,
-      "status": "uncertain",
-      "verifiedAt": null,
-      "sources": [],
+      "product": "Segment Anything · SAM",
+      "name": "Segment Anything · SAM",
+      "officialUrl": "https://github.com/facebookresearch/sam3",
+      "description": "משפחת מודלים לזיהוי, הפרדה ומעקב אחר אובייקטים בתמונות ובווידאו, לצורך מסכות ועריכה.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://github.com/facebookresearch/sam3",
+          "checkedAt": "2026-10-13"
+        }
+      ],
       "modelObservations": [],
       "limitations": [],
-      "uncertainties": [
-        "Awaiting official-source verification."
-      ],
+      "uncertainties": [],
       "recommendation": null,
-      "aliases": [],
-      "capabilities": [],
+      "aliases": [
+        "Segment Anything"
+      ],
+      "capabilities": [
+        "segmentation",
+        "video-masking",
+        "object-tracking"
+      ],
       "identityNote": null
     },
     {
       "id": "ai-051",
       "researchId": null,
       "legacyName": "Artbreeder",
-      "entityType": "unknown",
+      "entityType": "product",
       "vendor": null,
-      "product": null,
+      "product": "Artbreeder",
       "name": "Artbreeder",
-      "officialUrl": null,
-      "description": null,
-      "descriptionLanguage": null,
-      "status": "uncertain",
-      "verifiedAt": null,
-      "sources": [],
+      "officialUrl": "https://www.artbreeder.com/tools",
+      "description": "שילוב תמונות וטקסט, פיתוח דמויות ועולמות ויצירת וריאציות ואנימציה.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://www.artbreeder.com/tools",
+          "checkedAt": "2026-10-13"
+        }
+      ],
       "modelObservations": [],
       "limitations": [],
-      "uncertainties": [
-        "Awaiting official-source verification."
-      ],
+      "uncertainties": [],
       "recommendation": null,
       "aliases": [],
-      "capabilities": [],
+      "capabilities": [
+        "image-generation",
+        "image-editing",
+        "animation"
+      ],
       "identityNote": null
     },
     {
@@ -1687,63 +1883,79 @@ window.aiCatalog = {
       "id": "ai-053",
       "researchId": null,
       "legacyName": "Playform",
-      "entityType": "unknown",
+      "entityType": "product",
       "vendor": null,
-      "product": null,
+      "product": "Playform",
       "name": "Playform",
-      "officialUrl": null,
-      "description": null,
-      "descriptionLanguage": null,
-      "status": "uncertain",
-      "verifiedAt": null,
-      "sources": [],
+      "officialUrl": "https://playform.io/",
+      "description": "סטודיו ליצירה מסקיצות ומרפרנסים, לעריכת פנים, להגדלה ולאימון מודלים על תמונות משלכם.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://playform.io/",
+          "checkedAt": "2026-10-13"
+        }
+      ],
       "modelObservations": [],
       "limitations": [],
-      "uncertainties": [
-        "Awaiting official-source verification."
-      ],
+      "uncertainties": [],
       "recommendation": null,
       "aliases": [],
-      "capabilities": [],
+      "capabilities": [
+        "image-generation",
+        "image-editing",
+        "upscaling"
+      ],
       "identityNote": null
     },
     {
       "id": "ai-054",
       "researchId": null,
       "legacyName": "Deep Dream Generator",
-      "entityType": "unknown",
+      "entityType": "platform",
       "vendor": null,
-      "product": null,
+      "product": "Deep Dream Generator",
       "name": "Deep Dream Generator",
-      "officialUrl": null,
-      "description": null,
-      "descriptionLanguage": null,
-      "status": "uncertain",
-      "verifiedAt": null,
-      "sources": [],
+      "officialUrl": "https://deepdreamgenerator.com/",
+      "description": "פלטפורמת יצירה קהילתית לתמונות, וידאו ומוזיקה, עם מודלים שונים, עריכה והגדלת תמונות.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://deepdreamgenerator.com/",
+          "checkedAt": "2026-10-13"
+        }
+      ],
       "modelObservations": [],
       "limitations": [],
-      "uncertainties": [
-        "Awaiting official-source verification."
-      ],
+      "uncertainties": [],
       "recommendation": null,
       "aliases": [],
-      "capabilities": [],
+      "capabilities": [
+        "workflow-platform",
+        "image-generation",
+        "image-editing",
+        "video-generation",
+        "music"
+      ],
       "identityNote": null
     },
     {
       "id": "ai-055",
       "researchId": "elevenlabs",
       "legacyName": "ElevenLabs v2.5",
-      "entityType": "platform",
+      "entityType": "model-family",
       "vendor": "ElevenLabs",
-      "product": "ElevenCreative",
-      "name": "ElevenLabs / ElevenCreative",
-      "officialUrl": "https://elevenlabs.io/creative",
-      "description": "סביבת יצירה להפקת קריינות, התאמת קול, דיבוב, מוזיקה ואפקטים, עם עריכה ב־Studio וחיבור דרך API.",
+      "product": "ElevenLabs v2.5",
+      "name": "ElevenLabs v2.5",
+      "officialUrl": "https://elevenlabs.io/docs/overview/models",
+      "description": "רשומה היסטורית של מודל דיבור. הכינוי v2.5 אינו מזהה אם מדובר ב־Flash או ב־Turbo.",
       "descriptionLanguage": "he",
-      "status": "active",
-      "verifiedAt": "2026-10-12",
+      "status": "uncertain",
+      "verifiedAt": "2026-10-13",
       "sources": [
         {
           "url": "https://elevenlabs.io/creative",
@@ -1755,67 +1967,42 @@ window.aiCatalog = {
         },
         {
           "url": "https://elevenlabs.io/docs/overview/models",
-          "checkedAt": "2026-10-12"
+          "checkedAt": "2026-10-13"
         },
         {
           "url": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform",
           "checkedAt": "2026-10-12"
         }
       ],
-      "modelObservations": [
-        {
-          "name": "Eleven v4",
-          "vendor": "ElevenLabs",
-          "observedAt": "2026-10-12",
-          "note": "מודל דיבור מתועד; עברית מופיעה ברשימת השפות, ללא בדיקת איכות עצמאית."
-        },
-        {
-          "name": "Eleven v3",
-          "vendor": "ElevenLabs",
-          "observedAt": "2026-10-12",
-          "note": "מודל נפרד ממשפחת הדיבור, עדיין מופיע בתיעוד."
-        }
-      ],
-      "limitations": [
-        "המכסות, שיבוט הקול והכלים הזמינים תלויים במסלול ובמודל.",
-        "המסלול החינמי אינו כולל רישיון מסחרי. גם במסלולים בתשלום יש לבדוק תנאים, חריגי בטא וזכויות בתוכן ובקול.",
-        "עברית מופיעה ברשימת השפות של v4; זו תמיכה מוצהרת ולא בדיקת איכות של הגייה או מבטא."
-      ],
-      "uncertainties": [
-        "לא נבדקו איכות פלט בעברית, זמינות בחשבון מסוים או תנאים פרטניים של כל מודל צד שלישי.",
-        "Model names are observations from the listed official sources; they are not API identifiers or independently tested capabilities.",
-        "The original cloud label names a model/version; this reference describes its product or model family. Original categories and scores are historical."
-      ],
+      "modelObservations": [],
+      "limitations": [],
+      "uncertainties": [],
       "recommendation": null,
       "aliases": [
         "ElevenLabs Creative Platform"
       ],
       "capabilities": [
-        "voiceover",
-        "dubbing",
-        "voice-cloning",
-        "sound-effects",
-        "music"
+        "audio"
       ],
-      "identityNote": "ElevenLabs היא הספקית; ElevenCreative היא סביבת היצירה. Eleven v4 ו־Eleven v3 הם מודלי דיבור נפרדים, והפלטפורמה כוללת גם מודלים חיצוניים לתמונה ולווידאו."
+      "identityNote": null
     },
     {
       "id": "ai-056",
       "researchId": "suno",
       "legacyName": "Suno v4",
-      "entityType": "product",
+      "entityType": "model-family",
       "vendor": "Suno, Inc.",
-      "product": "Suno",
-      "name": "Suno",
+      "product": "Suno v4",
+      "name": "Suno v4",
       "officialUrl": "https://suno.com/",
-      "description": "יצירת שירים עם שירה או קטעים אינסטרומנטליים מתוך תיאור, מילים או חומרי אודיו, עם אפשרויות המשך, עריכה והפרדת ערוצים.",
+      "description": "דור היסטורי של מודל יצירת השירים של Suno, בנפרד מהשירות העדכני.",
       "descriptionLanguage": "he",
-      "status": "active",
-      "verifiedAt": "2026-10-12",
+      "status": "uncertain",
+      "verifiedAt": "2026-10-13",
       "sources": [
         {
           "url": "https://suno.com/",
-          "checkedAt": "2026-10-12"
+          "checkedAt": "2026-10-13"
         },
         {
           "url": "https://suno.com/pricing",
@@ -1831,215 +2018,257 @@ window.aiCatalog = {
         }
       ],
       "modelObservations": [],
-      "limitations": [
-        "יכולות העריכה, ההורדות ו־Studio תלויות במסלול ובמכסות.",
-        "בתנאים הנוכחיים שימוש מסחרי דורש הורדה מורשית בהתאם למסלול; תוצרים במסלול חינמי מיועדים לשימוש אישי ולא מסחרי.",
-        "רמיקסים המכוסים בסעיף Remixes כפופים להגבלה לא־מסחרית גם למנויים בתשלום. רישיון שימוש אינו מבטיח הגנת זכויות יוצרים."
-      ],
-      "uncertainties": [
-        "גרסת המודל המדויקת לכל מסלול לא קובעה: דף הבית מציג v6 בחלק אחד ו־v5.5 בשאלות הנפוצות.",
-        "לא נבדקה איכות שירה בעברית או זכאות מסחרית של שיר מסוים.",
-        "The original cloud label names a model/version; this reference describes its product or model family. Original categories and scores are historical."
-      ],
+      "limitations": [],
+      "uncertainties": [],
       "recommendation": null,
       "aliases": [],
       "capabilities": [
-        "music",
-        "song-generation",
         "audio"
       ],
-      "identityNote": "Suno הוא שירות ליצירת מוזיקה עם משפחות מודלים וכלי עריכה; Suno Studio הוא רכיב עריכה נפרד בתוך ההיצע."
+      "identityNote": null
     },
     {
       "id": "ai-057",
       "researchId": null,
       "legacyName": "Udio v1.5",
-      "entityType": "unknown",
+      "entityType": "model-family",
       "vendor": null,
-      "product": null,
+      "product": "Udio v1.5",
       "name": "Udio v1.5",
-      "officialUrl": null,
-      "description": null,
-      "descriptionLanguage": null,
+      "officialUrl": "https://help.udio.com/en/articles/12683565-changes-associated-with-the-universal-music-group-umg-partnership",
+      "description": "דור היסטורי ליצירת מוזיקה ושירה. הורדת אודיו, וידאו וערוצים בשירות Udio הושבתה לפי העזרה הרשמית.",
+      "descriptionLanguage": "he",
       "status": "uncertain",
-      "verifiedAt": null,
-      "sources": [],
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://help.udio.com/en/articles/12683565-changes-associated-with-the-universal-music-group-umg-partnership",
+          "checkedAt": "2026-10-13"
+        }
+      ],
       "modelObservations": [],
       "limitations": [],
-      "uncertainties": [
-        "Awaiting official-source verification."
-      ],
+      "uncertainties": [],
       "recommendation": null,
       "aliases": [],
-      "capabilities": [],
+      "capabilities": [
+        "audio"
+      ],
       "identityNote": null
     },
     {
       "id": "ai-058",
       "researchId": null,
       "legacyName": "NotebookLM",
-      "entityType": "unknown",
+      "entityType": "platform",
       "vendor": null,
-      "product": null,
-      "name": "NotebookLM",
-      "officialUrl": null,
-      "description": null,
-      "descriptionLanguage": null,
-      "status": "uncertain",
-      "verifiedAt": null,
-      "sources": [],
+      "product": "Gemini Notebook",
+      "name": "Gemini Notebook",
+      "officialUrl": "https://notebook.google/",
+      "description": "סביבת מחקר של Google לעבודה עם מקורות, שאלות וסיכומים, כולל הפקת תוצרים לימודיים וניתוח נתונים.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://blog.google/innovation-and-ai/products/gemini-notebook/notebooklm-gemini-notebook/",
+          "checkedAt": "2026-10-13"
+        }
+      ],
       "modelObservations": [],
       "limitations": [],
-      "uncertainties": [
-        "Awaiting official-source verification."
-      ],
+      "uncertainties": [],
       "recommendation": null,
-      "aliases": [],
-      "capabilities": [],
+      "aliases": [
+        "NotebookLM"
+      ],
+      "capabilities": [
+        "research",
+        "document-analysis",
+        "audio-overviews"
+      ],
       "identityNote": null
     },
     {
       "id": "ai-059",
       "researchId": null,
       "legacyName": "Stable Audio",
-      "entityType": "unknown",
+      "entityType": "product",
       "vendor": null,
-      "product": null,
+      "product": "Stable Audio",
       "name": "Stable Audio",
-      "officialUrl": null,
-      "description": null,
-      "descriptionLanguage": null,
-      "status": "uncertain",
-      "verifiedAt": null,
-      "sources": [],
-      "modelObservations": [],
-      "limitations": [],
-      "uncertainties": [
-        "Awaiting official-source verification."
+      "officialUrl": "https://stableaudio.com/",
+      "description": "יצירת מוזיקה אינסטרומנטלית ואפקטים קוליים, דרך שירות מקוון, API ומודלים מסוימים להרצה עצמית.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://stableaudio.com/",
+          "checkedAt": "2026-10-13"
+        }
       ],
+      "modelObservations": [],
+      "limitations": [
+        "Instrumental music and sound effects; not a general vocal/lyrics generator."
+      ],
+      "uncertainties": [],
       "recommendation": null,
       "aliases": [],
-      "capabilities": [],
+      "capabilities": [
+        "music",
+        "sound-effects"
+      ],
       "identityNote": null
     },
     {
       "id": "ai-060",
       "researchId": null,
       "legacyName": "Soundful",
-      "entityType": "unknown",
+      "entityType": "product",
       "vendor": null,
-      "product": null,
+      "product": "Soundful",
       "name": "Soundful",
-      "officialUrl": null,
-      "description": null,
-      "descriptionLanguage": null,
-      "status": "uncertain",
-      "verifiedAt": null,
-      "sources": [],
+      "officialUrl": "https://soundful.com/",
+      "description": "יצירת מוזיקה לפי סגנון ותבנית, עם מסלולי רישוי ליוצרי תוכן ולמותגים.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://soundful.com/",
+          "checkedAt": "2026-10-13"
+        }
+      ],
       "modelObservations": [],
       "limitations": [],
-      "uncertainties": [
-        "Awaiting official-source verification."
-      ],
+      "uncertainties": [],
       "recommendation": null,
       "aliases": [],
-      "capabilities": [],
+      "capabilities": [
+        "music"
+      ],
       "identityNote": null
     },
     {
       "id": "ai-061",
       "researchId": null,
       "legacyName": "Beatoven",
-      "entityType": "unknown",
+      "entityType": "product",
       "vendor": null,
-      "product": null,
-      "name": "Beatoven",
-      "officialUrl": null,
-      "description": null,
-      "descriptionLanguage": null,
-      "status": "uncertain",
-      "verifiedAt": null,
-      "sources": [],
-      "modelObservations": [],
-      "limitations": [],
-      "uncertainties": [
-        "Awaiting official-source verification."
+      "product": "Beatoven.ai",
+      "name": "Beatoven.ai",
+      "officialUrl": "https://www.beatoven.ai/",
+      "description": "יצירת מוזיקת רקע ואפקטים קוליים מתיאור, להתאמה ולהורדה לשילוב בסרטונים, בפודקאסטים ובמשחקים.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://www.beatoven.ai/",
+          "checkedAt": "2026-10-13"
+        }
       ],
+      "modelObservations": [],
+      "limitations": [
+        "Downloaded-track licenses do not transfer ownership or permit direct music-streaming distribution."
+      ],
+      "uncertainties": [],
       "recommendation": null,
-      "aliases": [],
-      "capabilities": [],
+      "aliases": [
+        "Beatoven"
+      ],
+      "capabilities": [
+        "music",
+        "sound-effects"
+      ],
       "identityNote": null
     },
     {
       "id": "ai-062",
       "researchId": null,
       "legacyName": "AIVA",
-      "entityType": "unknown",
+      "entityType": "product",
       "vendor": null,
-      "product": null,
+      "product": "AIVA",
       "name": "AIVA",
-      "officialUrl": null,
-      "description": null,
-      "descriptionLanguage": null,
-      "status": "uncertain",
-      "verifiedAt": null,
-      "sources": [],
+      "officialUrl": "https://www.aiva.ai/",
+      "description": "הלחנה בעזרת AI עם סגנונות מוגדרים, השפעות מאודיו או MIDI ועריכת הקטעים לפני ייצוא.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://www.aiva.ai/",
+          "checkedAt": "2026-10-13"
+        }
+      ],
       "modelObservations": [],
       "limitations": [],
-      "uncertainties": [
-        "Awaiting official-source verification."
-      ],
+      "uncertainties": [],
       "recommendation": null,
       "aliases": [],
-      "capabilities": [],
+      "capabilities": [
+        "music"
+      ],
       "identityNote": null
     },
     {
       "id": "ai-063",
       "researchId": null,
       "legacyName": "Riffusion",
-      "entityType": "unknown",
+      "entityType": "product",
       "vendor": null,
-      "product": null,
+      "product": "Riffusion",
       "name": "Riffusion",
-      "officialUrl": null,
-      "description": null,
-      "descriptionLanguage": null,
+      "officialUrl": "https://riffusion.com/",
+      "description": "שירות מוזיקה היסטורי. הקישור המקורי מפנה כיום ל־Google Flow Music, לאחר השם ProducerAI.",
+      "descriptionLanguage": "he",
       "status": "uncertain",
-      "verifiedAt": null,
-      "sources": [],
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://riffusion.com/",
+          "checkedAt": "2026-10-13"
+        }
+      ],
       "modelObservations": [],
       "limitations": [],
-      "uncertainties": [
-        "Awaiting official-source verification."
-      ],
+      "uncertainties": [],
       "recommendation": null,
       "aliases": [],
-      "capabilities": [],
+      "capabilities": [
+        "audio"
+      ],
       "identityNote": null
     },
     {
       "id": "ai-064",
       "researchId": null,
       "legacyName": "Cleanvoice AI",
-      "entityType": "unknown",
+      "entityType": "product",
       "vendor": null,
-      "product": null,
+      "product": "Cleanvoice AI",
       "name": "Cleanvoice AI",
-      "officialUrl": null,
-      "description": null,
-      "descriptionLanguage": null,
-      "status": "uncertain",
-      "verifiedAt": null,
-      "sources": [],
+      "officialUrl": "https://cleanvoice.ai/",
+      "description": "ניקוי הקלטות דיבור והסרת רעשי רקע, מילות מילוי, נשימות ושתיקות, גם בעריכה מסונכרנת של כמה ערוצים.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://cleanvoice.ai/",
+          "checkedAt": "2026-10-13"
+        }
+      ],
       "modelObservations": [],
       "limitations": [],
-      "uncertainties": [
-        "Awaiting official-source verification."
-      ],
+      "uncertainties": [],
       "recommendation": null,
       "aliases": [],
-      "capabilities": [],
+      "capabilities": [
+        "audio-cleanup"
+      ],
       "identityNote": null
     },
     {
@@ -2050,15 +2279,15 @@ window.aiCatalog = {
       "vendor": "Descript",
       "product": "Descript",
       "name": "Descript",
-      "officialUrl": "https://www.descript.com/",
-      "description": "עריכת הקלטות באמצעות הטקסט המתומלל, לצד שיפור קול, הסרת מילות מילוי, יצירת קליפים וכלי AI לתיקון ולהפקת מדיה.",
+      "officialUrl": "https://www.descript.com/features",
+      "description": "עריכת אודיו ווידאו דרך התמלול, עם ניקוי קול, הסרת מילות מילוי, יצירת קליפים ועוזר העריכה Underlord.",
       "descriptionLanguage": "he",
       "status": "active",
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-13",
       "sources": [
         {
           "url": "https://www.descript.com/features",
-          "checkedAt": "2026-10-12"
+          "checkedAt": "2026-10-13"
         },
         {
           "url": "https://www.descript.com/pricing",
@@ -2066,41 +2295,34 @@ window.aiCatalog = {
         }
       ],
       "modelObservations": [],
-      "limitations": [
-        "שעות המדיה וקרדיטי ה־AI מוגבלים לפי המסלול; האפשרויות החינמיות מצומצמות.",
-        "עברית אינה מופיעה ברשימת 25 שפות התמלול שמוצגת בדף התמחור שנבדק; אין להבטיח עריכה מבוססת תמלול בעברית.",
-        "תמלול ועריכה אוטומטית דורשים בדיקה אנושית של הטקסט, הקאט והמשמעות."
-      ],
-      "uncertainties": [
-        "לא נבדקו התנהגות בפועל עם עברית, דיוק תמלול או היכולות הכלולות בחשבון המשתמש."
-      ],
+      "limitations": [],
+      "uncertainties": [],
       "recommendation": null,
       "aliases": [],
       "capabilities": [
         "video-editing",
-        "podcasts",
         "transcription",
         "audio-cleanup"
       ],
-      "identityNote": "עורך אודיו ווידאו מבוסס תמלול; Underlord הוא עוזר העריכה שבתוכו. אין לסווג את המוצר כמודל וידאו יחיד."
+      "identityNote": null
     },
     {
       "id": "ai-066",
       "researchId": "adobe-podcast",
       "legacyName": "Adobe Podcast",
-      "entityType": "product_suite",
+      "entityType": "product",
       "vendor": "Adobe",
       "product": "Adobe Podcast",
       "name": "Adobe Podcast",
       "officialUrl": "https://podcast.adobe.com/en",
-      "description": "כלים להסרת רעשי רקע והד, הקלטה מרחוק ועריכת אודיו באמצעות תמלול, עם אפשרויות כתוביות והסרת מוזיקה.",
+      "description": "כלי דפדפן לשיפור הקלטות דיבור, להפחתת רעש והד ולהקלטה ועריכה של פודקאסטים.",
       "descriptionLanguage": "he",
       "status": "active",
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-13",
       "sources": [
         {
           "url": "https://podcast.adobe.com/en",
-          "checkedAt": "2026-10-12"
+          "checkedAt": "2026-10-13"
         },
         {
           "url": "https://podcast.adobe.com/en/plans",
@@ -2108,183 +2330,214 @@ window.aiCatalog = {
         }
       ],
       "modelObservations": [],
-      "limitations": [
-        "Studio עדיין מסומן BETA באתר הרשמי.",
-        "ל־Enhance Speech החינמי מפורסמות מגבלות של 30 דקות ו־500MB לקובץ ושעה ביום; במסלול Premium דרך Firefly Pro המגבלות גבוהות יותר.",
-        "יש להאזין לתוצאה ולשמור את ההקלטה המקורית; אין כאן אימות שאיכות הדיבור נשמרת בכל חומר מקור."
-      ],
-      "uncertainties": [
-        "טבלת המכסות המלאה הופיעה בתוצאת החיפוש הרשמית אך לא במלואה בתצוגת העמוד הישירה; יש לאמת אותה שוב לפני הצעת רכישה.",
-        "לא אומתה תמיכה בתמלול עברי או רמת שיקום דיבור בקבצים שניזוקו."
-      ],
+      "limitations": [],
+      "uncertainties": [],
       "recommendation": null,
       "aliases": [
         "Adobe Podcast Enhance Speech"
       ],
       "capabilities": [
         "audio-cleanup",
-        "podcasts",
-        "transcription"
+        "podcasts"
       ],
-      "identityNote": "חבילת כלי אודיו בדפדפן; Enhance Speech הוא כלי לשיפור דיבור ו־Studio הוא סביבת הקלטה ועריכה המסומנת בטא."
+      "identityNote": null
     },
     {
       "id": "ai-067",
       "researchId": null,
       "legacyName": "Fadr",
-      "entityType": "unknown",
+      "entityType": "product",
       "vendor": null,
-      "product": null,
+      "product": "Fadr",
       "name": "Fadr",
-      "officialUrl": null,
-      "description": null,
-      "descriptionLanguage": null,
-      "status": "uncertain",
-      "verifiedAt": null,
-      "sources": [],
+      "officialUrl": "https://fadr.com/",
+      "description": "הפרדת שירה וכלי נגינה, יצירת רמיקסים ובניית כלי נגינה וערכות תופים מתיאור.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://fadr.com/",
+          "checkedAt": "2026-10-13"
+        }
+      ],
       "modelObservations": [],
       "limitations": [],
-      "uncertainties": [
-        "Awaiting official-source verification."
-      ],
+      "uncertainties": [],
       "recommendation": null,
       "aliases": [],
-      "capabilities": [],
+      "capabilities": [
+        "music",
+        "stem-separation"
+      ],
       "identityNote": null
     },
     {
       "id": "ai-068",
       "researchId": null,
       "legacyName": "Narakeet",
-      "entityType": "unknown",
+      "entityType": "product",
       "vendor": null,
-      "product": null,
+      "product": "Narakeet",
       "name": "Narakeet",
-      "officialUrl": null,
-      "description": null,
-      "descriptionLanguage": null,
-      "status": "uncertain",
-      "verifiedAt": null,
-      "sources": [],
-      "modelObservations": [],
-      "limitations": [],
-      "uncertainties": [
-        "Awaiting official-source verification."
+      "officialUrl": "https://www.narakeet.com/",
+      "description": "יצירת קריינות וסרטונים מקריינים מטקסט וממצגות, עם קולות בעברית וכלי תמלול.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://www.narakeet.com/languages/hebrew-text-to-speech/",
+          "checkedAt": "2026-10-13"
+        }
       ],
+      "modelObservations": [],
+      "limitations": [
+        "Hebrew voices are documented; pronunciation and transcription quality were not independently tested."
+      ],
+      "uncertainties": [],
       "recommendation": null,
       "aliases": [],
-      "capabilities": [],
+      "capabilities": [
+        "voiceover",
+        "transcription"
+      ],
       "identityNote": null
     },
     {
       "id": "ai-069",
       "researchId": null,
       "legacyName": "OpenAI Whisper",
-      "entityType": "unknown",
+      "entityType": "model-family",
       "vendor": null,
-      "product": null,
+      "product": "OpenAI Whisper",
       "name": "OpenAI Whisper",
-      "officialUrl": null,
-      "description": null,
-      "descriptionLanguage": null,
-      "status": "uncertain",
-      "verifiedAt": null,
-      "sources": [],
+      "officialUrl": "https://github.com/openai/whisper",
+      "description": "משפחת מודלים בקוד פתוח לתמלול דיבור, זיהוי שפה ותרגום דיבור לאנגלית, עם אפשרות להרצה מקומית.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://github.com/openai/whisper",
+          "checkedAt": "2026-10-13"
+        }
+      ],
       "modelObservations": [],
       "limitations": [],
-      "uncertainties": [
-        "Awaiting official-source verification."
-      ],
+      "uncertainties": [],
       "recommendation": null,
       "aliases": [],
-      "capabilities": [],
+      "capabilities": [
+        "transcription",
+        "speech-recognition",
+        "open-weights"
+      ],
       "identityNote": null
     },
     {
       "id": "ai-070",
       "researchId": null,
       "legacyName": "Play.ht",
-      "entityType": "unknown",
+      "entityType": "product",
       "vendor": null,
-      "product": null,
-      "name": "Play.ht",
-      "officialUrl": null,
-      "description": null,
-      "descriptionLanguage": null,
+      "product": "Play.ht / PlayAI",
+      "name": "Play.ht / PlayAI",
+      "officialUrl": "https://github.com/playht/pyht",
+      "description": "שירות קריינות היסטורי. האתר אינו נטען בבדיקה ומאגר ה־SDK הרשמי הועבר לארכיון; זמינות השירות לא אומתה.",
+      "descriptionLanguage": "he",
       "status": "uncertain",
-      "verifiedAt": null,
-      "sources": [],
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://github.com/playht/pyht",
+          "checkedAt": "2026-10-13"
+        }
+      ],
       "modelObservations": [],
       "limitations": [],
-      "uncertainties": [
-        "Awaiting official-source verification."
-      ],
+      "uncertainties": [],
       "recommendation": null,
-      "aliases": [],
-      "capabilities": [],
+      "aliases": [
+        "Play.ht"
+      ],
+      "capabilities": [
+        "audio"
+      ],
       "identityNote": null
     },
     {
       "id": "ai-071",
       "researchId": null,
       "legacyName": "Advanced Live Portrait",
-      "entityType": "unknown",
+      "entityType": "product",
       "vendor": null,
-      "product": null,
+      "product": "Advanced Live Portrait",
       "name": "Advanced Live Portrait",
-      "officialUrl": null,
-      "description": null,
-      "descriptionLanguage": null,
-      "status": "uncertain",
-      "verifiedAt": null,
-      "sources": [],
+      "officialUrl": "https://github.com/PowerHouseMan/ComfyUI-AdvancedLivePortrait",
+      "description": "תוסף ל־ComfyUI לעריכת הבעות פנים, להעברת הבעות לווידאו ולהנפשה מרצף הבעות.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://github.com/PowerHouseMan/ComfyUI-AdvancedLivePortrait",
+          "checkedAt": "2026-10-13"
+        }
+      ],
       "modelObservations": [],
       "limitations": [],
-      "uncertainties": [
-        "Awaiting official-source verification."
-      ],
+      "uncertainties": [],
       "recommendation": null,
       "aliases": [],
-      "capabilities": [],
+      "capabilities": [
+        "character-animation"
+      ],
       "identityNote": null
     },
     {
       "id": "ai-072",
       "researchId": null,
       "legacyName": "FacePoke",
-      "entityType": "unknown",
+      "entityType": "product",
       "vendor": null,
-      "product": null,
+      "product": "FacePoke",
       "name": "FacePoke",
-      "officialUrl": null,
-      "description": null,
-      "descriptionLanguage": null,
-      "status": "uncertain",
-      "verifiedAt": null,
-      "sources": [],
+      "officialUrl": "https://github.com/jbilcke-hf/FacePoke",
+      "description": "ממשק לגרירת אזורים בפורטרט ושינוי תנוחת הראש והבעות הפנים, המבוסס על LivePortrait.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://github.com/jbilcke-hf/FacePoke",
+          "checkedAt": "2026-10-13"
+        }
+      ],
       "modelObservations": [],
       "limitations": [],
-      "uncertainties": [
-        "Awaiting official-source verification."
-      ],
+      "uncertainties": [],
       "recommendation": null,
       "aliases": [],
-      "capabilities": [],
+      "capabilities": [
+        "image-editing",
+        "portrait-editing"
+      ],
       "identityNote": null
     },
     {
       "id": "ai-073",
       "researchId": "hedra",
       "legacyName": "Hedra",
-      "entityType": "platform",
+      "entityType": "product",
       "vendor": "Hedra",
-      "product": "Hedra Studio",
+      "product": "Hedra",
       "name": "Hedra",
       "officialUrl": "https://www.hedra.com/studio",
-      "description": "סטודיו יצירה רב-מודלי. מודל Hedra Character 3 מנפיש דמות מתמונת פתיחה ואודיו, עם דיבור או שירה וסנכרון שפתיים. הסטודיו הרחב כולל גם כלים לתכנון, יצירה ועריכה של מדיה.",
+      "description": "סביבת יצירה שבה Character 3 מנפיש דמות מתמונת פתיחה והקלטה, לדיבור, שירה וסנכרון שפתיים.",
       "descriptionLanguage": "he",
       "status": "active",
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-13",
       "sources": [
         {
           "url": "https://www.hedra.com/studio",
@@ -2297,6 +2550,10 @@ window.aiCatalog = {
         {
           "url": "https://www.hedra.com/develop/models/video/hedra-character-3",
           "checkedAt": "2026-10-12"
+        },
+        {
+          "url": "https://www.hedra.com/models/video/hedra/character-3",
+          "checkedAt": "2026-10-13"
         }
       ],
       "modelObservations": [
@@ -2307,45 +2564,36 @@ window.aiCatalog = {
           "note": "שם מאומת בתיעוד; היכולות והזמינות תלויות במצב ההפעלה."
         }
       ],
-      "limitations": [
-        "Character 3 דורש תמונת פתיחה ואודיו; הוא מונע-אודיו ואינו הוכחה ליצירת פסקול מקורי מתוך טקסט בלבד.",
-        "דף המודל מתעד תקרה של 10 דקות ועד 1080p; הגבלות מסלול או ממשק עשויות להיות שונות.",
-        "ב-API נדרש מיקום דובר לכל ערוץ אודיו כשמשתמשים במספר דוברים."
-      ],
-      "uncertainties": [
-        "איכות ליפסינק בעברית ובשירה לא נבדקה.",
-        "לא אומתה מכסת Character 3 בחשבון Studio מסוים.",
-        "Model names are observations from the listed official sources; they are not API identifiers or independently tested capabilities."
-      ],
+      "limitations": [],
+      "uncertainties": [],
       "recommendation": null,
       "aliases": [
         "Hedra Character 3",
         "Character-3"
       ],
       "capabilities": [
-        "lipsync",
         "avatars",
-        "character-animation"
+        "lipsync"
       ],
-      "identityNote": "Hedra Studio הוא הפלטפורמה; Hedra Character 3 הוא מודל ייעודי. מודלי וידאו אחרים שמופיעים בסטודיו אינם פיתוח של Hedra."
+      "identityNote": null
     },
     {
       "id": "ai-074",
       "researchId": "heygen",
       "legacyName": "HeyGen",
-      "entityType": "platform",
+      "entityType": "product",
       "vendor": "HeyGen",
-      "product": "HeyGen AI Studio / Video Agent",
+      "product": "HeyGen",
       "name": "HeyGen",
       "officialUrl": "https://www.heygen.com/",
-      "description": "פלטפורמה להפקת סרטונים עם מגיש דיגיטלי, תסריט או אודיו, לתרגום וידאו ולעבודה עם Video Agent. Avatar V מניע יכולות מגיש עדכניות; Avatar IV ממשיך לשמש בחלק מזרימות העבודה.",
+      "description": "יצירת סרטונים עם מגישים דיגיטליים, דמות מתמונה או מווידאו, תרגום ודיבוב וסיוע בבניית סרטון.",
       "descriptionLanguage": "he",
       "status": "active",
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-13",
       "sources": [
         {
           "url": "https://www.heygen.com/",
-          "checkedAt": "2026-10-12"
+          "checkedAt": "2026-10-13"
         },
         {
           "url": "https://www.heygen.com/avatars/avatar-v",
@@ -2378,138 +2626,156 @@ window.aiCatalog = {
           "note": "שם מאומת בתיעוד; היכולות והזמינות תלויות במצב ההפעלה."
         }
       ],
-      "limitations": [
-        "יש להבחין בין Presenter Mode של Avatar V לבין Cinematic Mode שמופעל באמצעות Seedance.",
-        "תקרת האורך תלויה במצב ובמסלול; דף Single Scene מציג עד 30 דקות למגיש ועד 15 שניות ל-Cinematic.",
-        "מערכת הקרדיטים והיכולות שונה בין מסלולים חדשים למסלולים ותיקים; לא נכון להבטיח שימוש בלתי מוגבל."
-      ],
-      "uncertainties": [
-        "איכות עברית, תרגום וליפסינק לא נבדקה מעשית.",
-        "תנאי יצירת כפיל של אדם מסוים ודרישות ההסכמה שלו מחייבים בדיקה נפרדת לפני שימוש.",
-        "Model names are observations from the listed official sources; they are not API identifiers or independently tested capabilities."
-      ],
+      "limitations": [],
+      "uncertainties": [],
       "recommendation": null,
       "aliases": [],
       "capabilities": [
         "avatars",
-        "lipsync",
-        "video-translation"
+        "video-translation",
+        "dubbing"
       ],
-      "identityNote": "HeyGen הוא המוצר; Avatar V ו-Avatar IV הם מנועי אווטרים. Video Agent ו-AI Studio הם זרימות עבודה וממשקי יצירה, לא שמות חלופיים למודל."
+      "identityNote": null
     },
     {
       "id": "ai-075",
       "researchId": null,
       "legacyName": "D-ID",
-      "entityType": "unknown",
+      "entityType": "product",
       "vendor": null,
-      "product": null,
+      "product": "D-ID",
       "name": "D-ID",
-      "officialUrl": null,
-      "description": null,
-      "descriptionLanguage": null,
-      "status": "uncertain",
-      "verifiedAt": null,
-      "sources": [],
+      "officialUrl": "https://www.d-id.com/",
+      "description": "סרטונים עם דמויות מדברות מתמונה או וידאו, ואווטארים אינטראקטיביים לשיחות בזמן אמת דרך סטודיו או API.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://www.d-id.com/",
+          "checkedAt": "2026-10-13"
+        }
+      ],
       "modelObservations": [],
       "limitations": [],
-      "uncertainties": [
-        "Awaiting official-source verification."
-      ],
+      "uncertainties": [],
       "recommendation": null,
       "aliases": [],
-      "capabilities": [],
+      "capabilities": [
+        "avatars",
+        "lipsync"
+      ],
       "identityNote": null
     },
     {
       "id": "ai-076",
       "researchId": null,
       "legacyName": "Pixverse",
-      "entityType": "unknown",
+      "entityType": "product",
       "vendor": null,
-      "product": null,
-      "name": "Pixverse",
-      "officialUrl": null,
-      "description": null,
-      "descriptionLanguage": null,
-      "status": "uncertain",
-      "verifiedAt": null,
-      "sources": [],
+      "product": "PixVerse",
+      "name": "PixVerse",
+      "officialUrl": "https://pixverse.ai/en",
+      "description": "יצירה והפקת וידאו מטקסט, תמונות ורפרנסים, עם כלי עריכה, סוכני יצירה וממשק API.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://pixverse.ai/en",
+          "checkedAt": "2026-10-13"
+        }
+      ],
       "modelObservations": [],
       "limitations": [],
-      "uncertainties": [
-        "Awaiting official-source verification."
-      ],
+      "uncertainties": [],
       "recommendation": null,
-      "aliases": [],
-      "capabilities": [],
+      "aliases": [
+        "Pixverse"
+      ],
+      "capabilities": [
+        "video-generation"
+      ],
       "identityNote": null
     },
     {
       "id": "ai-077",
       "researchId": null,
       "legacyName": "FaceApp",
-      "entityType": "unknown",
+      "entityType": "product",
       "vendor": null,
-      "product": null,
+      "product": "FaceApp",
       "name": "FaceApp",
-      "officialUrl": null,
-      "description": null,
-      "descriptionLanguage": null,
-      "status": "uncertain",
-      "verifiedAt": null,
-      "sources": [],
+      "officialUrl": "https://www.faceapp.com/",
+      "description": "עריכת פורטרטים: ריטוש, שינוי שיער ואיפור, הבעות ופילטרים חזותיים.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://www.faceapp.com/",
+          "checkedAt": "2026-10-13"
+        }
+      ],
       "modelObservations": [],
       "limitations": [],
-      "uncertainties": [
-        "Awaiting official-source verification."
-      ],
+      "uncertainties": [],
       "recommendation": null,
       "aliases": [],
-      "capabilities": [],
+      "capabilities": [
+        "image-editing",
+        "retouching"
+      ],
       "identityNote": null
     },
     {
       "id": "ai-078",
       "researchId": null,
       "legacyName": "Deep Nostalgia",
-      "entityType": "unknown",
+      "entityType": "product",
       "vendor": null,
-      "product": null,
-      "name": "Deep Nostalgia",
-      "officialUrl": null,
-      "description": null,
-      "descriptionLanguage": null,
-      "status": "uncertain",
-      "verifiedAt": null,
-      "sources": [],
+      "product": "MyHeritage Deep Nostalgia",
+      "name": "MyHeritage Deep Nostalgia",
+      "officialUrl": "https://www.myheritage.com/deep-nostalgia",
+      "description": "הנפשת פנים בתמונות משפחתיות באמצעות תנועות מוכנות, לצפייה ושיתוף.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://www.myheritage.com/deep-nostalgia",
+          "checkedAt": "2026-10-13"
+        }
+      ],
       "modelObservations": [],
       "limitations": [],
-      "uncertainties": [
-        "Awaiting official-source verification."
-      ],
+      "uncertainties": [],
       "recommendation": null,
-      "aliases": [],
-      "capabilities": [],
+      "aliases": [
+        "Deep Nostalgia"
+      ],
+      "capabilities": [
+        "character-animation"
+      ],
       "identityNote": null
     },
     {
       "id": "ai-079",
       "researchId": "domoai",
       "legacyName": "Domo",
-      "entityType": "platform",
+      "entityType": "product",
       "vendor": "DOMOAI PTE. LTD.",
       "product": "DomoAI",
       "name": "DomoAI",
       "officialUrl": "https://www.domoai.app/",
-      "description": "כלי ליצירת וידאו ולשינוי סגנון של חומר קיים, כולל אנימה, הנפשת תמונות, העברת תנועה וליפסינק לדמויות. הפלטפורמה משלבת את מודלי DomoAI לצד מודלים חיצוניים.",
+      "description": "יצירת וידאו, שינוי סגנון של חומר קיים, הנפשת תמונות והעברת תנועה, עם ליפסינק ומודלים שונים.",
       "descriptionLanguage": "he",
       "status": "active",
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-13",
       "sources": [
         {
           "url": "https://www.domoai.app/",
-          "checkedAt": "2026-10-12"
+          "checkedAt": "2026-10-13"
         },
         {
           "url": "https://www.domoai.app/quick-apps/ai-video-lip-sync",
@@ -2534,314 +2800,385 @@ window.aiCatalog = {
           "note": "שם מאומת בתיעוד; היכולות והזמינות תלויות במצב ההפעלה."
         }
       ],
-      "limitations": [
-        "יכולות אודיו, רזולוציה ואורך תלויות במודל; נתוני Seedance אינם מפרט של DomoAI 2.5.",
-        "4K מתואר במסלול ההנפשה כשלב הגדלה נפרד, ולא כפלט מקורי של כל מודל.",
-        "הניסיון החינמי מוגבל; פלט ללא סימן מים מתועד במסלולים בתשלום.",
-        "דפי האתר אינם אחידים בניסוח השימוש המסחרי בחינם; אין להבטיח זכויות גורפות בלי לבדוק את התנאים הרלוונטיים."
-      ],
-      "uncertainties": [
-        "לא אומתה איכות הליפסינק בעברית או יציבות שינוי הסגנון בפרויקט ארוך.",
-        "מגבלות מדויקות לפי מודל ותנאי שימוש מסחרי בניסיון החינמי דורשים אימות נוסף.",
-        "Model names are observations from the listed official sources; they are not API identifiers or independently tested capabilities.",
-        "DomoAI הוא כלי יצירתי ב-domoai.app. אין לקשר לרשומת הווידאו את domo.com, שהוא מוצר נתונים ובינה עסקית."
-      ],
+      "limitations": [],
+      "uncertainties": [],
       "recommendation": null,
-      "aliases": [],
+      "aliases": [
+        "Domo"
+      ],
       "capabilities": [
         "video-generation",
+        "video-editing",
         "animation",
-        "lipsync",
-        "style-transfer"
+        "lipsync"
       ],
-      "identityNote": "DomoAI הוא המוצר; DomoAI 2.5 הוא מודל מקומי. Seedance הוא מודל של ByteDance שמשולב בשירות, ולא שם חלופי ל-DomoAI."
+      "identityNote": null
     },
     {
       "id": "ai-080",
       "researchId": null,
       "legacyName": "Stable Video Diffusion",
-      "entityType": "unknown",
+      "entityType": "model-family",
       "vendor": null,
-      "product": null,
-      "name": "Stable Video Diffusion",
-      "officialUrl": null,
-      "description": null,
-      "descriptionLanguage": null,
-      "status": "uncertain",
-      "verifiedAt": null,
-      "sources": [],
-      "modelObservations": [],
-      "limitations": [],
-      "uncertainties": [
-        "Awaiting official-source verification."
+      "product": "Stable Video Diffusion · img2vid",
+      "name": "Stable Video Diffusion · img2vid",
+      "officialUrl": "https://huggingface.co/stabilityai/stable-video-diffusion-img2vid",
+      "description": "מודל ותיק להנפשת תמונה לקטע קצר בהרצה עצמית, לניסוי ולתהליכים טכניים.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://huggingface.co/stabilityai/stable-video-diffusion-img2vid",
+          "checkedAt": "2026-10-13"
+        }
       ],
+      "modelObservations": [],
+      "limitations": [
+        "This img2vid checkpoint does not support text control."
+      ],
+      "uncertainties": [],
       "recommendation": null,
-      "aliases": [],
-      "capabilities": [],
+      "aliases": [
+        "Stable Video Diffusion"
+      ],
+      "capabilities": [
+        "image-to-video",
+        "open-weights"
+      ],
       "identityNote": null
     },
     {
       "id": "ai-081",
       "researchId": null,
       "legacyName": "Google AI Studio",
-      "entityType": "unknown",
+      "entityType": "platform",
       "vendor": null,
-      "product": null,
+      "product": "Google AI Studio",
       "name": "Google AI Studio",
-      "officialUrl": null,
-      "description": null,
-      "descriptionLanguage": null,
-      "status": "uncertain",
-      "verifiedAt": null,
-      "sources": [],
+      "officialUrl": "https://aistudio.google.com/",
+      "description": "סביבת Google לניסוי במודלי Gemini ולבניית אפליקציות מטקסט, עם תצוגה מקדימה ועריכת קוד.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://ai.google.dev/gemini-api/docs/aistudio-build-mode",
+          "checkedAt": "2026-10-13"
+        }
+      ],
       "modelObservations": [],
       "limitations": [],
-      "uncertainties": [
-        "Awaiting official-source verification."
-      ],
+      "uncertainties": [],
       "recommendation": null,
       "aliases": [],
-      "capabilities": [],
+      "capabilities": [
+        "developer-workflow"
+      ],
       "identityNote": null
     },
     {
       "id": "ai-082",
       "researchId": null,
       "legacyName": "Hugging Face Spaces",
-      "entityType": "unknown",
+      "entityType": "platform",
       "vendor": null,
-      "product": null,
+      "product": "Hugging Face Spaces",
       "name": "Hugging Face Spaces",
-      "officialUrl": null,
-      "description": null,
-      "descriptionLanguage": null,
-      "status": "uncertain",
-      "verifiedAt": null,
-      "sources": [],
+      "officialUrl": "https://huggingface.co/docs/hub/spaces-overview",
+      "description": "פלטפורמה לפרסום ולהתנסות ביישומי AI והדגמות של הקהילה, עם אירוח באמצעות Gradio, Docker או HTML.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://huggingface.co/docs/hub/spaces-overview",
+          "checkedAt": "2026-10-13"
+        }
+      ],
       "modelObservations": [],
       "limitations": [],
-      "uncertainties": [
-        "Awaiting official-source verification."
-      ],
+      "uncertainties": [],
       "recommendation": null,
       "aliases": [],
-      "capabilities": [],
+      "capabilities": [
+        "developer-workflow"
+      ],
       "identityNote": null
     },
     {
       "id": "ai-083",
       "researchId": null,
       "legacyName": "Upscayl",
-      "entityType": "unknown",
+      "entityType": "product",
       "vendor": null,
-      "product": null,
+      "product": "Upscayl",
       "name": "Upscayl",
-      "officialUrl": null,
-      "description": null,
-      "descriptionLanguage": null,
-      "status": "uncertain",
-      "verifiedAt": null,
-      "sources": [],
+      "officialUrl": "https://upscayl.org/",
+      "description": "הגדלת תמונות ושיפור חדות, עם אפליקציית שולחן עבודה בקוד פתוח ושירות ענן נפרד.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://upscayl.org/",
+          "checkedAt": "2026-10-13"
+        }
+      ],
       "modelObservations": [],
       "limitations": [],
-      "uncertainties": [
-        "Awaiting official-source verification."
-      ],
+      "uncertainties": [],
       "recommendation": null,
       "aliases": [],
-      "capabilities": [],
+      "capabilities": [
+        "image-enhancement",
+        "upscaling"
+      ],
       "identityNote": null
     },
     {
       "id": "ai-084",
       "researchId": null,
       "legacyName": "Grammarly",
-      "entityType": "unknown",
+      "entityType": "product",
       "vendor": null,
-      "product": null,
+      "product": "Grammarly",
       "name": "Grammarly",
-      "officialUrl": null,
-      "description": null,
-      "descriptionLanguage": null,
-      "status": "uncertain",
-      "verifiedAt": null,
-      "sources": [],
+      "officialUrl": "https://www.grammarly.com/",
+      "description": "עוזר כתיבה לתיקוני דקדוק, ניסוח מחדש והתאמת טון במסמכים, בדפדפנים וביישומים.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://www.grammarly.com/",
+          "checkedAt": "2026-10-13"
+        }
+      ],
       "modelObservations": [],
       "limitations": [],
-      "uncertainties": [
-        "Awaiting official-source verification."
-      ],
+      "uncertainties": [],
       "recommendation": null,
       "aliases": [],
-      "capabilities": [],
+      "capabilities": [
+        "writing-assistance",
+        "text-editing"
+      ],
       "identityNote": null
     },
     {
       "id": "ai-085",
       "researchId": null,
       "legacyName": "DeepL Write",
-      "entityType": "unknown",
+      "entityType": "product",
       "vendor": null,
-      "product": null,
+      "product": "DeepL Write",
       "name": "DeepL Write",
-      "officialUrl": null,
-      "description": null,
-      "descriptionLanguage": null,
-      "status": "uncertain",
-      "verifiedAt": null,
-      "sources": [],
+      "officialUrl": "https://www.deepl.com/write",
+      "description": "שיפור טקסט קיים באמצעות תיקוני דקדוק ואיות, ניסוחים חלופיים והתאמת סגנון וטון בשפות הנתמכות.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://www.deepl.com/write",
+          "checkedAt": "2026-10-13"
+        }
+      ],
       "modelObservations": [],
       "limitations": [],
-      "uncertainties": [
-        "Awaiting official-source verification."
-      ],
+      "uncertainties": [],
       "recommendation": null,
       "aliases": [],
-      "capabilities": [],
+      "capabilities": [
+        "writing-assistance",
+        "text-editing"
+      ],
       "identityNote": null
     },
     {
       "id": "ai-086",
       "researchId": null,
       "legacyName": "DeepL Translator",
-      "entityType": "unknown",
+      "entityType": "product",
       "vendor": null,
-      "product": null,
+      "product": "DeepL Translator",
       "name": "DeepL Translator",
-      "officialUrl": null,
-      "description": null,
-      "descriptionLanguage": null,
-      "status": "uncertain",
-      "verifiedAt": null,
-      "sources": [],
+      "officialUrl": "https://www.deepl.com/translator",
+      "description": "שירות לתרגום טקסטים וקבצים בין שפות, כולל עברית, עם כלים להתאמת מונחים בהתאם למסלול ולצמד השפות.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://www.deepl.com/translator",
+          "checkedAt": "2026-10-13"
+        }
+      ],
       "modelObservations": [],
       "limitations": [],
-      "uncertainties": [
-        "Awaiting official-source verification."
-      ],
+      "uncertainties": [],
       "recommendation": null,
       "aliases": [],
-      "capabilities": [],
+      "capabilities": [
+        "translation"
+      ],
       "identityNote": null
     },
     {
       "id": "ai-087",
       "researchId": null,
       "legacyName": "Notion AI",
-      "entityType": "unknown",
+      "entityType": "product",
       "vendor": null,
-      "product": null,
+      "product": "Notion AI",
       "name": "Notion AI",
-      "officialUrl": null,
-      "description": null,
-      "descriptionLanguage": null,
-      "status": "uncertain",
-      "verifiedAt": null,
-      "sources": [],
+      "officialUrl": "https://www.notion.com/product/ai",
+      "description": "כלי AI בתוך Notion לכתיבה, חיפוש במידע ארגוני, סיכום פגישות והפעלת סוכנים ותהליכי עבודה.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://www.notion.com/product/ai",
+          "checkedAt": "2026-10-13"
+        }
+      ],
       "modelObservations": [],
       "limitations": [],
-      "uncertainties": [
-        "Awaiting official-source verification."
-      ],
+      "uncertainties": [],
       "recommendation": null,
       "aliases": [],
-      "capabilities": [],
+      "capabilities": [
+        "writing-assistance",
+        "enterprise-search",
+        "meeting-notes",
+        "automation"
+      ],
       "identityNote": null
     },
     {
       "id": "ai-088",
       "researchId": null,
       "legacyName": "GitHub Copilot",
-      "entityType": "unknown",
+      "entityType": "product",
       "vendor": null,
-      "product": null,
+      "product": "GitHub Copilot",
       "name": "GitHub Copilot",
-      "officialUrl": null,
-      "description": null,
-      "descriptionLanguage": null,
-      "status": "uncertain",
-      "verifiedAt": null,
-      "sources": [],
+      "officialUrl": "https://github.com/features/copilot",
+      "description": "עוזר וסוכן לפיתוח תוכנה: השלמות, שיחה על בסיס הקוד, עריכות, סקירת שינויים ועבודה על משימות.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://github.com/features/copilot",
+          "checkedAt": "2026-10-13"
+        }
+      ],
       "modelObservations": [],
       "limitations": [],
-      "uncertainties": [
-        "Awaiting official-source verification."
-      ],
+      "uncertainties": [],
       "recommendation": null,
       "aliases": [],
-      "capabilities": [],
+      "capabilities": [
+        "developer-workflow",
+        "code-generation",
+        "code-review"
+      ],
       "identityNote": null
     },
     {
       "id": "ai-089",
       "researchId": null,
       "legacyName": "Character.AI",
-      "entityType": "unknown",
+      "entityType": "platform",
       "vendor": null,
-      "product": null,
+      "product": "Character.AI",
       "name": "Character.AI",
-      "officialUrl": null,
-      "description": null,
-      "descriptionLanguage": null,
-      "status": "uncertain",
-      "verifiedAt": null,
-      "sources": [],
-      "modelObservations": [],
-      "limitations": [],
-      "uncertainties": [
-        "Awaiting official-source verification."
+      "officialUrl": "https://character.ai/",
+      "description": "פלטפורמה ליצירת דמויות AI, שיחות ומשחקי תפקידים. אפשרויות השיחה תלויות בגיל ובזכאות החשבון.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://book.character.ai/",
+          "checkedAt": "2026-10-13"
+        }
       ],
+      "modelObservations": [],
+      "limitations": [
+        "Chat availability depends on age and account eligibility."
+      ],
+      "uncertainties": [],
       "recommendation": null,
       "aliases": [],
-      "capabilities": [],
+      "capabilities": [
+        "character-chat",
+        "roleplay"
+      ],
       "identityNote": null
     },
     {
       "id": "ai-090",
       "researchId": null,
       "legacyName": "Dify",
-      "entityType": "unknown",
+      "entityType": "platform",
       "vendor": null,
-      "product": null,
+      "product": "Dify",
       "name": "Dify",
-      "officialUrl": null,
-      "description": null,
-      "descriptionLanguage": null,
-      "status": "uncertain",
-      "verifiedAt": null,
-      "sources": [],
+      "officialUrl": "https://dify.ai/",
+      "description": "סביבה חזותית לבניית יישומי AI, סוכנים ותהליכים המחברים מודלים, כלים ומאגרי ידע, בענן או בהתקנה עצמית.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://dify.ai/",
+          "checkedAt": "2026-10-13"
+        }
+      ],
       "modelObservations": [],
       "limitations": [],
-      "uncertainties": [
-        "Awaiting official-source verification."
-      ],
+      "uncertainties": [],
       "recommendation": null,
       "aliases": [],
-      "capabilities": [],
+      "capabilities": [
+        "workflow-platform",
+        "automation",
+        "developer-workflow"
+      ],
       "identityNote": null
     },
     {
       "id": "ai-091",
       "researchId": null,
       "legacyName": "Replika",
-      "entityType": "unknown",
+      "entityType": "product",
       "vendor": null,
-      "product": null,
+      "product": "Replika",
       "name": "Replika",
-      "officialUrl": null,
-      "description": null,
-      "descriptionLanguage": null,
-      "status": "uncertain",
-      "verifiedAt": null,
-      "sources": [],
+      "officialUrl": "https://replika.com/",
+      "description": "אפליקציית דמות מלווה לשיחה אישית, עם התאמת הדמות, זיכרון שיחות ושיחות קוליות.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://replika.com/",
+          "checkedAt": "2026-10-13"
+        }
+      ],
       "modelObservations": [],
       "limitations": [],
-      "uncertainties": [
-        "Awaiting official-source verification."
-      ],
+      "uncertainties": [],
       "recommendation": null,
       "aliases": [],
-      "capabilities": [],
+      "capabilities": [
+        "companion-chat",
+        "voice-chat"
+      ],
       "identityNote": null
     },
     {
@@ -2872,384 +3209,483 @@ window.aiCatalog = {
       "id": "ai-093",
       "researchId": null,
       "legacyName": "DeepAI",
-      "entityType": "unknown",
+      "entityType": "platform",
       "vendor": null,
-      "product": null,
+      "product": "DeepAI",
       "name": "DeepAI",
-      "officialUrl": null,
-      "description": null,
-      "descriptionLanguage": null,
-      "status": "uncertain",
-      "verifiedAt": null,
-      "sources": [],
+      "officialUrl": "https://deepai.org/",
+      "description": "אוסף כלים בדפדפן לשיחה, יצירת תמונות, עריכה, וידאו ומוזיקה. חלקם זמינים גם דרך API.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://deepai.org/",
+          "checkedAt": "2026-10-13"
+        }
+      ],
       "modelObservations": [],
       "limitations": [],
-      "uncertainties": [
-        "Awaiting official-source verification."
-      ],
+      "uncertainties": [],
       "recommendation": null,
       "aliases": [],
-      "capabilities": [],
+      "capabilities": [
+        "workflow-platform",
+        "image-generation",
+        "image-editing",
+        "video-generation",
+        "music"
+      ],
       "identityNote": null
     },
     {
       "id": "ai-094",
       "researchId": null,
       "legacyName": "Copy.ai",
-      "entityType": "unknown",
+      "entityType": "platform",
       "vendor": null,
-      "product": null,
+      "product": "Copy.ai",
       "name": "Copy.ai",
-      "officialUrl": null,
-      "description": null,
-      "descriptionLanguage": null,
-      "status": "uncertain",
-      "verifiedAt": null,
-      "sources": [],
+      "officialUrl": "https://www.copy.ai/",
+      "description": "פלטפורמה לצוותי שיווק ומכירות המחברת נתונים, כתיבת תוכן וסוכנים למחקר לקוחות ולעיבוד לידים.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://www.copy.ai/",
+          "checkedAt": "2026-10-13"
+        }
+      ],
       "modelObservations": [],
       "limitations": [],
-      "uncertainties": [
-        "Awaiting official-source verification."
-      ],
+      "uncertainties": [],
       "recommendation": null,
       "aliases": [],
-      "capabilities": [],
+      "capabilities": [
+        "automation",
+        "marketing-content"
+      ],
       "identityNote": null
     },
     {
       "id": "ai-095",
       "researchId": null,
       "legacyName": "INK",
-      "entityType": "unknown",
+      "entityType": "product",
       "vendor": null,
-      "product": null,
+      "product": "INK",
       "name": "INK",
-      "officialUrl": null,
-      "description": null,
-      "descriptionLanguage": null,
+      "officialUrl": "https://inkforall.com/",
+      "description": "רשומה היסטורית לכתיבה ולתוכן. הקישור הרשמי מפנה כיום ל־SmythOS; זמינות מוצר הכתיבה המקורי לא אומתה.",
+      "descriptionLanguage": "he",
       "status": "uncertain",
-      "verifiedAt": null,
-      "sources": [],
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://inkforall.com/",
+          "checkedAt": "2026-10-13"
+        }
+      ],
       "modelObservations": [],
       "limitations": [],
-      "uncertainties": [
-        "Awaiting official-source verification."
-      ],
+      "uncertainties": [],
       "recommendation": null,
       "aliases": [],
-      "capabilities": [],
+      "capabilities": [
+        "writing-assistance"
+      ],
       "identityNote": null
     },
     {
       "id": "ai-096",
       "researchId": null,
       "legacyName": "ChatSonic",
-      "entityType": "unknown",
+      "entityType": "product",
       "vendor": null,
-      "product": null,
-      "name": "ChatSonic",
-      "officialUrl": null,
-      "description": null,
-      "descriptionLanguage": null,
-      "status": "uncertain",
-      "verifiedAt": null,
-      "sources": [],
+      "product": "Chatsonic",
+      "name": "Chatsonic",
+      "officialUrl": "https://writesonic.com/chat",
+      "description": "ממשק השיחה של Writesonic למחקר, כתיבה, עריכה וניתוח קבצים בעבודת שיווק, עם אפשרויות המשתנות לפי המסלול.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://writesonic.com/chat",
+          "checkedAt": "2026-10-13"
+        }
+      ],
       "modelObservations": [],
       "limitations": [],
-      "uncertainties": [
-        "Awaiting official-source verification."
-      ],
+      "uncertainties": [],
       "recommendation": null,
-      "aliases": [],
-      "capabilities": [],
+      "aliases": [
+        "ChatSonic"
+      ],
+      "capabilities": [
+        "marketing-content",
+        "writing-assistance"
+      ],
       "identityNote": null
     },
     {
       "id": "ai-097",
       "researchId": null,
       "legacyName": "Jasper",
-      "entityType": "unknown",
+      "entityType": "platform",
       "vendor": null,
-      "product": null,
+      "product": "Jasper",
       "name": "Jasper",
-      "officialUrl": null,
-      "description": null,
-      "descriptionLanguage": null,
-      "status": "uncertain",
-      "verifiedAt": null,
-      "sources": [],
+      "officialUrl": "https://www.jasper.ai/",
+      "description": "סביבת AI לצוותי שיווק ליצירת תוכן וקמפיינים, התאמה לשפת המותג והפעלת סוכנים ותהליכי תוכן משותפים.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://www.jasper.ai/",
+          "checkedAt": "2026-10-13"
+        }
+      ],
       "modelObservations": [],
       "limitations": [],
-      "uncertainties": [
-        "Awaiting official-source verification."
-      ],
+      "uncertainties": [],
       "recommendation": null,
       "aliases": [],
-      "capabilities": [],
+      "capabilities": [
+        "automation",
+        "marketing-content"
+      ],
       "identityNote": null
     },
     {
       "id": "ai-098",
       "researchId": null,
       "legacyName": "Gamma",
-      "entityType": "unknown",
+      "entityType": "platform",
       "vendor": null,
-      "product": null,
+      "product": "Gamma",
       "name": "Gamma",
-      "officialUrl": null,
-      "description": null,
-      "descriptionLanguage": null,
-      "status": "uncertain",
-      "verifiedAt": null,
-      "sources": [],
+      "officialUrl": "https://gamma.app/",
+      "description": "יצירת מצגות, מסמכים, אתרים ותוכן חזותי מהנחיה או חומר קיים, עם עריכה בשיחה ועיצוב מותאם למותג.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://gamma.app/",
+          "checkedAt": "2026-10-13"
+        }
+      ],
       "modelObservations": [],
       "limitations": [],
-      "uncertainties": [
-        "Awaiting official-source verification."
-      ],
+      "uncertainties": [],
       "recommendation": null,
       "aliases": [],
-      "capabilities": [],
+      "capabilities": [
+        "presentations",
+        "website-creation"
+      ],
       "identityNote": null
     },
     {
       "id": "ai-099",
       "researchId": null,
       "legacyName": "Napkin.ai",
-      "entityType": "unknown",
+      "entityType": "product",
       "vendor": null,
-      "product": null,
-      "name": "Napkin.ai",
-      "officialUrl": null,
-      "description": null,
-      "descriptionLanguage": null,
-      "status": "uncertain",
-      "verifiedAt": null,
-      "sources": [],
+      "product": "Napkin AI",
+      "name": "Napkin AI",
+      "officialUrl": "https://www.napkin.ai/",
+      "description": "הפיכת טקסט לתרשימים, מפות חשיבה וגרפיקה שניתן לערוך ולייצא. יצירת שקפים זמינה בבטא.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://www.napkin.ai/",
+          "checkedAt": "2026-10-13"
+        }
+      ],
       "modelObservations": [],
       "limitations": [],
-      "uncertainties": [
-        "Awaiting official-source verification."
-      ],
+      "uncertainties": [],
       "recommendation": null,
-      "aliases": [],
-      "capabilities": [],
+      "aliases": [
+        "Napkin.ai"
+      ],
+      "capabilities": [
+        "diagrams",
+        "data-visualization",
+        "presentations"
+      ],
       "identityNote": null
     },
     {
       "id": "ai-100",
       "researchId": null,
       "legacyName": "Beautiful.ai",
-      "entityType": "unknown",
+      "entityType": "product",
       "vendor": null,
-      "product": null,
+      "product": "Beautiful.ai",
       "name": "Beautiful.ai",
-      "officialUrl": null,
-      "description": null,
-      "descriptionLanguage": null,
-      "status": "uncertain",
-      "verifiedAt": null,
-      "sources": [],
+      "officialUrl": "https://www.beautiful.ai/",
+      "description": "יצירת מצגות עם סיוע AI ותבניות המסדרות את השקף באופן אוטומטי, לצד שליטה במותג ועבודה בצוות.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://www.beautiful.ai/",
+          "checkedAt": "2026-10-13"
+        }
+      ],
       "modelObservations": [],
       "limitations": [],
-      "uncertainties": [
-        "Awaiting official-source verification."
-      ],
+      "uncertainties": [],
       "recommendation": null,
       "aliases": [],
-      "capabilities": [],
+      "capabilities": [
+        "presentations"
+      ],
       "identityNote": null
     },
     {
       "id": "ai-101",
       "researchId": null,
       "legacyName": "Zyro",
-      "entityType": "unknown",
+      "entityType": "product",
       "vendor": null,
-      "product": null,
+      "product": "Zyro",
       "name": "Zyro",
-      "officialUrl": null,
-      "description": null,
-      "descriptionLanguage": null,
-      "status": "uncertain",
-      "verifiedAt": null,
-      "sources": [],
+      "officialUrl": "https://www.hostinger.com/blog/zyro-joins-forces-with-hostinger/",
+      "description": "בונה אתרים שהופסק כמוצר עצמאי ושירותיו הועברו ל־Hostinger. הרשומה נשמרת לעיון היסטורי.",
+      "descriptionLanguage": "he",
+      "status": "retired",
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://www.hostinger.com/blog/zyro-joins-forces-with-hostinger/",
+          "checkedAt": "2026-10-13"
+        }
+      ],
       "modelObservations": [],
       "limitations": [],
-      "uncertainties": [
-        "Awaiting official-source verification."
-      ],
+      "uncertainties": [],
       "recommendation": null,
       "aliases": [],
-      "capabilities": [],
+      "capabilities": [
+        "developer-workflow"
+      ],
       "identityNote": null
     },
     {
       "id": "ai-102",
       "researchId": null,
       "legacyName": "Zapier AI",
-      "entityType": "unknown",
+      "entityType": "platform",
       "vendor": null,
-      "product": null,
+      "product": "Zapier AI",
       "name": "Zapier AI",
-      "officialUrl": null,
-      "description": null,
-      "descriptionLanguage": null,
-      "status": "uncertain",
-      "verifiedAt": null,
-      "sources": [],
+      "officialUrl": "https://zapier.com/ai",
+      "description": "כלי AI לחיבור יישומים ונתונים, לבניית אוטומציות, סוכנים וצ׳אטבוטים ולשילוב AI בתהליכי עבודה.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://zapier.com/ai",
+          "checkedAt": "2026-10-13"
+        }
+      ],
       "modelObservations": [],
       "limitations": [],
-      "uncertainties": [
-        "Awaiting official-source verification."
-      ],
+      "uncertainties": [],
       "recommendation": null,
       "aliases": [],
-      "capabilities": [],
+      "capabilities": [
+        "automation",
+        "workflow-platform"
+      ],
       "identityNote": null
     },
     {
       "id": "ai-103",
       "researchId": null,
       "legacyName": "Make",
-      "entityType": "unknown",
+      "entityType": "platform",
       "vendor": null,
-      "product": null,
+      "product": "Make",
       "name": "Make",
-      "officialUrl": null,
-      "description": null,
-      "descriptionLanguage": null,
-      "status": "uncertain",
-      "verifiedAt": null,
-      "sources": [],
+      "officialUrl": "https://www.make.com/",
+      "description": "פלטפורמה חזותית לחיבור יישומים ונתונים ולבניית אוטומציות וסוכני AI, עם מעקב אחר שלבי התהליך.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://www.make.com/",
+          "checkedAt": "2026-10-13"
+        }
+      ],
       "modelObservations": [],
       "limitations": [],
-      "uncertainties": [
-        "Awaiting official-source verification."
-      ],
+      "uncertainties": [],
       "recommendation": null,
       "aliases": [],
-      "capabilities": [],
+      "capabilities": [
+        "automation",
+        "workflow-platform"
+      ],
       "identityNote": null
     },
     {
       "id": "ai-104",
       "researchId": null,
       "legacyName": "Browse.ai",
-      "entityType": "unknown",
+      "entityType": "platform",
       "vendor": null,
-      "product": null,
-      "name": "Browse.ai",
-      "officialUrl": null,
-      "description": null,
-      "descriptionLanguage": null,
-      "status": "uncertain",
-      "verifiedAt": null,
-      "sources": [],
+      "product": "Browse AI",
+      "name": "Browse AI",
+      "officialUrl": "https://browse.ai/",
+      "description": "חילוץ נתונים מאתרים ומעקב אחר שינויים, באמצעות רובוטים המוגדרים חזותית ומעבירים תוצאות לכלים אחרים.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://browse.ai/",
+          "checkedAt": "2026-10-13"
+        }
+      ],
       "modelObservations": [],
       "limitations": [],
-      "uncertainties": [
-        "Awaiting official-source verification."
-      ],
+      "uncertainties": [],
       "recommendation": null,
-      "aliases": [],
-      "capabilities": [],
+      "aliases": [
+        "Browse.ai"
+      ],
+      "capabilities": [
+        "web-data-extraction",
+        "automation"
+      ],
       "identityNote": null
     },
     {
       "id": "ai-105",
       "researchId": null,
       "legacyName": "Blender",
-      "entityType": "unknown",
+      "entityType": "product",
       "vendor": null,
-      "product": null,
+      "product": "Blender",
       "name": "Blender",
-      "officialUrl": null,
-      "description": null,
-      "descriptionLanguage": null,
-      "status": "uncertain",
-      "verifiedAt": null,
-      "sources": [],
+      "officialUrl": "https://www.blender.org/about/",
+      "description": "תוכנת תלת־ממד חופשית וקוד פתוח למידול, אנימציה, רינדור וקומפוזיטינג.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://www.blender.org/about/",
+          "checkedAt": "2026-10-13"
+        }
+      ],
       "modelObservations": [],
       "limitations": [],
-      "uncertainties": [
-        "Awaiting official-source verification."
-      ],
+      "uncertainties": [],
       "recommendation": null,
       "aliases": [],
-      "capabilities": [],
+      "capabilities": [
+        "3D"
+      ],
       "identityNote": null
     },
     {
       "id": "ai-106",
       "researchId": null,
       "legacyName": "Cinema 4D",
-      "entityType": "unknown",
+      "entityType": "product",
       "vendor": null,
-      "product": null,
+      "product": "Cinema 4D",
       "name": "Cinema 4D",
-      "officialUrl": null,
-      "description": null,
-      "descriptionLanguage": null,
-      "status": "uncertain",
-      "verifiedAt": null,
-      "sources": [],
+      "officialUrl": "https://www.maxon.net/en/cinema-4d",
+      "description": "סביבת תלת־ממד מקצועית למידול, אנימציה, גרפיקה בתנועה, סימולציה ורינדור.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://www.maxon.net/en/cinema-4d",
+          "checkedAt": "2026-10-13"
+        }
+      ],
       "modelObservations": [],
       "limitations": [],
-      "uncertainties": [
-        "Awaiting official-source verification."
-      ],
+      "uncertainties": [],
       "recommendation": null,
       "aliases": [],
-      "capabilities": [],
+      "capabilities": [
+        "3D"
+      ],
       "identityNote": null
     },
     {
       "id": "ai-107",
       "researchId": null,
       "legacyName": "Spline AI",
-      "entityType": "unknown",
+      "entityType": "product",
       "vendor": null,
-      "product": null,
+      "product": "Spline AI",
       "name": "Spline AI",
-      "officialUrl": null,
-      "description": null,
-      "descriptionLanguage": null,
-      "status": "uncertain",
-      "verifiedAt": null,
-      "sources": [],
+      "officialUrl": "https://spline.design/ai-generate",
+      "description": "יצירת אובייקטים תלת־ממדיים מטקסט או מתמונה, והמשך עריכה ושילוב בסצנות אינטראקטיביות.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://spline.design/ai-generate",
+          "checkedAt": "2026-10-13"
+        }
+      ],
       "modelObservations": [],
       "limitations": [],
-      "uncertainties": [
-        "Awaiting official-source verification."
-      ],
+      "uncertainties": [],
       "recommendation": null,
       "aliases": [],
-      "capabilities": [],
+      "capabilities": [
+        "3D"
+      ],
       "identityNote": null
     },
     {
       "id": "ai-108",
       "researchId": null,
       "legacyName": "Meshy",
-      "entityType": "unknown",
+      "entityType": "product",
       "vendor": null,
-      "product": null,
+      "product": "Meshy",
       "name": "Meshy",
-      "officialUrl": null,
-      "description": null,
-      "descriptionLanguage": null,
-      "status": "uncertain",
-      "verifiedAt": null,
-      "sources": [],
+      "officialUrl": "https://www.meshy.ai/",
+      "description": "יצירת נכסי תלת־ממד מטקסט או מתמונה, עם טקסטורות, הכנה להנפשה וייצוא להמשך עבודה.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://www.meshy.ai/",
+          "checkedAt": "2026-10-13"
+        }
+      ],
       "modelObservations": [],
       "limitations": [],
-      "uncertainties": [
-        "Awaiting official-source verification."
-      ],
+      "uncertainties": [],
       "recommendation": null,
       "aliases": [],
-      "capabilities": [],
+      "capabilities": [
+        "3D"
+      ],
       "identityNote": null
     },
     {
@@ -3280,269 +3716,323 @@ window.aiCatalog = {
       "id": "ai-110",
       "researchId": null,
       "legacyName": "Sloyd",
-      "entityType": "unknown",
+      "entityType": "product",
       "vendor": null,
-      "product": null,
+      "product": "Sloyd",
       "name": "Sloyd",
-      "officialUrl": null,
-      "description": null,
-      "descriptionLanguage": null,
-      "status": "uncertain",
-      "verifiedAt": null,
-      "sources": [],
+      "officialUrl": "https://www.sloyd.ai/",
+      "description": "יצירת מודלים תלת־ממדיים מטקסט, מתמונה או מתבניות פרמטריות שניתן להתאים ולייצא.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://www.sloyd.ai/",
+          "checkedAt": "2026-10-13"
+        }
+      ],
       "modelObservations": [],
       "limitations": [],
-      "uncertainties": [
-        "Awaiting official-source verification."
-      ],
+      "uncertainties": [],
       "recommendation": null,
       "aliases": [],
-      "capabilities": [],
+      "capabilities": [
+        "3D"
+      ],
       "identityNote": null
     },
     {
       "id": "ai-111",
       "researchId": null,
       "legacyName": "Kaedim",
-      "entityType": "unknown",
+      "entityType": "product",
       "vendor": null,
-      "product": null,
+      "product": "Kaedim",
       "name": "Kaedim",
-      "officialUrl": null,
-      "description": null,
-      "descriptionLanguage": null,
-      "status": "uncertain",
-      "verifiedAt": null,
-      "sources": [],
+      "officialUrl": "https://docs.kaedim3d.com/creating-assets",
+      "description": "הפקת נכסי תלת־ממד מתמונות ומשימות עיצוב, בשילוב AI, כלי ניהול תהליך ואמני תלת־ממד.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://docs.kaedim3d.com/creating-assets",
+          "checkedAt": "2026-10-13"
+        }
+      ],
       "modelObservations": [],
       "limitations": [],
-      "uncertainties": [
-        "Awaiting official-source verification."
-      ],
+      "uncertainties": [],
       "recommendation": null,
       "aliases": [],
-      "capabilities": [],
+      "capabilities": [
+        "3D"
+      ],
       "identityNote": null
     },
     {
       "id": "ai-112",
       "researchId": null,
       "legacyName": "Point-E",
-      "entityType": "unknown",
+      "entityType": "model-family",
       "vendor": null,
-      "product": null,
+      "product": "Point-E",
       "name": "Point-E",
-      "officialUrl": null,
-      "description": null,
-      "descriptionLanguage": null,
+      "officialUrl": "https://github.com/openai/point-e",
+      "description": "פרויקט מחקר ליצירת ענני נקודות תלת־ממדיים מטקסט או מתמונה, עם קוד ודוגמאות להרצה.",
+      "descriptionLanguage": "he",
       "status": "uncertain",
-      "verifiedAt": null,
-      "sources": [],
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://github.com/openai/point-e",
+          "checkedAt": "2026-10-13"
+        }
+      ],
       "modelObservations": [],
       "limitations": [],
-      "uncertainties": [
-        "Awaiting official-source verification."
-      ],
+      "uncertainties": [],
       "recommendation": null,
       "aliases": [],
-      "capabilities": [],
+      "capabilities": [
+        "3D"
+      ],
       "identityNote": null
     },
     {
       "id": "ai-113",
       "researchId": null,
       "legacyName": "Shapr3D",
-      "entityType": "unknown",
+      "entityType": "product",
       "vendor": null,
-      "product": null,
+      "product": "Shapr3D",
       "name": "Shapr3D",
-      "officialUrl": null,
-      "description": null,
-      "descriptionLanguage": null,
-      "status": "uncertain",
-      "verifiedAt": null,
-      "sources": [],
+      "officialUrl": "https://www.shapr3d.com/",
+      "description": "תוכנת CAD למידול מדויק, שרטוטים והדמיה במחשב ובטאבלט, עם עבודה ישירה ופרמטרית.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://www.shapr3d.com/",
+          "checkedAt": "2026-10-13"
+        }
+      ],
       "modelObservations": [],
       "limitations": [],
-      "uncertainties": [
-        "Awaiting official-source verification."
-      ],
+      "uncertainties": [],
       "recommendation": null,
       "aliases": [],
-      "capabilities": [],
+      "capabilities": [
+        "3D"
+      ],
       "identityNote": null
     },
     {
       "id": "ai-114",
       "researchId": null,
       "legacyName": "Figma",
-      "entityType": "unknown",
+      "entityType": "platform",
       "vendor": null,
-      "product": null,
+      "product": "Figma",
       "name": "Figma",
-      "officialUrl": null,
-      "description": null,
-      "descriptionLanguage": null,
-      "status": "uncertain",
-      "verifiedAt": null,
-      "sources": [],
+      "officialUrl": "https://www.figma.com/",
+      "description": "סביבת עיצוב משותפת לממשקים, רכיבים ואבות־טיפוס, עם כלי AI וחיבור לתהליכי פיתוח.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://www.figma.com/",
+          "checkedAt": "2026-10-13"
+        }
+      ],
       "modelObservations": [],
       "limitations": [],
-      "uncertainties": [
-        "Awaiting official-source verification."
-      ],
+      "uncertainties": [],
       "recommendation": null,
       "aliases": [],
-      "capabilities": [],
+      "capabilities": [
+        "ui-design"
+      ],
       "identityNote": null
     },
     {
       "id": "ai-115",
       "researchId": null,
       "legacyName": "Sketch",
-      "entityType": "unknown",
+      "entityType": "product",
       "vendor": null,
-      "product": null,
+      "product": "Sketch",
       "name": "Sketch",
-      "officialUrl": null,
-      "description": null,
-      "descriptionLanguage": null,
-      "status": "uncertain",
-      "verifiedAt": null,
-      "sources": [],
+      "officialUrl": "https://www.sketch.com/features/",
+      "description": "אפליקציית עיצוב ממשקים ואבות־טיפוס ל־Mac, עם ספריות רכיבים, שיתוף וחיבור לכלי AI דרך MCP.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://www.sketch.com/features/",
+          "checkedAt": "2026-10-13"
+        }
+      ],
       "modelObservations": [],
       "limitations": [],
-      "uncertainties": [
-        "Awaiting official-source verification."
-      ],
+      "uncertainties": [],
       "recommendation": null,
       "aliases": [],
-      "capabilities": [],
+      "capabilities": [
+        "ui-design"
+      ],
       "identityNote": null
     },
     {
       "id": "ai-116",
       "researchId": null,
       "legacyName": "Mobirise",
-      "entityType": "unknown",
+      "entityType": "product",
       "vendor": null,
-      "product": null,
+      "product": "Mobirise",
       "name": "Mobirise",
-      "officialUrl": null,
-      "description": null,
-      "descriptionLanguage": null,
-      "status": "uncertain",
-      "verifiedAt": null,
-      "sources": [],
+      "officialUrl": "https://mobirise.com/",
+      "description": "בניית אתרים בגרירה ושחרור, עם יצירה בעזרת AI וייצוא קוד לאחסון עצמאי.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://mobirise.com/",
+          "checkedAt": "2026-10-13"
+        }
+      ],
       "modelObservations": [],
       "limitations": [],
-      "uncertainties": [
-        "Awaiting official-source verification."
-      ],
+      "uncertainties": [],
       "recommendation": null,
       "aliases": [],
-      "capabilities": [],
+      "capabilities": [
+        "web-apps",
+        "website-creation"
+      ],
       "identityNote": null
     },
     {
       "id": "ai-117",
       "researchId": null,
       "legacyName": "InteriorAI",
-      "entityType": "unknown",
+      "entityType": "product",
       "vendor": null,
-      "product": null,
-      "name": "InteriorAI",
-      "officialUrl": null,
-      "description": null,
-      "descriptionLanguage": null,
-      "status": "uncertain",
-      "verifiedAt": null,
-      "sources": [],
+      "product": "Interior AI",
+      "name": "Interior AI",
+      "officialUrl": "https://interiorai.com/",
+      "description": "יצירת רעיונות לעיצוב פנים והעמדה וירטואלית של ריהוט מתוך תמונות של חללים.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://interiorai.com/",
+          "checkedAt": "2026-10-13"
+        }
+      ],
       "modelObservations": [],
       "limitations": [],
-      "uncertainties": [
-        "Awaiting official-source verification."
-      ],
+      "uncertainties": [],
       "recommendation": null,
-      "aliases": [],
-      "capabilities": [],
+      "aliases": [
+        "InteriorAI"
+      ],
+      "capabilities": [
+        "interior-design",
+        "image-editing"
+      ],
       "identityNote": null
     },
     {
       "id": "ai-118",
       "researchId": null,
       "legacyName": "Galileo AI",
-      "entityType": "unknown",
+      "entityType": "product",
       "vendor": null,
-      "product": null,
+      "product": "Galileo AI",
       "name": "Galileo AI",
-      "officialUrl": null,
-      "description": null,
-      "descriptionLanguage": null,
+      "officialUrl": "https://usegalileo.ai/",
+      "description": "כלי היסטורי ליצירת ממשקים מתיאור. כתובתו הרשמית מפנה כיום ל־Stitch של Google.",
+      "descriptionLanguage": "he",
       "status": "uncertain",
-      "verifiedAt": null,
-      "sources": [],
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://usegalileo.ai/",
+          "checkedAt": "2026-10-13"
+        }
+      ],
       "modelObservations": [],
       "limitations": [],
-      "uncertainties": [
-        "Awaiting official-source verification."
-      ],
+      "uncertainties": [],
       "recommendation": null,
       "aliases": [],
-      "capabilities": [],
+      "capabilities": [
+        "ui-design"
+      ],
       "identityNote": null
     },
     {
       "id": "ai-119",
       "researchId": null,
       "legacyName": "InVision",
-      "entityType": "product-family",
+      "entityType": "product",
       "vendor": "InVision",
-      "product": "InVision design collaboration products",
+      "product": "InVision",
       "name": "InVision",
-      "officialUrl": null,
-      "description": "מוצרי העיצוב של InVision, ובהם Prototype ו-DSM, הופסקו בסוף 2024.",
+      "officialUrl": "https://miro.com/blog/future-miro-freehand/",
+      "description": "מוצרי העיצוב של InVision, ובהם Prototype ו־DSM, הופסקו ב־31 בדצמבר 2024.",
       "descriptionLanguage": "he",
       "status": "retired",
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-13",
       "sources": [
         {
           "url": "https://miro.com/blog/future-miro-freehand/",
-          "checkedAt": "2026-10-12"
+          "checkedAt": "2026-10-13"
         }
       ],
       "modelObservations": [],
       "limitations": [],
-      "uncertainties": [
-        "Retirement applies to InVision design collaboration products; Freehand moved to Miro and is a separate product."
-      ],
+      "uncertainties": [],
       "recommendation": null,
       "aliases": [],
-      "capabilities": [],
+      "capabilities": [
+        "ui-design"
+      ],
       "identityNote": null
     },
     {
       "id": "ai-120",
       "researchId": null,
       "legacyName": "Miro AI",
-      "entityType": "unknown",
+      "entityType": "product",
       "vendor": null,
-      "product": null,
+      "product": "Miro AI",
       "name": "Miro AI",
-      "officialUrl": null,
-      "description": null,
-      "descriptionLanguage": null,
-      "status": "uncertain",
-      "verifiedAt": null,
-      "sources": [],
+      "officialUrl": "https://miro.com/ai/ai-overview/",
+      "description": "כלי AI בתוך לוח עבודה משותף לסיכום, פיתוח רעיונות, יצירת תוצרים ותהליכים חוזרים.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://miro.com/ai/ai-overview/",
+          "checkedAt": "2026-10-13"
+        }
+      ],
       "modelObservations": [],
       "limitations": [],
-      "uncertainties": [
-        "Awaiting official-source verification."
-      ],
+      "uncertainties": [],
       "recommendation": null,
       "aliases": [],
-      "capabilities": [],
+      "capabilities": [
+        "ui-design"
+      ],
       "identityNote": null
     },
     {
@@ -3552,12 +4042,12 @@ window.aiCatalog = {
       "entityType": "product",
       "vendor": "Adobe",
       "product": "Photoshop",
-      "name": "Photoshop · Generative Fill",
+      "name": "Photoshop",
       "officialUrl": "https://www.adobe.com/products/photoshop/ai.html",
-      "description": "עריכה גנרטיבית בתוך תהליך עבודה בשכבות, מסכות ובחירות, עם מודלי Firefly ומודלים של שותפים.",
+      "description": "עריכה גנרטיבית בתוך Photoshop עם שכבות, מסכות ובחירות, כולל מילוי, הרחבה ושילוב רפרנסים.",
       "descriptionLanguage": "he",
       "status": "active",
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-13",
       "sources": [
         {
           "url": "https://helpx.adobe.com/ee/photoshop/desktop/create-open-import-images/create-images/edit-images-with-generative-fill.html",
@@ -3570,6 +4060,10 @@ window.aiCatalog = {
         {
           "url": "https://helpx.adobe.com/creative-cloud/apps/generative-ai/non-adobe-models-in-adobe-products.html",
           "checkedAt": "2026-10-12"
+        },
+        {
+          "url": "https://www.adobe.com/products/photoshop/ai.html",
+          "checkedAt": "2026-10-13"
         }
       ],
       "modelObservations": [
@@ -3592,41 +4086,34 @@ window.aiCatalog = {
           "note": "מודלי שותפים הזמינים בבורר Generative Fill לפי התיעוד."
         }
       ],
-      "limitations": [
-        "צריכת קרדיטים ותוצאות משתנות לפי המודל וגודל הפלט.",
-        "מודלים ישנים מוסרים: Adobe מציינת פרישה של Gemini 2.5 Nano Banana ב-2026."
-      ],
-      "uncertainties": [
-        "לא נבדקה גרסת Photoshop המותקנת אצל המשתמש.",
-        "לא לכל מודל אותה התנהגות בחירה ורפרנסים.",
-        "Model names are observations from the listed official sources; they are not API identifiers or independently tested capabilities."
-      ],
+      "limitations": [],
+      "uncertainties": [],
       "recommendation": null,
       "aliases": [],
       "capabilities": [
         "image-editing",
-        "compositing",
-        "retouching"
+        "retouching",
+        "compositing"
       ],
-      "identityNote": "יש להפריד בין הספק, המוצר ושמות המודלים שבשדה modelObservations; גרסת מודל אינה מזהה הרשומה."
+      "identityNote": null
     },
     {
       "id": "photoroom",
       "legacyName": null,
       "researchId": "photoroom",
-      "entityType": "platform",
+      "entityType": "product",
       "vendor": "Photoroom",
       "product": "Photoroom",
       "name": "Photoroom",
       "officialUrl": "https://www.photoroom.com/",
-      "description": "כלי לתמונות מוצר: חיתוך רקע, סצנות מוצר, התאמת פורמטים ועריכת קבוצות תמונות.",
+      "description": "הפקת תמונות מוצר וקטלוגים: הסרת רקע, סצנות מוצר, דוגמנות וירטואלית, עריכה באצווה ותוכן וידאו.",
       "descriptionLanguage": "he",
       "status": "active",
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-13",
       "sources": [
         {
           "url": "https://www.photoroom.com/",
-          "checkedAt": "2026-10-12"
+          "checkedAt": "2026-10-13"
         },
         {
           "url": "https://www.photoroom.com/pricing",
@@ -3634,78 +4121,66 @@ window.aiCatalog = {
         }
       ],
       "modelObservations": [],
-      "limitations": [
-        "מכסת הייצוא נפרדת מקרדיטי AI; שימוש API ו-MCP מחושב בנפרד.",
-        "נדרשת בדיקת נאמנות לצורת המוצר, לצבע ולכיתוב לפני פרסום."
-      ],
-      "uncertainties": [
-        "לא נבחנה נאמנות ל-SKU אמיתי של המשתמש.",
-        "לא נבדקו תנאי Enterprise Guarantee לפרויקט מסוים."
-      ],
+      "limitations": [],
+      "uncertainties": [],
       "recommendation": null,
       "aliases": [],
       "capabilities": [
         "product-photography",
         "image-editing",
-        "batch-processing"
+        "batch-processing",
+        "video-generation"
       ],
-      "identityNote": "יש להפריד בין הספק, המוצר ושמות המודלים שבשדה modelObservations; גרסת מודל אינה מזהה הרשומה."
+      "identityNote": null
     },
     {
       "id": "topaz-labs",
       "legacyName": null,
       "researchId": "topaz-labs",
-      "entityType": "product-family",
+      "entityType": "product",
       "vendor": "Topaz Labs",
-      "product": "Topaz Photo, Gigapixel, Video",
-      "name": "Topaz · Photo / Gigapixel / Video",
+      "product": "Topaz",
+      "name": "Topaz",
       "officialUrl": "https://www.topazlabs.com/",
-      "description": "משפחת כלי גימור לשיפור תמונות ווידאו, הכוללת הסרת רעש, חידוד והגדלת רזולוציה.",
+      "description": "כלי גימור לתמונות ולווידאו: הגדלה, חידוד, הסרת רעש ושחזור פרטים, במחשב ובענן.",
       "descriptionLanguage": "he",
       "status": "active",
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-13",
       "sources": [
         {
           "url": "https://www.topazlabs.com/",
-          "checkedAt": "2026-10-12"
+          "checkedAt": "2026-10-13"
         }
       ],
       "modelObservations": [],
-      "limitations": [
-        "יש להפריד בין אפליקציות מקומיות, עיבוד ענן ומכסות ענן.",
-        "מסלולים מסוימים מוגבלים לשימוש מסחרי של ארגונים מתחת להכנסה שנתית מוגדרת.",
-        "הגדלה יצירתית עלולה להוסיף פרטים; יש לבדוק שהמוצר והפנים לא השתנו."
-      ],
-      "uncertainties": [
-        "לא נבדקו חומרה נדרשת וזמני רינדור במחשב המשתמש.",
-        "יש לבדוק את המסלול המדויק והזכאות המסחרית לפני שימוש לקוח."
-      ],
+      "limitations": [],
+      "uncertainties": [],
       "recommendation": null,
       "aliases": [],
       "capabilities": [
         "image-enhancement",
-        "video-enhancement",
-        "upscaling"
+        "upscaling",
+        "video-enhancement"
       ],
-      "identityNote": "יש להפריד בין הספק, המוצר ושמות המודלים שבשדה modelObservations; גרסת מודל אינה מזהה הרשומה."
+      "identityNote": null
     },
     {
       "id": "google-flow",
       "legacyName": null,
       "researchId": "google-flow",
-      "entityType": "platform",
+      "entityType": "product",
       "vendor": "Google",
       "product": "Google Flow",
       "name": "Google Flow",
       "officialUrl": "https://flow.google.com/",
-      "description": "סביבת יצירה של Google ליצירת קטעי וידאו, עבודה עם פריימים ורפרנסים והמשך סצנות. משפחת Veo משלבת גם אודיו; יכולות עריכת וידאו נוספות מתועדות תחת Gemini Omni.",
+      "description": "סביבת יצירה לווידאו ולתמונות, עם פריימים ורפרנסים, בניית סצנות ועריכת קטעים בהתאם למודל.",
       "descriptionLanguage": "he",
       "status": "active",
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-13",
       "sources": [
         {
           "url": "https://flow.google.com/",
-          "checkedAt": "2026-10-12"
+          "checkedAt": "2026-10-13"
         },
         {
           "url": "https://support.google.com/flow/answer/16352836?hl=en",
@@ -3750,16 +4225,8 @@ window.aiCatalog = {
           "note": "שם מאומת בתיעוד; היכולות והזמינות תלויות במצב ההפעלה."
         }
       ],
-      "limitations": [
-        "התמיכה תלויה במודל: Veo 3.1 Quality אינו תומך ברפרנסים/Ingredients, בהארכה או בעריכת וידאו-לווידאו לפי הטבלה הנוכחית.",
-        "הארכת קטעי Veo 3.1 בני 8 שניות נעשית דרך Lite; Fast אינו מאריך קטעים.",
-        "תכונות, רזולוציה ועלות קרדיטים תלויות במודל, במסלול ובאזור. יצירת אודיו עלולה להיכשל."
-      ],
-      "uncertainties": [
-        "זמינות התכונות בחשבון של משתמש בישראל לא נבדקה.",
-        "לא נבדקו איכות דיבור בעברית או עקביות בין שוטים בפועל.",
-        "Model names are observations from the listed official sources; they are not API identifiers or independently tested capabilities."
-      ],
+      "limitations": [],
+      "uncertainties": [],
       "recommendation": null,
       "aliases": [
         "Flow",
@@ -3767,29 +4234,27 @@ window.aiCatalog = {
         "Veo"
       ],
       "capabilities": [
-        "video-generation",
-        "video-editing",
-        "native-audio-video"
+        "video-generation"
       ],
-      "identityNote": "Flow הוא המוצר; Veo הוא משפחת מודלי וידאו. Gemini Omni Flash 1.1 הוא מודל נוסף ב-Flow, ואין לייחס את כל יכולות Flow ל-Veo."
+      "identityNote": null
     },
     {
       "id": "weavy",
       "legacyName": null,
       "researchId": "weavy",
-      "entityType": "workflow_platform",
+      "entityType": "platform",
       "vendor": "Figma",
       "product": "Figma Weave",
       "name": "Figma Weave",
       "officialUrl": "https://weave.figma.com/",
-      "description": "קנבס לחיבור מודלי יצירה, עריכת תמונה וקומפוזיטינג לתהליכים חוזרים, עם שכבות, מסכות והפיכת תהליך לכלי פשוט לשימוש צוותי.",
+      "description": "קנבס מבוסס צמתים לחיבור מודלי תמונה, וידאו, אודיו ותלת־ממד עם עריכה, מסכות וקומפוזיטינג.",
       "descriptionLanguage": "he",
       "status": "active",
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-13",
       "sources": [
         {
           "url": "https://weave.figma.com/",
-          "checkedAt": "2026-10-12"
+          "checkedAt": "2026-10-13"
         },
         {
           "url": "https://www.figma.com/blog/welcome-weavy-to-figma/",
@@ -3817,17 +4282,8 @@ window.aiCatalog = {
         }
       ],
       "modelObservations": [],
-      "limitations": [
-        "במסלול החינמי מפורסמים 150 קרדיטים לחודש ועד חמישה תהליכים; מודלי וידאו ומודלים מיובאים דורשים מסלול בתשלום.",
-        "Figma Weave ו־Figma משתמשים כרגע במערכות חיוב וקרדיטים נפרדות.",
-        "זמינות, צריכת קרדיטים וזכויות שימוש עשויות להשתנות בין המודלים; אין להציג רישיון גורף לכל חומר קלט ופלט.",
-        "קטלוג המודלים שנצפה באינדקס החיפוש לא אומת כולו בשל כשל בשליפה ישירה. הרשאות API של צד שלישי נפרדות מהקטלוג המלא."
-      ],
-      "uncertainties": [
-        "לא נבדקה זמינות של כל מודל בחשבון מסוים או תנאי כל ספק מודלים.",
-        "תעריפי המחיר החודשיים והשנתיים מוצגים יחד בעמוד; לא נבחר מחיר מספרי אחיד ללא בחירת מסלול.",
-        "שם התצוגה הנוכחי הוא Figma Weave. יש לשמר את Weavy ככינוי חיפוש ואת המזהה הקיים."
-      ],
+      "limitations": [],
+      "uncertainties": [],
       "recommendation": null,
       "aliases": [
         "Weavy",
@@ -3836,25 +4292,27 @@ window.aiCatalog = {
       ],
       "capabilities": [
         "workflow-platform",
-        "image-editing",
+        "image-generation",
         "video-generation",
+        "audio",
+        "3D",
         "compositing"
       ],
-      "identityNote": "פלטפורמת עבודה מבוססת צמתים המחברת מודלים של ספקים שונים לכלי עריכה; אינה מודל יצירה עצמאי. Weavy הוא השם הקודם."
+      "identityNote": null
     },
     {
       "id": "comfyui",
       "legacyName": null,
       "researchId": "comfyui",
-      "entityType": "workflow_engine",
+      "entityType": "platform",
       "vendor": "Comfy",
       "product": "ComfyUI",
       "name": "ComfyUI",
-      "officialUrl": "https://www.comfy.org/",
-      "description": "בניית תהליכי יצירה גלויים ומותאמים באמצעות חיבור מודלים ופעולות לצמתים, בהרצה מקומית או בשירות הענן של Comfy.",
+      "officialUrl": "https://comfy.org/",
+      "description": "בניית תהליכי תמונה ווידאו באמצעות צמתים, עם שליטה במודלים ובשלבי העיבוד, במחשב או בענן.",
       "descriptionLanguage": "he",
       "status": "active",
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-13",
       "sources": [
         {
           "url": "https://support.comfy.org/articles/9806306061-about-comfy",
@@ -3871,17 +4329,15 @@ window.aiCatalog = {
         {
           "url": "https://support.comfy.org/articles/4321955727-agent-tools-mcp-comfy-cloud-mcp",
           "checkedAt": "2026-10-12"
+        },
+        {
+          "url": "https://comfy.org/",
+          "checkedAt": "2026-10-13"
         }
       ],
       "modelObservations": [],
-      "limitations": [
-        "הליבה חינמית בהרצה מקומית; Cloud ו־Partner Nodes הם שירותים נפרדים בתשלום.",
-        "הרצה מקומית דורשת חומרה מתאימה והתקנת המודלים והצמתים הנחוצים.",
-        "יש לבדוק רישיונות מודלים ותוספים בנפרד; קוד פתוח של המנוע אינו מעניק זכויות גורפות בכל מודל."
-      ],
-      "uncertainties": [
-        "לא נבדקו דרישות VRAM לתהליך מסוים, תאימות תוספים או רישיון של מודל מסוים."
-      ],
+      "limitations": [],
+      "uncertainties": [],
       "recommendation": null,
       "aliases": [
         "Comfy"
@@ -3890,9 +4346,9 @@ window.aiCatalog = {
         "workflow-engine",
         "image-generation",
         "video-generation",
-        "audio"
+        "automation"
       ],
-      "identityNote": "מנוע תהליכים פתוח מבוסס צמתים להרצת מודלים; Comfy Desktop ו־Comfy Cloud הם דרכי שימוש נפרדות. המנוע אינו מודל יצירה."
+      "identityNote": null
     },
     {
       "id": "figma-make",
@@ -3903,14 +4359,14 @@ window.aiCatalog = {
       "product": "Figma Make",
       "name": "Figma Make",
       "officialUrl": "https://www.figma.com/make/",
-      "description": "יצירת ממשקים אינטראקטיביים מתוך שיחה ועיצובי Figma, עם עריכה חזותית, גישה לקוד ושיתוף או פרסום באתר.",
+      "description": "בניית אפליקציות ואבות־טיפוס אינטראקטיביים מתוך שיחה ועיצובי Figma, עם עריכה חזותית וגישה לקוד.",
       "descriptionLanguage": "he",
       "status": "active",
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-13",
       "sources": [
         {
           "url": "https://www.figma.com/make/",
-          "checkedAt": "2026-10-12"
+          "checkedAt": "2026-10-13"
         },
         {
           "url": "https://help.figma.com/hc/en-us/articles/31304412302231-Explore-Figma-Make",
@@ -3926,43 +4382,33 @@ window.aiCatalog = {
         }
       ],
       "modelObservations": [],
-      "limitations": [
-        "גישה מלאה מיועדת ל־Full seats במסלולים בתשלום; מושבים ומסלולים אחרים מאפשרים התנסות.",
-        "פעולות AI צורכות קרדיטים והגבלות Full seat נאכפות; אין להציג שימוש בלתי מוגבל.",
-        "עבודה מקומית ישירות בכל בסיס קוד עדיין מסומנת Coming soon בעמוד המוצר.",
-        "יש לבדוק קוד, אבטחה וזכויות בתוכן צד שלישי לפני פרסום; תוצאה שנוצרה אינה הוכחה למוכנות לייצור."
-      ],
-      "uncertainties": [
-        "לא אומתו הרשאות ארגוניות, מכסות החשבון או איכות קוד של פרויקט מסוים.",
-        "לא קובע מודל בסיס יחיד, משום שהרשומה מתארת את המוצר."
-      ],
+      "limitations": [],
+      "uncertainties": [],
       "recommendation": null,
       "aliases": [],
       "capabilities": [
         "ui-design",
-        "prototyping",
-        "web-apps",
-        "code-assisted-creation"
+        "web-apps"
       ],
-      "identityNote": "מוצר ליצירת אפליקציות ואבות־טיפוס באמצעות פרומפט וקוד; אינו Figma Design, אינו Figma Weave ואינו מודל יסוד."
+      "identityNote": null
     },
     {
       "id": "remotion",
       "legacyName": null,
       "researchId": "remotion",
-      "entityType": "code_driven_workflow",
+      "entityType": "product",
       "vendor": "Remotion AG",
       "product": "Remotion",
       "name": "Remotion",
       "officialUrl": "https://www.remotion.dev/",
-      "description": "יצירת סרטונים וגרפיקה בתנועה באמצעות רכיבי React, נתונים ותבניות, עם תצוגה מקדימה, רינדור חוזר ושילוב באפליקציות.",
+      "description": "יצירת סרטונים וגרפיקה בתנועה באמצעות React, נתונים ותבניות, עם תצוגה מקדימה ורינדור חוזר.",
       "descriptionLanguage": "he",
       "status": "active",
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-13",
       "sources": [
         {
           "url": "https://www.remotion.dev/",
-          "checkedAt": "2026-10-12"
+          "checkedAt": "2026-10-13"
         },
         {
           "url": "https://www.remotion.dev/docs",
@@ -3978,25 +4424,17 @@ window.aiCatalog = {
         }
       ],
       "modelObservations": [],
-      "limitations": [
-        "נדרשת סביבת קוד ותשתית רינדור מקומית או בענן; רישיון אינו כולל אירוח.",
-        "התוכנה היא source-available ולא קוד פתוח לפי הגדרת OSI.",
-        "קיימת זכאות חינמית ליחידים ולחברות קטנות בהתאם לתנאים; ארגונים ושיתופי פעולה של ארבעה אנשים ומעלה כפופים לרישוי מסחרי מתאים.",
-        "כתיבה בעזרת AI עדיין מחייבת בדיקת הקוד, הרינדור והרישיונות של הנכסים."
-      ],
-      "uncertainties": [
-        "לא חושבה עלות תשתית רינדור או זכאות רישוי לפרויקט או לחברה מסוימים."
-      ],
+      "limitations": [],
+      "uncertainties": [],
       "recommendation": null,
       "aliases": [
         "Remotion + AI-assisted authoring"
       ],
       "capabilities": [
-        "motion-design",
         "code-driven-video",
-        "automation"
+        "motion-design"
       ],
-      "identityNote": "סביבת וידאו מונעת קוד ו־React, שאפשר לכתוב עבורה בעזרת סוכן AI. Remotion עצמו אינו מודל AI."
+      "identityNote": null
     },
     {
       "id": "openai-chatgpt-images",
@@ -4006,15 +4444,15 @@ window.aiCatalog = {
       "vendor": "OpenAI",
       "product": "ChatGPT Images",
       "name": "ChatGPT Images",
-      "officialUrl": "https://openai.com/index/introducing-chatgpt-images-2-5/",
-      "description": "יצירה ועריכה של תמונות בתוך שיחה, עם רפרנסים, תיקונים ממוקדים והמשך איטרציה על אותו כיוון.",
+      "officialUrl": "https://chatgpt.com/images",
+      "description": "יצירה ועריכה של תמונות בשיחה, עם רפרנסים, תיקונים ממוקדים ואיטרציות על הכיוון הנבחר.",
       "descriptionLanguage": "he",
       "status": "active",
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-13",
       "sources": [
         {
           "url": "https://openai.com/index/introducing-chatgpt-images-2-5/",
-          "checkedAt": "2026-10-12"
+          "checkedAt": "2026-10-13"
         },
         {
           "url": "https://help.openai.com/en/articles/11084440-chatgpt-images-faq",
@@ -4039,26 +4477,17 @@ window.aiCatalog = {
           "note": "מודלי API נפרדים המוזכרים בהשקה ובתיעוד ה-API."
         }
       ],
-      "limitations": [
-        "הזמינות והמכסות תלויות בתוכנית; מצבי thinking אינם אחידים בכל המסלולים.",
-        "אין להניח שהמודל במוצר ChatGPT זהה למזהה API או לגרסה במארח אחר."
-      ],
-      "uncertainties": [
-        "לא נבדקה איכות עברית או עקביות דמות בפרויקט מלא.",
-        "הזמינות בחשבון המסוים לא נבדקה.",
-        "Model names are observations from the listed official sources; they are not API identifiers or independently tested capabilities."
-      ],
+      "limitations": [],
+      "uncertainties": [],
       "recommendation": null,
       "aliases": [
         "ChatGPT image generation",
         "GPT Image"
       ],
       "capabilities": [
-        "image-generation",
-        "image-editing",
-        "storyboarding"
+        "image-generation"
       ],
-      "identityNote": "יש להפריד בין הספק, המוצר ושמות המודלים שבשדה modelObservations; גרסת מודל אינה מזהה הרשומה."
+      "identityNote": null
     },
     {
       "id": "bytedance-seedance",
@@ -4066,13 +4495,13 @@ window.aiCatalog = {
       "researchId": "bytedance-seedance",
       "entityType": "model-family",
       "vendor": "ByteDance Seed",
-      "product": "Dreamina / Seedance",
-      "name": "Seedance · Dreamina",
-      "officialUrl": "https://dreamina.capcut.com/seedance/seedance-2-5",
-      "description": "משפחת מודלי וידאו ואודיו המבוססת על טקסט ורפרנסים, עם שליטה במקטעים ובתזמון דרך מוצרים תומכים.",
+      "product": "Seedance",
+      "name": "Seedance",
+      "officialUrl": "https://seed.bytedance.com/en/seedance",
+      "description": "משפחת מודלים לווידאו ואודיו. Seedance 2.5 משלב רפרנסים מתמונות, וידאו ואודיו ותומך בהפקת תוצר סופי מטיוטה נבחרת.",
       "descriptionLanguage": "he",
       "status": "active",
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-13",
       "sources": [
         {
           "url": "https://seed.bytedance.com/en/blog/one-take-creation-flexible-referencing-introducing-seedance-2-5",
@@ -4085,6 +4514,10 @@ window.aiCatalog = {
         {
           "url": "https://dreamina.capcut.com/seedance/seedance-2-5",
           "checkedAt": "2026-10-12"
+        },
+        {
+          "url": "https://docs.byteplus.com/zh-TW/docs/modelark/seedance-2-5",
+          "checkedAt": "2026-10-13"
         }
       ],
       "modelObservations": [
@@ -4095,43 +4528,32 @@ window.aiCatalog = {
           "note": "הושק רשמית ב-31 ביולי 2026; מתועד עם וידאו-אודיו עד 30 שניות, הארכות ועריכה לפי חותמות זמן."
         }
       ],
-      "limitations": [
-        "ByteDance מציינת שנותרו אתגרים בפיזיקה של תנועה מורכבת ובאינטראקציה בין כמה דמויות.",
-        "הגישה תלויה במוצר, במדינה ובמנוי; פרסום מודל אינו הוכחה לזמינות API."
-      ],
-      "uncertainties": [
-        "זמינות API כללית עדכנית לא אומתה; בהודעת ההשקה נכתב coming soon.",
-        "לא נבדקו זמינות בישראל, עלות בפועל או איכות ליפסינק בעברית.",
-        "הבטחות 4K או יצירה ממושכת הן תלויות מוצר/מצב, ולא הוחלו אוטומטית על כל גישה למודל.",
-        "Model names are observations from the listed official sources; they are not API identifiers or independently tested capabilities."
-      ],
+      "limitations": [],
+      "uncertainties": [],
       "recommendation": null,
       "aliases": [],
       "capabilities": [
-        "video-generation",
-        "image-to-video",
-        "reference-video",
-        "video-editing"
+        "video-generation"
       ],
-      "identityNote": "יש להפריד בין הספק, המוצר ושמות המודלים שבשדה modelObservations; גרסת מודל אינה מזהה הרשומה."
+      "identityNote": null
     },
     {
       "id": "kolbo-ai",
       "legacyName": null,
       "researchId": "kolbo-ai",
-      "entityType": "workflow_platform",
+      "entityType": "platform",
       "vendor": "Kolbo.AI",
       "product": "Kolbo.AI",
       "name": "Kolbo.AI",
       "officialUrl": "https://kolbo.ai/",
-      "description": "סביבת יצירה מרובת מודלים לתמונה, וידאו, אודיו, תלת־ממד וצ׳אט, עם תהליכים חוזרים, פרויקטים והקשר יצירתי לפי תיעוד היצרן.",
+      "description": "סביבת יצירה המחברת תמונה, וידאו, קול ותלת־ממד עם פרויקטים, רפרנסים עקביים וכלים בתוך תוכנות עריכה.",
       "descriptionLanguage": "he",
       "status": "active",
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-13",
       "sources": [
         {
           "url": "https://kolbo.ai/",
-          "checkedAt": "2026-10-12"
+          "checkedAt": "2026-10-13"
         },
         {
           "url": "https://docs.kolbo.ai/image-tools/visual-dna",
@@ -4147,13 +4569,8 @@ window.aiCatalog = {
         }
       ],
       "modelObservations": [],
-      "limitations": [
-        "יכולות מתוארות על ידי היצרן ולא נבדקו במבחן ביצועים.",
-        "לא בוצעה קריאה ל-API המאומת; רשימת המודלים החיה וההרשאות לא אומתו."
-      ],
-      "uncertainties": [
-        "דוגמאות בתיעוד אינן רשימת זמינות מלאה ועדכנית."
-      ],
+      "limitations": [],
+      "uncertainties": [],
       "recommendation": null,
       "aliases": [
         "Kolbo"
@@ -4165,7 +4582,816 @@ window.aiCatalog = {
         "audio",
         "3D"
       ],
-      "identityNote": "סביבת עבודה ותזמור יצירתי, לא משפחת מודלים עצמאית. Visual DNA שומר הפניות לדמויות, מוצרים וסביבות; Project Knowledge מספק הקשר לפרויקטים."
+      "identityNote": null
+    },
+    {
+      "id": "openai-chatgpt",
+      "researchId": null,
+      "legacyName": null,
+      "entityType": "product",
+      "vendor": null,
+      "product": "ChatGPT",
+      "name": "ChatGPT",
+      "officialUrl": "https://chatgpt.com/",
+      "description": "סביבת שיחה לעבודה עם מידע, קבצים, כתיבה, מחקר ויצירה, עם כלים המשתנים לפי התוכנית.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://help.openai.com/en/articles/6825453-chatgpt-release-notes",
+          "checkedAt": "2026-10-13"
+        }
+      ],
+      "modelObservations": [],
+      "limitations": [],
+      "uncertainties": [],
+      "recommendation": null,
+      "aliases": [],
+      "capabilities": [
+        "writing-assistance"
+      ],
+      "identityNote": null
+    },
+    {
+      "id": "anthropic-claude",
+      "researchId": null,
+      "legacyName": null,
+      "entityType": "product",
+      "vendor": null,
+      "product": "Claude",
+      "name": "Claude",
+      "officialUrl": "https://claude.com/product/overview",
+      "description": "עוזר לכתיבה, מחקר וניתוח קבצים ולביצוע משימות ותוצרים בעזרת כלים מחוברים.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://claude.com/product/overview",
+          "checkedAt": "2026-10-13"
+        }
+      ],
+      "modelObservations": [],
+      "limitations": [],
+      "uncertainties": [],
+      "recommendation": null,
+      "aliases": [],
+      "capabilities": [
+        "writing-assistance"
+      ],
+      "identityNote": null
+    },
+    {
+      "id": "google-gemini",
+      "researchId": null,
+      "legacyName": null,
+      "entityType": "product",
+      "vendor": null,
+      "product": "Gemini",
+      "name": "Gemini",
+      "officialUrl": "https://gemini.google/overview/",
+      "description": "עוזר Google למחקר, כתיבה ועבודה עם קבצים ומדיה, לצד כלים מחוברים במוצרי Google.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://gemini.google/overview/",
+          "checkedAt": "2026-10-13"
+        }
+      ],
+      "modelObservations": [],
+      "limitations": [],
+      "uncertainties": [],
+      "recommendation": null,
+      "aliases": [],
+      "capabilities": [
+        "writing-assistance"
+      ],
+      "identityNote": null
+    },
+    {
+      "id": "deepseek-assistant",
+      "researchId": null,
+      "legacyName": null,
+      "entityType": "product",
+      "vendor": null,
+      "product": "DeepSeek",
+      "name": "DeepSeek",
+      "officialUrl": "https://www.deepseek.com/",
+      "description": "עוזר שיחה לכתיבה, שאלות, קוד וחשיבה, לצד API נפרד למפתחים.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://www.deepseek.com/",
+          "checkedAt": "2026-10-13"
+        }
+      ],
+      "modelObservations": [],
+      "limitations": [],
+      "uncertainties": [],
+      "recommendation": null,
+      "aliases": [],
+      "capabilities": [
+        "writing-assistance"
+      ],
+      "identityNote": null
+    },
+    {
+      "id": "openai-codex",
+      "researchId": null,
+      "legacyName": null,
+      "entityType": "platform",
+      "vendor": null,
+      "product": "Codex",
+      "name": "Codex",
+      "officialUrl": "https://openai.com/codex/",
+      "description": "סוכן לפיתוח תוכנה שכותב ומשנה קוד, מריץ בדיקות וסוקר שינויים בסביבה מקומית או בענן.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://openai.com/codex/",
+          "checkedAt": "2026-10-13"
+        }
+      ],
+      "modelObservations": [],
+      "limitations": [],
+      "uncertainties": [],
+      "recommendation": null,
+      "aliases": [],
+      "capabilities": [
+        "developer-workflow"
+      ],
+      "identityNote": null
+    },
+    {
+      "id": "anthropic-claude-code",
+      "researchId": null,
+      "legacyName": null,
+      "entityType": "platform",
+      "vendor": null,
+      "product": "Claude Code",
+      "name": "Claude Code",
+      "officialUrl": "https://claude.com/product/claude-code",
+      "description": "סוכן תכנות לחקירת מאגרי קוד, תיקון תקלות, כתיבת בדיקות וביצוע שינויים במסוף ובכלי פיתוח.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://claude.com/product/claude-code",
+          "checkedAt": "2026-10-13"
+        }
+      ],
+      "modelObservations": [],
+      "limitations": [],
+      "uncertainties": [],
+      "recommendation": null,
+      "aliases": [],
+      "capabilities": [
+        "developer-workflow"
+      ],
+      "identityNote": null
+    },
+    {
+      "id": "vercel-v0",
+      "researchId": null,
+      "legacyName": null,
+      "entityType": "platform",
+      "vendor": null,
+      "product": "v0",
+      "name": "v0",
+      "officialUrl": "https://v0.app/",
+      "description": "בניית ממשקים ואפליקציות ווב בשיחה, עם עריכת קוד וחיבור לשירותי נתונים ולפרסום.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://v0.app/docs",
+          "checkedAt": "2026-10-13"
+        }
+      ],
+      "modelObservations": [],
+      "limitations": [],
+      "uncertainties": [],
+      "recommendation": null,
+      "aliases": [],
+      "capabilities": [
+        "developer-workflow"
+      ],
+      "identityNote": null
+    },
+    {
+      "id": "n8n",
+      "researchId": null,
+      "legacyName": null,
+      "entityType": "platform",
+      "vendor": null,
+      "product": "n8n",
+      "name": "n8n",
+      "officialUrl": "https://n8n.io/",
+      "description": "סביבה חזותית וטכנית לאוטומציות וסוכני AI, עם שילוב קוד ואפשרויות אירוח עצמי או ענן.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://n8n.io/",
+          "checkedAt": "2026-10-13"
+        }
+      ],
+      "modelObservations": [],
+      "limitations": [],
+      "uncertainties": [],
+      "recommendation": null,
+      "aliases": [],
+      "capabilities": [
+        "automation",
+        "workflow-platform"
+      ],
+      "identityNote": null
+    },
+    {
+      "id": "whispertyping",
+      "researchId": null,
+      "legacyName": null,
+      "entityType": "product",
+      "vendor": null,
+      "product": "WhisperTyping",
+      "name": "WhisperTyping",
+      "officialUrl": "https://whispertyping.com/",
+      "description": "הכתבה ל־Windows שמכניסה טקסט לשדה הפעיל, עם מילון מותאם וכלי AI לכתיבה.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://whispertyping.com/",
+          "checkedAt": "2026-10-13"
+        }
+      ],
+      "modelObservations": [],
+      "limitations": [],
+      "uncertainties": [],
+      "recommendation": null,
+      "aliases": [],
+      "capabilities": [
+        "transcription",
+        "writing-assistance"
+      ],
+      "identityNote": null
+    },
+    {
+      "id": "hostinger-ai-builder",
+      "researchId": null,
+      "legacyName": null,
+      "entityType": "platform",
+      "vendor": null,
+      "product": "Hostinger AI Builder",
+      "name": "Hostinger AI Builder",
+      "officialUrl": "https://www.hostinger.com/ai-builder",
+      "description": "בניית אתרים ואפליקציות בשיחה או בעריכה חזותית, עם כלי AI לתוכן ולעיצוב ואחסון מובנה.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://www.hostinger.com/ai-builder",
+          "checkedAt": "2026-10-13"
+        }
+      ],
+      "modelObservations": [],
+      "limitations": [],
+      "uncertainties": [],
+      "recommendation": null,
+      "aliases": [],
+      "capabilities": [
+        "developer-workflow"
+      ],
+      "identityNote": null
+    },
+    {
+      "id": "elevencreative",
+      "researchId": null,
+      "legacyName": null,
+      "entityType": "product",
+      "vendor": null,
+      "product": "ElevenCreative",
+      "name": "ElevenCreative",
+      "officialUrl": "https://elevenlabs.io/creative",
+      "description": "סביבת יצירה לקריינות, דיבוב, מוזיקה ואפקטים קוליים, עם עריכה וכלים נוספים לפי המסלול.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://elevenlabs.io/creative",
+          "checkedAt": "2026-10-13"
+        }
+      ],
+      "modelObservations": [],
+      "limitations": [],
+      "uncertainties": [],
+      "recommendation": null,
+      "aliases": [],
+      "capabilities": [
+        "voiceover",
+        "dubbing",
+        "music",
+        "sound-effects"
+      ],
+      "identityNote": null
+    },
+    {
+      "id": "suno-service",
+      "researchId": null,
+      "legacyName": null,
+      "entityType": "product",
+      "vendor": null,
+      "product": "Suno",
+      "name": "Suno",
+      "officialUrl": "https://suno.com/",
+      "description": "יצירת שירים ומוזיקה מתיאור, מילים או אודיו, עם כלי עריכה והפרדת ערוצים לפי המסלול.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://suno.com/",
+          "checkedAt": "2026-10-13"
+        }
+      ],
+      "modelObservations": [],
+      "limitations": [],
+      "uncertainties": [],
+      "recommendation": null,
+      "aliases": [],
+      "capabilities": [
+        "music",
+        "song-generation"
+      ],
+      "identityNote": null
+    },
+    {
+      "id": "google-flow-music",
+      "researchId": null,
+      "legacyName": null,
+      "entityType": "product",
+      "vendor": null,
+      "product": "Google Flow Music",
+      "name": "Google Flow Music",
+      "officialUrl": "https://www.flowmusic.app/",
+      "description": "יצירה ועריכה של שירים בשיחה, עם כלים לרמיקסים, קטעים נפרדים וקליפים מוזיקליים.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://support.google.com/flow/answer/17083868",
+          "checkedAt": "2026-10-13"
+        }
+      ],
+      "modelObservations": [],
+      "limitations": [],
+      "uncertainties": [],
+      "recommendation": null,
+      "aliases": [],
+      "capabilities": [
+        "music",
+        "song-generation"
+      ],
+      "identityNote": null
+    },
+    {
+      "id": "google-stitch",
+      "researchId": null,
+      "legacyName": null,
+      "entityType": "product",
+      "vendor": null,
+      "product": "Google Stitch",
+      "name": "Google Stitch",
+      "officialUrl": "https://stitch.withgoogle.com/",
+      "description": "עיצוב ממשקים ואבות־טיפוס מטקסט, קול וקבצי עיצוב, עם סוכן עיצוב וייצוא לפיתוח.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://blog.google/innovation-and-ai/models-and-research/google-labs/stitch-updates/",
+          "checkedAt": "2026-10-13"
+        }
+      ],
+      "modelObservations": [],
+      "limitations": [],
+      "uncertainties": [],
+      "recommendation": null,
+      "aliases": [],
+      "capabilities": [
+        "ui-design"
+      ],
+      "identityNote": null
+    },
+    {
+      "id": "tripo",
+      "researchId": null,
+      "legacyName": null,
+      "entityType": "product",
+      "vendor": null,
+      "product": "Tripo",
+      "name": "Tripo",
+      "officialUrl": "https://www.tripo3d.ai/",
+      "description": "יצירת נכסי תלת־ממד מטקסט או מתמונות, עם כלי עריכה והמשך עבודה בתוכנות תלת־ממד.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://www.tripo3d.ai/",
+          "checkedAt": "2026-10-13"
+        }
+      ],
+      "modelObservations": [],
+      "limitations": [],
+      "uncertainties": [],
+      "recommendation": null,
+      "aliases": [],
+      "capabilities": [
+        "3D"
+      ],
+      "identityNote": null
+    },
+    {
+      "id": "magnific-platform",
+      "researchId": null,
+      "legacyName": null,
+      "entityType": "platform",
+      "vendor": null,
+      "product": "Magnific",
+      "name": "Magnific",
+      "officialUrl": "https://www.magnific.com/",
+      "description": "פלטפורמת יצירה לתמונה, וידאו, קול ותלת־ממד, עם מודלים שונים, נכסי סטוק ותהליכים ב־Spaces.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://www.magnific.com/freepik",
+          "checkedAt": "2026-10-13"
+        }
+      ],
+      "modelObservations": [],
+      "limitations": [],
+      "uncertainties": [],
+      "recommendation": null,
+      "aliases": [],
+      "capabilities": [
+        "workflow-platform",
+        "image-generation",
+        "video-generation",
+        "audio",
+        "3D"
+      ],
+      "identityNote": null
+    },
+    {
+      "id": "bytedance-seedream",
+      "researchId": null,
+      "legacyName": null,
+      "entityType": "model-family",
+      "vendor": null,
+      "product": "Seedream",
+      "name": "Seedream",
+      "officialUrl": "https://seed.bytedance.com/en/blog/beyond-generation-it-understands-design-introducing-seedream-5-0-pro",
+      "description": "משפחת מודלי תמונה ליצירה ולעריכה עם רפרנסים, פריסות וטקסט, כולל עריכה אזורית.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://seed.bytedance.com/en/blog/beyond-generation-it-understands-design-introducing-seedream-5-0-pro",
+          "checkedAt": "2026-10-13"
+        }
+      ],
+      "modelObservations": [],
+      "limitations": [],
+      "uncertainties": [],
+      "recommendation": null,
+      "aliases": [],
+      "capabilities": [
+        "image-generation"
+      ],
+      "identityNote": null
+    },
+    {
+      "id": "qwen-image",
+      "researchId": null,
+      "legacyName": null,
+      "entityType": "model-family",
+      "vendor": null,
+      "product": "Qwen Image",
+      "name": "Qwen Image",
+      "officialUrl": "https://qwen.ai/blog?id=qwen-image-2.1",
+      "description": "משפחת מודלים ליצירת תמונות ולעריכה עם רפרנסים, כולל תמונות שקופות.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://huggingface.co/Qwen/Qwen-Image-2.1",
+          "checkedAt": "2026-10-13"
+        }
+      ],
+      "modelObservations": [],
+      "limitations": [
+        "Qwen-Image-2.1 uses the Qwen Research License Agreement; check the exact checkpoint license."
+      ],
+      "uncertainties": [],
+      "recommendation": null,
+      "aliases": [],
+      "capabilities": [
+        "image-generation"
+      ],
+      "identityNote": null
+    },
+    {
+      "id": "higgsfield",
+      "researchId": null,
+      "legacyName": null,
+      "entityType": "platform",
+      "vendor": null,
+      "product": "Higgsfield",
+      "name": "Higgsfield",
+      "officialUrl": "https://higgsfield.ai/ai/video",
+      "description": "סביבת יצירה לתמונות ולווידאו עם שליטה במצלמה, בסצנות ובדמויות ומודלים של ספקים שונים.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://higgsfield.ai/about",
+          "checkedAt": "2026-10-13"
+        }
+      ],
+      "modelObservations": [],
+      "limitations": [],
+      "uncertainties": [],
+      "recommendation": null,
+      "aliases": [],
+      "capabilities": [
+        "workflow-platform",
+        "image-generation",
+        "video-generation"
+      ],
+      "identityNote": null
+    },
+    {
+      "id": "ltx-models",
+      "researchId": null,
+      "legacyName": null,
+      "entityType": "model-family",
+      "vendor": null,
+      "product": "LTX",
+      "name": "LTX",
+      "officialUrl": "https://docs.ltx.io/models",
+      "description": "משפחת מודלים ליצירת וידאו ואודיו, עם API ואפשרויות הרצה עצמית לפי הגרסה והרישיון.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://docs.ltx.io/models",
+          "checkedAt": "2026-10-13"
+        }
+      ],
+      "modelObservations": [],
+      "limitations": [],
+      "uncertainties": [],
+      "recommendation": null,
+      "aliases": [],
+      "capabilities": [
+        "video-generation"
+      ],
+      "identityNote": null
+    },
+    {
+      "id": "ltx-studio",
+      "researchId": null,
+      "legacyName": null,
+      "entityType": "platform",
+      "vendor": null,
+      "product": "LTX Studio",
+      "name": "LTX Studio",
+      "officialUrl": "https://ltx.io/studio",
+      "description": "סביבת הפקת וידאו מרעיון או תסריט, עם סטוריבורד, דמויות ונכסים עקביים, שוטים ועורך ציר זמן.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://ltx.io/studio",
+          "checkedAt": "2026-10-13"
+        }
+      ],
+      "modelObservations": [],
+      "limitations": [],
+      "uncertainties": [],
+      "recommendation": null,
+      "aliases": [],
+      "capabilities": [
+        "workflow-platform",
+        "video-generation",
+        "video-editing",
+        "storyboarding"
+      ],
+      "identityNote": null
+    },
+    {
+      "id": "adobe-premiere",
+      "researchId": null,
+      "legacyName": null,
+      "entityType": "product",
+      "vendor": null,
+      "product": "Adobe Premiere",
+      "name": "Adobe Premiere",
+      "officialUrl": "https://www.adobe.com/products/premiere/ai-video-editing.html",
+      "description": "עריכת וידאו מקצועית עם תמלול, כתוביות ותרגום, שיפור דיבור, חיפוש חומר, מסכות והארכת שוטים.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://www.adobe.com/products/premiere/ai-video-editing.html",
+          "checkedAt": "2026-10-13"
+        }
+      ],
+      "modelObservations": [],
+      "limitations": [],
+      "uncertainties": [],
+      "recommendation": null,
+      "aliases": [],
+      "capabilities": [
+        "video-editing",
+        "transcription",
+        "audio-cleanup"
+      ],
+      "identityNote": null
+    },
+    {
+      "id": "davinci-resolve",
+      "researchId": null,
+      "legacyName": null,
+      "entityType": "product",
+      "vendor": null,
+      "product": "DaVinci Resolve",
+      "name": "DaVinci Resolve",
+      "officialUrl": "https://www.blackmagicdesign.com/products/davinciresolve/whatsnew",
+      "description": "סביבת עריכה, צבע, אפקטים ואודיו עם כלי AI לחיפוש חומר, מסכות ושיפור תמונה וקול.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://www.blackmagicdesign.com/products/davinciresolve/whatsnew",
+          "checkedAt": "2026-10-13"
+        }
+      ],
+      "modelObservations": [],
+      "limitations": [
+        "Features differ between free and Studio editions."
+      ],
+      "uncertainties": [],
+      "recommendation": null,
+      "aliases": [],
+      "capabilities": [
+        "video-editing",
+        "transcription",
+        "audio-cleanup"
+      ],
+      "identityNote": null
+    },
+    {
+      "id": "grok",
+      "researchId": null,
+      "legacyName": null,
+      "entityType": "product",
+      "vendor": null,
+      "product": "Grok",
+      "name": "Grok",
+      "officialUrl": "https://x.ai/grok",
+      "description": "עוזר שיחה למחקר, כתיבה וקוד, עם חיפוש ברשת וב־X, קול וכלי יצירת מדיה.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://x.ai/grok",
+          "checkedAt": "2026-10-13"
+        }
+      ],
+      "modelObservations": [],
+      "limitations": [],
+      "uncertainties": [],
+      "recommendation": null,
+      "aliases": [],
+      "capabilities": [
+        "writing-assistance"
+      ],
+      "identityNote": null
+    },
+    {
+      "id": "grok-imagine",
+      "researchId": null,
+      "legacyName": null,
+      "entityType": "model-family",
+      "vendor": null,
+      "product": "Grok Imagine",
+      "name": "Grok Imagine",
+      "officialUrl": "https://x.ai/api/imagine",
+      "description": "יצירה ועריכה של תמונות ווידאו מטקסט ורפרנסים, עם אודיו ושליטה בפריימים בהתאם למודל.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://x.ai/api/imagine",
+          "checkedAt": "2026-10-13"
+        }
+      ],
+      "modelObservations": [],
+      "limitations": [],
+      "uncertainties": [],
+      "recommendation": null,
+      "aliases": [],
+      "capabilities": [
+        "image-generation",
+        "image-editing",
+        "video-generation"
+      ],
+      "identityNote": null
+    },
+    {
+      "id": "google-veo",
+      "researchId": null,
+      "legacyName": null,
+      "entityType": "model-family",
+      "vendor": null,
+      "product": "Google Veo",
+      "name": "Google Veo",
+      "officialUrl": "https://deepmind.google/models/veo/",
+      "description": "משפחת מודלים ליצירת וידאו עם אודיו מטקסט ומתמונות, עם רפרנסים ופריימים מנחים לפי הגרסה.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://deepmind.google/models/veo/",
+          "checkedAt": "2026-10-13"
+        }
+      ],
+      "modelObservations": [],
+      "limitations": [],
+      "uncertainties": [],
+      "recommendation": null,
+      "aliases": [],
+      "capabilities": [
+        "video-generation"
+      ],
+      "identityNote": null
+    },
+    {
+      "id": "wan-video",
+      "researchId": null,
+      "legacyName": null,
+      "entityType": "model-family",
+      "vendor": null,
+      "product": "Wan",
+      "name": "Wan",
+      "officialUrl": "https://docs.modelstudio.console.alibabacloud.com/en/model-studio/wan3-video-generation-guide",
+      "description": "משפחת מודלי וידאו ליצירה מטקסט ורפרנסים ולעריכה, עם אודיו מקורי בגרסאות הנתמכות.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://docs.modelstudio.console.alibabacloud.com/en/model-studio/wan3-video-generation-guide",
+          "checkedAt": "2026-10-13"
+        }
+      ],
+      "modelObservations": [],
+      "limitations": [],
+      "uncertainties": [],
+      "recommendation": null,
+      "aliases": [],
+      "capabilities": [
+        "video-generation"
+      ],
+      "identityNote": null
     }
   ],
   "workflows": [

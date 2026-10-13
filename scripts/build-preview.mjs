@@ -8,9 +8,9 @@ const font=fs.readFileSync(path.join(root,'assets/fonts/Assistant.ttf')).toStrin
 const css=read('styles.css').replace('assets/fonts/Assistant.ttf','data:font/ttf;base64,'+font);
 html=html.replace('<link rel="stylesheet" href="styles.css">','<style>'+css+'</style>');
 html=html.replace(/  <script src="[^"]+" defer><\/script>\n/g,'');
-const scripts=['modules.js','catalog-data.js','official-summaries.js','curation.js','creative-guide.js','sphere.js','layout-transition.js','directory.js'].map(name=>'<script>\n'+read(name).replaceAll('</script','<\\/script')+'\n</script>').join('\n');
+const scripts=['modules.js','catalog-data.js','catalog-audit.js','official-summaries.js','curation.js','creative-guide.js','sphere.js','layout-transition.js','directory.js'].map(name=>'<script>\n'+read(name).replaceAll('</script','<\\/script')+'\n</script>').join('\n');
 html=html.replace('</body>',scripts+'\n</body>');
-html=html.replaceAll('href="legacy.html"','href="https://github.com/AvocadoHead/AI-Index/tree/design/unfolding-atlas"');
+html=html.replaceAll('href="legacy.html"','href="https://github.com/AvocadoHead/AI-Index/tree/design/useful-visual-index"');
 html=html.replaceAll('href="data/catalog.json"','download="catalog.json" href="data:application/json;base64,'+Buffer.from(read('data/catalog.json')).toString('base64')+'"');
 html=html.replace('</head>','<!-- Assistant SIL Open Font License 1.1\n'+read('assets/fonts/OFL.txt').replaceAll('--','—')+'\n-->\n</head>');
 const destination=path.join(root,'docs/preview/ai-index-preview.html');fs.mkdirSync(path.dirname(destination),{recursive:true});fs.writeFileSync(destination,html);console.log('Built standalone HTML ('+Buffer.byteLength(html)+' bytes). Open the downloaded file in a browser; no server or network is required.');
