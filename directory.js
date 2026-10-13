@@ -76,7 +76,7 @@
       if (state.status === 'checked' && !record.checked) return false;
       if (state.status === 'pending' && record.checked) return false;
       if (state.status === 'retired' && record.status !== 'retired') return false;
-      const searchable = normalize([record.name,record.id,record.meta?.researchId,record.original?.name,record.legacyDisplayName,...(record.meta?.modelObservations || []).map(item=>item.name),record.meta?.vendor,record.meta?.product,record.meta?.description,summariesEn[record.meta?.researchId || record.id],...(record.meta?.aliases || []),...record.tasks.flatMap(key => [tasks[key].he,tasks[key].en])].join(' '));
+      const searchable = normalize([record.name,record.id,record.meta?.researchId,record.original?.name,record.legacyDisplayName,...(root.creativeGuide?.models[record.id]||[]).map(item=>item.name),...(record.meta?.modelObservations || []).map(item=>item.name),record.meta?.vendor,record.meta?.product,record.meta?.description,summariesEn[record.meta?.researchId || record.id],...(record.meta?.aliases || []),...record.tasks.flatMap(key => [tasks[key].he,tasks[key].en])].join(' '));
       return words.every(word => searchable.includes(word));
     }).sort((a,b) => (state.sort === 'reviewed' ? Number(b.checked) - Number(a.checked) : 0) || a.name.localeCompare(b.name,'en'));
   }
@@ -101,7 +101,7 @@
   const doc = root.document, records = canonicalRecords(createRecords(root.defaultModules || [],root.aiCatalog));
   const state = {language:doc.documentElement.lang === 'he' ? 'he':'en',query:'',task:'all',status:'all',sort:'reviewed',selectedTasks:[],scope:'curated'};
   const el = id => doc.getElementById(id), t = key => copy[state.language][key];
-  let sphere=null,layout='sphere';
+  let sphere=null,morph=null,layout='sphere';
   let activeRecord = null, returnFocus = null;
   function node(tag,text,className) { const element=doc.createElement(tag); if(text !== undefined) element.textContent=text; if(className) element.className=className; return element; }
   function textLanguage(element, language) { if(language !== 'auto') element.lang=language; element.dir=language==='auto'?'auto':language==='he'?'rtl':'ltr'; return element; }
@@ -113,7 +113,7 @@
   function hideQuick(){clearTimeout(quickTimer);quick.hidden=true;quickPinned=false;if(quickTrigger)quickTrigger.removeAttribute('aria-describedby');}
   function scheduleQuickClose(){clearTimeout(quickTimer);quickTimer=setTimeout(()=>{if(!quickPinned&&!quick.matches(':hover')&&!quick.contains(doc.activeElement))hideQuick()},180);}
   function showQuick(record,trigger,pinned){
-    if(el('categoryDialog').open||el('sphereStage').dataset.inertia||el('detailDialog').open||performance.now()<Number(el('sphereStage').dataset.suppressUntil||0))return;
+    if(morph?.active||el('categoryDialog').open||el('sphereStage').dataset.inertia||el('detailDialog').open||performance.now()<Number(el('sphereStage').dataset.suppressUntil||0))return;
     sphere?.setPlaying(false);clearTimeout(quickTimer);quickPinned=pinned;quickTrigger=trigger;quick.replaceChildren();
     const close=node('button','×','quick-close');close.type='button';close.setAttribute('aria-label',t('close'));close.addEventListener('click',()=>{hideQuick();trigger.focus();hideQuick()});
     const title=node('h2',record.name);title.dir='auto';
@@ -142,7 +142,7 @@
     button.addEventListener('keydown',event=>{if(event.key==='Tab'&&!event.shiftKey&&!quick.hidden&&quickTrigger===button){event.preventDefault();quick.querySelector('.primary-button').focus()}});button.addEventListener('pointerenter',event=>{if(event.pointerType==='mouse'&&!el('sphereStage').dataset.dragging)showQuick(record,button,false)});button.addEventListener('focus',()=>showQuick(record,button,false));button.addEventListener('pointerleave',scheduleQuickClose);button.addEventListener('click',()=>showQuick(record,button,true));article.append(button);return article;
   }
   function renderResults() {
-    hideQuick();sphere?.setPlaying(false);const selected=selectRecords(records,state);
+    morph?.finish();hideQuick();sphere?.setPlaying(false);const selected=selectRecords(records,state);
     if(layout==='sphere')el('toolGrid').replaceChildren(...interleave(selected).map(card));else {const groups=[];for(const key of Object.keys(tasks).filter(k=>k!=='all')){const members=selected.filter(record=>record.primaryTask===key);if(!members.length)continue;const group=node('section',undefined,'atlas-group');const heading=node('h2',tasks[key][state.language]+' · '+members.length);const labels=node('div',undefined,'atlas-labels');labels.append(...members.map(card));group.append(heading,labels);groups.push(group)}el('toolGrid').replaceChildren(...groups)}
     sphere?.draw();el('resultsCount').textContent=t('result')(selected.length);el('emptyState').hidden=selected.length>0;el('clearSearch').hidden=!state.query;el('resetFilters').hidden=!(state.query || state.selectedTasks.length || state.status!=='all');
     el('mobileTask').value=state.task;el('categoryCount').hidden=!state.selectedTasks.length;el('categoryCount').textContent=state.selectedTasks.length;
@@ -151,6 +151,7 @@
   function renderLanguage() {
     doc.documentElement.lang=state.language;doc.documentElement.dir=state.language==='he'?'rtl':'ltr';doc.title=state.language==='he'?'AI Index — כלים לעבודה יצירתית':'AI Index — A creative field guide';
     doc.querySelectorAll('[data-i18n]').forEach(element=>{element.textContent=t(element.dataset.i18n);});
+    if(root.creativeGuide)el('workflowOpen').textContent=root.creativeGuide[state.language].title+' ↗';
     el('recordCount').textContent=records.length;el('checkedSummary').textContent=t('checkedSummary')(records.filter(record=>record.checked).length);el('searchInput').placeholder=t('placeholder');el('clearSearch').setAttribute('aria-label',t('clearSearch'));el('closeDialog').setAttribute('aria-label',t('close'));el('mainNav').setAttribute('aria-label',t('nav'));el('taskFilters').setAttribute('aria-label',t('filterLabel'));
     el('categoryClose').setAttribute('aria-label',state.language==='he'?'סגירת קטגוריות':'Close categories');
     el('languageToggle').textContent=state.language==='he'?'EN':'עב';el('languageToggle').setAttribute('aria-label',state.language==='he'?'Switch to English':'מעבר לעברית');
@@ -164,11 +165,13 @@
   function listSection(title,items,language='he') { if(!items?.length)return null;const element=section(title,true),list=node('ul');items.forEach(text=>list.append(textLanguage(node('li',text),language)));element.append(list);return element; }
   function append(parent,...children){children.filter(Boolean).forEach(child=>parent.append(child));}
   function openDialog(trigger) {returnFocus=trigger;const dialog=el('detailDialog');dialog.showModal();dialog.scrollTop=0;el('closeDialog').focus();}
+  function guideNotes(id){const observations=root.creativeGuide?.models[id];if(!observations)return null;const box=section(state.language==='he'?'גרסאות והערות של אייל':'Versions and Eyal’s notes',true);for(const observation of observations){box.append(node('h4',observation.name),node('p',observation[state.language]));for(const url of observation.sources)box.append(link(new URL(url).hostname+' · '+root.creativeGuide.checkedAt,url,'guide-source'));}return box;}
   function openRecord(record,trigger) {
     activeRecord=record;const content=el('detailContent');content.replaceChildren();
     const header=node('header',undefined,'detail-header');const eyebrow=node('div',undefined,'detail-eyebrow');eyebrow.append(badge(record),node('span',types[record.meta?.entityType || 'unknown']?.[state.language==='he'?0:1] || record.meta?.entityType,'detail-date'));
     const title=node('h2',record.name);title.id='detailTitle';title.dir='auto';header.append(eyebrow,title,node('p',record.meta?.vendor || t('legacyRecord'),'provider'));content.append(header);if(record.curation){const history=section(state.language==='he'?'הקשר הרשומה ההיסטורית':'Historical record context');history.append(node('p',record.curation[state.language]),link(record.curation.source,record.curation.source),node('p',record.curation.date));content.append(history);}
     const description=summary(record);content.append(textLanguage(node('p',description.text,'detail-description'),description.language));
+    append(content,guideNotes(record.id));
     const actions=node('div',undefined,'detail-actions');const url=record.curation?.state==='archived'?null:destination(record);if(url)actions.append(link(t(record.checked?'visit':'visitLegacy'),url,'primary-button'));else if(record.status==='retired')actions.append(node('p',t('retiredNotice')));
     actions.append(node('span',record.checked?`${t('checkedDate')}: ${record.meta.verifiedAt}`:t('notDated'),'detail-date'));content.append(actions);
     if(record.meta?.identityNote || record.meta?.product){const identity=section(t('identity'));if(record.meta.product)identity.append(node('p',`${t('product')}: ${record.meta.product} · ${t('vendor')}: ${record.meta.vendor}`));if(record.meta.identityNote){const generic=record.meta.identityNote.includes('modelObservations');identity.append(textLanguage(node('p',generic?(state.language==='he'?'שם המוצר נשמר בנפרד משמות וגרסאות המודלים שנצפו.':'The product identity stays separate from observed model names and versions.'):record.meta.identityNote),generic?state.language:'he'));}content.append(identity);}
@@ -178,7 +181,8 @@
     if(record.original){const historical=section(t('historical'),true);historical.append(node('p',t('historicalNote')),node('p',`${t('oldName')}: ${record.original.name}`),node('p',`${t('categories')}: ${record.original.categories.join(', ')}`));const originalUrl=safeUrl(record.original.url);if(originalUrl){const originalText=node('p',`${t('oldUrl')}: ${originalUrl}`);originalText.style.overflowWrap='anywhere';historical.append(originalText);}const scores=node('div',undefined,'historical-scores');Object.entries(record.original.scores).forEach(([category,score])=>scores.append(node('span',`${category}: ${Math.round(score*100)}%`)));historical.append(scores);content.append(historical);}
     openDialog(trigger);
   }
-  function openWorkflows(trigger){activeRecord=null;const content=el('detailContent');content.replaceChildren();const title=node('h2',t('workflows'));title.id='detailTitle';content.append(title,node('p',t('workflowNote'),'detail-description'));for(const workflow of root.aiCatalog?.workflows || []){const item=section(workflow.title);item.append(textLanguage(node('p',workflow.guidance),'en'));content.append(item);}openDialog(trigger);}
+  function openWorkflows(trigger){activeRecord=null;const content=el('detailContent');content.replaceChildren();const guide=root.creativeGuide,copy=guide?.[state.language];const title=node('h2',copy?.title||t('workflows'));title.id='detailTitle';content.append(title);if(copy){content.append(node('p',copy.intro,'detail-description'),node('p',copy.images),node('p',copy.video));const steps=node('ol',undefined,'creative-steps');copy.steps.forEach(text=>steps.append(node('li',text)));content.append(steps,node('p',copy.caution));const sources=section(copy.notes,true);for(const id of Object.keys(guide.models))append(sources,guideNotes(id));content.append(sources);}const general=section(t('workflows'),true);general.append(node('p',t('workflowNote'),'detail-description'));for(const workflow of root.aiCatalog?.workflows||[]){const item=section(workflow.title);item.append(textLanguage(node('p',workflow.guidance),'en'));general.append(item)}content.append(general);openDialog(trigger);}
+
   function reset(){state.query='';state.task='all';state.selectedTasks=[];state.status='all';el('searchInput').value='';el('statusFilter').value='all';renderResults();el('searchInput').focus();}
   el('searchInput').addEventListener('input',event=>{state.query=event.target.value;renderResults();});
   el('clearSearch').addEventListener('click',()=>{state.query='';el('searchInput').value='';renderResults();el('searchInput').focus();});
@@ -206,10 +210,14 @@
   el('categoryDialog').addEventListener('cancel',event=>{event.preventDefault();closeCategories()});
   el('categoryDialog').addEventListener('click',event=>{if(event.target!==el('categoryDialog'))return;const r=event.target.getBoundingClientRect();if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)closeCategories()});
   el('categoryDialog').addEventListener('close',()=>{clearTimeout(categoryTimer);el('categoryDialog').classList.remove('closing');el('categoryOpen').setAttribute('aria-expanded','false');el('categoryOpen').focus()});
-  function applyLayout(next){layout=next;el('sphereStage').classList.toggle('atlas-mode',next==='atlas');el('sphereStage').tabIndex=next==='sphere'?0:-1;el('sphereCanvas').hidden=next!=='sphere';el('motionControls').hidden=true;el('sphereHint').hidden=next!=='sphere';el('sphereLayout').setAttribute('aria-pressed',String(next==='sphere'));el('atlasLayout').setAttribute('aria-pressed',String(next==='atlas'));sphere?.setEnabled(next==='sphere');renderResults();}
+  function applyLayout(next,animate=true){if(next===layout&&!morph?.active)return;const before=morph?.capture();morph?.cancel();layout=next;el('sphereStage').classList.toggle('atlas-mode',next==='atlas');el('sphereStage').tabIndex=next==='sphere'?0:-1;el('sphereCanvas').hidden=next!=='sphere';el('motionControls').hidden=true;el('sphereHint').hidden=next!=='sphere';el('sphereLayout').setAttribute('aria-pressed',String(next==='sphere'));el('atlasLayout').setAttribute('aria-pressed',String(next==='atlas'));sphere?.setEnabled(next==='sphere');renderResults();if(animate&&before&&!sphere?.failed)morph?.run(before,next);}
   const fallback=()=>{el('sphereLayout').disabled=true;el('sphereFallback').hidden=false;el('sphereFallback').textContent=state.language==='he'?'תצוגת הספירה אינה זמינה במכשיר זה. האטלס מציג את כל הכלים.':'The sphere is unavailable on this device. Atlas keeps every tool accessible.';applyLayout('atlas');};
   sphere=new root.ToolSphere({stage:el('sphereStage'),canvas:el('sphereCanvas'),grid:el('toolGrid'),onFallback:fallback,onMove:hideQuick});
   sphere.setRecords(interleave(records).map(record=>record.id),root.curatedToolIds||[]);
+  morph=new root.LayoutTransition({stage:el('sphereStage'),canvas:el('sphereCanvas'),grid:el('toolGrid'),onStart:()=>{hideQuick();sphere.setPlaying(false);sphere.transitioning=true;},onFinish:()=>{sphere.transitioning=false;sphere.draw();}});
+  el('toolGrid').addEventListener('pointerdown',event=>{if(!morph.active)return;const button=event.target.closest('.tool-label');if(button)button.focus({preventScroll:true});morph.finish();if(button){event.preventDefault();event.stopPropagation();button.click();}},true);
+  el('toolGrid').addEventListener('focusin',event=>{if(morph.active){morph.finish();event.target.closest('.tool-label')?.click();}},true);
+  root.addEventListener('resize',()=>{if(morph.active)applyLayout(layout)});
   el('sphereLayout').addEventListener('click',()=>applyLayout('sphere'));el('atlasLayout').addEventListener('click',()=>applyLayout('atlas'));
   el('motionToggle').addEventListener('click',()=>sphere.setPlaying(!(sphere.playing||sphere.inertial)));
   el('sphereStage').addEventListener('sphere-motion',event=>{el('motionToggle').textContent=event.detail?'Ⅱ':'▶';el('motionToggle').setAttribute('aria-pressed',String(event.detail));});

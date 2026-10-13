@@ -1031,7 +1031,7 @@ h1 {font-size:38px;letter-spacing:-.8px;font-weight:600;}
 .atlas-group {break-inside:avoid;border-bottom:1px solid var(--line);padding:10px 0 18px;}
 .atlas-group h2 {font-size:15px;color:var(--muted);font-weight:600;margin:0 0 8px;}
 .atlas-labels {display:flex;align-items:baseline;flex-wrap:wrap;gap:0 15px;}
-.atlas-labels .tool-label {position:static;visibility:visible!important;opacity:1!important;}
+.atlas-labels .tool-label {position:static;visibility:visible;opacity:1;}
 [hidden] {display:none!important;}
 @media(max-width:620px){
  .layout-toolbar button {padding:2px 9px;min-height:44px;font-size:13px;}
@@ -1107,3 +1107,13 @@ html[dir=ltr] .category-drawer {inset:0 auto 0 0;}
 @media(max-width:620px){.site-header{min-height:64px;}.catalog{padding-top:12px;}.search-row{gap:12px;}.search-box input{font-size:15px;}.category-open{padding:0 13px;font-size:15px;}.overview-bar{min-height:54px;gap:10px;}.sphere-stage{height:calc(100dvh - 218px);min-height:430px;}.category-sheet{padding:20px;}.category-drawer .task-filter{justify-content:start;}.category-drawer .task-chip{font-size:16px;}.method{margin-top:10px;}}
 @media(prefers-reduced-motion:reduce){.category-drawer,.category-drawer::backdrop{animation:none!important;}}
 .sphere-stage:not(.atlas-mode) .tool-label {user-select:none;-webkit-user-select:none;}
+
+/* Unfolding keeps the document height continuous and contains moving labels. */
+.sphere-stage {overflow-anchor:none;}
+.sphere-stage[data-unfolding] {overflow:clip;cursor:default;}
+.sphere-stage[data-unfolding] .tool-label {will-change:transform,opacity;}
+.sphere-stage[data-unfolding] #sphereCanvas {transform-origin:50% 15%;}
+
+.creative-steps {padding-inline-start:24px;line-height:1.75;}
+.creative-steps li {padding:10px 0 14px;border-bottom:1px solid var(--line);}
+.guide-source {display:block;font-size:13px;line-height:1.8;overflow-wrap:anywhere;}

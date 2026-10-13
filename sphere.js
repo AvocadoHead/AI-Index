@@ -17,12 +17,12 @@
    this.reduced.addEventListener('change',()=>{if(this.reduced.matches)this.setPlaying(false)});
    this.resize=new ResizeObserver(()=>this.draw());this.resize.observe(stage);
    let drag=null,suppress=0;
-   stage.addEventListener('pointerdown',event=>{if(!this.enabled||event.button!==0)return;this.setPlaying(false);drag={id:event.pointerId,x:event.clientX,y:event.clientY,rx:this.rx,ry:this.ry,moved:false,lastX:event.clientX,lastY:event.clientY,time:event.timeStamp,vx:0,vy:0};});
+   stage.addEventListener('pointerdown',event=>{if(this.transitioning||!this.enabled||event.button!==0)return;this.setPlaying(false);drag={id:event.pointerId,x:event.clientX,y:event.clientY,rx:this.rx,ry:this.ry,moved:false,lastX:event.clientX,lastY:event.clientY,time:event.timeStamp,vx:0,vy:0};});
    stage.addEventListener('pointermove',event=>{if(!drag||drag.id!==event.pointerId)return;const dx=event.clientX-drag.x,dy=event.clientY-drag.y;if(Math.hypot(dx,dy)>7){const elapsed=Math.max(8,event.timeStamp-drag.time);drag.vx=Math.max(-.003,Math.min(.003,(event.clientY-drag.lastY)*.006/elapsed));drag.vy=Math.max(-.003,Math.min(.003,(event.clientX-drag.lastX)*.006/elapsed));drag.lastX=event.clientX;drag.lastY=event.clientY;drag.time=event.timeStamp;drag.moved=true;stage.setPointerCapture(event.pointerId);stage.dataset.dragging='true';onMove();this.ry=drag.ry+dx*.006;this.rx=Math.max(-1.3,Math.min(1.3,drag.rx+dy*.006));this.draw();}});
    const end=event=>{if(!drag||drag.id!==event.pointerId)return;if(drag.moved){suppress=performance.now()+500;stage.dataset.suppressUntil=String(suppress);if(event.type==='pointerup'){const age=Math.max(0,event.timeStamp-drag.time);const decay=Math.exp(-age/90);this.startInertia(drag.vx*decay,drag.vy*decay);}}drag=null;delete stage.dataset.dragging;if(stage.hasPointerCapture(event.pointerId))stage.releasePointerCapture(event.pointerId);};
    stage.addEventListener('pointerup',end);stage.addEventListener('pointercancel',end);
    stage.addEventListener('click',event=>{if(performance.now()<suppress){event.preventDefault();event.stopImmediatePropagation()}},true);
-   stage.addEventListener('keydown',event=>{if(event.target!==stage)return;const moves={ArrowLeft:[0,-.2],ArrowRight:[0,.2],ArrowUp:[-.2,0],ArrowDown:[.2,0]};if(moves[event.key]){event.preventDefault();this.setPlaying(false);this.rx+=moves[event.key][0];this.ry+=moves[event.key][1];onMove();this.draw()}if(event.key===' '){event.preventDefault();this.setPlaying(!(this.playing||this.inertial))}if(event.key==='Escape'){event.preventDefault();this.setPlaying(false)}if(event.key==='Home'){event.preventDefault();this.reset()}});
+   stage.addEventListener('keydown',event=>{if(this.transitioning||event.target!==stage)return;const moves={ArrowLeft:[0,-.2],ArrowRight:[0,.2],ArrowUp:[-.2,0],ArrowDown:[.2,0]};if(moves[event.key]){event.preventDefault();this.setPlaying(false);this.rx+=moves[event.key][0];this.ry+=moves[event.key][1];onMove();this.draw()}if(event.key===' '){event.preventDefault();this.setPlaying(!(this.playing||this.inertial))}if(event.key==='Escape'){event.preventDefault();this.setPlaying(false)}if(event.key==='Home'){event.preventDefault();this.reset()}});
    stage.addEventListener('focusin',()=>this.setPlaying(false));stage.addEventListener('pointerenter',()=>{if(this.playing)this.setPlaying(false)});document.addEventListener('visibilitychange',()=>{if(document.hidden)this.setPlaying(false)});
   }
   initGL(){
@@ -47,7 +47,7 @@
   reset(){this.setPlaying(false);this.rx=.15;this.ry=.35;this.onMove();this.draw();}
   draw(){
    cancelAnimationFrame(this.fadeFrame);
-   if(!this.enabled||this.failed||!this.gl)return;
+   if(this.transitioning||!this.enabled||this.failed||!this.gl)return;
    const now=performance.now(),elapsed=this.lastDraw?Math.min(64,now-this.lastDraw):16;this.lastDraw=now;let fading=false;
    const w=this.stage.clientWidth,h=this.stage.clientHeight;if(!w||!h)return;
    const radius=Math.min(w*.43,h*.45),gl=this.gl,dpr=Math.min(devicePixelRatio||1,2);
