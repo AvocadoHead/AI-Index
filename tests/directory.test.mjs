@@ -85,3 +85,11 @@ test('Seedance launches 2.5 and Codex remains discoverable without a duplicate',
  assert.equal(records.filter(r=>r.id==='openai-codex').length,1);
  assert.equal(api.estimatedScore(records.find(r=>r.id==='openai-codex')),null);
 });
+
+test('Base44 has one identity with case, spacing and Hebrew aliases across scopes',()=>{
+ for(const scope of ['curated','all'])for(const query of ['base44','BASE44','Base 44','  base   44  ','Base-44','בייס44','בייס 44']){
+  const found=api.selectRecords(records,{...state,scope,query,selectedTasks:[]});assert.equal(found.length,1);assert.equal(found[0].id,'ai-002');
+ }
+ assert.equal(api.selectRecords(records,{...state,query:'base44',selectedTasks:['audio']}).length,0);
+ assert.equal(api.selectRecords(records,{...state,query:'base44',selectedTasks:['workflow']})[0].id,'ai-002');
+});

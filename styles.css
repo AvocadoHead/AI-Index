@@ -1241,3 +1241,8 @@ html[dir=ltr] .creative-steps li {padding:0 0 22px 42px;}
 @media(max-width:620px){.exploration-controls {margin-top:0;}.exploration-stops button {font-size:13px;}#explorationHint {font-size:11px;}}
 /* Keep label coordinates stable when changing views adds or removes page overflow. */
 html {scrollbar-gutter:stable;}
+
+.search-notice,.search-all{grid-column:1/-1;font-size:14px;line-height:1.5;text-align:start;}
+.search-notice{color:var(--muted);margin:0 0 10px;}
+.search-all{min-height:44px;background:#edf3ef;color:#304e43;border-radius:6px;padding:8px 12px;justify-self:start;margin-bottom:12px;}
+.layout-toolbar[hidden]{display:none;}

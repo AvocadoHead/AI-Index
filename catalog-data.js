@@ -57,7 +57,12 @@ window.aiCatalog = {
       "limitations": [],
       "uncertainties": [],
       "recommendation": null,
-      "aliases": [],
+      "aliases": [
+        "Base 44",
+        "Base-44",
+        "בייס44",
+        "בייס 44"
+      ],
       "capabilities": [
         "web-apps",
         "code-assisted-creation"
