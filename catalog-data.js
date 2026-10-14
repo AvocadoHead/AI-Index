@@ -4497,11 +4497,11 @@ window.aiCatalog = {
       "vendor": "ByteDance Seed",
       "product": "Seedance",
       "name": "Seedance",
-      "officialUrl": "https://seed.bytedance.com/en/seedance",
+      "officialUrl": "https://seed.bytedance.com/en/seedance2_5",
       "description": "משפחת מודלים לווידאו ואודיו. Seedance 2.5 משלב רפרנסים מתמונות, וידאו ואודיו ותומך בהפקת תוצר סופי מטיוטה נבחרת.",
       "descriptionLanguage": "he",
       "status": "active",
-      "verifiedAt": "2026-10-13",
+      "verifiedAt": "2026-10-14",
       "sources": [
         {
           "url": "https://seed.bytedance.com/en/blog/one-take-creation-flexible-referencing-introducing-seedance-2-5",
@@ -4518,6 +4518,10 @@ window.aiCatalog = {
         {
           "url": "https://docs.byteplus.com/zh-TW/docs/modelark/seedance-2-5",
           "checkedAt": "2026-10-13"
+        },
+        {
+          "url": "https://seed.bytedance.com/en/seedance2_5",
+          "checkedAt": "2026-10-14"
         }
       ],
       "modelObservations": [
@@ -4723,7 +4727,10 @@ window.aiCatalog = {
       "limitations": [],
       "uncertainties": [],
       "recommendation": null,
-      "aliases": [],
+      "aliases": [
+        "OpenAI Codex",
+        "קודקס"
+      ],
       "capabilities": [
         "developer-workflow"
       ],

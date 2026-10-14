@@ -101,7 +101,7 @@
   const doc = root.document, records = canonicalRecords(createRecords(root.defaultModules || [],root.aiCatalog));
   const state = {language:doc.documentElement.lang === 'he' ? 'he':'en',query:'',task:'all',status:'all',sort:'reviewed',selectedTasks:[],scope:'curated'};
   const el = id => doc.getElementById(id), t = key => copy[state.language][key];
-  let sphere=null,morph=null,layout='sphere';
+  let sphere=null,morph=null,layout='sphere',exploring=false,outerScope='curated';
   let activeRecord = null, returnFocus = null;
   function node(tag,text,className) { const element=doc.createElement(tag); if(text !== undefined) element.textContent=text; if(className) element.className=className; return element; }
   function textLanguage(element, language) { if(language !== 'auto') element.lang=language; element.dir=language==='auto'?'auto':language==='he'?'rtl':'ltr'; return element; }
@@ -120,12 +120,17 @@
   }
   function link(text,url,className) { const a=node('a',text,className); a.href=url;a.target='_blank';a.rel='noopener noreferrer';return a; }
   const quick=doc.createElement('aside');quick.id='quickPreview';quick.hidden=true;quick.setAttribute('aria-label','Tool summary');doc.body.append(quick);
-  let quickPinned=false,quickTrigger=null,quickTimer=null;
-  function hideQuick(){clearTimeout(quickTimer);quick.hidden=true;quickPinned=false;if(quickTrigger)quickTrigger.removeAttribute('aria-describedby');}
+  let quickPinned=false,quickTrigger=null,quickTimer=null,quickHoverTimer=null;
+  function cancelQuickHover(){clearTimeout(quickHoverTimer);quickHoverTimer=null;}
+  function clearQuickTrigger(){if(quickTrigger){quickTrigger.removeAttribute('aria-describedby');quickTrigger.setAttribute('aria-expanded','false');quickTrigger.setAttribute('aria-pressed','false');}}
+  function hideQuick(){clearTimeout(quickTimer);cancelQuickHover();quick.hidden=true;quickPinned=false;clearQuickTrigger();quickTrigger=null;}
   function scheduleQuickClose(){clearTimeout(quickTimer);quickTimer=setTimeout(()=>{if(!quickPinned&&!quick.matches(':hover')&&!quick.contains(doc.activeElement))hideQuick()},180);}
   function showQuick(record,trigger,pinned){
-    if(morph?.active||el('categoryDialog').open||el('sphereStage').dataset.inertia||el('detailDialog').open||performance.now()<Number(el('sphereStage').dataset.suppressUntil||0))return;
-    sphere?.setPlaying(false);clearTimeout(quickTimer);quickPinned=pinned;quickTrigger=trigger;quick.replaceChildren();
+    if(!pinned&&!quick.hidden&&(quickPinned||quick.contains(doc.activeElement)))return;
+    if(morph?.active||el('sphereStage').dataset.zooming||el('categoryDialog').open||el('sphereStage').dataset.inertia||el('detailDialog').open||performance.now()<Number(el('sphereStage').dataset.suppressUntil||0))return;
+    sphere?.setPlaying(false);clearTimeout(quickTimer);cancelQuickHover();
+    if(!quick.hidden&&quickTrigger===trigger){if(pinned){quickPinned=true;trigger.setAttribute('aria-pressed','true');}return;}
+    clearQuickTrigger();quickPinned=pinned;quickTrigger=trigger;trigger.setAttribute('aria-expanded','true');trigger.setAttribute('aria-pressed',String(pinned));quick.replaceChildren();
     const close=node('button','×','quick-close');close.type='button';close.setAttribute('aria-label',t('close'));close.addEventListener('click',()=>{hideQuick();trigger.focus();hideQuick()});
     const title=node('h2',record.name);title.dir='auto';
     const description=summary(record);const text=textLanguage(node('p',description.text),description.language);text.id='quickDescription';trigger.setAttribute('aria-describedby',text.id);
@@ -134,7 +139,14 @@
     const actions=node('div',undefined,'quick-actions');actions.append(details);const url=record.curation?.state==='archived'?null:destination(record);if(url)actions.append(link(state.language==='he'?'פתיחת הכלי ↗':'Open tool ↗',url,'quick-visit'));quick.append(close,node('p',tasks[record.primaryTask]?.[state.language]||'','quick-category'),title,text);if(firstStep(record))quick.append(node('p',firstStep(record),'first-step'));quick.append(actions);quick.hidden=false;
     const rect=trigger.getBoundingClientRect();quick.style.left=Math.max(12,Math.min(innerWidth-quick.offsetWidth-12,rect.left))+'px';quick.style.top=Math.max(12,Math.min(innerHeight-quick.offsetHeight-12,rect.bottom+8))+'px';
   }
-  quick.addEventListener('pointerenter',()=>clearTimeout(quickTimer));quick.addEventListener('pointerleave',scheduleQuickClose);
+  function previewOnHover(record,trigger){
+    if(quickPinned||quick.contains(doc.activeElement))return;
+    cancelQuickHover();
+    if(quick.hidden||quickTrigger===trigger){showQuick(record,trigger,false);return;}
+    // Crossing another label on the way into the card must not immediately replace it.
+    clearTimeout(quickTimer);quickHoverTimer=setTimeout(()=>{if(trigger.matches(':hover'))showQuick(record,trigger,false);},250);
+  }
+  quick.addEventListener('pointerenter',()=>{clearTimeout(quickTimer);cancelQuickHover();});quick.addEventListener('pointerleave',scheduleQuickClose);
   doc.addEventListener('keydown',event=>{if(event.key==='Escape'&&!quick.hidden){event.preventDefault();const trigger=quickTrigger;hideQuick();trigger?.focus();hideQuick()}});
   doc.addEventListener('pointerdown',event=>{if(!quick.contains(event.target)&&!event.target.closest('.tool-label'))hideQuick()});
   doc.addEventListener('focusin',event=>{if(!quick.contains(event.target)&&!event.target.closest('.tool-label'))hideQuick()});
@@ -147,16 +159,30 @@
     const heading=node('h3',record.name);heading.dir='auto';
     const mark=node('span',record.status==='retired'?'×':record.checked?'✓':'','verification-mark');mark.setAttribute('aria-hidden','true');
     const scoreText=score===null?(state.language==='he'?'ללא ציון':'Unrated'):(state.language==='he'?'ממוצע מוערך מקורי: ':'Original estimated average: ')+(score*100).toFixed(1)+'%';
-    button.setAttribute('aria-label',record.name+' · '+scoreText+' · '+t('details'));
+    button.setAttribute('aria-label',record.name+' · '+scoreText+' · '+t('details'));button.setAttribute('aria-controls','quickPreview');button.setAttribute('aria-expanded','false');button.setAttribute('aria-pressed','false');
     button.append(heading,mark);if(score===null){const unrated=node('span','◇','unrated-mark');unrated.setAttribute('aria-hidden','true');button.append(unrated);}
-    button.addEventListener('keydown',event=>{if(event.key==='Tab'&&!event.shiftKey&&!quick.hidden&&quickTrigger===button){event.preventDefault();quick.querySelector('.primary-button').focus()}});button.addEventListener('pointerenter',event=>{if(event.pointerType==='mouse'&&!el('sphereStage').dataset.dragging)showQuick(record,button,false)});button.addEventListener('focus',()=>showQuick(record,button,false));button.addEventListener('pointerleave',scheduleQuickClose);button.addEventListener('click',()=>showQuick(record,button,true));article.append(button);return article;
+    button.addEventListener('keydown',event=>{if(event.key==='Tab'&&!event.shiftKey&&!quick.hidden&&quickTrigger===button){event.preventDefault();quick.querySelector('.primary-button').focus()}});button.addEventListener('pointerenter',event=>{if(event.pointerType==='mouse'&&!el('sphereStage').dataset.dragging)previewOnHover(record,button)});button.addEventListener('focus',()=>showQuick(record,button,false));button.addEventListener('pointerleave',()=>{cancelQuickHover();scheduleQuickClose();});button.addEventListener('click',()=>{if(quickPinned&&quickTrigger===button){hideQuick();return;}showQuick(record,button,true)});article.append(button);return article;
   }
   function renderResults() {
     morph?.finish();hideQuick();sphere?.setPlaying(false);const selected=selectRecords(records,state);
-    if(layout==='sphere')el('toolGrid').replaceChildren(...interleave(selected).map(card));else {const groups=[];for(const key of Object.keys(tasks).filter(k=>k!=='all')){const members=selected.filter(record=>record.primaryTask===key);if(!members.length)continue;const group=node('section',undefined,'atlas-group');group.dataset.category=key;const heading=node('h2');const category=node('button',undefined,'atlas-category');category.type='button';category.append(node('span',tasks[key][state.language]),node('span',String(members.length),'atlas-count'));category.addEventListener('click',()=>{state.selectedTasks=state.selectedTasks.length===1&&state.selectedTasks[0]===key?[]:[key];state.task=state.selectedTasks[0]||'all';renderResults();});heading.append(category);const labels=node('div',undefined,'atlas-labels');labels.append(...members.map(card));group.append(heading,labels);groups.push(group)}el('toolGrid').replaceChildren(...groups)}
-    sphere?.draw();el('resultsCount').textContent=t('result')(selected.length);el('emptyState').hidden=selected.length>0;el('clearSearch').hidden=!state.query;el('resetFilters').hidden=!(state.query || state.selectedTasks.length || state.status!=='all');
+    if(layout==='sphere'){const outer=new Set(selectRecords(records,{...state,scope:outerScope}).map(r=>r.id));el('toolGrid').replaceChildren(...interleave(selected).map(record=>{const article=card(record);article.dataset.exploreExtra=String(exploring&&!outer.has(record.id));return article;}));}else {const groups=[];for(const key of Object.keys(tasks).filter(k=>k!=='all')){const members=selected.filter(record=>record.primaryTask===key);if(!members.length)continue;const group=node('section',undefined,'atlas-group');group.dataset.category=key;const heading=node('h2');const category=node('button',undefined,'atlas-category');category.type='button';category.append(node('span',tasks[key][state.language]),node('span',String(members.length),'atlas-count'));category.addEventListener('click',()=>{state.selectedTasks=state.selectedTasks.length===1&&state.selectedTasks[0]===key?[]:[key];state.task=state.selectedTasks[0]||'all';renderResults();});heading.append(category);const labels=node('div',undefined,'atlas-labels');labels.append(...members.map(card));group.append(heading,labels);groups.push(group)}el('toolGrid').replaceChildren(...groups)}
+    updateExploration();sphere?.draw();el('resultsCount').textContent=t('result')(selected.length);el('emptyState').hidden=selected.length>0;el('clearSearch').hidden=!state.query;el('resetFilters').hidden=!(state.query || state.selectedTasks.length || state.status!=='all');
     el('scopeFilter').value=state.scope;el('mobileTask').value=state.task;el('categoryCount').hidden=!state.selectedTasks.length;el('categoryCount').textContent=state.selectedTasks.length;
     doc.querySelectorAll('.task-chip').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.task==='all'?!state.selectedTasks.length:state.selectedTasks.includes(button.dataset.task))));
+  }
+  function updateExploration(){
+    const he=state.language==='he',depth=sphere?.depthTarget||0;
+    el('explorationControls').hidden=layout!=='sphere'||Boolean(sphere?.failed);
+    el('exploreSelected').textContent=he?'מבט חיצוני':'Outer view';el('exploreAll').textContent=he?'כל האוסף':'Full collection';el('exploreInside').textContent=he?'מבט מבפנים':'Inside';
+    for(const [id,value] of [['exploreSelected',0],['exploreAll',.45],['exploreInside',1]])el(id).setAttribute('aria-pressed',String(Math.abs(depth-value)<.02));
+    el('explorationDepth').dir=he?'rtl':'ltr';el('explorationDepth').value=Math.round(depth*100);el('explorationDepth').setAttribute('aria-label',he?'עומק הספירה':'Sphere exploration depth');el('explorationDepth').setAttribute('aria-valuetext',depth===0?(he?'מבט חיצוני':'Outer view'):depth<.7?(he?'חשיפת כל האוסף':'Revealing full collection'):(he?'מבט מתוך הספירה':'Inside the sphere'));
+    el('explorationHint').textContent=he?'גללו בעדינות מעל הספירה או השתמשו במחוון. גררו לרוחב לסיבוב. האטלס מציג רשימה מלאה.':'Scroll gently over the sphere or use the slider. Drag sideways to rotate. Atlas shows a complete list.';
+  }
+  function explore(value){
+    if(layout!=='sphere'||sphere.failed||morph.active)return;
+    hideQuick();
+    if(value>0&&!exploring){outerScope=state.scope;exploring=true;state.scope='all';renderResults();}
+    sphere.setDepth(value);updateExploration();
   }
   function renderLanguage() {
     doc.documentElement.lang=state.language;doc.documentElement.dir=state.language==='he'?'rtl':'ltr';doc.title=state.language==='he'?'AI Index — כלים לעבודה יצירתית':'AI Index — A creative field guide';
@@ -196,7 +222,7 @@
   el('searchInput').addEventListener('input',event=>{state.query=event.target.value;renderResults();});
   el('clearSearch').addEventListener('click',()=>{state.query='';el('searchInput').value='';renderResults();el('searchInput').focus();});
   el('mobileTask').addEventListener('change',event=>{state.task=event.target.value;state.selectedTasks=state.task==='all'?[]:[state.task];renderResults();});
-  el('scopeFilter').addEventListener('change',event=>{state.scope=event.target.value;renderResults()});
+  el('scopeFilter').addEventListener('change',event=>{exploring=false;sphere.setDepth(0);state.scope=event.target.value;outerScope=state.scope;renderResults()});
   el('statusFilter').addEventListener('change',event=>{state.status=event.target.value;if(state.status==='retired')state.scope='all';renderResults();});el('sortOrder').addEventListener('change',event=>{state.sort=event.target.value;renderResults();});
   el('resetFilters').addEventListener('click',reset);el('emptyReset').addEventListener('click',reset);
   el('languageToggle').addEventListener('click',()=>{state.language=state.language==='he'?'en':'he';renderLanguage();});
@@ -222,9 +248,17 @@
   function applyLayout(next,animate=true){if(next===layout&&!morph?.active)return;const before=morph?.capture();morph?.cancel();layout=next;el('sphereStage').classList.toggle('atlas-mode',next==='atlas');el('sphereStage').tabIndex=next==='sphere'?0:-1;el('sphereCanvas').hidden=next!=='sphere';el('motionControls').hidden=true;el('sphereHint').hidden=next!=='sphere';el('sphereLayout').setAttribute('aria-pressed',String(next==='sphere'));el('atlasLayout').setAttribute('aria-pressed',String(next==='atlas'));sphere?.setEnabled(next==='sphere');renderResults();if(animate&&before&&!sphere?.failed)morph?.run(before,next);}
   const fallback=()=>{el('sphereLayout').disabled=true;el('sphereFallback').hidden=false;el('sphereFallback').textContent=state.language==='he'?'תצוגת הספירה אינה זמינה במכשיר זה. האטלס מציג את כל הכלים.':'The sphere is unavailable on this device. Atlas keeps every tool accessible.';applyLayout('atlas');};
   sphere=new root.ToolSphere({stage:el('sphereStage'),canvas:el('sphereCanvas'),grid:el('toolGrid'),onFallback:fallback,onMove:hideQuick});
+  sphere.onDepth=depth=>{if(depth===0&&exploring&&sphere.depthTarget===0){exploring=false;state.scope=outerScope;renderResults();}};
+  el('explorationDepth').addEventListener('input',event=>explore(Number(event.target.value)/100));
+  for(const [id,value] of [['exploreSelected',0],['exploreAll',.45],['exploreInside',1]])el(id).addEventListener('click',()=>explore(value));
+  el('sphereStage').addEventListener('wheel',event=>{
+    if(layout!=='sphere'||sphere.failed||sphere.reduced.matches||morph.active||quickPinned||el('detailDialog').open||event.ctrlKey||event.metaKey||event.shiftKey||Math.abs(event.deltaX)>Math.abs(event.deltaY))return;
+    const next=Math.max(0,Math.min(1,sphere.depthTarget+root.SphereMath.wheelStep(event.deltaY,event.deltaMode)));
+    if(next===sphere.depthTarget)return;event.preventDefault();explore(next);
+  },{passive:false});
   sphere.setRecords(interleave(records).map(record=>record.id),root.curatedToolIds||[]);sphere.setEnabled(layout==='sphere');
   morph=new root.LayoutTransition({stage:el('sphereStage'),canvas:el('sphereCanvas'),grid:el('toolGrid'),onStart:()=>{hideQuick();sphere.setPlaying(false);sphere.transitioning=true;},onFinish:()=>{sphere.transitioning=false;sphere.draw();}});
-  el('toolGrid').addEventListener('pointerdown',event=>{if(!morph.active)return;const button=event.target.closest('.tool-label');if(button)button.focus({preventScroll:true});morph.finish();if(button){event.preventDefault();event.stopPropagation();button.click();}},true);
+  el('toolGrid').addEventListener('pointerdown',event=>{if(!morph.active)return;const button=event.target.closest('.tool-label');morph.finish();if(button)button.focus({preventScroll:true});if(button){event.preventDefault();event.stopPropagation();button.click();}},true);
   el('toolGrid').addEventListener('focusin',event=>{if(morph.active){morph.finish();event.target.closest('.tool-label')?.click();}},true);
   root.addEventListener('resize',()=>{if(morph.active)applyLayout(layout)});
   el('sphereLayout').addEventListener('click',()=>applyLayout('sphere'));el('atlasLayout').addEventListener('click',()=>applyLayout('atlas'));
