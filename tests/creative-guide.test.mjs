@@ -7,7 +7,7 @@ const context={window:{},URL};for(const file of ['modules.js','catalog-data.js',
 test('editorial guidance preserves canonical identities and numeric scores',()=>{
  assert.deepEqual(JSON.parse(JSON.stringify(context.window.creativeGuide)),guide);
  const api=context.window.DirectoryData,records=api.canonicalRecords(api.createRecords(context.window.defaultModules,context.window.aiCatalog));
- assert.equal(records.length,158);assert.equal(context.window.defaultModules.length,120);assert.equal(records.filter(r=>r.checked).length,154);
+ assert.equal(records.length,context.window.aiCatalog.records.length);assert.equal(context.window.defaultModules.length,120);assert.equal(records.filter(r=>r.checked).length,context.window.aiCatalog.records.filter(r=>r.verifiedAt).length);
  assert.equal(guide.attribution,undefined);assert.equal(guide.imageOrder,undefined);
  assert.doesNotMatch(JSON.stringify(guide),/Eyal|אייל|Topaz/);
  for(const [id,notes] of Object.entries(guide.models)){assert.ok(records.some(r=>r.id===id));for(const note of notes){assert.ok(note.en&&note.he&&note.name);assert.equal(note.score,undefined);assert.ok(note.sources.every(url=>new URL(url).protocol==='https:'));}}

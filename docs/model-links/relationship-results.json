@@ -1,0 +1,34 @@
+[
+  {
+    "width": 390,
+    "language": "he",
+    "pinnedAcrossLayouts": true,
+    "sliderRemoved": true,
+    "families": 12,
+    "routes": 102
+  },
+  {
+    "width": 390,
+    "language": "en",
+    "pinnedAcrossLayouts": true,
+    "sliderRemoved": true,
+    "families": 12,
+    "routes": 102
+  },
+  {
+    "width": 1440,
+    "language": "he",
+    "pinnedAcrossLayouts": true,
+    "sliderRemoved": true,
+    "families": 12,
+    "routes": 102
+  },
+  {
+    "width": 1440,
+    "language": "en",
+    "pinnedAcrossLayouts": true,
+    "sliderRemoved": true,
+    "families": 12,
+    "routes": 102
+  }
+]

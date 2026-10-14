@@ -15,7 +15,7 @@ chrome.stdio[4].on('data',chunk=>{buffer+=chunk;let end;while((end=buffer.indexO
 function send(method,params={},sessionId){return new Promise((resolve,reject)=>{const id=++serial;pending.set(id,{resolve,reject});chrome.stdio[3].write(JSON.stringify({id,method,params,sessionId})+'\0');});}
 const timeout=setTimeout(()=>{chrome.kill();console.error('QA timed out');process.exit(2);},300000);
 (async()=>{
- const results=[];
+ const results=[],catalog=JSON.parse(fs.readFileSync(path.join(root,'data/catalog.json'))),total=catalog.records.length,checked=catalog.records.filter(r=>r.verifiedAt).length;
  for(const width of (process.env.QA_WIDTHS?process.env.QA_WIDTHS.split(',').map(Number):[360,390,768,1440])) for(const language of (process.env.QA_LANGUAGES?process.env.QA_LANGUAGES.split(','):['he','en'])){
   const name=`${width}-${language}`;
   const {targetId}=await send('Target.createTarget',{url:'about:blank'});
@@ -88,7 +88,7 @@ const timeout=setTimeout(()=>{chrome.kill();console.error('QA timed out');proces
   assert.equal(await evaluate("document.getElementById('quickPreview').hidden"),false,JSON.stringify(await evaluate(`({hit:document.elementFromPoint(${labelPoint.x},${labelPoint.y})?.outerHTML,stage:document.getElementById('sphereStage').dataset})`)));await screenshot('-sphere-summary');await evaluate("document.querySelector('#quickPreview .primary-button').click()");assert.equal(await evaluate("document.getElementById('detailDialog').open"),true);await evaluate("document.getElementById('closeDialog').click()");
   await evaluate("document.getElementById('atlasLayout').click();const scope=document.getElementById('scopeFilter');scope.value='all';scope.dispatchEvent(new Event('change'));scrollTo(0,0)");
   const initial=await evaluate(`({language:document.documentElement.lang,direction:document.documentElement.dir,count:document.querySelectorAll('.tool-card').length,width:innerWidth,scrollWidth:document.documentElement.scrollWidth,errors:qaErrors,columns:1})`);
-  assert.equal(initial.language,language);assert.equal(initial.count,158);assert.equal(initial.width,width);assert.ok(initial.scrollWidth<=width,JSON.stringify(initial));assert.deepEqual(initial.errors,[]);
+  assert.equal(initial.language,language);assert.equal(initial.count,total);assert.equal(initial.width,width);assert.ok(initial.scrollWidth<=width,JSON.stringify(initial));assert.deepEqual(initial.errors,[]);
   await screenshot('-directory');
   const atlas=await evaluate(`(()=>{const labels=[...document.querySelectorAll('.tool-label')];return {font:document.fonts.check('16px Assistant'),fontLoaded:[...document.fonts].some(f=>f.family==='Assistant'&&f.status==='loaded'),minFont:Math.min(...labels.map(b=>parseFloat(getComputedStyle(b.querySelector('h3')).fontSize))),minTouch:Math.min(...labels.map(b=>b.getBoundingClientRect().height)),sizesMatch:labels.every(b=>{const score=b.parentElement.dataset.score;return b.style.getPropertyValue('--score-size')===DirectoryData.scoreSize(score==='unrated'?null:Number(score))+'px'}),visible:labels.filter(b=>b.getBoundingClientRect().bottom<=innerHeight).length,domains:new Set(labels.filter(b=>b.getBoundingClientRect().bottom<=innerHeight).map(b=>b.parentElement.dataset.category)).size}})()`);
   assert.ok(atlas.font&&atlas.fontLoaded);assert.ok(atlas.minFont>=16);assert.ok(atlas.minTouch>=44);assert.ok(atlas.sizesMatch);assert.ok(atlas.visible>=(width>=1000?20:4),JSON.stringify(atlas));
@@ -107,11 +107,11 @@ const timeout=setTimeout(()=>{chrome.kill();console.error('QA timed out');proces
   assert.equal(await evaluate("document.getElementById('statusFilter').value"),'checked');
   assert.equal(await evaluate("document.querySelectorAll('.tool-card').length"),1);
   await evaluate("if(innerWidth<620){const task=document.getElementById('mobileTask');task.value='text';task.dispatchEvent(new Event('change'))}else {document.querySelector('[data-task=all]').click();document.querySelector('[data-task=text]').click()}");assert.equal(await evaluate("document.querySelectorAll('.tool-card').length"),0);assert.equal(await evaluate("document.getElementById('emptyState').hidden"),false);
-  await evaluate("document.getElementById('emptyReset').click()");assert.equal(await evaluate("document.querySelectorAll('.tool-card').length"),158);
+  await evaluate("document.getElementById('emptyReset').click()");assert.equal(await evaluate("document.querySelectorAll('.tool-card').length"),total);
   assert.equal(await evaluate("document.activeElement.id"),'searchInput');
   const clear=await evaluate(`(()=>{const input=document.getElementById('searchInput');input.value='zzzz_no_tool';input.dispatchEvent(new Event('input'));document.getElementById('clearSearch').click();return {count:document.querySelectorAll('.tool-card').length,value:input.value,focus:document.activeElement.id}})()`);
-  assert.deepEqual(clear,{count:158,value:'',focus:'searchInput'});
-  for(const [status,count] of [['checked',154],['pending',4],['retired',7]]){
+  assert.deepEqual(clear,{count:total,value:'',focus:'searchInput'});
+  for(const [status,count] of [['checked',checked],['pending',4],['retired',7]]){
     await evaluate(`(()=>{const select=document.getElementById('statusFilter');select.value='${status}';select.dispatchEvent(new Event('change'))})()`);
     assert.equal(await evaluate("document.querySelectorAll('.tool-card').length"),count);
   }
@@ -150,7 +150,7 @@ const timeout=setTimeout(()=>{chrome.kill();console.error('QA timed out');proces
   await evaluate("document.getElementById('closeDialog').click();new Promise(r=>setTimeout(r,30))");assert.equal(await evaluate("document.activeElement.id"),'workflowOpen');
   assert.deepEqual(await evaluate('qaErrors'),[]);
   results.push({...initial,...atlas,sphereInitial,appearance,initialSphere:true,categoryDrawer:true,unfolding,fadeEvidence,name,searchAndCombinedFilters:true,clearAndEmptyResults:true,dialogAndEscape:true,keyboardFocusContained:true,repeatedNavigation:true,retiredProvenance:true});
-  await evaluate("document.getElementById('sphereLayout').click();document.getElementById('sphereCanvas').getContext('webgl').getExtension('WEBGL_lose_context').loseContext()");await evaluate("new Promise(resolve=>setTimeout(resolve,100))");assert.equal(await evaluate("document.getElementById('atlasLayout').getAttribute('aria-pressed')"),'true');assert.equal(await evaluate("document.getElementById('sphereLayout').disabled"),true);assert.equal(await evaluate("document.querySelectorAll('.tool-card').length"),158);
+  await evaluate("document.getElementById('sphereLayout').click();document.getElementById('sphereCanvas').getContext('webgl').getExtension('WEBGL_lose_context').loseContext()");await evaluate("new Promise(resolve=>setTimeout(resolve,100))");assert.equal(await evaluate("document.getElementById('atlasLayout').getAttribute('aria-pressed')"),'true');assert.equal(await evaluate("document.getElementById('sphereLayout').disabled"),true);assert.equal(await evaluate("document.querySelectorAll('.tool-card').length"),total);
   if(width===1440&&language==='en'){
    await send('Page.navigate',{url:pathToFileURL(path.join(root,'legacy.html')).href},sessionId);
    await evaluate("new Promise(resolve=>setTimeout(resolve,1500))");await screenshot('-original');

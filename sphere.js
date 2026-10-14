@@ -9,8 +9,8 @@
  function rimOpacity(depth){const t=Math.max(0,Math.min(1,(depth+.30)/.55));return t*t*(3-2*t);}
  function fadeStep(current,target,elapsed){const next=target+(current-target)*Math.exp(-Math.max(0,elapsed)/100);return Math.abs(next-target)<.002?target:next;}
  function smooth(value){const t=Math.max(0,Math.min(1,value));return t*t*(3-2*t);}
- function projection(p,depth){const distance=3-3*depth-p[2],scale=1-depth+depth*1.35/Math.max(.3,distance);return {x:p[0]*scale,y:p[1]*scale,alpha:(rimOpacity(p[2])*(1-smooth(depth/.4))+smooth(depth/.4))*smooth((distance-.25)/.4)};}
- function wheelStep(delta,mode){return Math.max(-60,Math.min(60,delta*(mode===1?16:mode===2?500:1)))/480;}
+ function projection(p,depth){const travel=smooth((depth-.45)/.55),distance=3-3*travel-p[2],scale=1-travel+travel*1.35/Math.max(.3,distance);return {x:p[0]*scale,y:p[1]*scale,alpha:(rimOpacity(p[2])*(1-smooth(depth/.4))+smooth(depth/.4))*smooth((distance-.25)/.4)};}
+ function wheelStep(delta,mode){return -Math.max(-60,Math.min(60,delta*(mode===1?16:mode===2?500:1)))/480;}
  root.SphereMath={point,rotate,inertiaStep,rimOpacity,fadeStep,projection,wheelStep};
  root.ToolSphere=class {
   constructor({stage,canvas,grid,onFallback,onMove}){
@@ -60,7 +60,7 @@
    const w=this.stage.clientWidth,h=this.stage.clientHeight;if(!w||!h)return;
    const radius=Math.min(w*.43,h*.45),gl=this.gl,dpr=Math.min(devicePixelRatio||1,2);
    if(this.canvas.width!==Math.round(w*dpr)||this.canvas.height!==Math.round(h*dpr)){this.canvas.width=Math.round(w*dpr);this.canvas.height=Math.round(h*dpr)}
-   gl.viewport(0,0,this.canvas.width,this.canvas.height);gl.clearColor(0,0,0,0);gl.clear(gl.COLOR_BUFFER_BIT);gl.useProgram(this.program);gl.uniform2f(gl.getUniformLocation(this.program,'angle'),this.rx,this.ry);gl.uniform2f(gl.getUniformLocation(this.program,'scale'),radius*2/w,radius*2/h);gl.uniform1f(gl.getUniformLocation(this.program,'explore'),this.depth);gl.drawArrays(gl.LINES,0,this.vertexCount);
+   gl.viewport(0,0,this.canvas.width,this.canvas.height);gl.clearColor(0,0,0,0);gl.clear(gl.COLOR_BUFFER_BIT);gl.useProgram(this.program);gl.uniform2f(gl.getUniformLocation(this.program,'angle'),this.rx,this.ry);gl.uniform2f(gl.getUniformLocation(this.program,'scale'),radius*2/w,radius*2/h);gl.uniform1f(gl.getUniformLocation(this.program,'explore'),smooth((this.depth-.45)/.55));gl.drawArrays(gl.LINES,0,this.vertexCount);
    const entries=[...this.grid.querySelectorAll('.tool-label')].map(button=>{const id=button.parentElement.dataset.id,p=rotate(this.slots.get(id)||[0,0,1],this.rx,this.ry);return {button,p}}).sort((a,b)=>b.p[2]-a.p[2]);const occupied=[];let visible=0;
    for(const {button,p} of entries){
     const projected=projection(p,this.depth),width=Math.min(button.offsetWidth,w-24),height=Math.max(44,button.offsetHeight),rawX=w/2+projected.x*radius,x=this.depth===0?Math.max(width/2+6,Math.min(w-width/2-6,rawX)):rawX,y=h/2-projected.y*radius;

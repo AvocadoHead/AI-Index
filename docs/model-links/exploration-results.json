@@ -1,0 +1,82 @@
+[
+  {
+    "width": 360,
+    "language": "he",
+    "all": 164,
+    "return": 66,
+    "filters": true,
+    "atlas": true,
+    "boundaryScroll": true,
+    "reducedMotion": true
+  },
+  {
+    "width": 360,
+    "language": "en",
+    "all": 164,
+    "return": 66,
+    "filters": true,
+    "atlas": true,
+    "boundaryScroll": true,
+    "reducedMotion": true
+  },
+  {
+    "width": 390,
+    "language": "he",
+    "all": 164,
+    "return": 66,
+    "filters": true,
+    "atlas": true,
+    "boundaryScroll": true,
+    "reducedMotion": true
+  },
+  {
+    "width": 390,
+    "language": "en",
+    "all": 164,
+    "return": 66,
+    "filters": true,
+    "atlas": true,
+    "boundaryScroll": true,
+    "reducedMotion": true
+  },
+  {
+    "width": 768,
+    "language": "he",
+    "all": 164,
+    "return": 66,
+    "filters": true,
+    "atlas": true,
+    "boundaryScroll": true,
+    "reducedMotion": true
+  },
+  {
+    "width": 768,
+    "language": "en",
+    "all": 164,
+    "return": 66,
+    "filters": true,
+    "atlas": true,
+    "boundaryScroll": true,
+    "reducedMotion": true
+  },
+  {
+    "width": 1440,
+    "language": "he",
+    "all": 164,
+    "return": 66,
+    "filters": true,
+    "atlas": true,
+    "boundaryScroll": true,
+    "reducedMotion": true
+  },
+  {
+    "width": 1440,
+    "language": "en",
+    "all": 164,
+    "return": 66,
+    "filters": true,
+    "atlas": true,
+    "boundaryScroll": true,
+    "reducedMotion": true
+  }
+]

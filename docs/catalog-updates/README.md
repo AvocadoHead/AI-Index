@@ -2,13 +2,13 @@
 
 ## What exists today
 
-The current public directory is read-only. Its canonical dataset is maintained in this repository: `data/catalog.json` holds identities and sourced facts; `data/catalog-audit.json` supplies bilingual display text and categories; `curation.js` supplies the selected set and reversible archive. Generated JavaScript and the standalone preview are outputs, not separate catalogs. In particular, editing only a catalog description may not change the displayed description because the bilingual audit takes precedence.
+The current public directory is read-only. Its canonical dataset is maintained in this repository: `data/catalog.json` holds identities and sourced facts; `data/catalog-audit.json` supplies bilingual display text and categories; `curation.js` supplies the selected set and reversible archive. `data/model-relationships.json` records sourced platform/model/generation relationships. Generated JavaScript and the standalone preview are outputs, not separate catalogs. In particular, editing only a catalog description may not change the displayed description because the bilingual audit takes precedence.
 
 The original `legacy.html` interface can add, edit and delete entries in its local in-memory view. “Save Index” downloads JavaScript. It does not update the current directory, write to GitHub, or publish the site. It is not the shared editing route, and its old executable JavaScript importer should not be used for agent-generated changes.
 
 ## A common input for the owner and authorized agents
 
-Use a data-only change proposal, whether the request originates with Eyal, dot, Zvi or a creative agent. Their names in a file are attribution, never permission. The new local tool validates the proposal and emits a review plan. It does not apply changes or contact another system.
+Use a data-only change proposal, whether the request originates with the owner or an authorized assistant. Their names in a file are attribution, never permission. The new local tool validates the proposal and emits a review plan. It does not apply changes or contact another system.
 
 ```sh
 node scripts/catalog-change.mjs --template > change.json
@@ -30,13 +30,13 @@ This leaves one source of truth and one review gate. A small form or agent adapt
 
 ## Integration boundary
 
-No Operations Center or Hermes files were read or changed. No integration contract was found inside the AI Index checkout. The supplied integration constraint is that Operations Center's AI Index connection is owner-only and read-only; this change preserves that boundary. The minimal future adapter should export proposals for review, not expose a public write API. Actual adapter development requires reviewing its contract in an authorized task. Adding credentials, granting persistent write access, sending proposals to external agents or enabling automatic publishing requires explicit authorization for the named destination and permissions. None was done here.
+Existing catalog consumers remain read-only. A future adapter should export proposals for review, not expose a public write API. Actual adapter development requires reviewing its contract in an authorized task. Adding credentials, granting persistent write access, sending proposals to external agents or enabling automatic publishing requires explicit authorization for the named destination and permissions. None is part of this change.
 
 ## Assistant products and model relationships
 
 Treat an assistant product separately from its provider, workspace/platform, available model and the agent authorized to edit this catalog. The proposed relationship records should carry `assistant/product → platform/access route → model/version`, task, plan/mode constraints, documented versus tested availability, source and check date. A planned model rollout must remain planned. Scoring would remain scoped to task + product/platform + model/version/mode/plan, with untested values null.
 
-The user supplied GroqBot, Instinct, Nuse and Dot. Identity research is being handled separately; no speculative catalog rows, aliases, model links or new scores have been added in this change. GroqBot and Nuse must not silently become Grok Bot and Meta Muse without confirmation. Parent research identified official dot and Instinct sources; it also reported an Instinct benchmarking restriction, so no hands-on benchmarks are part of this work. The final assistant taxonomy and sourced relationships remain a subsequent reviewed data change.
+New assistant products require confirmed identities and dated official evidence before catalog additions. Similar spellings must not be silently reconciled. No speculative assistant records or comparative scores are included in this change; provider benchmarking restrictions must be respected.
 
 ## Search correction
 

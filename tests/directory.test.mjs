@@ -11,8 +11,8 @@ const api=context.window.DirectoryData;
 const records=api.createRecords(context.window.defaultModules,context.window.aiCatalog);
 const state={query:'',task:'all',status:'all',sort:'reviewed'};
 test('unified directory preserves all 131 identities and all 120 original records',()=>{
- assert.equal(records.length,158);assert.equal(new Set(records.map(r=>r.id)).size,158);
- assert.equal(records.filter(r=>r.original).length,120);assert.equal(records.filter(r=>r.checked).length,154);
+ assert.equal(records.length,context.window.aiCatalog.records.length);assert.equal(new Set(records.map(r=>r.id)).size,context.window.aiCatalog.records.length);
+ assert.equal(records.filter(r=>r.original).length,120);assert.equal(records.filter(r=>r.checked).length,context.window.aiCatalog.records.filter(r=>r.verifiedAt).length);
  assert.equal(records.filter(r=>!r.checked).length,4);
  for(const record of records.filter(r=>r.original)) assert.equal(record.original,context.window.defaultModules.find(r=>r.id===record.id));
 });
@@ -27,7 +27,7 @@ test('search, task and verification compose and reset without losing records',()
  assert.equal(api.selectRecords(records,{...state,query:'weavy',task:'text',status:'checked'}).length,0);
  assert.equal(api.selectRecords(records,{...state,status:'pending'}).length,4);
  assert.equal(api.selectRecords(records,{...state,status:'retired'}).length,7);
- assert.equal(api.selectRecords(records,state).length,158);
+ assert.equal(api.selectRecords(records,state).length,context.window.aiCatalog.records.length);
 });
 test('search handles Hebrew and English descriptions, aliases and whitespace',()=>{
  assert.ok(api.selectRecords(records,{...state,query:'תמונה'}).length>0);
@@ -36,7 +36,7 @@ test('search handles Hebrew and English descriptions, aliases and whitespace',()
  assert.equal(api.selectRecords(records,{...state,query:'zzzz_no_such_tool'}).length,0);
 });
 test('sorting is explicit and independent of historical scores',()=>{
- const all=api.selectRecords(records,state);assert.ok(all.slice(0,154).every(r=>r.checked));
+ const all=api.selectRecords(records,state);assert.ok(all.slice(0,context.window.aiCatalog.records.filter(r=>r.verifiedAt).length).every(r=>r.checked));
  const sorted=api.selectRecords(records,{...state,sort:'name'});
  assert.deepEqual(Array.from(sorted,r=>r.name),[...sorted].sort((a,b)=>a.name.localeCompare(b.name,'en')).map(r=>r.name));
 });
@@ -57,8 +57,8 @@ test('estimated averages preserve originals, stay independent of verification, a
 });
 
 test('canonical labels keep generations nested without merging distinct products or providers',()=>{
- const canonical=api.canonicalRecords(records);assert.equal(canonical.length,158);
- assert.equal(api.canonicalRecords([...records,records[0]]).length,158);
+ const canonical=api.canonicalRecords(records);assert.equal(canonical.length,context.window.aiCatalog.records.length);
+ assert.equal(api.canonicalRecords([...records,records[0]]).length,context.window.aiCatalog.records.length);
  assert.equal(canonical.find(r=>r.id==='ai-009').name,'ChatGPT · GPT-5.2');
  assert.equal(canonical.find(r=>r.id==='ai-018').name,'Veo 3');
  assert.ok(canonical.some(r=>r.id==='google-flow'));assert.ok(canonical.some(r=>r.id==='ai-018'));

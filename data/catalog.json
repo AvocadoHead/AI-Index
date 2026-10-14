@@ -5403,6 +5403,186 @@
         "video-generation"
       ],
       "identityNote": null
+    },
+    {
+      "id": "sync-lipsync",
+      "researchId": null,
+      "legacyName": null,
+      "entityType": "model-family",
+      "vendor": "Sync Labs",
+      "product": "Sync lip-sync",
+      "name": "Sync lip-sync",
+      "officialUrl": "https://sync.so/docs/models/sync-3",
+      "description": "משפחת מודלים להתאמת תנועת שפתיים לאודיו; sync-3 הוא ברירת המחדל המתועדת, לצד דורות קודמים ומודל ביצוע מקביל.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-14",
+      "sources": [
+        {
+          "url": "https://sync.so/docs/models/sync-3",
+          "checkedAt": "2026-10-14"
+        }
+      ],
+      "modelObservations": [],
+      "limitations": [],
+      "uncertainties": [],
+      "recommendation": null,
+      "aliases": [
+        "Sync3",
+        "Sync 3",
+        "sync-3",
+        "Sync Labs"
+      ],
+      "capabilities": [
+        "lipsync"
+      ],
+      "identityNote": null
+    },
+    {
+      "id": "sync-studio",
+      "researchId": null,
+      "legacyName": null,
+      "entityType": "platform",
+      "vendor": "Sync Labs",
+      "product": "Sync Studio",
+      "name": "Sync Studio",
+      "officialUrl": "https://sync.so/docs/models/sync-3",
+      "description": "סביבת עבודה של Sync Labs להפקת וידאו עם סנכרון שפתיים; המודלים זמינים גם דרך API ותוסף Premiere לפי מסלול השימוש.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-14",
+      "sources": [
+        {
+          "url": "https://sync.so/docs/models/sync-3",
+          "checkedAt": "2026-10-14"
+        }
+      ],
+      "modelObservations": [],
+      "limitations": [],
+      "uncertainties": [],
+      "recommendation": null,
+      "aliases": [],
+      "capabilities": [
+        "workflow-platform",
+        "lipsync"
+      ],
+      "identityNote": null
+    },
+    {
+      "id": "google-antigravity",
+      "researchId": null,
+      "legacyName": null,
+      "entityType": "platform",
+      "vendor": "Google",
+      "product": "Google Antigravity",
+      "name": "Google Antigravity",
+      "officialUrl": "https://www.antigravity.google/docs/models/",
+      "description": "סביבת פיתוח סוכנית עם אפליקציה, CLI, תוספים ו־IDE. בחירת המודלים משתנה לפי משטח עבודה ומינוי.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-14",
+      "sources": [
+        {
+          "url": "https://www.antigravity.google/docs/models/",
+          "checkedAt": "2026-10-14"
+        }
+      ],
+      "modelObservations": [],
+      "limitations": [],
+      "uncertainties": [],
+      "recommendation": null,
+      "aliases": [],
+      "capabilities": [
+        "developer-workflow"
+      ],
+      "identityNote": null
+    },
+    {
+      "id": "openai-gpt-models",
+      "researchId": null,
+      "legacyName": null,
+      "entityType": "model-family",
+      "vendor": "OpenAI",
+      "product": "OpenAI GPT",
+      "name": "OpenAI GPT",
+      "officialUrl": "https://help.openai.com/en/articles/20001354-gpt-6-and-other-models-in-chatgpt",
+      "description": "משפחת מודלי GPT. הדורות, מצבי ההפעלה והזמינות משתנים בין ChatGPT, Codex וספקים אחרים.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-14",
+      "sources": [
+        {
+          "url": "https://help.openai.com/en/articles/20001354-gpt-6-and-other-models-in-chatgpt",
+          "checkedAt": "2026-10-14"
+        }
+      ],
+      "modelObservations": [],
+      "limitations": [],
+      "uncertainties": [],
+      "recommendation": null,
+      "aliases": [],
+      "capabilities": [
+        "LLM"
+      ],
+      "identityNote": null
+    },
+    {
+      "id": "anthropic-claude-models",
+      "researchId": null,
+      "legacyName": null,
+      "entityType": "model-family",
+      "vendor": "Anthropic",
+      "product": "Claude models",
+      "name": "Claude models",
+      "officialUrl": "https://www.anthropic.com/claude/sonnet",
+      "description": "משפחת מודלי Claude; מוצרי Claude ו־Claude Code הם סביבות שימוש נפרדות, עם מגבלות גרסה ומינוי.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-14",
+      "sources": [
+        {
+          "url": "https://www.anthropic.com/claude/sonnet",
+          "checkedAt": "2026-10-14"
+        }
+      ],
+      "modelObservations": [],
+      "limitations": [],
+      "uncertainties": [],
+      "recommendation": null,
+      "aliases": [],
+      "capabilities": [
+        "LLM"
+      ],
+      "identityNote": null
+    },
+    {
+      "id": "google-gemini-models",
+      "researchId": null,
+      "legacyName": null,
+      "entityType": "model-family",
+      "vendor": "Google",
+      "product": "Gemini models",
+      "name": "Gemini models",
+      "officialUrl": "https://www.antigravity.google/docs/models/",
+      "description": "משפחת מודלי Gemini. המודלים המופיעים בסביבות עבודה שונות אינם בהכרח זמינים בכל מוצר או מינוי.",
+      "descriptionLanguage": "he",
+      "status": "active",
+      "verifiedAt": "2026-10-14",
+      "sources": [
+        {
+          "url": "https://www.antigravity.google/docs/models/",
+          "checkedAt": "2026-10-14"
+        }
+      ],
+      "modelObservations": [],
+      "limitations": [],
+      "uncertainties": [],
+      "recommendation": null,
+      "aliases": [],
+      "capabilities": [
+        "LLM"
+      ],
+      "identityNote": null
     }
   ],
   "workflows": [

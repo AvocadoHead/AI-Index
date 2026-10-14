@@ -1,0 +1,12 @@
+import test from 'node:test';import assert from 'node:assert/strict';import fs from 'node:fs';
+const data=JSON.parse(fs.readFileSync('data/model-relationships.json')),catalog=JSON.parse(fs.readFileSync('data/catalog.json')),ids=new Set(catalog.records.map(r=>r.id));
+test('model graph targets real identities and sourced nested models without fabricated scores',()=>{
+ for(const [id,family] of Object.entries(data.families)){assert.ok(ids.has(id));assert.equal(catalog.records.find(r=>r.id===id).entityType,'model-family');const generationIds=new Set();for(const g of family.generations){assert.ok(!generationIds.has(g.id));generationIds.add(g.id);assert.ok(g.he&&g.en&&g.sources.length);assert.equal(g.score,undefined);}}
+ for(const [id,routes] of Object.entries(data.platforms)){assert.ok(ids.has(id));for(const route of routes){assert.ok(route.sources.length);if(route.familyId){assert.ok(data.families[route.familyId]);for(const id of route.generations)assert.ok(data.families[route.familyId].generations.some(g=>g.id===id));}else assert.ok(route.familyName&&route.models.length);}}
+});
+test('Sync default, siblings and host-specific access remain distinct',()=>{
+ const generations=data.families['sync-lipsync'].generations;assert.equal(generations.find(g=>g.id==='sync-3').status,'current');assert.equal(generations.find(g=>g.id==='react-1').status,'sibling');assert.equal(generations.find(g=>g.id==='lipsync-1.9.0-beta').status,'legacy');
+ const route=data.platforms['kolbo-ai'].find(r=>r.familyId==='sync-lipsync');assert.deepEqual(route.generations,['lipsync-2-pro']);
+});
+test('pricing and API evidence do not become ordinary UI availability',()=>{assert.ok(data.platforms.weavy.every(r=>['pricing-listed','api-documented'].includes(r.availability)));assert.ok(data.platforms['google-antigravity'].find(r=>r.models.includes('Gemini 4 Argon')).en.includes('Not available in Antigravity IDE'));assert.ok(data.platforms['google-antigravity'].some(r=>r.en.includes('November 2, 2026')));});
+test('Seedance generations retain provider-scoped lifecycle without invented releases',()=>{const f=data.families['bytedance-seedance'].generations;assert.deepEqual(f.map(g=>g.id),['seedance-2.5','seedance-2.0','seedance-1.5-pro','seedance-1.0']);assert.match(f[2].en,/BytePlus.*November 11, 2026/);assert.equal(catalog.records.find(r=>r.id==='bytedance-seedance').status,'active');assert.ok(!f.some(g=>/2\.1|Turbo/.test(g.name)));});

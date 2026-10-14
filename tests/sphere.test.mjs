@@ -13,8 +13,8 @@ test('sphere coordinates are deterministic, unique and on the unit sphere',()=>{
 });
 test('curation is reversible, broad and independent of lifecycle or verification',()=>{
  const start=api.selectRecords(records,{...state,scope:'curated'});assert.equal(start.length,66);assert.ok(new Set(start.map(r=>r.primaryTask)).size>=7);
- assert.equal(api.selectRecords(records,{...state,scope:'all'}).length,158);
- assert.equal(api.selectRecords(records,{...state,scope:'current'}).length,136);
+ assert.equal(api.selectRecords(records,{...state,scope:'all'}).length,context.window.aiCatalog.records.length);
+ assert.equal(api.selectRecords(records,{...state,scope:'current'}).length,context.window.aiCatalog.records.length-22);
  const archive=api.selectRecords(records,{...state,scope:'archived'});assert.equal(archive.length,22);assert.ok(archive.every(r=>r.curation.source.startsWith('https://')));
  assert.ok(api.selectRecords(records,{...state,scope:'curated',query:'Sora'}).some(r=>r.id==='ai-017'));
  assert.ok(api.selectRecords(records,{...state,scope:'curated',selectedTasks:['audio']}).some(r=>r.id==='ai-068'));
@@ -46,8 +46,8 @@ test('collision fades are continuous, time based and finish at their target',()=
 });
 
 test('exploration projects continuously through a transparent shell into the far hemisphere',()=>{
- for(const depth of [0,.1,.45,.75,1])for(let i=0;i<158;i++){
-  const p=geometry.projection(geometry.point(i,158),depth);assert.ok(Number.isFinite(p.x)&&Number.isFinite(p.y));assert.ok(p.alpha>=0&&p.alpha<=1);
+ for(const depth of [0,.1,.45,.75,1])for(let i=0;i<context.window.aiCatalog.records.length;i++){
+  const p=geometry.projection(geometry.point(i,context.window.aiCatalog.records.length),depth);assert.ok(Number.isFinite(p.x)&&Number.isFinite(p.y));assert.ok(p.alpha>=0&&p.alpha<=1);
  }
  assert.equal(geometry.projection([0,0,-1],0).alpha,0);
  assert.equal(geometry.projection([0,0,-1],.45).alpha,1);
@@ -56,6 +56,8 @@ test('exploration projects continuously through a transparent shell into the far
 });
 test('wheel exploration normalizes devices and bounds a single event',()=>{
  assert.equal(geometry.wheelStep(1,1),geometry.wheelStep(16,0));
- assert.equal(geometry.wheelStep(5000,0),.125);assert.equal(geometry.wheelStep(-5000,0),-.125);
- assert.equal(geometry.wheelStep(0,0),0);assert.ok(geometry.wheelStep(2,0)<.005);
+ assert.equal(geometry.wheelStep(5000,0),-.125);assert.equal(geometry.wheelStep(-5000,0),.125);
+ assert.equal(Math.abs(geometry.wheelStep(0,0)),0);assert.ok(geometry.wheelStep(2,0)<.005);
 });
+
+test('reveal stage preserves sphere positions before entering',()=>{const p=[.5,.5,-Math.sqrt(.5)];assert.equal(geometry.projection(p,0).x,geometry.projection(p,.45).x);assert.equal(geometry.projection(p,0).y,geometry.projection(p,.45).y);assert.ok(geometry.projection(p,.45).alpha>geometry.projection(p,0).alpha);});

@@ -5,7 +5,7 @@ import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import assert from 'node:assert/strict';
 const root=fileURLToPath(new URL('..',import.meta.url));
-const files=['data/catalog.json','data/catalog-audit.json','curation.js'];
+const files=['data/catalog.json','data/catalog-audit.json','curation.js','data/model-relationships.json'];
 export function snapshot(){return crypto.createHash('sha256').update(files.map(file=>file+'\n'+fs.readFileSync(path.join(root,file),'utf8')).join('\n')).digest('hex');}
 const keys=(object,allowed)=>{assert.ok(object&&typeof object==='object'&&!Array.isArray(object),'Expected an object');for(const key of Object.keys(object))assert.ok(allowed.includes(key),`Unsupported field: ${key}`);};
 const text=value=>typeof value==='string'&&value.trim().length>0&&value.length<=4000;
