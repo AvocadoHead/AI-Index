@@ -1,0 +1,3417 @@
+{
+  "schemaVersion": 1,
+  "families": {
+    "sync-lipsync": {
+      "generations": [
+        {
+          "id": "sync-3",
+          "name": "Sync 3",
+          "status": "current",
+          "he": "ברירת המחדל המתועדת (גרסה 3.0.0). קלט וידאו או תמונה עם אודיו, או טקסט במסלול TTS; פלט פנים עד 4K מקורי.",
+          "en": "Documented default (registry version 3.0.0). Video or image with audio, or text through a TTS workflow; native face output up to 4K.",
+          "url": "https://sync.so/docs/models/sync-3",
+          "inputs": [
+            "video",
+            "image",
+            "audio",
+            "text"
+          ],
+          "outputs": [
+            "video"
+          ],
+          "sources": [
+            {
+              "url": "https://sync.so/docs/models/sync-3",
+              "checkedAt": "2026-10-14"
+            }
+          ],
+          "variants": []
+        },
+        {
+          "id": "lipsync-2-pro",
+          "name": "lipsync-2-pro",
+          "status": "available",
+          "he": "וריאנט ברזולוציה מפורטת יותר המבוסס על diffusion super-resolution; אינו דור שלישי.",
+          "en": "Higher-detail diffusion super-resolution variant; not a third generation.",
+          "url": "https://sync.so/docs/models/lipsync",
+          "inputs": [
+            "video",
+            "audio"
+          ],
+          "outputs": [
+            "video"
+          ],
+          "sources": [
+            {
+              "url": "https://sync.so/docs/models/lipsync",
+              "checkedAt": "2026-10-14"
+            }
+          ],
+          "variants": []
+        },
+        {
+          "id": "lipsync-2",
+          "name": "lipsync-2",
+          "status": "available",
+          "he": "דור 2.0.0, הושק באוגוסט 2025 ונכלל ברשימת המודלים הנוכחית.",
+          "en": "Generation 2.0.0, released August 2025 and present in the current model registry.",
+          "url": "https://sync.so/docs/api-reference/api/models-api/list",
+          "inputs": [
+            "video",
+            "audio"
+          ],
+          "outputs": [
+            "video"
+          ],
+          "sources": [
+            {
+              "url": "https://sync.so/docs/api-reference/api/models-api/list",
+              "checkedAt": "2026-10-14"
+            }
+          ],
+          "variants": []
+        },
+        {
+          "id": "lipsync-1.9.0-beta",
+          "name": "lipsync-1.9.0-beta",
+          "status": "legacy",
+          "he": "דור קודם המופיע ברישום הנוכחי; אינו ברירת המחדל.",
+          "en": "Legacy generation present in the current registry; not the default.",
+          "url": "https://sync.so/docs/api-reference/api/models-api/list",
+          "inputs": [
+            "video",
+            "audio"
+          ],
+          "outputs": [
+            "video"
+          ],
+          "sources": [
+            {
+              "url": "https://sync.so/docs/api-reference/api/models-api/list",
+              "checkedAt": "2026-10-14"
+            }
+          ],
+          "variants": []
+        },
+        {
+          "id": "react-1",
+          "name": "react-1",
+          "status": "sibling",
+          "he": "מודל מקביל לביצוע אקספרסיבי. הוא אינו הדור הבא של lipsync.",
+          "en": "Sibling expressive-performance model, not the next lipsync generation.",
+          "url": "https://sync.so/docs/models/react",
+          "inputs": [
+            "video",
+            "audio"
+          ],
+          "outputs": [
+            "video"
+          ],
+          "sources": [
+            {
+              "url": "https://sync.so/docs/models/react",
+              "checkedAt": "2026-10-14"
+            }
+          ],
+          "variants": []
+        }
+      ]
+    },
+    "bytedance-seedance": {
+      "generations": [
+        {
+          "id": "seedance-2.5",
+          "name": "Seedance 2.5",
+          "status": "current",
+          "he": "דור שהושק ב־31 ביולי 2026. רפרנסים מתמונה, וידאו ואודיו וזרימת עבודה מטיוטה לתוצאה סופית.",
+          "en": "Released July 31, 2026. Image, video and audio references with a draft-to-final workflow.",
+          "url": "https://seed.bytedance.com/en/seedance2_5",
+          "inputs": [
+            "text",
+            "image",
+            "video",
+            "audio"
+          ],
+          "outputs": [
+            "video",
+            "audio"
+          ],
+          "sources": [
+            {
+              "url": "https://seed.bytedance.com/en/seedance2_5",
+              "checkedAt": "2026-10-14"
+            },
+            {
+              "url": "https://docs.byteplus.com/en/docs/modelark/seedance-2-5",
+              "checkedAt": "2026-10-14"
+            }
+          ],
+          "variants": [
+            {
+              "name": "BytePlus 2.5",
+              "apiId": "dreamina-seedance-2-5-260628",
+              "he": "מזהה API מתועד; אין להסיק מתאריך המזהה את מועד ההשקה.",
+              "en": "Documented API identifier; its suffix is not a release date."
+            }
+          ]
+        },
+        {
+          "id": "seedance-2.0",
+          "name": "Seedance 2.0",
+          "status": "available",
+          "he": "משפחת דור 2.0 כוללת מסלולי בסיס, Fast ו־Mini; התמיכה המדויקת תלויה בווריאנט ובספק.",
+          "en": "Generation 2.0 includes base, Fast and Mini routes; exact capabilities depend on variant and provider.",
+          "url": "https://seed.bytedance.com/en/seedance2_0",
+          "inputs": [
+            "text",
+            "image",
+            "video",
+            "audio"
+          ],
+          "outputs": [
+            "video",
+            "audio"
+          ],
+          "sources": [
+            {
+              "url": "https://seed.bytedance.com/en/seedance2_0",
+              "checkedAt": "2026-10-14"
+            },
+            {
+              "url": "https://docs.byteplus.com/en/docs/byteplus_las/video_gen_enhanced",
+              "checkedAt": "2026-10-14"
+            }
+          ],
+          "variants": [
+            {
+              "name": "Base",
+              "apiId": "dreamina-seedance-2-0-260128",
+              "he": "וריאנט מתועד של דור 2.0.",
+              "en": "Documented generation 2.0 variant."
+            },
+            {
+              "name": "Fast",
+              "apiId": "dreamina-seedance-2-0-fast-260128",
+              "he": "וריאנט מתועד של דור 2.0.",
+              "en": "Documented generation 2.0 variant."
+            },
+            {
+              "name": "Mini",
+              "apiId": "dreamina-seedance-2-0-mini-260615",
+              "he": "וריאנט מתועד של דור 2.0.",
+              "en": "Documented generation 2.0 variant."
+            }
+          ]
+        },
+        {
+          "id": "seedance-1.5-pro",
+          "name": "Seedance 1.5 Pro",
+          "status": "legacy",
+          "he": "ב־BytePlus: הוצא משימוש מומלץ ב־15 בספטמבר; כיבוי מתוכנן ל־11 בנובמבר 2026, 17:00 UTC+8. החלופה המומלצת שם היא 2.0 Mini. זה אינו סטטוס גלובלי של המשפחה.",
+          "en": "On BytePlus: deprecated September 15; shutdown scheduled November 11, 2026 at 17:00 UTC+8. The recommended replacement there is 2.0 Mini. This is not a global family availability status.",
+          "url": "https://docs.byteplus.com/en/docs/modelark/model-deprecation-notice",
+          "inputs": [
+            "text",
+            "image"
+          ],
+          "outputs": [
+            "video",
+            "audio"
+          ],
+          "sources": [
+            {
+              "url": "https://docs.byteplus.com/en/docs/modelark/model-deprecation-notice",
+              "checkedAt": "2026-10-14"
+            }
+          ],
+          "variants": []
+        },
+        {
+          "id": "seedance-1.0",
+          "name": "Seedance 1.0",
+          "status": "legacy",
+          "he": "דור 1.0 כולל Pro ו־Pro Fast שעדיין מתועדים. מסלולי Lite T2V/I2V הושבתו ב־BytePlus ב־13 במאי 2026.",
+          "en": "Generation 1.0 includes still-documented Pro and Pro Fast variants. BytePlus Lite T2V/I2V routes were deactivated May 13, 2026.",
+          "url": "https://seed.bytedance.com/en/seedance",
+          "inputs": [
+            "text",
+            "image"
+          ],
+          "outputs": [
+            "video"
+          ],
+          "sources": [
+            {
+              "url": "https://seed.bytedance.com/en/seedance",
+              "checkedAt": "2026-10-14"
+            },
+            {
+              "url": "https://docs.byteplus.com/en/docs/modelark/model-deprecation-notice",
+              "checkedAt": "2026-10-14"
+            }
+          ],
+          "variants": []
+        }
+      ]
+    },
+    "ai-031": {
+      "generations": [
+        {
+          "id": "flux1-1-pro",
+          "name": "FLUX1.1 [pro]",
+          "status": "documented",
+          "he": "שם המודל כפי שתועד במקור. מגבלות המשטח, המינוי והמצב מפורטות בסביבת העבודה המקושרת.",
+          "en": "Model name as documented by the source. Surface, plan and mode restrictions appear in the linked workspace.",
+          "url": "https://helpx.adobe.com/firefly/web/work-with-images/generate-images/generate-images-using-flux.html",
+          "inputs": [],
+          "outputs": [],
+          "sources": [
+            {
+              "url": "https://helpx.adobe.com/firefly/web/work-with-images/generate-images/generate-images-using-flux.html",
+              "checkedAt": "2026-10-14"
+            },
+            {
+              "url": "https://content.weave.figma.com/models-pricing",
+              "checkedAt": "2026-10-14"
+            }
+          ],
+          "variants": []
+        },
+        {
+          "id": "flux1-1-pro-ultra",
+          "name": "FLUX1.1 [pro] Ultra",
+          "status": "documented",
+          "he": "שם המודל כפי שתועד במקור. מגבלות המשטח, המינוי והמצב מפורטות בסביבת העבודה המקושרת.",
+          "en": "Model name as documented by the source. Surface, plan and mode restrictions appear in the linked workspace.",
+          "url": "https://helpx.adobe.com/firefly/web/work-with-images/generate-images/generate-images-using-flux.html",
+          "inputs": [],
+          "outputs": [],
+          "sources": [
+            {
+              "url": "https://helpx.adobe.com/firefly/web/work-with-images/generate-images/generate-images-using-flux.html",
+              "checkedAt": "2026-10-14"
+            },
+            {
+              "url": "https://content.weave.figma.com/models-pricing",
+              "checkedAt": "2026-10-14"
+            }
+          ],
+          "variants": []
+        },
+        {
+          "id": "flux1-1-pro-ultra-raw",
+          "name": "FLUX1.1 [pro] Ultra (Raw)",
+          "status": "documented",
+          "he": "שם המודל כפי שתועד במקור. מגבלות המשטח, המינוי והמצב מפורטות בסביבת העבודה המקושרת.",
+          "en": "Model name as documented by the source. Surface, plan and mode restrictions appear in the linked workspace.",
+          "url": "https://helpx.adobe.com/firefly/web/work-with-images/generate-images/generate-images-using-flux.html",
+          "inputs": [],
+          "outputs": [],
+          "sources": [
+            {
+              "url": "https://helpx.adobe.com/firefly/web/work-with-images/generate-images/generate-images-using-flux.html",
+              "checkedAt": "2026-10-14"
+            }
+          ],
+          "variants": []
+        },
+        {
+          "id": "flux-2-pro",
+          "name": "FLUX.2 [pro]",
+          "status": "documented",
+          "he": "שם המודל כפי שתועד במקור. מגבלות המשטח, המינוי והמצב מפורטות בסביבת העבודה המקושרת.",
+          "en": "Model name as documented by the source. Surface, plan and mode restrictions appear in the linked workspace.",
+          "url": "https://helpx.adobe.com/firefly/web/work-with-images/generate-images/generate-images-using-flux.html",
+          "inputs": [],
+          "outputs": [],
+          "sources": [
+            {
+              "url": "https://helpx.adobe.com/firefly/web/work-with-images/generate-images/generate-images-using-flux.html",
+              "checkedAt": "2026-10-14"
+            },
+            {
+              "url": "https://content.weave.figma.com/models-pricing",
+              "checkedAt": "2026-10-14"
+            }
+          ],
+          "variants": []
+        },
+        {
+          "id": "flux-1-kontext-max",
+          "name": "FLUX.1 Kontext [max]",
+          "status": "documented",
+          "he": "שם המודל כפי שתועד במקור. מגבלות המשטח, המינוי והמצב מפורטות בסביבת העבודה המקושרת.",
+          "en": "Model name as documented by the source. Surface, plan and mode restrictions appear in the linked workspace.",
+          "url": "https://helpx.adobe.com/firefly/web/work-with-images/generate-images/generate-images-using-flux.html",
+          "inputs": [],
+          "outputs": [],
+          "sources": [
+            {
+              "url": "https://helpx.adobe.com/firefly/web/work-with-images/generate-images/generate-images-using-flux.html",
+              "checkedAt": "2026-10-14"
+            },
+            {
+              "url": "https://content.weave.figma.com/models-pricing",
+              "checkedAt": "2026-10-14"
+            }
+          ],
+          "variants": []
+        },
+        {
+          "id": "flux-1-kontext-pro",
+          "name": "FLUX.1 Kontext [pro]",
+          "status": "documented",
+          "he": "שם המודל כפי שתועד במקור. מגבלות המשטח, המינוי והמצב מפורטות בסביבת העבודה המקושרת.",
+          "en": "Model name as documented by the source. Surface, plan and mode restrictions appear in the linked workspace.",
+          "url": "https://helpx.adobe.com/firefly/web/work-with-images/generate-images/generate-images-using-flux.html",
+          "inputs": [],
+          "outputs": [],
+          "sources": [
+            {
+              "url": "https://helpx.adobe.com/firefly/web/work-with-images/generate-images/generate-images-using-flux.html",
+              "checkedAt": "2026-10-14"
+            },
+            {
+              "url": "https://content.weave.figma.com/models-pricing",
+              "checkedAt": "2026-10-14"
+            }
+          ],
+          "variants": []
+        },
+        {
+          "id": "flux-2-klein-4b",
+          "name": "FLUX.2 klein 4B",
+          "status": "documented",
+          "he": "שם המודל כפי שתועד במקור. מגבלות המשטח, המינוי והמצב מפורטות בסביבת העבודה המקושרת.",
+          "en": "Model name as documented by the source. Surface, plan and mode restrictions appear in the linked workspace.",
+          "url": "https://helpx.adobe.com/creative-cloud/apps/generative-ai/non-adobe-models-in-adobe-products.html",
+          "inputs": [],
+          "outputs": [],
+          "sources": [
+            {
+              "url": "https://helpx.adobe.com/creative-cloud/apps/generative-ai/non-adobe-models-in-adobe-products.html",
+              "checkedAt": "2026-10-14"
+            }
+          ],
+          "variants": []
+        },
+        {
+          "id": "flux-2-flex",
+          "name": "FLUX.2 Flex",
+          "status": "documented",
+          "he": "שם המודל כפי שתועד במקור. מגבלות המשטח, המינוי והמצב מפורטות בסביבת העבודה המקושרת.",
+          "en": "Model name as documented by the source. Surface, plan and mode restrictions appear in the linked workspace.",
+          "url": "https://content.weave.figma.com/models-pricing",
+          "inputs": [],
+          "outputs": [],
+          "sources": [
+            {
+              "url": "https://content.weave.figma.com/models-pricing",
+              "checkedAt": "2026-10-14"
+            }
+          ],
+          "variants": []
+        },
+        {
+          "id": "flux-2-max",
+          "name": "FLUX.2 Max",
+          "status": "documented",
+          "he": "שם המודל כפי שתועד במקור. מגבלות המשטח, המינוי והמצב מפורטות בסביבת העבודה המקושרת.",
+          "en": "Model name as documented by the source. Surface, plan and mode restrictions appear in the linked workspace.",
+          "url": "https://content.weave.figma.com/models-pricing",
+          "inputs": [],
+          "outputs": [],
+          "sources": [
+            {
+              "url": "https://content.weave.figma.com/models-pricing",
+              "checkedAt": "2026-10-14"
+            }
+          ],
+          "variants": []
+        },
+        {
+          "id": "flux-1-kontext-dev",
+          "name": "FLUX.1 Kontext Dev",
+          "status": "documented",
+          "he": "שם המודל כפי שתועד במקור. מגבלות המשטח, המינוי והמצב מפורטות בסביבת העבודה המקושרת.",
+          "en": "Model name as documented by the source. Surface, plan and mode restrictions appear in the linked workspace.",
+          "url": "https://content.weave.figma.com/models-pricing",
+          "inputs": [],
+          "outputs": [],
+          "sources": [
+            {
+              "url": "https://content.weave.figma.com/models-pricing",
+              "checkedAt": "2026-10-14"
+            }
+          ],
+          "variants": []
+        },
+        {
+          "id": "flux-3-image",
+          "name": "Flux 3 Image",
+          "status": "documented",
+          "he": "שם המודל כפי שתועד במקור. מגבלות המשטח, המינוי והמצב מפורטות בסביבת העבודה המקושרת.",
+          "en": "Model name as documented by the source. Surface, plan and mode restrictions appear in the linked workspace.",
+          "url": "https://content.weave.figma.com/models-available-for-third-party-api-usage",
+          "inputs": [],
+          "outputs": [],
+          "sources": [
+            {
+              "url": "https://content.weave.figma.com/models-available-for-third-party-api-usage",
+              "checkedAt": "2026-10-14"
+            }
+          ],
+          "variants": []
+        },
+        {
+          "id": "flux-3-video",
+          "name": "Flux 3 Video",
+          "status": "documented",
+          "he": "שם המודל כפי שתועד במקור. מגבלות המשטח, המינוי והמצב מפורטות בסביבת העבודה המקושרת.",
+          "en": "Model name as documented by the source. Surface, plan and mode restrictions appear in the linked workspace.",
+          "url": "https://content.weave.figma.com/models-available-for-third-party-api-usage",
+          "inputs": [],
+          "outputs": [],
+          "sources": [
+            {
+              "url": "https://content.weave.figma.com/models-available-for-third-party-api-usage",
+              "checkedAt": "2026-10-14"
+            }
+          ],
+          "variants": []
+        },
+        {
+          "id": "flux-3",
+          "name": "FLUX 3",
+          "status": "documented",
+          "he": "שם המודל כפי שתועד במקור. מגבלות המשטח, המינוי והמצב מפורטות בסביבת העבודה המקושרת.",
+          "en": "Model name as documented by the source. Surface, plan and mode restrictions appear in the linked workspace.",
+          "url": "https://api.kolbo.ai/api/models?format=raw",
+          "inputs": [],
+          "outputs": [],
+          "sources": [
+            {
+              "url": "https://api.kolbo.ai/api/models?format=raw",
+              "checkedAt": "2026-10-14"
+            }
+          ],
+          "variants": []
+        }
+      ]
+    },
+    "ai-006": {
+      "generations": [
+        {
+          "id": "nano-banana-pro",
+          "name": "Nano Banana Pro",
+          "status": "documented",
+          "he": "שם המודל כפי שתועד במקור. מגבלות המשטח, המינוי והמצב מפורטות בסביבת העבודה המקושרת.",
+          "en": "Model name as documented by the source. Surface, plan and mode restrictions appear in the linked workspace.",
+          "url": "https://helpx.adobe.com/creative-cloud/apps/generative-ai/non-adobe-models-in-adobe-products.html",
+          "inputs": [],
+          "outputs": [],
+          "sources": [
+            {
+              "url": "https://helpx.adobe.com/creative-cloud/apps/generative-ai/non-adobe-models-in-adobe-products.html",
+              "checkedAt": "2026-10-14"
+            },
+            {
+              "url": "https://content.weave.figma.com/models-pricing",
+              "checkedAt": "2026-10-14"
+            },
+            {
+              "url": "https://support.google.com/flow/answer/16352836?hl=en",
+              "checkedAt": "2026-10-14"
+            }
+          ],
+          "variants": []
+        },
+        {
+          "id": "nano-banana-2",
+          "name": "Nano Banana 2",
+          "status": "documented",
+          "he": "שם המודל כפי שתועד במקור. מגבלות המשטח, המינוי והמצב מפורטות בסביבת העבודה המקושרת.",
+          "en": "Model name as documented by the source. Surface, plan and mode restrictions appear in the linked workspace.",
+          "url": "https://helpx.adobe.com/creative-cloud/apps/generative-ai/non-adobe-models-in-adobe-products.html",
+          "inputs": [],
+          "outputs": [],
+          "sources": [
+            {
+              "url": "https://helpx.adobe.com/creative-cloud/apps/generative-ai/non-adobe-models-in-adobe-products.html",
+              "checkedAt": "2026-10-14"
+            },
+            {
+              "url": "https://content.weave.figma.com/models-pricing",
+              "checkedAt": "2026-10-14"
+            },
+            {
+              "url": "https://www.antigravity.google/docs/models/",
+              "checkedAt": "2026-10-14"
+            }
+          ],
+          "variants": []
+        },
+        {
+          "id": "nano-banana-2-lite",
+          "name": "Nano Banana 2 Lite",
+          "status": "documented",
+          "he": "שם המודל כפי שתועד במקור. מגבלות המשטח, המינוי והמצב מפורטות בסביבת העבודה המקושרת.",
+          "en": "Model name as documented by the source. Surface, plan and mode restrictions appear in the linked workspace.",
+          "url": "https://support.google.com/flow/answer/16352836?hl=en",
+          "inputs": [],
+          "outputs": [],
+          "sources": [
+            {
+              "url": "https://support.google.com/flow/answer/16352836?hl=en",
+              "checkedAt": "2026-10-14"
+            }
+          ],
+          "variants": []
+        },
+        {
+          "id": "nano-banana-2-1",
+          "name": "Nano Banana 2.1",
+          "status": "documented",
+          "he": "שם המודל כפי שתועד במקור. מגבלות המשטח, המינוי והמצב מפורטות בסביבת העבודה המקושרת.",
+          "en": "Model name as documented by the source. Surface, plan and mode restrictions appear in the linked workspace.",
+          "url": "https://support.google.com/flow/answer/16352836?hl=en",
+          "inputs": [],
+          "outputs": [],
+          "sources": [
+            {
+              "url": "https://support.google.com/flow/answer/16352836?hl=en",
+              "checkedAt": "2026-10-14"
+            },
+            {
+              "url": "https://api.kolbo.ai/api/models?format=raw",
+              "checkedAt": "2026-10-14"
+            }
+          ],
+          "variants": []
+        }
+      ]
+    },
+    "google-gemini-models": {
+      "generations": [
+        {
+          "id": "gemini-omni-flash",
+          "name": "Gemini Omni Flash",
+          "status": "documented",
+          "he": "שם המודל כפי שתועד במקור. מגבלות המשטח, המינוי והמצב מפורטות בסביבת העבודה המקושרת.",
+          "en": "Model name as documented by the source. Surface, plan and mode restrictions appear in the linked workspace.",
+          "url": "https://helpx.adobe.com/creative-cloud/apps/generative-ai/non-adobe-models-in-adobe-products.html",
+          "inputs": [],
+          "outputs": [],
+          "sources": [
+            {
+              "url": "https://helpx.adobe.com/creative-cloud/apps/generative-ai/non-adobe-models-in-adobe-products.html",
+              "checkedAt": "2026-10-14"
+            }
+          ],
+          "variants": []
+        },
+        {
+          "id": "gemini-2-5-flash",
+          "name": "Gemini 2.5 Flash",
+          "status": "documented",
+          "he": "שם המודל כפי שתועד במקור. מגבלות המשטח, המינוי והמצב מפורטות בסביבת העבודה המקושרת.",
+          "en": "Model name as documented by the source. Surface, plan and mode restrictions appear in the linked workspace.",
+          "url": "https://helpx.adobe.com/creative-cloud/apps/generative-ai/non-adobe-models-in-adobe-products.html",
+          "inputs": [],
+          "outputs": [],
+          "sources": [
+            {
+              "url": "https://helpx.adobe.com/creative-cloud/apps/generative-ai/non-adobe-models-in-adobe-products.html",
+              "checkedAt": "2026-10-14"
+            }
+          ],
+          "variants": []
+        },
+        {
+          "id": "gemini-omni-flash-1-1",
+          "name": "Gemini Omni Flash 1.1",
+          "status": "documented",
+          "he": "שם המודל כפי שתועד במקור. מגבלות המשטח, המינוי והמצב מפורטות בסביבת העבודה המקושרת.",
+          "en": "Model name as documented by the source. Surface, plan and mode restrictions appear in the linked workspace.",
+          "url": "https://support.google.com/flow/answer/16352836?hl=en",
+          "inputs": [],
+          "outputs": [],
+          "sources": [
+            {
+              "url": "https://support.google.com/flow/answer/16352836?hl=en",
+              "checkedAt": "2026-10-14"
+            }
+          ],
+          "variants": []
+        },
+        {
+          "id": "gemini-4-argon",
+          "name": "Gemini 4 Argon",
+          "status": "documented",
+          "he": "שם המודל כפי שתועד במקור. מגבלות המשטח, המינוי והמצב מפורטות בסביבת העבודה המקושרת.",
+          "en": "Model name as documented by the source. Surface, plan and mode restrictions appear in the linked workspace.",
+          "url": "https://www.antigravity.google/docs/models/",
+          "inputs": [],
+          "outputs": [],
+          "sources": [
+            {
+              "url": "https://www.antigravity.google/docs/models/",
+              "checkedAt": "2026-10-14"
+            }
+          ],
+          "variants": []
+        },
+        {
+          "id": "gemini-3-8-flash",
+          "name": "Gemini 3.8 Flash",
+          "status": "documented",
+          "he": "שם המודל כפי שתועד במקור. מגבלות המשטח, המינוי והמצב מפורטות בסביבת העבודה המקושרת.",
+          "en": "Model name as documented by the source. Surface, plan and mode restrictions appear in the linked workspace.",
+          "url": "https://www.antigravity.google/docs/models/",
+          "inputs": [],
+          "outputs": [],
+          "sources": [
+            {
+              "url": "https://www.antigravity.google/docs/models/",
+              "checkedAt": "2026-10-14"
+            }
+          ],
+          "variants": []
+        },
+        {
+          "id": "gemini-3-7-flash",
+          "name": "Gemini 3.7 Flash",
+          "status": "documented",
+          "he": "שם המודל כפי שתועד במקור. מגבלות המשטח, המינוי והמצב מפורטות בסביבת העבודה המקושרת.",
+          "en": "Model name as documented by the source. Surface, plan and mode restrictions appear in the linked workspace.",
+          "url": "https://www.antigravity.google/docs/models/",
+          "inputs": [],
+          "outputs": [],
+          "sources": [
+            {
+              "url": "https://www.antigravity.google/docs/models/",
+              "checkedAt": "2026-10-14"
+            }
+          ],
+          "variants": []
+        },
+        {
+          "id": "gemini-3-6-flash",
+          "name": "Gemini 3.6 Flash",
+          "status": "documented",
+          "he": "שם המודל כפי שתועד במקור. מגבלות המשטח, המינוי והמצב מפורטות בסביבת העבודה המקושרת.",
+          "en": "Model name as documented by the source. Surface, plan and mode restrictions appear in the linked workspace.",
+          "url": "https://www.antigravity.google/docs/models/",
+          "inputs": [],
+          "outputs": [],
+          "sources": [
+            {
+              "url": "https://www.antigravity.google/docs/models/",
+              "checkedAt": "2026-10-14"
+            }
+          ],
+          "variants": []
+        },
+        {
+          "id": "gemini-3-1-pro",
+          "name": "Gemini 3.1 Pro",
+          "status": "documented",
+          "he": "שם המודל כפי שתועד במקור. מגבלות המשטח, המינוי והמצב מפורטות בסביבת העבודה המקושרת.",
+          "en": "Model name as documented by the source. Surface, plan and mode restrictions appear in the linked workspace.",
+          "url": "https://www.antigravity.google/docs/models/",
+          "inputs": [],
+          "outputs": [],
+          "sources": [
+            {
+              "url": "https://www.antigravity.google/docs/models/",
+              "checkedAt": "2026-10-14"
+            }
+          ],
+          "variants": []
+        }
+      ]
+    },
+    "openai-gpt-models": {
+      "generations": [
+        {
+          "id": "gpt-5-1",
+          "name": "GPT-5.1",
+          "status": "documented",
+          "he": "שם המודל כפי שתועד במקור. מגבלות המשטח, המינוי והמצב מפורטות בסביבת העבודה המקושרת.",
+          "en": "Model name as documented by the source. Surface, plan and mode restrictions appear in the linked workspace.",
+          "url": "https://helpx.adobe.com/creative-cloud/apps/generative-ai/non-adobe-models-in-adobe-products.html",
+          "inputs": [],
+          "outputs": [],
+          "sources": [
+            {
+              "url": "https://helpx.adobe.com/creative-cloud/apps/generative-ai/non-adobe-models-in-adobe-products.html",
+              "checkedAt": "2026-10-14"
+            }
+          ],
+          "variants": []
+        },
+        {
+          "id": "gpt-6-sol",
+          "name": "GPT-6 Sol",
+          "status": "documented",
+          "he": "שם המודל כפי שתועד במקור. מגבלות המשטח, המינוי והמצב מפורטות בסביבת העבודה המקושרת.",
+          "en": "Model name as documented by the source. Surface, plan and mode restrictions appear in the linked workspace.",
+          "url": "https://help.openai.com/en/articles/20001354-gpt-6-and-other-models-in-chatgpt",
+          "inputs": [],
+          "outputs": [],
+          "sources": [
+            {
+              "url": "https://help.openai.com/en/articles/20001354-gpt-6-and-other-models-in-chatgpt",
+              "checkedAt": "2026-10-14"
+            },
+            {
+              "url": "https://learn.chatgpt.com/docs/models",
+              "checkedAt": "2026-10-14"
+            },
+            {
+              "url": "https://api.kolbo.ai/api/models?format=raw",
+              "checkedAt": "2026-10-14"
+            }
+          ],
+          "variants": []
+        },
+        {
+          "id": "gpt-6-astra",
+          "name": "GPT-6 Astra",
+          "status": "documented",
+          "he": "שם המודל כפי שתועד במקור. מגבלות המשטח, המינוי והמצב מפורטות בסביבת העבודה המקושרת.",
+          "en": "Model name as documented by the source. Surface, plan and mode restrictions appear in the linked workspace.",
+          "url": "https://help.openai.com/en/articles/20001354-gpt-6-and-other-models-in-chatgpt",
+          "inputs": [],
+          "outputs": [],
+          "sources": [
+            {
+              "url": "https://help.openai.com/en/articles/20001354-gpt-6-and-other-models-in-chatgpt",
+              "checkedAt": "2026-10-14"
+            },
+            {
+              "url": "https://learn.chatgpt.com/docs/models",
+              "checkedAt": "2026-10-14"
+            }
+          ],
+          "variants": []
+        },
+        {
+          "id": "gpt-5-6-sol",
+          "name": "GPT-5.6 Sol",
+          "status": "documented",
+          "he": "שם המודל כפי שתועד במקור. מגבלות המשטח, המינוי והמצב מפורטות בסביבת העבודה המקושרת.",
+          "en": "Model name as documented by the source. Surface, plan and mode restrictions appear in the linked workspace.",
+          "url": "https://help.openai.com/en/articles/20001354-gpt-6-and-other-models-in-chatgpt",
+          "inputs": [],
+          "outputs": [],
+          "sources": [
+            {
+              "url": "https://help.openai.com/en/articles/20001354-gpt-6-and-other-models-in-chatgpt",
+              "checkedAt": "2026-10-14"
+            },
+            {
+              "url": "https://learn.chatgpt.com/docs/models",
+              "checkedAt": "2026-10-14"
+            }
+          ],
+          "variants": []
+        },
+        {
+          "id": "gpt-5-6-sol-pro",
+          "name": "GPT-5.6 Sol Pro",
+          "status": "documented",
+          "he": "שם המודל כפי שתועד במקור. מגבלות המשטח, המינוי והמצב מפורטות בסביבת העבודה המקושרת.",
+          "en": "Model name as documented by the source. Surface, plan and mode restrictions appear in the linked workspace.",
+          "url": "https://help.openai.com/en/articles/20001354-gpt-6-and-other-models-in-chatgpt",
+          "inputs": [],
+          "outputs": [],
+          "sources": [
+            {
+              "url": "https://help.openai.com/en/articles/20001354-gpt-6-and-other-models-in-chatgpt",
+              "checkedAt": "2026-10-14"
+            }
+          ],
+          "variants": []
+        },
+        {
+          "id": "gpt-5-6-luna",
+          "name": "GPT-5.6 Luna",
+          "status": "documented",
+          "he": "שם המודל כפי שתועד במקור. מגבלות המשטח, המינוי והמצב מפורטות בסביבת העבודה המקושרת.",
+          "en": "Model name as documented by the source. Surface, plan and mode restrictions appear in the linked workspace.",
+          "url": "https://help.openai.com/en/articles/20001354-gpt-6-and-other-models-in-chatgpt",
+          "inputs": [],
+          "outputs": [],
+          "sources": [
+            {
+              "url": "https://help.openai.com/en/articles/20001354-gpt-6-and-other-models-in-chatgpt",
+              "checkedAt": "2026-10-14"
+            },
+            {
+              "url": "https://learn.chatgpt.com/docs/models",
+              "checkedAt": "2026-10-14"
+            }
+          ],
+          "variants": []
+        },
+        {
+          "id": "gpt-6-1-sol",
+          "name": "GPT-6.1 Sol",
+          "status": "documented",
+          "he": "שם המודל כפי שתועד במקור. מגבלות המשטח, המינוי והמצב מפורטות בסביבת העבודה המקושרת.",
+          "en": "Model name as documented by the source. Surface, plan and mode restrictions appear in the linked workspace.",
+          "url": "https://learn.chatgpt.com/docs/models",
+          "inputs": [],
+          "outputs": [],
+          "sources": [
+            {
+              "url": "https://learn.chatgpt.com/docs/models",
+              "checkedAt": "2026-10-14"
+            },
+            {
+              "url": "https://api.kolbo.ai/api/models?format=raw",
+              "checkedAt": "2026-10-14"
+            }
+          ],
+          "variants": []
+        },
+        {
+          "id": "gpt-6-luna",
+          "name": "GPT-6 Luna",
+          "status": "documented",
+          "he": "שם המודל כפי שתועד במקור. מגבלות המשטח, המינוי והמצב מפורטות בסביבת העבודה המקושרת.",
+          "en": "Model name as documented by the source. Surface, plan and mode restrictions appear in the linked workspace.",
+          "url": "https://learn.chatgpt.com/docs/models",
+          "inputs": [],
+          "outputs": [],
+          "sources": [
+            {
+              "url": "https://learn.chatgpt.com/docs/models",
+              "checkedAt": "2026-10-14"
+            }
+          ],
+          "variants": []
+        },
+        {
+          "id": "gpt-5-6-terra",
+          "name": "GPT-5.6 Terra",
+          "status": "documented",
+          "he": "שם המודל כפי שתועד במקור. מגבלות המשטח, המינוי והמצב מפורטות בסביבת העבודה המקושרת.",
+          "en": "Model name as documented by the source. Surface, plan and mode restrictions appear in the linked workspace.",
+          "url": "https://learn.chatgpt.com/docs/models",
+          "inputs": [],
+          "outputs": [],
+          "sources": [
+            {
+              "url": "https://learn.chatgpt.com/docs/models",
+              "checkedAt": "2026-10-14"
+            }
+          ],
+          "variants": []
+        }
+      ]
+    },
+    "google-veo": {
+      "generations": [
+        {
+          "id": "veo-2",
+          "name": "Veo 2",
+          "status": "documented",
+          "he": "שם המודל כפי שתועד במקור. מגבלות המשטח, המינוי והמצב מפורטות בסביבת העבודה המקושרת.",
+          "en": "Model name as documented by the source. Surface, plan and mode restrictions appear in the linked workspace.",
+          "url": "https://helpx.adobe.com/firefly/web/work-with-audio-and-video/work-with-video/generate-videos-using-non-adobe-models.html",
+          "inputs": [],
+          "outputs": [],
+          "sources": [
+            {
+              "url": "https://helpx.adobe.com/firefly/web/work-with-audio-and-video/work-with-video/generate-videos-using-non-adobe-models.html",
+              "checkedAt": "2026-10-14"
+            },
+            {
+              "url": "https://content.weave.figma.com/models-available-for-third-party-api-usage",
+              "checkedAt": "2026-10-14"
+            }
+          ],
+          "variants": []
+        },
+        {
+          "id": "veo-3-1",
+          "name": "Veo 3.1",
+          "status": "documented",
+          "he": "שם המודל כפי שתועד במקור. מגבלות המשטח, המינוי והמצב מפורטות בסביבת העבודה המקושרת.",
+          "en": "Model name as documented by the source. Surface, plan and mode restrictions appear in the linked workspace.",
+          "url": "https://helpx.adobe.com/firefly/web/work-with-audio-and-video/work-with-video/generate-videos-using-non-adobe-models.html",
+          "inputs": [],
+          "outputs": [],
+          "sources": [
+            {
+              "url": "https://helpx.adobe.com/firefly/web/work-with-audio-and-video/work-with-video/generate-videos-using-non-adobe-models.html",
+              "checkedAt": "2026-10-14"
+            },
+            {
+              "url": "https://content.weave.figma.com/models-available-for-third-party-api-usage",
+              "checkedAt": "2026-10-14"
+            }
+          ],
+          "variants": []
+        },
+        {
+          "id": "veo-3-1-fast",
+          "name": "Veo 3.1 Fast",
+          "status": "documented",
+          "he": "שם המודל כפי שתועד במקור. מגבלות המשטח, המינוי והמצב מפורטות בסביבת העבודה המקושרת.",
+          "en": "Model name as documented by the source. Surface, plan and mode restrictions appear in the linked workspace.",
+          "url": "https://helpx.adobe.com/firefly/web/work-with-audio-and-video/work-with-video/generate-videos-using-non-adobe-models.html",
+          "inputs": [],
+          "outputs": [],
+          "sources": [
+            {
+              "url": "https://helpx.adobe.com/firefly/web/work-with-audio-and-video/work-with-video/generate-videos-using-non-adobe-models.html",
+              "checkedAt": "2026-10-14"
+            },
+            {
+              "url": "https://support.google.com/flow/answer/16352836?hl=en",
+              "checkedAt": "2026-10-14"
+            }
+          ],
+          "variants": []
+        },
+        {
+          "id": "veo-3",
+          "name": "Veo 3",
+          "status": "documented",
+          "he": "שם המודל כפי שתועד במקור. מגבלות המשטח, המינוי והמצב מפורטות בסביבת העבודה המקושרת.",
+          "en": "Model name as documented by the source. Surface, plan and mode restrictions appear in the linked workspace.",
+          "url": "https://content.weave.figma.com/models-available-for-third-party-api-usage",
+          "inputs": [],
+          "outputs": [],
+          "sources": [
+            {
+              "url": "https://content.weave.figma.com/models-available-for-third-party-api-usage",
+              "checkedAt": "2026-10-14"
+            }
+          ],
+          "variants": []
+        },
+        {
+          "id": "veo-3-1-lite",
+          "name": "Veo 3.1 Lite",
+          "status": "documented",
+          "he": "שם המודל כפי שתועד במקור. מגבלות המשטח, המינוי והמצב מפורטות בסביבת העבודה המקושרת.",
+          "en": "Model name as documented by the source. Surface, plan and mode restrictions appear in the linked workspace.",
+          "url": "https://support.google.com/flow/answer/16352836?hl=en",
+          "inputs": [],
+          "outputs": [],
+          "sources": [
+            {
+              "url": "https://support.google.com/flow/answer/16352836?hl=en",
+              "checkedAt": "2026-10-14"
+            }
+          ],
+          "variants": []
+        },
+        {
+          "id": "veo-3-1-quality",
+          "name": "Veo 3.1 Quality",
+          "status": "documented",
+          "he": "שם המודל כפי שתועד במקור. מגבלות המשטח, המינוי והמצב מפורטות בסביבת העבודה המקושרת.",
+          "en": "Model name as documented by the source. Surface, plan and mode restrictions appear in the linked workspace.",
+          "url": "https://support.google.com/flow/answer/16352836?hl=en",
+          "inputs": [],
+          "outputs": [],
+          "sources": [
+            {
+              "url": "https://support.google.com/flow/answer/16352836?hl=en",
+              "checkedAt": "2026-10-14"
+            }
+          ],
+          "variants": []
+        }
+      ]
+    },
+    "bytedance-seedream": {
+      "generations": [
+        {
+          "id": "seedream-v4",
+          "name": "Seedream V4",
+          "status": "documented",
+          "he": "שם המודל כפי שתועד במקור. מגבלות המשטח, המינוי והמצב מפורטות בסביבת העבודה המקושרת.",
+          "en": "Model name as documented by the source. Surface, plan and mode restrictions appear in the linked workspace.",
+          "url": "https://content.weave.figma.com/models-pricing",
+          "inputs": [],
+          "outputs": [],
+          "sources": [
+            {
+              "url": "https://content.weave.figma.com/models-pricing",
+              "checkedAt": "2026-10-14"
+            }
+          ],
+          "variants": []
+        },
+        {
+          "id": "seedream-v4-5",
+          "name": "Seedream V4.5",
+          "status": "documented",
+          "he": "שם המודל כפי שתועד במקור. מגבלות המשטח, המינוי והמצב מפורטות בסביבת העבודה המקושרת.",
+          "en": "Model name as documented by the source. Surface, plan and mode restrictions appear in the linked workspace.",
+          "url": "https://content.weave.figma.com/models-pricing",
+          "inputs": [],
+          "outputs": [],
+          "sources": [
+            {
+              "url": "https://content.weave.figma.com/models-pricing",
+              "checkedAt": "2026-10-14"
+            }
+          ],
+          "variants": []
+        },
+        {
+          "id": "seedream-v5",
+          "name": "Seedream V5",
+          "status": "documented",
+          "he": "שם המודל כפי שתועד במקור. מגבלות המשטח, המינוי והמצב מפורטות בסביבת העבודה המקושרת.",
+          "en": "Model name as documented by the source. Surface, plan and mode restrictions appear in the linked workspace.",
+          "url": "https://content.weave.figma.com/models-pricing",
+          "inputs": [],
+          "outputs": [],
+          "sources": [
+            {
+              "url": "https://content.weave.figma.com/models-pricing",
+              "checkedAt": "2026-10-14"
+            }
+          ],
+          "variants": []
+        }
+      ]
+    },
+    "qwen-image": {
+      "generations": [
+        {
+          "id": "qwen-image-edit-plus",
+          "name": "Qwen Image Edit Plus",
+          "status": "documented",
+          "he": "שם המודל כפי שתועד במקור. מגבלות המשטח, המינוי והמצב מפורטות בסביבת העבודה המקושרת.",
+          "en": "Model name as documented by the source. Surface, plan and mode restrictions appear in the linked workspace.",
+          "url": "https://content.weave.figma.com/models-available-for-third-party-api-usage",
+          "inputs": [],
+          "outputs": [],
+          "sources": [
+            {
+              "url": "https://content.weave.figma.com/models-available-for-third-party-api-usage",
+              "checkedAt": "2026-10-14"
+            }
+          ],
+          "variants": []
+        },
+        {
+          "id": "qwen-image-edit-2511",
+          "name": "Qwen Image Edit 2511",
+          "status": "documented",
+          "he": "שם המודל כפי שתועד במקור. מגבלות המשטח, המינוי והמצב מפורטות בסביבת העבודה המקושרת.",
+          "en": "Model name as documented by the source. Surface, plan and mode restrictions appear in the linked workspace.",
+          "url": "https://content.weave.figma.com/models-available-for-third-party-api-usage",
+          "inputs": [],
+          "outputs": [],
+          "sources": [
+            {
+              "url": "https://content.weave.figma.com/models-available-for-third-party-api-usage",
+              "checkedAt": "2026-10-14"
+            }
+          ],
+          "variants": []
+        }
+      ]
+    },
+    "wan-video": {
+      "generations": [
+        {
+          "id": "wan-2-2",
+          "name": "Wan 2.2",
+          "status": "documented",
+          "he": "שם המודל כפי שתועד במקור. מגבלות המשטח, המינוי והמצב מפורטות בסביבת העבודה המקושרת.",
+          "en": "Model name as documented by the source. Surface, plan and mode restrictions appear in the linked workspace.",
+          "url": "https://content.weave.figma.com/models-available-for-third-party-api-usage",
+          "inputs": [],
+          "outputs": [],
+          "sources": [
+            {
+              "url": "https://content.weave.figma.com/models-available-for-third-party-api-usage",
+              "checkedAt": "2026-10-14"
+            }
+          ],
+          "variants": []
+        },
+        {
+          "id": "wan-2-5",
+          "name": "Wan 2.5",
+          "status": "documented",
+          "he": "שם המודל כפי שתועד במקור. מגבלות המשטח, המינוי והמצב מפורטות בסביבת העבודה המקושרת.",
+          "en": "Model name as documented by the source. Surface, plan and mode restrictions appear in the linked workspace.",
+          "url": "https://content.weave.figma.com/models-available-for-third-party-api-usage",
+          "inputs": [],
+          "outputs": [],
+          "sources": [
+            {
+              "url": "https://content.weave.figma.com/models-available-for-third-party-api-usage",
+              "checkedAt": "2026-10-14"
+            }
+          ],
+          "variants": []
+        },
+        {
+          "id": "wan-2-7-video",
+          "name": "Wan 2.7 Video",
+          "status": "documented",
+          "he": "שם המודל כפי שתועד במקור. מגבלות המשטח, המינוי והמצב מפורטות בסביבת העבודה המקושרת.",
+          "en": "Model name as documented by the source. Surface, plan and mode restrictions appear in the linked workspace.",
+          "url": "https://content.weave.figma.com/models-available-for-third-party-api-usage",
+          "inputs": [],
+          "outputs": [],
+          "sources": [
+            {
+              "url": "https://content.weave.figma.com/models-available-for-third-party-api-usage",
+              "checkedAt": "2026-10-14"
+            }
+          ],
+          "variants": []
+        },
+        {
+          "id": "wan-2-7-image",
+          "name": "Wan 2.7 Image",
+          "status": "documented",
+          "he": "שם המודל כפי שתועד במקור. מגבלות המשטח, המינוי והמצב מפורטות בסביבת העבודה המקושרת.",
+          "en": "Model name as documented by the source. Surface, plan and mode restrictions appear in the linked workspace.",
+          "url": "https://content.weave.figma.com/models-available-for-third-party-api-usage",
+          "inputs": [],
+          "outputs": [],
+          "sources": [
+            {
+              "url": "https://content.weave.figma.com/models-available-for-third-party-api-usage",
+              "checkedAt": "2026-10-14"
+            }
+          ],
+          "variants": []
+        },
+        {
+          "id": "wan-3-0",
+          "name": "Wan 3.0",
+          "status": "documented",
+          "he": "שם המודל כפי שתועד במקור. מגבלות המשטח, המינוי והמצב מפורטות בסביבת העבודה המקושרת.",
+          "en": "Model name as documented by the source. Surface, plan and mode restrictions appear in the linked workspace.",
+          "url": "https://content.weave.figma.com/models-available-for-third-party-api-usage",
+          "inputs": [],
+          "outputs": [],
+          "sources": [
+            {
+              "url": "https://content.weave.figma.com/models-available-for-third-party-api-usage",
+              "checkedAt": "2026-10-14"
+            }
+          ],
+          "variants": []
+        }
+      ]
+    },
+    "ltx-models": {
+      "generations": [
+        {
+          "id": "ltx-video",
+          "name": "LTX Video",
+          "status": "documented",
+          "he": "שם המודל כפי שתועד במקור. מגבלות המשטח, המינוי והמצב מפורטות בסביבת העבודה המקושרת.",
+          "en": "Model name as documented by the source. Surface, plan and mode restrictions appear in the linked workspace.",
+          "url": "https://content.weave.figma.com/models-available-for-third-party-api-usage",
+          "inputs": [],
+          "outputs": [],
+          "sources": [
+            {
+              "url": "https://content.weave.figma.com/models-available-for-third-party-api-usage",
+              "checkedAt": "2026-10-14"
+            }
+          ],
+          "variants": []
+        },
+        {
+          "id": "ltx-2",
+          "name": "LTX 2",
+          "status": "documented",
+          "he": "שם המודל כפי שתועד במקור. מגבלות המשטח, המינוי והמצב מפורטות בסביבת העבודה המקושרת.",
+          "en": "Model name as documented by the source. Surface, plan and mode restrictions appear in the linked workspace.",
+          "url": "https://content.weave.figma.com/models-available-for-third-party-api-usage",
+          "inputs": [],
+          "outputs": [],
+          "sources": [
+            {
+              "url": "https://content.weave.figma.com/models-available-for-third-party-api-usage",
+              "checkedAt": "2026-10-14"
+            }
+          ],
+          "variants": []
+        },
+        {
+          "id": "ltx-2-3",
+          "name": "LTX 2.3",
+          "status": "documented",
+          "he": "שם המודל כפי שתועד במקור. מגבלות המשטח, המינוי והמצב מפורטות בסביבת העבודה המקושרת.",
+          "en": "Model name as documented by the source. Surface, plan and mode restrictions appear in the linked workspace.",
+          "url": "https://content.weave.figma.com/models-available-for-third-party-api-usage",
+          "inputs": [],
+          "outputs": [],
+          "sources": [
+            {
+              "url": "https://content.weave.figma.com/models-available-for-third-party-api-usage",
+              "checkedAt": "2026-10-14"
+            }
+          ],
+          "variants": []
+        }
+      ]
+    },
+    "anthropic-claude-models": {
+      "generations": [
+        {
+          "id": "claude-sonnet-5-5",
+          "name": "Claude Sonnet 5.5",
+          "status": "documented",
+          "he": "שם המודל כפי שתועד במקור. מגבלות המשטח, המינוי והמצב מפורטות בסביבת העבודה המקושרת.",
+          "en": "Model name as documented by the source. Surface, plan and mode restrictions appear in the linked workspace.",
+          "url": "https://www.antigravity.google/docs/models/",
+          "inputs": [],
+          "outputs": [],
+          "sources": [
+            {
+              "url": "https://www.antigravity.google/docs/models/",
+              "checkedAt": "2026-10-14"
+            },
+            {
+              "url": "https://www.anthropic.com/claude/sonnet",
+              "checkedAt": "2026-10-14"
+            },
+            {
+              "url": "https://code.claude.com/docs/en/model-config",
+              "checkedAt": "2026-10-14"
+            },
+            {
+              "url": "https://api.kolbo.ai/api/models?format=raw",
+              "checkedAt": "2026-10-14"
+            }
+          ],
+          "variants": []
+        },
+        {
+          "id": "claude-opus-5-5",
+          "name": "Claude Opus 5.5",
+          "status": "documented",
+          "he": "שם המודל כפי שתועד במקור. מגבלות המשטח, המינוי והמצב מפורטות בסביבת העבודה המקושרת.",
+          "en": "Model name as documented by the source. Surface, plan and mode restrictions appear in the linked workspace.",
+          "url": "https://www.antigravity.google/docs/models/",
+          "inputs": [],
+          "outputs": [],
+          "sources": [
+            {
+              "url": "https://www.antigravity.google/docs/models/",
+              "checkedAt": "2026-10-14"
+            },
+            {
+              "url": "https://www.anthropic.com/claude/opus",
+              "checkedAt": "2026-10-14"
+            },
+            {
+              "url": "https://code.claude.com/docs/en/model-config",
+              "checkedAt": "2026-10-14"
+            }
+          ],
+          "variants": []
+        },
+        {
+          "id": "claude-sonnet-4-6",
+          "name": "Claude Sonnet 4.6",
+          "status": "documented",
+          "he": "שם המודל כפי שתועד במקור. מגבלות המשטח, המינוי והמצב מפורטות בסביבת העבודה המקושרת.",
+          "en": "Model name as documented by the source. Surface, plan and mode restrictions appear in the linked workspace.",
+          "url": "https://www.antigravity.google/docs/models/",
+          "inputs": [],
+          "outputs": [],
+          "sources": [
+            {
+              "url": "https://www.antigravity.google/docs/models/",
+              "checkedAt": "2026-10-14"
+            }
+          ],
+          "variants": []
+        },
+        {
+          "id": "claude-opus-4-6",
+          "name": "Claude Opus 4.6",
+          "status": "documented",
+          "he": "שם המודל כפי שתועד במקור. מגבלות המשטח, המינוי והמצב מפורטות בסביבת העבודה המקושרת.",
+          "en": "Model name as documented by the source. Surface, plan and mode restrictions appear in the linked workspace.",
+          "url": "https://www.antigravity.google/docs/models/",
+          "inputs": [],
+          "outputs": [],
+          "sources": [
+            {
+              "url": "https://www.antigravity.google/docs/models/",
+              "checkedAt": "2026-10-14"
+            }
+          ],
+          "variants": []
+        },
+        {
+          "id": "claude-haiku-5-5",
+          "name": "Claude Haiku 5.5",
+          "status": "documented",
+          "he": "שם המודל כפי שתועד במקור. מגבלות המשטח, המינוי והמצב מפורטות בסביבת העבודה המקושרת.",
+          "en": "Model name as documented by the source. Surface, plan and mode restrictions appear in the linked workspace.",
+          "url": "https://www.anthropic.com/claude/haiku",
+          "inputs": [],
+          "outputs": [],
+          "sources": [
+            {
+              "url": "https://www.anthropic.com/claude/haiku",
+              "checkedAt": "2026-10-14"
+            },
+            {
+              "url": "https://code.claude.com/docs/en/model-config",
+              "checkedAt": "2026-10-14"
+            },
+            {
+              "url": "https://api.kolbo.ai/api/models?format=raw",
+              "checkedAt": "2026-10-14"
+            }
+          ],
+          "variants": []
+        },
+        {
+          "id": "claude-fable-5-1",
+          "name": "Claude Fable 5.1",
+          "status": "documented",
+          "he": "שם המודל כפי שתועד במקור. מגבלות המשטח, המינוי והמצב מפורטות בסביבת העבודה המקושרת.",
+          "en": "Model name as documented by the source. Surface, plan and mode restrictions appear in the linked workspace.",
+          "url": "https://www.anthropic.com/claude/fable",
+          "inputs": [],
+          "outputs": [],
+          "sources": [
+            {
+              "url": "https://www.anthropic.com/claude/fable",
+              "checkedAt": "2026-10-14"
+            },
+            {
+              "url": "https://code.claude.com/docs/en/model-config",
+              "checkedAt": "2026-10-14"
+            }
+          ],
+          "variants": []
+        }
+      ]
+    }
+  },
+  "platforms": {
+    "sync-studio": [
+      {
+        "familyId": "sync-lipsync",
+        "generations": [
+          "sync-3",
+          "lipsync-2-pro",
+          "lipsync-2",
+          "lipsync-1.9.0-beta",
+          "react-1"
+        ],
+        "surface": "Studio / API / Premiere",
+        "availability": "available",
+        "he": "המסלולים והאפשרויות תלויים במודל ובמשטח העבודה. sync-3 הוא ברירת המחדל המתועדת; תיעוד אינו בדיקת הרשאות בחשבון.",
+        "en": "Routes and options depend on the model and product surface. sync-3 is the documented default; documentation is not an account-entitlement test.",
+        "sources": [
+          {
+            "url": "https://sync.so/docs/models/sync-3",
+            "checkedAt": "2026-10-14"
+          },
+          {
+            "url": "https://sync.so/docs/api-reference/api/models-api/list",
+            "checkedAt": "2026-10-14"
+          }
+        ]
+      }
+    ],
+    "kolbo-ai": [
+      {
+        "familyId": "bytedance-seedance",
+        "generations": [
+          "seedance-2.5",
+          "seedance-2.0",
+          "seedance-1.5-pro",
+          "seedance-1.0"
+        ],
+        "surface": "Video generation / edit / extend",
+        "availability": "available",
+        "he": "הרישום הציבורי הגלוי כולל 2.5, 2.0 (כולל Fast ו־Mini), 1.5 Pro ו־1.0 Pro/Pro Fast. מסלולי יצירה, עריכה, הארכה וטיוטה אינם דורות נפרדים. הזכאות, הקרדיטים והרזולוציות תלויים במסלול; לא נבדק חשבון בתשלום.",
+        "en": "The visible public registry lists 2.5, 2.0 (including Fast and Mini), 1.5 Pro and 1.0 Pro/Pro Fast. Generation, edit, extend and draft routes are not separate generations. Eligibility, credits and resolution depend on the route; paid account access was not tested.",
+        "sources": [
+          {
+            "url": "https://api.kolbo.ai/api/models?format=raw",
+            "checkedAt": "2026-10-14"
+          }
+        ]
+      },
+      {
+        "familyId": "sync-lipsync",
+        "generations": [
+          "lipsync-2-pro"
+        ],
+        "surface": "Video lip-sync",
+        "availability": "available",
+        "he": "המסלול הגלוי sync/lipsync-2-pro מופיע בשם Sync-Lipsync V2 Pro. אין להסיק מכך ש־Sync 3 זמין כאן.",
+        "en": "The visible sync/lipsync-2-pro route is named Sync-Lipsync V2 Pro. This is not evidence of Sync 3 availability here.",
+        "sources": [
+          {
+            "url": "https://api.kolbo.ai/api/models?format=raw",
+            "checkedAt": "2026-10-14"
+          }
+        ]
+      },
+      {
+        "familyId": "ai-006",
+        "surface": "Image generation / editing",
+        "availability": "available",
+        "he": "רשומות שמסומנות כגלויות בקטלוג הציבורי; סוג המסלול, הרזולוציה והזכאות משתנים. לא נבדק חשבון בתשלום. לא נבדק בחשבון; הזמינות עשויה להיות תלויה באזור, במינוי ובהרשאות סביבת העבודה.",
+        "en": "Explicitly visible public catalog entries; route type, resolution and eligibility vary. No paid-account entitlement was tested. Not account-tested; availability can depend on region, plan and workspace permissions.",
+        "sources": [
+          {
+            "url": "https://api.kolbo.ai/api/models?format=raw",
+            "checkedAt": "2026-10-14"
+          }
+        ],
+        "generations": [
+          "nano-banana-2-1"
+        ],
+        "models": [
+          "Nano Banana 2.1"
+        ]
+      },
+      {
+        "familyId": "openai-gpt-models",
+        "surface": "Chat / Kobi Code",
+        "availability": "available",
+        "he": "רשומות שמסומנות כגלויות בקטלוג הציבורי; סוג המסלול, הרזולוציה והזכאות משתנים. לא נבדק חשבון בתשלום. לא נבדק בחשבון; הזמינות עשויה להיות תלויה באזור, במינוי ובהרשאות סביבת העבודה.",
+        "en": "Explicitly visible public catalog entries; route type, resolution and eligibility vary. No paid-account entitlement was tested. Not account-tested; availability can depend on region, plan and workspace permissions.",
+        "sources": [
+          {
+            "url": "https://api.kolbo.ai/api/models?format=raw",
+            "checkedAt": "2026-10-14"
+          }
+        ],
+        "generations": [
+          "gpt-6-1-sol"
+        ],
+        "models": [
+          "GPT-6.1 Sol"
+        ]
+      },
+      {
+        "familyId": "openai-gpt-models",
+        "surface": "Chat",
+        "availability": "available",
+        "he": "רשומות שמסומנות כגלויות בקטלוג הציבורי; סוג המסלול, הרזולוציה והזכאות משתנים. לא נבדק חשבון בתשלום. לא נבדק בחשבון; הזמינות עשויה להיות תלויה באזור, במינוי ובהרשאות סביבת העבודה.",
+        "en": "Explicitly visible public catalog entries; route type, resolution and eligibility vary. No paid-account entitlement was tested. Not account-tested; availability can depend on region, plan and workspace permissions.",
+        "sources": [
+          {
+            "url": "https://api.kolbo.ai/api/models?format=raw",
+            "checkedAt": "2026-10-14"
+          }
+        ],
+        "generations": [
+          "gpt-6-sol"
+        ],
+        "models": [
+          "GPT-6 Sol"
+        ]
+      },
+      {
+        "familyId": "anthropic-claude-models",
+        "surface": "Chat",
+        "availability": "available",
+        "he": "רשומות שמסומנות כגלויות בקטלוג הציבורי; סוג המסלול, הרזולוציה והזכאות משתנים. לא נבדק חשבון בתשלום. לא נבדק בחשבון; הזמינות עשויה להיות תלויה באזור, במינוי ובהרשאות סביבת העבודה.",
+        "en": "Explicitly visible public catalog entries; route type, resolution and eligibility vary. No paid-account entitlement was tested. Not account-tested; availability can depend on region, plan and workspace permissions.",
+        "sources": [
+          {
+            "url": "https://api.kolbo.ai/api/models?format=raw",
+            "checkedAt": "2026-10-14"
+          }
+        ],
+        "generations": [
+          "claude-haiku-5-5"
+        ],
+        "models": [
+          "Claude Haiku 5.5"
+        ]
+      },
+      {
+        "familyId": "anthropic-claude-models",
+        "surface": "Kobi Code",
+        "availability": "available",
+        "he": "רשומות שמסומנות כגלויות בקטלוג הציבורי; סוג המסלול, הרזולוציה והזכאות משתנים. לא נבדק חשבון בתשלום. לא נבדק בחשבון; הזמינות עשויה להיות תלויה באזור, במינוי ובהרשאות סביבת העבודה.",
+        "en": "Explicitly visible public catalog entries; route type, resolution and eligibility vary. No paid-account entitlement was tested. Not account-tested; availability can depend on region, plan and workspace permissions.",
+        "sources": [
+          {
+            "url": "https://api.kolbo.ai/api/models?format=raw",
+            "checkedAt": "2026-10-14"
+          }
+        ],
+        "generations": [
+          "claude-sonnet-5-5"
+        ],
+        "models": [
+          "Claude Sonnet 5.5"
+        ]
+      },
+      {
+        "familyId": "ai-031",
+        "surface": "Video generation",
+        "availability": "available",
+        "he": "רשומות שמסומנות כגלויות בקטלוג הציבורי; סוג המסלול, הרזולוציה והזכאות משתנים. לא נבדק חשבון בתשלום. לא נבדק בחשבון; הזמינות עשויה להיות תלויה באזור, במינוי ובהרשאות סביבת העבודה.",
+        "en": "Explicitly visible public catalog entries; route type, resolution and eligibility vary. No paid-account entitlement was tested. Not account-tested; availability can depend on region, plan and workspace permissions.",
+        "sources": [
+          {
+            "url": "https://api.kolbo.ai/api/models?format=raw",
+            "checkedAt": "2026-10-14"
+          }
+        ],
+        "generations": [
+          "flux-3"
+        ],
+        "models": [
+          "FLUX 3"
+        ]
+      }
+    ],
+    "ai-040": [
+      {
+        "familyId": null,
+        "surface": "Generate image",
+        "availability": "available",
+        "he": "לא נבדק בחשבון; הזמינות עשויה להיות תלויה באזור, במינוי ובהרשאות סביבת העבודה.",
+        "en": "Not account-tested; availability can depend on region, plan and workspace permissions.",
+        "sources": [
+          {
+            "url": "https://helpx.adobe.com/firefly/web/work-with-images/generate-images/generate-images-from-text-descriptions.html",
+            "checkedAt": "2026-10-14"
+          }
+        ],
+        "generations": [],
+        "models": [
+          "Firefly Image 3"
+        ],
+        "familyName": "Firefly Image 3"
+      },
+      {
+        "familyId": null,
+        "surface": "Generate image",
+        "availability": "available",
+        "he": "לא נבדק בחשבון; הזמינות עשויה להיות תלויה באזור, במינוי ובהרשאות סביבת העבודה.",
+        "en": "Not account-tested; availability can depend on region, plan and workspace permissions.",
+        "sources": [
+          {
+            "url": "https://helpx.adobe.com/firefly/web/work-with-images/generate-images/generate-images-from-text-descriptions.html",
+            "checkedAt": "2026-10-14"
+          }
+        ],
+        "generations": [],
+        "models": [
+          "Firefly Image 4"
+        ],
+        "familyName": "Firefly Image 4"
+      },
+      {
+        "familyId": null,
+        "surface": "Generate image",
+        "availability": "available",
+        "he": "לא נבדק בחשבון; הזמינות עשויה להיות תלויה באזור, במינוי ובהרשאות סביבת העבודה.",
+        "en": "Not account-tested; availability can depend on region, plan and workspace permissions.",
+        "sources": [
+          {
+            "url": "https://helpx.adobe.com/firefly/web/work-with-images/generate-images/generate-images-from-text-descriptions.html",
+            "checkedAt": "2026-10-14"
+          }
+        ],
+        "generations": [],
+        "models": [
+          "Firefly Image 4 Ultra"
+        ],
+        "familyName": "Firefly Image 4 Ultra"
+      },
+      {
+        "familyId": null,
+        "surface": "Generate image",
+        "availability": "available",
+        "he": "לא נבדק בחשבון; הזמינות עשויה להיות תלויה באזור, במינוי ובהרשאות סביבת העבודה.",
+        "en": "Not account-tested; availability can depend on region, plan and workspace permissions.",
+        "sources": [
+          {
+            "url": "https://helpx.adobe.com/firefly/web/work-with-images/generate-images/generate-images-from-text-descriptions.html",
+            "checkedAt": "2026-10-14"
+          }
+        ],
+        "generations": [],
+        "models": [
+          "Firefly Image 5"
+        ],
+        "familyName": "Firefly Image 5"
+      },
+      {
+        "familyId": null,
+        "surface": "Generate video",
+        "availability": "available",
+        "he": "לא נבדק בחשבון; הזמינות עשויה להיות תלויה באזור, במינוי ובהרשאות סביבת העבודה.",
+        "en": "Not account-tested; availability can depend on region, plan and workspace permissions.",
+        "sources": [
+          {
+            "url": "https://helpx.adobe.com/firefly/web/work-with-audio-and-video/work-with-video/generate-videos-using-images.html",
+            "checkedAt": "2026-10-14"
+          }
+        ],
+        "generations": [],
+        "models": [
+          "Firefly Video"
+        ],
+        "familyName": "Firefly Video"
+      },
+      {
+        "familyId": "ai-031",
+        "surface": "Generate image",
+        "availability": "available",
+        "he": "לא נבדק בחשבון; הזמינות עשויה להיות תלויה באזור, במינוי ובהרשאות סביבת העבודה.",
+        "en": "Not account-tested; availability can depend on region, plan and workspace permissions.",
+        "sources": [
+          {
+            "url": "https://helpx.adobe.com/firefly/web/work-with-images/generate-images/generate-images-using-flux.html",
+            "checkedAt": "2026-10-14"
+          }
+        ],
+        "generations": [
+          "flux1-1-pro",
+          "flux1-1-pro-ultra",
+          "flux1-1-pro-ultra-raw",
+          "flux-2-pro",
+          "flux-1-kontext-max",
+          "flux-1-kontext-pro"
+        ],
+        "models": [
+          "FLUX1.1 [pro]",
+          "FLUX1.1 [pro] Ultra",
+          "FLUX1.1 [pro] Ultra (Raw)",
+          "FLUX.2 [pro]",
+          "FLUX.1 Kontext [max]",
+          "FLUX.1 Kontext [pro]"
+        ]
+      },
+      {
+        "familyId": null,
+        "surface": "Generate image",
+        "availability": "available",
+        "he": "לא נבדק בחשבון; הזמינות עשויה להיות תלויה באזור, במינוי ובהרשאות סביבת העבודה.",
+        "en": "Not account-tested; availability can depend on region, plan and workspace permissions.",
+        "sources": [
+          {
+            "url": "https://helpx.adobe.com/firefly/web/work-with-images/generate-images/generate-images-using-ideogram.html",
+            "checkedAt": "2026-10-14"
+          }
+        ],
+        "generations": [],
+        "models": [
+          "Ideogram 3.0"
+        ],
+        "familyName": "Ideogram 3.0"
+      },
+      {
+        "familyId": null,
+        "surface": "Generate image",
+        "availability": "available",
+        "he": "לא נבדק בחשבון; הזמינות עשויה להיות תלויה באזור, במינוי ובהרשאות סביבת העבודה.",
+        "en": "Not account-tested; availability can depend on region, plan and workspace permissions.",
+        "sources": [
+          {
+            "url": "https://helpx.adobe.com/firefly/web/work-with-images/generate-images/generate-images-using-runway.html",
+            "checkedAt": "2026-10-14"
+          }
+        ],
+        "generations": [],
+        "models": [
+          "Runway Gen-4 Image"
+        ],
+        "familyName": "Runway Gen-4 Image"
+      },
+      {
+        "familyId": "ai-006",
+        "surface": "Generate image / Prompt to Edit Image / Boards",
+        "availability": "available",
+        "he": "תכונות שותפים בתשלום; משטחי העבודה והמדינות הנתמכות משתנים. לא נבדק בחשבון; הזמינות עשויה להיות תלויה באזור, במינוי ובהרשאות סביבת העבודה.",
+        "en": "Premium partner features; surfaces and country availability differ. Not account-tested; availability can depend on region, plan and workspace permissions.",
+        "sources": [
+          {
+            "url": "https://helpx.adobe.com/creative-cloud/apps/generative-ai/non-adobe-models-in-adobe-products.html",
+            "checkedAt": "2026-10-14"
+          }
+        ],
+        "generations": [
+          "nano-banana-pro",
+          "nano-banana-2"
+        ],
+        "models": [
+          "Nano Banana Pro",
+          "Nano Banana 2"
+        ]
+      },
+      {
+        "familyId": null,
+        "surface": "Generate image / Prompt to Edit Image / Boards",
+        "availability": "available",
+        "he": "תכונות שותפים בתשלום; משטחי העבודה והמדינות הנתמכות משתנים. לא נבדק בחשבון; הזמינות עשויה להיות תלויה באזור, במינוי ובהרשאות סביבת העבודה.",
+        "en": "Premium partner features; surfaces and country availability differ. Not account-tested; availability can depend on region, plan and workspace permissions.",
+        "sources": [
+          {
+            "url": "https://helpx.adobe.com/creative-cloud/apps/generative-ai/non-adobe-models-in-adobe-products.html",
+            "checkedAt": "2026-10-14"
+          }
+        ],
+        "generations": [],
+        "models": [
+          "GPT Image 1.5"
+        ],
+        "familyName": "GPT Image 1.5"
+      },
+      {
+        "familyId": null,
+        "surface": "Generate image / Prompt to Edit Image / Boards",
+        "availability": "available",
+        "he": "תכונות שותפים בתשלום; משטחי העבודה והמדינות הנתמכות משתנים. לא נבדק בחשבון; הזמינות עשויה להיות תלויה באזור, במינוי ובהרשאות סביבת העבודה.",
+        "en": "Premium partner features; surfaces and country availability differ. Not account-tested; availability can depend on region, plan and workspace permissions.",
+        "sources": [
+          {
+            "url": "https://helpx.adobe.com/creative-cloud/apps/generative-ai/non-adobe-models-in-adobe-products.html",
+            "checkedAt": "2026-10-14"
+          }
+        ],
+        "generations": [],
+        "models": [
+          "GPT Image 2"
+        ],
+        "familyName": "GPT Image 2"
+      },
+      {
+        "familyId": null,
+        "surface": "Generate image / Prompt to Edit Image / Boards",
+        "availability": "available",
+        "he": "תכונות שותפים בתשלום; משטחי העבודה והמדינות הנתמכות משתנים. לא נבדק בחשבון; הזמינות עשויה להיות תלויה באזור, במינוי ובהרשאות סביבת העבודה.",
+        "en": "Premium partner features; surfaces and country availability differ. Not account-tested; availability can depend on region, plan and workspace permissions.",
+        "sources": [
+          {
+            "url": "https://helpx.adobe.com/creative-cloud/apps/generative-ai/non-adobe-models-in-adobe-products.html",
+            "checkedAt": "2026-10-14"
+          }
+        ],
+        "generations": [],
+        "models": [
+          "GPT Image 2.5 Flare"
+        ],
+        "familyName": "GPT Image 2.5 Flare"
+      },
+      {
+        "familyId": null,
+        "surface": "Generate image / Prompt to Edit Image / Boards",
+        "availability": "available",
+        "he": "תכונות שותפים בתשלום; משטחי העבודה והמדינות הנתמכות משתנים. לא נבדק בחשבון; הזמינות עשויה להיות תלויה באזור, במינוי ובהרשאות סביבת העבודה.",
+        "en": "Premium partner features; surfaces and country availability differ. Not account-tested; availability can depend on region, plan and workspace permissions.",
+        "sources": [
+          {
+            "url": "https://helpx.adobe.com/creative-cloud/apps/generative-ai/non-adobe-models-in-adobe-products.html",
+            "checkedAt": "2026-10-14"
+          }
+        ],
+        "generations": [],
+        "models": [
+          "GPT Image 2.5 Sunburst"
+        ],
+        "familyName": "GPT Image 2.5 Sunburst"
+      },
+      {
+        "familyId": "ai-031",
+        "surface": "Precision Flow / Boards Vary / video editor",
+        "availability": "available",
+        "he": "לא נבדק בחשבון; הזמינות עשויה להיות תלויה באזור, במינוי ובהרשאות סביבת העבודה.",
+        "en": "Not account-tested; availability can depend on region, plan and workspace permissions.",
+        "sources": [
+          {
+            "url": "https://helpx.adobe.com/creative-cloud/apps/generative-ai/non-adobe-models-in-adobe-products.html",
+            "checkedAt": "2026-10-14"
+          }
+        ],
+        "generations": [
+          "flux-2-klein-4b"
+        ],
+        "models": [
+          "FLUX.2 klein 4B"
+        ]
+      },
+      {
+        "familyId": "google-gemini-models",
+        "surface": "Boards",
+        "availability": "available",
+        "he": "לא נבדק בחשבון; הזמינות עשויה להיות תלויה באזור, במינוי ובהרשאות סביבת העבודה.",
+        "en": "Not account-tested; availability can depend on region, plan and workspace permissions.",
+        "sources": [
+          {
+            "url": "https://helpx.adobe.com/creative-cloud/apps/generative-ai/non-adobe-models-in-adobe-products.html",
+            "checkedAt": "2026-10-14"
+          }
+        ],
+        "generations": [
+          "gemini-omni-flash"
+        ],
+        "models": [
+          "Gemini Omni Flash"
+        ]
+      },
+      {
+        "familyId": "google-gemini-models",
+        "surface": "Firefly Graph",
+        "availability": "available",
+        "he": "לא נבדק בחשבון; הזמינות עשויה להיות תלויה באזור, במינוי ובהרשאות סביבת העבודה.",
+        "en": "Not account-tested; availability can depend on region, plan and workspace permissions.",
+        "sources": [
+          {
+            "url": "https://helpx.adobe.com/creative-cloud/apps/generative-ai/non-adobe-models-in-adobe-products.html",
+            "checkedAt": "2026-10-14"
+          }
+        ],
+        "generations": [
+          "gemini-2-5-flash"
+        ],
+        "models": [
+          "Gemini 2.5 Flash"
+        ]
+      },
+      {
+        "familyId": "openai-gpt-models",
+        "surface": "Firefly Graph",
+        "availability": "available",
+        "he": "לא נבדק בחשבון; הזמינות עשויה להיות תלויה באזור, במינוי ובהרשאות סביבת העבודה.",
+        "en": "Not account-tested; availability can depend on region, plan and workspace permissions.",
+        "sources": [
+          {
+            "url": "https://helpx.adobe.com/creative-cloud/apps/generative-ai/non-adobe-models-in-adobe-products.html",
+            "checkedAt": "2026-10-14"
+          }
+        ],
+        "generations": [
+          "gpt-5-1"
+        ],
+        "models": [
+          "GPT-5.1"
+        ]
+      },
+      {
+        "familyId": null,
+        "surface": "Generate video",
+        "availability": "available",
+        "he": "לא נבדק בחשבון; הזמינות עשויה להיות תלויה באזור, במינוי ובהרשאות סביבת העבודה.",
+        "en": "Not account-tested; availability can depend on region, plan and workspace permissions.",
+        "sources": [
+          {
+            "url": "https://helpx.adobe.com/firefly/web/work-with-audio-and-video/work-with-video/generate-videos-using-non-adobe-models.html",
+            "checkedAt": "2026-10-14"
+          }
+        ],
+        "generations": [],
+        "models": [
+          "Ray2"
+        ],
+        "familyName": "Ray2"
+      },
+      {
+        "familyId": null,
+        "surface": "Generate video",
+        "availability": "available",
+        "he": "לא נבדק בחשבון; הזמינות עשויה להיות תלויה באזור, במינוי ובהרשאות סביבת העבודה.",
+        "en": "Not account-tested; availability can depend on region, plan and workspace permissions.",
+        "sources": [
+          {
+            "url": "https://helpx.adobe.com/firefly/web/work-with-audio-and-video/work-with-video/generate-videos-using-non-adobe-models.html",
+            "checkedAt": "2026-10-14"
+          }
+        ],
+        "generations": [],
+        "models": [
+          "Ray3"
+        ],
+        "familyName": "Ray3"
+      },
+      {
+        "familyId": null,
+        "surface": "Generate video",
+        "availability": "available",
+        "he": "לא נבדק בחשבון; הזמינות עשויה להיות תלויה באזור, במינוי ובהרשאות סביבת העבודה.",
+        "en": "Not account-tested; availability can depend on region, plan and workspace permissions.",
+        "sources": [
+          {
+            "url": "https://helpx.adobe.com/firefly/web/work-with-audio-and-video/work-with-video/generate-videos-using-non-adobe-models.html",
+            "checkedAt": "2026-10-14"
+          }
+        ],
+        "generations": [],
+        "models": [
+          "Ray3 HDR"
+        ],
+        "familyName": "Ray3 HDR"
+      },
+      {
+        "familyId": null,
+        "surface": "Generate video",
+        "availability": "available",
+        "he": "לא נבדק בחשבון; הזמינות עשויה להיות תלויה באזור, במינוי ובהרשאות סביבת העבודה.",
+        "en": "Not account-tested; availability can depend on region, plan and workspace permissions.",
+        "sources": [
+          {
+            "url": "https://helpx.adobe.com/firefly/web/work-with-audio-and-video/work-with-video/generate-videos-using-non-adobe-models.html",
+            "checkedAt": "2026-10-14"
+          }
+        ],
+        "generations": [],
+        "models": [
+          "Ray3.14"
+        ],
+        "familyName": "Ray3.14"
+      },
+      {
+        "familyId": null,
+        "surface": "Generate video",
+        "availability": "available",
+        "he": "לא נבדק בחשבון; הזמינות עשויה להיות תלויה באזור, במינוי ובהרשאות סביבת העבודה.",
+        "en": "Not account-tested; availability can depend on region, plan and workspace permissions.",
+        "sources": [
+          {
+            "url": "https://helpx.adobe.com/firefly/web/work-with-audio-and-video/work-with-video/generate-videos-using-non-adobe-models.html",
+            "checkedAt": "2026-10-14"
+          }
+        ],
+        "generations": [],
+        "models": [
+          "Ray3.14 HDR"
+        ],
+        "familyName": "Ray3.14 HDR"
+      },
+      {
+        "familyId": "google-veo",
+        "surface": "Generate video",
+        "availability": "available",
+        "he": "לא נבדק בחשבון; הזמינות עשויה להיות תלויה באזור, במינוי ובהרשאות סביבת העבודה.",
+        "en": "Not account-tested; availability can depend on region, plan and workspace permissions.",
+        "sources": [
+          {
+            "url": "https://helpx.adobe.com/firefly/web/work-with-audio-and-video/work-with-video/generate-videos-using-non-adobe-models.html",
+            "checkedAt": "2026-10-14"
+          }
+        ],
+        "generations": [
+          "veo-2",
+          "veo-3-1",
+          "veo-3-1-fast"
+        ],
+        "models": [
+          "Veo 2",
+          "Veo 3.1",
+          "Veo 3.1 Fast"
+        ]
+      },
+      {
+        "familyId": null,
+        "surface": "Generate video / Boards / Graph / video editor",
+        "availability": "available",
+        "he": "לא נבדק בחשבון; הזמינות עשויה להיות תלויה באזור, במינוי ובהרשאות סביבת העבודה.",
+        "en": "Not account-tested; availability can depend on region, plan and workspace permissions.",
+        "sources": [
+          {
+            "url": "https://helpx.adobe.com/creative-cloud/apps/generative-ai/non-adobe-models-in-adobe-products.html",
+            "checkedAt": "2026-10-14"
+          }
+        ],
+        "generations": [],
+        "models": [
+          "Runway Gen-4.5"
+        ],
+        "familyName": "Runway Gen-4.5"
+      },
+      {
+        "familyId": null,
+        "surface": "Prompt to Edit Video / Edit Frame Video / Boards",
+        "availability": "available",
+        "he": "לא נבדק בחשבון; הזמינות עשויה להיות תלויה באזור, במינוי ובהרשאות סביבת העבודה.",
+        "en": "Not account-tested; availability can depend on region, plan and workspace permissions.",
+        "sources": [
+          {
+            "url": "https://helpx.adobe.com/creative-cloud/apps/generative-ai/non-adobe-models-in-adobe-products.html",
+            "checkedAt": "2026-10-14"
+          }
+        ],
+        "generations": [],
+        "models": [
+          "Runway Aleph 2.0"
+        ],
+        "familyName": "Runway Aleph 2.0"
+      },
+      {
+        "familyId": null,
+        "surface": "Image to video / Boards",
+        "availability": "available",
+        "he": "לחשבונות פרטיים או Creative Cloud ליחידים בלבד. לא נבדק בחשבון; הזמינות עשויה להיות תלויה באזור, במינוי ובהרשאות סביבת העבודה.",
+        "en": "Individuals / Creative Cloud for individuals only. Not account-tested; availability can depend on region, plan and workspace permissions.",
+        "sources": [
+          {
+            "url": "https://helpx.adobe.com/creative-cloud/apps/generative-ai/non-adobe-models-in-adobe-products.html",
+            "checkedAt": "2026-10-14"
+          }
+        ],
+        "generations": [],
+        "models": [
+          "Kling 2.5 Turbo"
+        ],
+        "familyName": "Kling 2.5 Turbo"
+      },
+      {
+        "familyId": null,
+        "surface": "Generate video / Boards / video editor",
+        "availability": "available",
+        "he": "לחשבונות פרטיים או Creative Cloud ליחידים בלבד. לא נבדק בחשבון; הזמינות עשויה להיות תלויה באזור, במינוי ובהרשאות סביבת העבודה.",
+        "en": "Individuals / Creative Cloud for individuals only. Not account-tested; availability can depend on region, plan and workspace permissions.",
+        "sources": [
+          {
+            "url": "https://helpx.adobe.com/creative-cloud/apps/generative-ai/non-adobe-models-in-adobe-products.html",
+            "checkedAt": "2026-10-14"
+          }
+        ],
+        "generations": [],
+        "models": [
+          "Kling 3.0"
+        ],
+        "familyName": "Kling 3.0"
+      },
+      {
+        "familyId": null,
+        "surface": "Generate video / Boards / video editor",
+        "availability": "available",
+        "he": "לחשבונות פרטיים או Creative Cloud ליחידים בלבד. לא נבדק בחשבון; הזמינות עשויה להיות תלויה באזור, במינוי ובהרשאות סביבת העבודה.",
+        "en": "Individuals / Creative Cloud for individuals only. Not account-tested; availability can depend on region, plan and workspace permissions.",
+        "sources": [
+          {
+            "url": "https://helpx.adobe.com/creative-cloud/apps/generative-ai/non-adobe-models-in-adobe-products.html",
+            "checkedAt": "2026-10-14"
+          }
+        ],
+        "generations": [],
+        "models": [
+          "Kling 3.0 Omni"
+        ],
+        "familyName": "Kling 3.0 Omni"
+      },
+      {
+        "familyId": "bytedance-seedance",
+        "surface": "Generate video / Boards / video editor / mobile",
+        "availability": "available",
+        "he": "לחשבונות פרטיים או Creative Cloud ליחידים בלבד. לא נבדק בחשבון; הזמינות עשויה להיות תלויה באזור, במינוי ובהרשאות סביבת העבודה.",
+        "en": "Individuals / Creative Cloud for individuals only. Not account-tested; availability can depend on region, plan and workspace permissions.",
+        "sources": [
+          {
+            "url": "https://helpx.adobe.com/creative-cloud/apps/generative-ai/non-adobe-models-in-adobe-products.html",
+            "checkedAt": "2026-10-14"
+          }
+        ],
+        "generations": [
+          "seedance-2.0"
+        ],
+        "models": [
+          "Dreamina Seedance 2.0"
+        ]
+      },
+      {
+        "familyId": null,
+        "surface": "Upscale Image",
+        "availability": "available",
+        "he": "לא נבדק בחשבון; הזמינות עשויה להיות תלויה באזור, במינוי ובהרשאות סביבת העבודה.",
+        "en": "Not account-tested; availability can depend on region, plan and workspace permissions.",
+        "sources": [
+          {
+            "url": "https://helpx.adobe.com/creative-cloud/apps/generative-ai/non-adobe-models-in-adobe-products.html",
+            "checkedAt": "2026-10-14"
+          }
+        ],
+        "generations": [],
+        "models": [
+          "Topaz Gigapixel"
+        ],
+        "familyName": "Topaz Gigapixel"
+      },
+      {
+        "familyId": null,
+        "surface": "Upscale Image",
+        "availability": "available",
+        "he": "לא נבדק בחשבון; הזמינות עשויה להיות תלויה באזור, במינוי ובהרשאות סביבת העבודה.",
+        "en": "Not account-tested; availability can depend on region, plan and workspace permissions.",
+        "sources": [
+          {
+            "url": "https://helpx.adobe.com/creative-cloud/apps/generative-ai/non-adobe-models-in-adobe-products.html",
+            "checkedAt": "2026-10-14"
+          }
+        ],
+        "generations": [],
+        "models": [
+          "Topaz Bloom"
+        ],
+        "familyName": "Topaz Bloom"
+      },
+      {
+        "familyId": null,
+        "surface": "Upscale Video / Boards / Graph",
+        "availability": "available",
+        "he": "לא נבדק בחשבון; הזמינות עשויה להיות תלויה באזור, במינוי ובהרשאות סביבת העבודה.",
+        "en": "Not account-tested; availability can depend on region, plan and workspace permissions.",
+        "sources": [
+          {
+            "url": "https://helpx.adobe.com/creative-cloud/apps/generative-ai/non-adobe-models-in-adobe-products.html",
+            "checkedAt": "2026-10-14"
+          }
+        ],
+        "generations": [],
+        "models": [
+          "Topaz Astra"
+        ],
+        "familyName": "Topaz Astra"
+      },
+      {
+        "familyId": null,
+        "surface": "Generate Speech",
+        "availability": "available",
+        "he": "לא נבדק בחשבון; הזמינות עשויה להיות תלויה באזור, במינוי ובהרשאות סביבת העבודה.",
+        "en": "Not account-tested; availability can depend on region, plan and workspace permissions.",
+        "sources": [
+          {
+            "url": "https://helpx.adobe.com/creative-cloud/apps/generative-ai/non-adobe-models-in-adobe-products.html",
+            "checkedAt": "2026-10-14"
+          }
+        ],
+        "generations": [],
+        "models": [
+          "ElevenLabs Multilingual v2"
+        ],
+        "familyName": "ElevenLabs Multilingual v2"
+      },
+      {
+        "familyId": null,
+        "surface": "Generate image / Boards",
+        "availability": "available",
+        "he": "לא נבדק בחשבון; הזמינות עשויה להיות תלויה באזור, במינוי ובהרשאות סביבת העבודה.",
+        "en": "Not account-tested; availability can depend on region, plan and workspace permissions.",
+        "sources": [
+          {
+            "url": "https://helpx.adobe.com/creative-cloud/apps/generative-ai/non-adobe-models-in-adobe-products.html",
+            "checkedAt": "2026-10-14"
+          }
+        ],
+        "generations": [],
+        "models": [
+          "HUMAIN Image 1"
+        ],
+        "familyName": "HUMAIN Image 1"
+      }
+    ],
+    "weavy": [
+      {
+        "familyId": null,
+        "surface": "Model-run pricing",
+        "availability": "pricing-listed",
+        "he": "רשימת מחירים רשמית; אינה אימות של בורר הממשק או זכאות בחשבון. לא נבדק בחשבון; הזמינות עשויה להיות תלויה באזור, במינוי ובהרשאות סביבת העבודה.",
+        "en": "Official pricing list, not verified UI selection or account entitlement. Not account-tested; availability can depend on region, plan and workspace permissions.",
+        "sources": [
+          {
+            "url": "https://content.weave.figma.com/models-pricing",
+            "checkedAt": "2026-10-14"
+          }
+        ],
+        "generations": [],
+        "models": [
+          "Imagen 4 Fast"
+        ],
+        "familyName": "Imagen 4 Fast"
+      },
+      {
+        "familyId": null,
+        "surface": "Model-run pricing",
+        "availability": "pricing-listed",
+        "he": "רשימת מחירים רשמית; אינה אימות של בורר הממשק או זכאות בחשבון. לא נבדק בחשבון; הזמינות עשויה להיות תלויה באזור, במינוי ובהרשאות סביבת העבודה.",
+        "en": "Official pricing list, not verified UI selection or account entitlement. Not account-tested; availability can depend on region, plan and workspace permissions.",
+        "sources": [
+          {
+            "url": "https://content.weave.figma.com/models-pricing",
+            "checkedAt": "2026-10-14"
+          }
+        ],
+        "generations": [],
+        "models": [
+          "Imagen 4 Standard"
+        ],
+        "familyName": "Imagen 4 Standard"
+      },
+      {
+        "familyId": null,
+        "surface": "Model-run pricing",
+        "availability": "pricing-listed",
+        "he": "רשימת מחירים רשמית; אינה אימות של בורר הממשק או זכאות בחשבון. לא נבדק בחשבון; הזמינות עשויה להיות תלויה באזור, במינוי ובהרשאות סביבת העבודה.",
+        "en": "Official pricing list, not verified UI selection or account entitlement. Not account-tested; availability can depend on region, plan and workspace permissions.",
+        "sources": [
+          {
+            "url": "https://content.weave.figma.com/models-pricing",
+            "checkedAt": "2026-10-14"
+          }
+        ],
+        "generations": [],
+        "models": [
+          "Imagen 4 Ultra"
+        ],
+        "familyName": "Imagen 4 Ultra"
+      },
+      {
+        "familyId": "ai-031",
+        "surface": "Model-run pricing",
+        "availability": "pricing-listed",
+        "he": "רשימת מחירים רשמית; אינה אימות של בורר הממשק או זכאות בחשבון. לא נבדק בחשבון; הזמינות עשויה להיות תלויה באזור, במינוי ובהרשאות סביבת העבודה.",
+        "en": "Official pricing list, not verified UI selection or account entitlement. Not account-tested; availability can depend on region, plan and workspace permissions.",
+        "sources": [
+          {
+            "url": "https://content.weave.figma.com/models-pricing",
+            "checkedAt": "2026-10-14"
+          }
+        ],
+        "generations": [
+          "flux1-1-pro",
+          "flux1-1-pro-ultra",
+          "flux-2-pro",
+          "flux-2-flex",
+          "flux-2-max",
+          "flux-1-kontext-dev",
+          "flux-1-kontext-pro",
+          "flux-1-kontext-max"
+        ],
+        "models": [
+          "FLUX1.1 Pro",
+          "FLUX1.1 Pro Ultra",
+          "FLUX.2 Pro",
+          "FLUX.2 Flex",
+          "FLUX.2 Max",
+          "FLUX.1 Kontext Dev",
+          "FLUX.1 Kontext Pro",
+          "FLUX.1 Kontext Max"
+        ]
+      },
+      {
+        "familyId": null,
+        "surface": "Model-run pricing",
+        "availability": "pricing-listed",
+        "he": "רשימת מחירים רשמית; אינה אימות של בורר הממשק או זכאות בחשבון. לא נבדק בחשבון; הזמינות עשויה להיות תלויה באזור, במינוי ובהרשאות סביבת העבודה.",
+        "en": "Official pricing list, not verified UI selection or account entitlement. Not account-tested; availability can depend on region, plan and workspace permissions.",
+        "sources": [
+          {
+            "url": "https://content.weave.figma.com/models-pricing",
+            "checkedAt": "2026-10-14"
+          }
+        ],
+        "generations": [],
+        "models": [
+          "GPT Image 1"
+        ],
+        "familyName": "GPT Image 1"
+      },
+      {
+        "familyId": null,
+        "surface": "Model-run pricing",
+        "availability": "pricing-listed",
+        "he": "רשימת מחירים רשמית; אינה אימות של בורר הממשק או זכאות בחשבון. לא נבדק בחשבון; הזמינות עשויה להיות תלויה באזור, במינוי ובהרשאות סביבת העבודה.",
+        "en": "Official pricing list, not verified UI selection or account entitlement. Not account-tested; availability can depend on region, plan and workspace permissions.",
+        "sources": [
+          {
+            "url": "https://content.weave.figma.com/models-pricing",
+            "checkedAt": "2026-10-14"
+          }
+        ],
+        "generations": [],
+        "models": [
+          "GPT Image 1.5 Edit"
+        ],
+        "familyName": "GPT Image 1.5 Edit"
+      },
+      {
+        "familyId": null,
+        "surface": "Model-run pricing",
+        "availability": "pricing-listed",
+        "he": "רשימת מחירים רשמית; אינה אימות של בורר הממשק או זכאות בחשבון. לא נבדק בחשבון; הזמינות עשויה להיות תלויה באזור, במינוי ובהרשאות סביבת העבודה.",
+        "en": "Official pricing list, not verified UI selection or account entitlement. Not account-tested; availability can depend on region, plan and workspace permissions.",
+        "sources": [
+          {
+            "url": "https://content.weave.figma.com/models-pricing",
+            "checkedAt": "2026-10-14"
+          }
+        ],
+        "generations": [],
+        "models": [
+          "GPT Image 2"
+        ],
+        "familyName": "GPT Image 2"
+      },
+      {
+        "familyId": null,
+        "surface": "Model-run pricing",
+        "availability": "pricing-listed",
+        "he": "רשימת מחירים רשמית; אינה אימות של בורר הממשק או זכאות בחשבון. לא נבדק בחשבון; הזמינות עשויה להיות תלויה באזור, במינוי ובהרשאות סביבת העבודה.",
+        "en": "Official pricing list, not verified UI selection or account entitlement. Not account-tested; availability can depend on region, plan and workspace permissions.",
+        "sources": [
+          {
+            "url": "https://content.weave.figma.com/models-pricing",
+            "checkedAt": "2026-10-14"
+          }
+        ],
+        "generations": [],
+        "models": [
+          "GPT Image 2 Edit"
+        ],
+        "familyName": "GPT Image 2 Edit"
+      },
+      {
+        "familyId": "ai-006",
+        "surface": "Model-run pricing",
+        "availability": "pricing-listed",
+        "he": "רשימת מחירים רשמית; אינה אימות של בורר הממשק או זכאות בחשבון. לא נבדק בחשבון; הזמינות עשויה להיות תלויה באזור, במינוי ובהרשאות סביבת העבודה.",
+        "en": "Official pricing list, not verified UI selection or account entitlement. Not account-tested; availability can depend on region, plan and workspace permissions.",
+        "sources": [
+          {
+            "url": "https://content.weave.figma.com/models-pricing",
+            "checkedAt": "2026-10-14"
+          }
+        ],
+        "generations": [
+          "nano-banana-pro",
+          "nano-banana-2"
+        ],
+        "models": [
+          "Nano Banana Pro",
+          "Nano Banana 2"
+        ]
+      },
+      {
+        "familyId": null,
+        "surface": "Model-run pricing",
+        "availability": "pricing-listed",
+        "he": "רשימת מחירים רשמית; אינה אימות של בורר הממשק או זכאות בחשבון. לא נבדק בחשבון; הזמינות עשויה להיות תלויה באזור, במינוי ובהרשאות סביבת העבודה.",
+        "en": "Official pricing list, not verified UI selection or account entitlement. Not account-tested; availability can depend on region, plan and workspace permissions.",
+        "sources": [
+          {
+            "url": "https://content.weave.figma.com/models-pricing",
+            "checkedAt": "2026-10-14"
+          }
+        ],
+        "generations": [],
+        "models": [
+          "Recraft V3"
+        ],
+        "familyName": "Recraft V3"
+      },
+      {
+        "familyId": null,
+        "surface": "Model-run pricing",
+        "availability": "pricing-listed",
+        "he": "רשימת מחירים רשמית; אינה אימות של בורר הממשק או זכאות בחשבון. לא נבדק בחשבון; הזמינות עשויה להיות תלויה באזור, במינוי ובהרשאות סביבת העבודה.",
+        "en": "Official pricing list, not verified UI selection or account entitlement. Not account-tested; availability can depend on region, plan and workspace permissions.",
+        "sources": [
+          {
+            "url": "https://content.weave.figma.com/models-pricing",
+            "checkedAt": "2026-10-14"
+          }
+        ],
+        "generations": [],
+        "models": [
+          "Recraft V3 Vector"
+        ],
+        "familyName": "Recraft V3 Vector"
+      },
+      {
+        "familyId": null,
+        "surface": "Model-run pricing",
+        "availability": "pricing-listed",
+        "he": "רשימת מחירים רשמית; אינה אימות של בורר הממשק או זכאות בחשבון. לא נבדק בחשבון; הזמינות עשויה להיות תלויה באזור, במינוי ובהרשאות סביבת העבודה.",
+        "en": "Official pricing list, not verified UI selection or account entitlement. Not account-tested; availability can depend on region, plan and workspace permissions.",
+        "sources": [
+          {
+            "url": "https://content.weave.figma.com/models-pricing",
+            "checkedAt": "2026-10-14"
+          }
+        ],
+        "generations": [],
+        "models": [
+          "Recraft V4 Standard"
+        ],
+        "familyName": "Recraft V4 Standard"
+      },
+      {
+        "familyId": null,
+        "surface": "Model-run pricing",
+        "availability": "pricing-listed",
+        "he": "רשימת מחירים רשמית; אינה אימות של בורר הממשק או זכאות בחשבון. לא נבדק בחשבון; הזמינות עשויה להיות תלויה באזור, במינוי ובהרשאות סביבת העבודה.",
+        "en": "Official pricing list, not verified UI selection or account entitlement. Not account-tested; availability can depend on region, plan and workspace permissions.",
+        "sources": [
+          {
+            "url": "https://content.weave.figma.com/models-pricing",
+            "checkedAt": "2026-10-14"
+          }
+        ],
+        "generations": [],
+        "models": [
+          "Recraft V4 Pro"
+        ],
+        "familyName": "Recraft V4 Pro"
+      },
+      {
+        "familyId": null,
+        "surface": "Model-run pricing",
+        "availability": "pricing-listed",
+        "he": "רשימת מחירים רשמית; אינה אימות של בורר הממשק או זכאות בחשבון. לא נבדק בחשבון; הזמינות עשויה להיות תלויה באזור, במינוי ובהרשאות סביבת העבודה.",
+        "en": "Official pricing list, not verified UI selection or account entitlement. Not account-tested; availability can depend on region, plan and workspace permissions.",
+        "sources": [
+          {
+            "url": "https://content.weave.figma.com/models-pricing",
+            "checkedAt": "2026-10-14"
+          }
+        ],
+        "generations": [],
+        "models": [
+          "Ideogram V3"
+        ],
+        "familyName": "Ideogram V3"
+      },
+      {
+        "familyId": null,
+        "surface": "Model-run pricing",
+        "availability": "pricing-listed",
+        "he": "רשימת מחירים רשמית; אינה אימות של בורר הממשק או זכאות בחשבון. לא נבדק בחשבון; הזמינות עשויה להיות תלויה באזור, במינוי ובהרשאות סביבת העבודה.",
+        "en": "Official pricing list, not verified UI selection or account entitlement. Not account-tested; availability can depend on region, plan and workspace permissions.",
+        "sources": [
+          {
+            "url": "https://content.weave.figma.com/models-pricing",
+            "checkedAt": "2026-10-14"
+          }
+        ],
+        "generations": [],
+        "models": [
+          "Ideogram V3 Character"
+        ],
+        "familyName": "Ideogram V3 Character"
+      },
+      {
+        "familyId": null,
+        "surface": "Model-run pricing",
+        "availability": "pricing-listed",
+        "he": "רשימת מחירים רשמית; אינה אימות של בורר הממשק או זכאות בחשבון. לא נבדק בחשבון; הזמינות עשויה להיות תלויה באזור, במינוי ובהרשאות סביבת העבודה.",
+        "en": "Official pricing list, not verified UI selection or account entitlement. Not account-tested; availability can depend on region, plan and workspace permissions.",
+        "sources": [
+          {
+            "url": "https://content.weave.figma.com/models-pricing",
+            "checkedAt": "2026-10-14"
+          }
+        ],
+        "generations": [],
+        "models": [
+          "Runway Gen-4 Image"
+        ],
+        "familyName": "Runway Gen-4 Image"
+      },
+      {
+        "familyId": "bytedance-seedream",
+        "surface": "Model-run pricing",
+        "availability": "pricing-listed",
+        "he": "רשימת מחירים רשמית; אינה אימות של בורר הממשק או זכאות בחשבון. לא נבדק בחשבון; הזמינות עשויה להיות תלויה באזור, במינוי ובהרשאות סביבת העבודה.",
+        "en": "Official pricing list, not verified UI selection or account entitlement. Not account-tested; availability can depend on region, plan and workspace permissions.",
+        "sources": [
+          {
+            "url": "https://content.weave.figma.com/models-pricing",
+            "checkedAt": "2026-10-14"
+          }
+        ],
+        "generations": [
+          "seedream-v4",
+          "seedream-v4-5",
+          "seedream-v5"
+        ],
+        "models": [
+          "Seedream V4 Edit",
+          "Seedream V4.5 Edit",
+          "Seedream V5 Edit"
+        ]
+      },
+      {
+        "familyId": "qwen-image",
+        "surface": "External-client API integrations",
+        "availability": "api-documented",
+        "he": "מודלים מתועדים ל־API חיצוני דרך FAL; לא הבטחה לכל ממשק או מינוי. עריכה, רפרנסים, LoRA והארכה הם מצבי עבודה. לא נבדק בחשבון; הזמינות עשויה להיות תלויה באזור, במינוי ובהרשאות סביבת העבודה.",
+        "en": "Documented external API models via FAL, checked October 14; not a claim of every UI/plan. Editing, reference, LoRA and extension labels are modes. Not account-tested; availability can depend on region, plan and workspace permissions.",
+        "sources": [
+          {
+            "url": "https://content.weave.figma.com/models-available-for-third-party-api-usage",
+            "checkedAt": "2026-10-14"
+          }
+        ],
+        "generations": [
+          "qwen-image-edit-plus",
+          "qwen-image-edit-2511"
+        ],
+        "models": [
+          "Qwen Image Edit Plus",
+          "Qwen Image Edit 2511"
+        ]
+      },
+      {
+        "familyId": "ai-031",
+        "surface": "External-client API integrations",
+        "availability": "api-documented",
+        "he": "מודלים מתועדים ל־API חיצוני דרך FAL; לא הבטחה לכל ממשק או מינוי. עריכה, רפרנסים, LoRA והארכה הם מצבי עבודה. לא נבדק בחשבון; הזמינות עשויה להיות תלויה באזור, במינוי ובהרשאות סביבת העבודה.",
+        "en": "Documented external API models via FAL, checked October 14; not a claim of every UI/plan. Editing, reference, LoRA and extension labels are modes. Not account-tested; availability can depend on region, plan and workspace permissions.",
+        "sources": [
+          {
+            "url": "https://content.weave.figma.com/models-available-for-third-party-api-usage",
+            "checkedAt": "2026-10-14"
+          }
+        ],
+        "generations": [
+          "flux-3-image",
+          "flux-3-video"
+        ],
+        "models": [
+          "Flux 3 Image",
+          "Flux 3 Video",
+          "Flux 3 Extend Video"
+        ]
+      },
+      {
+        "familyId": null,
+        "surface": "External-client API integrations",
+        "availability": "api-documented",
+        "he": "מודלים מתועדים ל־API חיצוני דרך FAL; לא הבטחה לכל ממשק או מינוי. עריכה, רפרנסים, LoRA והארכה הם מצבי עבודה. לא נבדק בחשבון; הזמינות עשויה להיות תלויה באזור, במינוי ובהרשאות סביבת העבודה.",
+        "en": "Documented external API models via FAL, checked October 14; not a claim of every UI/plan. Editing, reference, LoRA and extension labels are modes. Not account-tested; availability can depend on region, plan and workspace permissions.",
+        "sources": [
+          {
+            "url": "https://content.weave.figma.com/models-available-for-third-party-api-usage",
+            "checkedAt": "2026-10-14"
+          }
+        ],
+        "generations": [],
+        "models": [
+          "Kling 1.6"
+        ],
+        "familyName": "Kling 1.6"
+      },
+      {
+        "familyId": null,
+        "surface": "External-client API integrations",
+        "availability": "api-documented",
+        "he": "מודלים מתועדים ל־API חיצוני דרך FAL; לא הבטחה לכל ממשק או מינוי. עריכה, רפרנסים, LoRA והארכה הם מצבי עבודה. לא נבדק בחשבון; הזמינות עשויה להיות תלויה באזור, במינוי ובהרשאות סביבת העבודה.",
+        "en": "Documented external API models via FAL, checked October 14; not a claim of every UI/plan. Editing, reference, LoRA and extension labels are modes. Not account-tested; availability can depend on region, plan and workspace permissions.",
+        "sources": [
+          {
+            "url": "https://content.weave.figma.com/models-available-for-third-party-api-usage",
+            "checkedAt": "2026-10-14"
+          }
+        ],
+        "generations": [],
+        "models": [
+          "Kling 2.1 First and Last Frame"
+        ],
+        "familyName": "Kling 2.1 First and Last Frame"
+      },
+      {
+        "familyId": null,
+        "surface": "External-client API integrations",
+        "availability": "api-documented",
+        "he": "מודלים מתועדים ל־API חיצוני דרך FAL; לא הבטחה לכל ממשק או מינוי. עריכה, רפרנסים, LoRA והארכה הם מצבי עבודה. לא נבדק בחשבון; הזמינות עשויה להיות תלויה באזור, במינוי ובהרשאות סביבת העבודה.",
+        "en": "Documented external API models via FAL, checked October 14; not a claim of every UI/plan. Editing, reference, LoRA and extension labels are modes. Not account-tested; availability can depend on region, plan and workspace permissions.",
+        "sources": [
+          {
+            "url": "https://content.weave.figma.com/models-available-for-third-party-api-usage",
+            "checkedAt": "2026-10-14"
+          }
+        ],
+        "generations": [],
+        "models": [
+          "Kling 2.5 First and Last Frame"
+        ],
+        "familyName": "Kling 2.5 First and Last Frame"
+      },
+      {
+        "familyId": null,
+        "surface": "External-client API integrations",
+        "availability": "api-documented",
+        "he": "מודלים מתועדים ל־API חיצוני דרך FAL; לא הבטחה לכל ממשק או מינוי. עריכה, רפרנסים, LoRA והארכה הם מצבי עבודה. לא נבדק בחשבון; הזמינות עשויה להיות תלויה באזור, במינוי ובהרשאות סביבת העבודה.",
+        "en": "Documented external API models via FAL, checked October 14; not a claim of every UI/plan. Editing, reference, LoRA and extension labels are modes. Not account-tested; availability can depend on region, plan and workspace permissions.",
+        "sources": [
+          {
+            "url": "https://content.weave.figma.com/models-available-for-third-party-api-usage",
+            "checkedAt": "2026-10-14"
+          }
+        ],
+        "generations": [],
+        "models": [
+          "Kling 2.6 Pro"
+        ],
+        "familyName": "Kling 2.6 Pro"
+      },
+      {
+        "familyId": null,
+        "surface": "External-client API integrations",
+        "availability": "api-documented",
+        "he": "מודלים מתועדים ל־API חיצוני דרך FAL; לא הבטחה לכל ממשק או מינוי. עריכה, רפרנסים, LoRA והארכה הם מצבי עבודה. לא נבדק בחשבון; הזמינות עשויה להיות תלויה באזור, במינוי ובהרשאות סביבת העבודה.",
+        "en": "Documented external API models via FAL, checked October 14; not a claim of every UI/plan. Editing, reference, LoRA and extension labels are modes. Not account-tested; availability can depend on region, plan and workspace permissions.",
+        "sources": [
+          {
+            "url": "https://content.weave.figma.com/models-available-for-third-party-api-usage",
+            "checkedAt": "2026-10-14"
+          }
+        ],
+        "generations": [],
+        "models": [
+          "Kling 2.6 Motion Control"
+        ],
+        "familyName": "Kling 2.6 Motion Control"
+      },
+      {
+        "familyId": null,
+        "surface": "External-client API integrations",
+        "availability": "api-documented",
+        "he": "מודלים מתועדים ל־API חיצוני דרך FAL; לא הבטחה לכל ממשק או מינוי. עריכה, רפרנסים, LoRA והארכה הם מצבי עבודה. לא נבדק בחשבון; הזמינות עשויה להיות תלויה באזור, במינוי ובהרשאות סביבת העבודה.",
+        "en": "Documented external API models via FAL, checked October 14; not a claim of every UI/plan. Editing, reference, LoRA and extension labels are modes. Not account-tested; availability can depend on region, plan and workspace permissions.",
+        "sources": [
+          {
+            "url": "https://content.weave.figma.com/models-available-for-third-party-api-usage",
+            "checkedAt": "2026-10-14"
+          }
+        ],
+        "generations": [],
+        "models": [
+          "Kling O1"
+        ],
+        "familyName": "Kling O1"
+      },
+      {
+        "familyId": null,
+        "surface": "External-client API integrations",
+        "availability": "api-documented",
+        "he": "מודלים מתועדים ל־API חיצוני דרך FAL; לא הבטחה לכל ממשק או מינוי. עריכה, רפרנסים, LoRA והארכה הם מצבי עבודה. לא נבדק בחשבון; הזמינות עשויה להיות תלויה באזור, במינוי ובהרשאות סביבת העבודה.",
+        "en": "Documented external API models via FAL, checked October 14; not a claim of every UI/plan. Editing, reference, LoRA and extension labels are modes. Not account-tested; availability can depend on region, plan and workspace permissions.",
+        "sources": [
+          {
+            "url": "https://content.weave.figma.com/models-available-for-third-party-api-usage",
+            "checkedAt": "2026-10-14"
+          }
+        ],
+        "generations": [],
+        "models": [
+          "Kling 3"
+        ],
+        "familyName": "Kling 3"
+      },
+      {
+        "familyId": null,
+        "surface": "External-client API integrations",
+        "availability": "api-documented",
+        "he": "מודלים מתועדים ל־API חיצוני דרך FAL; לא הבטחה לכל ממשק או מינוי. עריכה, רפרנסים, LoRA והארכה הם מצבי עבודה. לא נבדק בחשבון; הזמינות עשויה להיות תלויה באזור, במינוי ובהרשאות סביבת העבודה.",
+        "en": "Documented external API models via FAL, checked October 14; not a claim of every UI/plan. Editing, reference, LoRA and extension labels are modes. Not account-tested; availability can depend on region, plan and workspace permissions.",
+        "sources": [
+          {
+            "url": "https://content.weave.figma.com/models-available-for-third-party-api-usage",
+            "checkedAt": "2026-10-14"
+          }
+        ],
+        "generations": [],
+        "models": [
+          "Kling 3O Edit Video"
+        ],
+        "familyName": "Kling 3O Edit Video"
+      },
+      {
+        "familyId": "bytedance-seedance",
+        "surface": "External-client API integrations",
+        "availability": "api-documented",
+        "he": "מודלים מתועדים ל־API חיצוני דרך FAL; לא הבטחה לכל ממשק או מינוי. עריכה, רפרנסים, LoRA והארכה הם מצבי עבודה. לא נבדק בחשבון; הזמינות עשויה להיות תלויה באזור, במינוי ובהרשאות סביבת העבודה.",
+        "en": "Documented external API models via FAL, checked October 14; not a claim of every UI/plan. Editing, reference, LoRA and extension labels are modes. Not account-tested; availability can depend on region, plan and workspace permissions.",
+        "sources": [
+          {
+            "url": "https://content.weave.figma.com/models-available-for-third-party-api-usage",
+            "checkedAt": "2026-10-14"
+          }
+        ],
+        "generations": [
+          "seedance-1.5-pro",
+          "seedance-2.0",
+          "seedance-2.5"
+        ],
+        "models": [
+          "Seedance 1.5 Pro",
+          "Seedance 2.0 Fast",
+          "Seedance 2.0 Standard",
+          "Seedance 2.0 Reference Standard",
+          "Seedance 2.0 Reference Fast",
+          "Seedance 2.0 Mini",
+          "Seedance 2.5",
+          "Seedance 2.5 Reference"
+        ]
+      },
+      {
+        "familyId": "wan-video",
+        "surface": "External-client API integrations",
+        "availability": "api-documented",
+        "he": "מודלים מתועדים ל־API חיצוני דרך FAL; לא הבטחה לכל ממשק או מינוי. עריכה, רפרנסים, LoRA והארכה הם מצבי עבודה. לא נבדק בחשבון; הזמינות עשויה להיות תלויה באזור, במינוי ובהרשאות סביבת העבודה.",
+        "en": "Documented external API models via FAL, checked October 14; not a claim of every UI/plan. Editing, reference, LoRA and extension labels are modes. Not account-tested; availability can depend on region, plan and workspace permissions.",
+        "sources": [
+          {
+            "url": "https://content.weave.figma.com/models-available-for-third-party-api-usage",
+            "checkedAt": "2026-10-14"
+          }
+        ],
+        "generations": [
+          "wan-2-2",
+          "wan-2-5",
+          "wan-2-7-video",
+          "wan-2-7-image",
+          "wan-3-0"
+        ],
+        "models": [
+          "Wan 2.2",
+          "Wan 2.5",
+          "Wan 2.7 Video",
+          "Wan 2.7 Image",
+          "Wan 3.0"
+        ]
+      },
+      {
+        "familyId": "ltx-models",
+        "surface": "External-client API integrations",
+        "availability": "api-documented",
+        "he": "מודלים מתועדים ל־API חיצוני דרך FAL; לא הבטחה לכל ממשק או מינוי. עריכה, רפרנסים, LoRA והארכה הם מצבי עבודה. לא נבדק בחשבון; הזמינות עשויה להיות תלויה באזור, במינוי ובהרשאות סביבת העבודה.",
+        "en": "Documented external API models via FAL, checked October 14; not a claim of every UI/plan. Editing, reference, LoRA and extension labels are modes. Not account-tested; availability can depend on region, plan and workspace permissions.",
+        "sources": [
+          {
+            "url": "https://content.weave.figma.com/models-available-for-third-party-api-usage",
+            "checkedAt": "2026-10-14"
+          }
+        ],
+        "generations": [
+          "ltx-video",
+          "ltx-2",
+          "ltx-2-3"
+        ],
+        "models": [
+          "LTX Video",
+          "LTX 2 Video to Video",
+          "LTX 2.3 Video",
+          "LTX 2.3 Extend Video",
+          "LTX 2.3 Retake Video",
+          "LTX 2.3 Reframe",
+          "LTX 2.3 Render to Real",
+          "LTX 2.3 LoRA"
+        ]
+      },
+      {
+        "familyId": null,
+        "surface": "External-client API integrations",
+        "availability": "api-documented",
+        "he": "מודלים מתועדים ל־API חיצוני דרך FAL; לא הבטחה לכל ממשק או מינוי. עריכה, רפרנסים, LoRA והארכה הם מצבי עבודה. לא נבדק בחשבון; הזמינות עשויה להיות תלויה באזור, במינוי ובהרשאות סביבת העבודה.",
+        "en": "Documented external API models via FAL, checked October 14; not a claim of every UI/plan. Editing, reference, LoRA and extension labels are modes. Not account-tested; availability can depend on region, plan and workspace permissions.",
+        "sources": [
+          {
+            "url": "https://content.weave.figma.com/models-available-for-third-party-api-usage",
+            "checkedAt": "2026-10-14"
+          }
+        ],
+        "generations": [],
+        "models": [
+          "Minimax Hailuo 02"
+        ],
+        "familyName": "Minimax Hailuo 02"
+      },
+      {
+        "familyId": null,
+        "surface": "External-client API integrations",
+        "availability": "api-documented",
+        "he": "מודלים מתועדים ל־API חיצוני דרך FAL; לא הבטחה לכל ממשק או מינוי. עריכה, רפרנסים, LoRA והארכה הם מצבי עבודה. לא נבדק בחשבון; הזמינות עשויה להיות תלויה באזור, במינוי ובהרשאות סביבת העבודה.",
+        "en": "Documented external API models via FAL, checked October 14; not a claim of every UI/plan. Editing, reference, LoRA and extension labels are modes. Not account-tested; availability can depend on region, plan and workspace permissions.",
+        "sources": [
+          {
+            "url": "https://content.weave.figma.com/models-available-for-third-party-api-usage",
+            "checkedAt": "2026-10-14"
+          }
+        ],
+        "generations": [],
+        "models": [
+          "MiniMax H3 Video"
+        ],
+        "familyName": "MiniMax H3 Video"
+      },
+      {
+        "familyId": null,
+        "surface": "External-client API integrations",
+        "availability": "api-documented",
+        "he": "מודלים מתועדים ל־API חיצוני דרך FAL; לא הבטחה לכל ממשק או מינוי. עריכה, רפרנסים, LoRA והארכה הם מצבי עבודה. לא נבדק בחשבון; הזמינות עשויה להיות תלויה באזור, במינוי ובהרשאות סביבת העבודה.",
+        "en": "Documented external API models via FAL, checked October 14; not a claim of every UI/plan. Editing, reference, LoRA and extension labels are modes. Not account-tested; availability can depend on region, plan and workspace permissions.",
+        "sources": [
+          {
+            "url": "https://content.weave.figma.com/models-available-for-third-party-api-usage",
+            "checkedAt": "2026-10-14"
+          }
+        ],
+        "generations": [],
+        "models": [
+          "MiniMax H3 Reference to Video"
+        ],
+        "familyName": "MiniMax H3 Reference to Video"
+      },
+      {
+        "familyId": null,
+        "surface": "External-client API integrations",
+        "availability": "api-documented",
+        "he": "מודלים מתועדים ל־API חיצוני דרך FAL; לא הבטחה לכל ממשק או מינוי. עריכה, רפרנסים, LoRA והארכה הם מצבי עבודה. לא נבדק בחשבון; הזמינות עשויה להיות תלויה באזור, במינוי ובהרשאות סביבת העבודה.",
+        "en": "Documented external API models via FAL, checked October 14; not a claim of every UI/plan. Editing, reference, LoRA and extension labels are modes. Not account-tested; availability can depend on region, plan and workspace permissions.",
+        "sources": [
+          {
+            "url": "https://content.weave.figma.com/models-available-for-third-party-api-usage",
+            "checkedAt": "2026-10-14"
+          }
+        ],
+        "generations": [],
+        "models": [
+          "Recraft V4"
+        ],
+        "familyName": "Recraft V4"
+      },
+      {
+        "familyId": "google-veo",
+        "surface": "External-client API integrations",
+        "availability": "api-documented",
+        "he": "מודלים מתועדים ל־API חיצוני דרך FAL; לא הבטחה לכל ממשק או מינוי. עריכה, רפרנסים, LoRA והארכה הם מצבי עבודה. לא נבדק בחשבון; הזמינות עשויה להיות תלויה באזור, במינוי ובהרשאות סביבת העבודה.",
+        "en": "Documented external API models via FAL, checked October 14; not a claim of every UI/plan. Editing, reference, LoRA and extension labels are modes. Not account-tested; availability can depend on region, plan and workspace permissions.",
+        "sources": [
+          {
+            "url": "https://content.weave.figma.com/models-available-for-third-party-api-usage",
+            "checkedAt": "2026-10-14"
+          }
+        ],
+        "generations": [
+          "veo-2",
+          "veo-3",
+          "veo-3-1"
+        ],
+        "models": [
+          "Veo 2",
+          "Veo 3",
+          "Veo 3.1"
+        ]
+      }
+    ],
+    "google-flow": [
+      {
+        "familyId": "google-veo",
+        "surface": "Video generation",
+        "availability": "available",
+        "he": "טקסט ופריים ראשון/אחרון: 4/6/8 שניות. רפרנסים: Lite/Fast ב־8 שניות בלבד. הארכה: Lite בלבד. לא נבדק בחשבון; הזמינות עשויה להיות תלויה באזור, במינוי ובהרשאות סביבת העבודה.",
+        "en": "Text/first/last frames: 4/6/8s. References: Lite/Fast at 8s only. Extension: Lite only. Not account-tested; availability can depend on region, plan and workspace permissions.",
+        "sources": [
+          {
+            "url": "https://support.google.com/flow/answer/16352836?hl=en",
+            "checkedAt": "2026-10-14"
+          }
+        ],
+        "generations": [
+          "veo-3-1-lite",
+          "veo-3-1-fast",
+          "veo-3-1-quality"
+        ],
+        "models": [
+          "Veo 3.1 Lite",
+          "Veo 3.1 Fast",
+          "Veo 3.1 Quality"
+        ]
+      },
+      {
+        "familyId": "google-gemini-models",
+        "surface": "Video generation and editing",
+        "availability": "available",
+        "he": "לכל המשתמשים בכפוף לאזור ולתכונה; טיוטת 360p או 720p; 4/6/8/10 שניות, עריכה עד 10 שניות. הארכה מתוכננת בלבד. פריים ראשון/אחרון בממשק האינטרנט בלבד. לא נבדק בחשבון; הזמינות עשויה להיות תלויה באזור, במינוי ובהרשאות סביבת העבודה.",
+        "en": "All users with feature/region restrictions; 360p draft/720p standard; 4/6/8/10s, edits up to 10s. Extension coming soon, not currently asserted. First/end frames are web-only. Not account-tested; availability can depend on region, plan and workspace permissions.",
+        "sources": [
+          {
+            "url": "https://support.google.com/flow/answer/16352836?hl=en",
+            "checkedAt": "2026-10-14"
+          }
+        ],
+        "generations": [
+          "gemini-omni-flash-1-1"
+        ],
+        "models": [
+          "Gemini Omni Flash 1.1"
+        ]
+      },
+      {
+        "familyId": "ai-006",
+        "surface": "Image generation and editing",
+        "availability": "available",
+        "he": "2 Lite הוא ברירת המחדל החינמית; Pro הוא ברירת המחדל ב־Ultra, לא בהכרח בלעדי לו. לא נבדק בחשבון; הזמינות עשויה להיות תלויה באזור, במינוי ובהרשאות סביבת העבודה.",
+        "en": "2 Lite is the free default; Pro is the Ultra default, not necessarily exclusive. Not account-tested; availability can depend on region, plan and workspace permissions.",
+        "sources": [
+          {
+            "url": "https://support.google.com/flow/answer/16352836?hl=en",
+            "checkedAt": "2026-10-14"
+          }
+        ],
+        "generations": [
+          "nano-banana-pro",
+          "nano-banana-2-lite",
+          "nano-banana-2-1"
+        ],
+        "models": [
+          "Nano Banana Pro",
+          "Nano Banana 2 Lite",
+          "Nano Banana 2.1"
+        ]
+      }
+    ],
+    "google-antigravity": [
+      {
+        "familyId": "google-gemini-models",
+        "surface": "App / CLI / IDE extensions",
+        "availability": "available",
+        "he": "Google AI Ultra או Enterprise. לא זמין ב־Antigravity IDE. לא נבדק בחשבון; הזמינות עשויה להיות תלויה באזור, במינוי ובהרשאות סביבת העבודה.",
+        "en": "Google AI Ultra / Enterprise. Not available in Antigravity IDE. Not account-tested; availability can depend on region, plan and workspace permissions.",
+        "sources": [
+          {
+            "url": "https://www.antigravity.google/docs/models/",
+            "checkedAt": "2026-10-14"
+          }
+        ],
+        "generations": [
+          "gemini-4-argon"
+        ],
+        "models": [
+          "Gemini 4 Argon"
+        ]
+      },
+      {
+        "familyId": "google-gemini-models",
+        "surface": "Reasoning model",
+        "availability": "available",
+        "he": "חינם או Google AI Plus / Pro / Ultra / Enterprise. לא נבדק בחשבון; הזמינות עשויה להיות תלויה באזור, במינוי ובהרשאות סביבת העבודה.",
+        "en": "Free / Google AI Plus / Pro / Ultra / Enterprise. Not account-tested; availability can depend on region, plan and workspace permissions.",
+        "sources": [
+          {
+            "url": "https://www.antigravity.google/docs/models/",
+            "checkedAt": "2026-10-14"
+          }
+        ],
+        "generations": [
+          "gemini-3-8-flash"
+        ],
+        "models": [
+          "Gemini 3.8 Flash"
+        ]
+      },
+      {
+        "familyId": "google-gemini-models",
+        "surface": "Reasoning model",
+        "availability": "available",
+        "he": "Enterprise בלבד בטבלה הנוכחית. לא נבדק בחשבון; הזמינות עשויה להיות תלויה באזור, במינוי ובהרשאות סביבת העבודה.",
+        "en": "Enterprise only in the current table. Not account-tested; availability can depend on region, plan and workspace permissions.",
+        "sources": [
+          {
+            "url": "https://www.antigravity.google/docs/models/",
+            "checkedAt": "2026-10-14"
+          }
+        ],
+        "generations": [
+          "gemini-3-7-flash",
+          "gemini-3-6-flash",
+          "gemini-3-1-pro"
+        ],
+        "models": [
+          "Gemini 3.7 Flash",
+          "Gemini 3.6 Flash",
+          "Gemini 3.1 Pro"
+        ]
+      },
+      {
+        "familyId": "anthropic-claude-models",
+        "surface": "Reasoning model · thinking",
+        "availability": "available",
+        "he": "Google AI Pro ללא תקופת ניסיון, או Ultra / Enterprise. לא נבדק בחשבון; הזמינות עשויה להיות תלויה באזור, במינוי ובהרשאות סביבת העבודה.",
+        "en": "Google AI Pro non-trial / Ultra / Enterprise. Not account-tested; availability can depend on region, plan and workspace permissions.",
+        "sources": [
+          {
+            "url": "https://www.antigravity.google/docs/models/",
+            "checkedAt": "2026-10-14"
+          }
+        ],
+        "generations": [
+          "claude-sonnet-5-5",
+          "claude-opus-5-5"
+        ],
+        "models": [
+          "Claude Sonnet 5.5",
+          "Claude Opus 5.5"
+        ]
+      },
+      {
+        "familyId": "anthropic-claude-models",
+        "surface": "Reasoning model · scheduled removal",
+        "availability": "available",
+        "he": "חינם, Plus או Pro. הסרה מתוכננת ל־2 בנובמבר 2026. לא נבדק בחשבון; הזמינות עשויה להיות תלויה באזור, במינוי ובהרשאות סביבת העבודה.",
+        "en": "Free / Plus / Pro. Removal scheduled November 2, 2026. Not account-tested; availability can depend on region, plan and workspace permissions.",
+        "sources": [
+          {
+            "url": "https://www.antigravity.google/docs/models/",
+            "checkedAt": "2026-10-14"
+          }
+        ],
+        "generations": [
+          "claude-sonnet-4-6",
+          "claude-opus-4-6"
+        ],
+        "models": [
+          "Claude Sonnet 4.6",
+          "Claude Opus 4.6"
+        ]
+      },
+      {
+        "familyId": null,
+        "surface": "Reasoning model · scheduled removal",
+        "availability": "available",
+        "he": "חינם, Plus, Pro או Ultra. הסרה מתוכננת ל־2 בנובמבר 2026. לא נבדק בחשבון; הזמינות עשויה להיות תלויה באזור, במינוי ובהרשאות סביבת העבודה.",
+        "en": "Free / Plus / Pro / Ultra. Removal scheduled November 2, 2026. Not account-tested; availability can depend on region, plan and workspace permissions.",
+        "sources": [
+          {
+            "url": "https://www.antigravity.google/docs/models/",
+            "checkedAt": "2026-10-14"
+          }
+        ],
+        "generations": [],
+        "models": [
+          "gpt-oss-120b"
+        ],
+        "familyName": "gpt-oss-120b"
+      },
+      {
+        "familyId": "ai-006",
+        "surface": "Built-in image tool, not core model selector",
+        "availability": "available",
+        "he": "המודל שמפעיל כלי תמונה; אינו אפשרות בבורר מודלי החשיבה. לא נבדק בחשבון; הזמינות עשויה להיות תלויה באזור, במינוי ובהרשאות סביבת העבודה.",
+        "en": "Underlying image-tool model, not a reasoning-selector option. Not account-tested; availability can depend on region, plan and workspace permissions.",
+        "sources": [
+          {
+            "url": "https://www.antigravity.google/docs/models/",
+            "checkedAt": "2026-10-14"
+          }
+        ],
+        "generations": [
+          "nano-banana-2"
+        ],
+        "models": [
+          "Nano Banana 2"
+        ]
+      }
+    ],
+    "openai-chatgpt": [
+      {
+        "familyId": "openai-gpt-models",
+        "surface": "Chat · selector GPT-6",
+        "availability": "available",
+        "he": "פריסה לחשבונות זכאים ב־Plus/Pro/Business/Enterprise. Instant/Medium/High/Extra High הם מצבים. Extra High דורש Pro/Business/Enterprise. לא נבדק בחשבון; הזמינות עשויה להיות תלויה באזור, במינוי ובהרשאות סביבת העבודה.",
+        "en": "Rolling out to eligible Plus/Pro/Business/Enterprise. Instant/Medium/High/Extra High are modes. Extra High requires Pro/Business/Enterprise. Not account-tested; availability can depend on region, plan and workspace permissions.",
+        "sources": [
+          {
+            "url": "https://help.openai.com/en/articles/20001354-gpt-6-and-other-models-in-chatgpt",
+            "checkedAt": "2026-10-14"
+          }
+        ],
+        "generations": [
+          "gpt-6-sol"
+        ],
+        "models": [
+          "GPT-6 Sol"
+        ]
+      },
+      {
+        "familyId": "openai-gpt-models",
+        "surface": "Chat · selector GPT-6 Pro",
+        "availability": "available",
+        "he": "Pro ב־100/200 דולר, Business או Enterprise ובהתאם להרשאות. גישה דרך Work/Codex ב־Plus אינה גישה ל־Chat Pro. לא נבדק בחשבון; הזמינות עשויה להיות תלויה באזור, במינוי ובהרשאות סביבת העבודה.",
+        "en": "Pro $100/$200, Business or Enterprise; workspace permissions apply. Plus access through Work/Codex does not imply Chat Pro access. Not account-tested; availability can depend on region, plan and workspace permissions.",
+        "sources": [
+          {
+            "url": "https://help.openai.com/en/articles/20001354-gpt-6-and-other-models-in-chatgpt",
+            "checkedAt": "2026-10-14"
+          }
+        ],
+        "generations": [
+          "gpt-6-astra"
+        ],
+        "models": [
+          "GPT-6 Astra"
+        ]
+      },
+      {
+        "familyId": "openai-gpt-models",
+        "surface": "Chat",
+        "availability": "available",
+        "he": "לא נבדק בחשבון; הזמינות עשויה להיות תלויה באזור, במינוי ובהרשאות סביבת העבודה.",
+        "en": "Not account-tested; availability can depend on region, plan and workspace permissions.",
+        "sources": [
+          {
+            "url": "https://help.openai.com/en/articles/20001354-gpt-6-and-other-models-in-chatgpt",
+            "checkedAt": "2026-10-14"
+          }
+        ],
+        "generations": [
+          "gpt-5-6-sol",
+          "gpt-5-6-sol-pro"
+        ],
+        "models": [
+          "GPT-5.6 Sol",
+          "GPT-5.6 Sol Pro"
+        ]
+      },
+      {
+        "familyId": "openai-gpt-models",
+        "surface": "Chat · underlying Free/Go default",
+        "availability": "available",
+        "he": "חינם/Go, כולל Think; אינו בורר Luna נפרד. לא נבדק בחשבון; הזמינות עשויה להיות תלויה באזור, במינוי ובהרשאות סביבת העבודה.",
+        "en": "Free/Go, including Think; not a separate Luna selector. Not account-tested; availability can depend on region, plan and workspace permissions.",
+        "sources": [
+          {
+            "url": "https://help.openai.com/en/articles/20001354-gpt-6-and-other-models-in-chatgpt",
+            "checkedAt": "2026-10-14"
+          }
+        ],
+        "generations": [
+          "gpt-5-6-luna"
+        ],
+        "models": [
+          "GPT-5.6 Luna"
+        ]
+      }
+    ],
+    "openai-codex": [
+      {
+        "familyId": "openai-gpt-models",
+        "surface": "Codex / ChatGPT Work",
+        "availability": "available",
+        "he": "פריסה ב־Plus/Pro/Business/Enterprise/Edu. נדרש אישור מנהל ב־Enterprise/Edu; חינם/Go אינם כלולים בהשקה. לא נבדק בחשבון; הזמינות עשויה להיות תלויה באזור, במינוי ובהרשאות סביבת העבודה.",
+        "en": "Launch rollout: Plus/Pro/Business/Enterprise/Edu. Enterprise/Edu admin opt-in; Free/Go excluded at launch. Not account-tested; availability can depend on region, plan and workspace permissions.",
+        "sources": [
+          {
+            "url": "https://learn.chatgpt.com/docs/models",
+            "checkedAt": "2026-10-14"
+          }
+        ],
+        "generations": [
+          "gpt-6-1-sol"
+        ],
+        "models": [
+          "GPT-6.1 Sol"
+        ]
+      },
+      {
+        "familyId": "openai-gpt-models",
+        "surface": "Codex / ChatGPT Work",
+        "availability": "available",
+        "he": "תלוי בחשבון, בלקוח ובפריסה. שערים מותאמים אינם ראיה לזמינות מובנית. GPT-5.5 שהוסר מהמסלול המובנה ב־14 באוקטובר אינו נכלל; מחזור החיים ב־API נפרד. לא נבדק בחשבון; הזמינות עשויה להיות תלויה באזור, במינוי ובהרשאות סביבת העבודה.",
+        "en": "Account/client/rollout-specific. Custom gateways do not establish bundled native access. GPT-5.5 native retirement October 14 is excluded; API lifecycle is separate. Not account-tested; availability can depend on region, plan and workspace permissions.",
+        "sources": [
+          {
+            "url": "https://learn.chatgpt.com/docs/models",
+            "checkedAt": "2026-10-14"
+          }
+        ],
+        "generations": [
+          "gpt-6-sol",
+          "gpt-6-luna",
+          "gpt-6-astra",
+          "gpt-5-6-sol",
+          "gpt-5-6-terra",
+          "gpt-5-6-luna"
+        ],
+        "models": [
+          "GPT-6 Sol",
+          "GPT-6 Luna",
+          "GPT-6 Astra",
+          "GPT-5.6 Sol",
+          "GPT-5.6 Terra",
+          "GPT-5.6 Luna"
+        ]
+      }
+    ],
+    "anthropic-claude": [
+      {
+        "familyId": "anthropic-claude-models",
+        "surface": "Claude app",
+        "availability": "available",
+        "he": "חינם/Pro/Max/Team/Enterprise. לא נבדק בחשבון; הזמינות עשויה להיות תלויה באזור, במינוי ובהרשאות סביבת העבודה.",
+        "en": "Free/Pro/Max/Team/Enterprise. Not account-tested; availability can depend on region, plan and workspace permissions.",
+        "sources": [
+          {
+            "url": "https://www.anthropic.com/claude/haiku",
+            "checkedAt": "2026-10-14"
+          }
+        ],
+        "generations": [
+          "claude-haiku-5-5"
+        ],
+        "models": [
+          "Claude Haiku 5.5"
+        ]
+      },
+      {
+        "familyId": "anthropic-claude-models",
+        "surface": "Claude app",
+        "availability": "available",
+        "he": "זמין לכל משתמש, בכפוף למגבלות סביבת העבודה. לא נבדק בחשבון; הזמינות עשויה להיות תלויה באזור, במינוי ובהרשאות סביבת העבודה.",
+        "en": "Available to anyone, subject to workspace limits. Not account-tested; availability can depend on region, plan and workspace permissions.",
+        "sources": [
+          {
+            "url": "https://www.anthropic.com/claude/sonnet",
+            "checkedAt": "2026-10-14"
+          }
+        ],
+        "generations": [
+          "claude-sonnet-5-5"
+        ],
+        "models": [
+          "Claude Sonnet 5.5"
+        ]
+      },
+      {
+        "familyId": "anthropic-claude-models",
+        "surface": "Claude app",
+        "availability": "available",
+        "he": "Pro/Max/Team/Enterprise. לא נבדק בחשבון; הזמינות עשויה להיות תלויה באזור, במינוי ובהרשאות סביבת העבודה.",
+        "en": "Pro/Max/Team/Enterprise. Not account-tested; availability can depend on region, plan and workspace permissions.",
+        "sources": [
+          {
+            "url": "https://www.anthropic.com/claude/opus",
+            "checkedAt": "2026-10-14"
+          }
+        ],
+        "generations": [
+          "claude-opus-5-5"
+        ],
+        "models": [
+          "Claude Opus 5.5"
+        ]
+      },
+      {
+        "familyId": "anthropic-claude-models",
+        "surface": "Claude app",
+        "availability": "available",
+        "he": "Pro/Max/Team/Enterprise. לא נבדק בחשבון; הזמינות עשויה להיות תלויה באזור, במינוי ובהרשאות סביבת העבודה.",
+        "en": "Pro/Max/Team/Enterprise. Not account-tested; availability can depend on region, plan and workspace permissions.",
+        "sources": [
+          {
+            "url": "https://www.anthropic.com/claude/fable",
+            "checkedAt": "2026-10-14"
+          }
+        ],
+        "generations": [
+          "claude-fable-5-1"
+        ],
+        "models": [
+          "Claude Fable 5.1"
+        ]
+      }
+    ],
+    "anthropic-claude-code": [
+      {
+        "familyId": "anthropic-claude-models",
+        "surface": "Claude Code",
+        "availability": "available",
+        "he": "לקוח מובנה מגרסה 2.1.280 ומעלה. כינויים אצל ספקים עשויים לפגר; /model מציג את הזמינות בחשבון. כינוי Fable הוא 5.1, פרט לשער Claude apps הממפה ל־5. לא נבדק בחשבון; הזמינות עשויה להיות תלויה באזור, במינוי ובהרשאות סביבת העבודה.",
+        "en": "Native client >= 2.1.280. Provider aliases may lag; /model reflects account access. Fable alias is 5.1 except Claude apps gateway maps to 5. Not account-tested; availability can depend on region, plan and workspace permissions.",
+        "sources": [
+          {
+            "url": "https://code.claude.com/docs/en/model-config",
+            "checkedAt": "2026-10-14"
+          }
+        ],
+        "generations": [
+          "claude-opus-5-5"
+        ],
+        "models": [
+          "Claude Opus 5.5"
+        ]
+      },
+      {
+        "familyId": "anthropic-claude-models",
+        "surface": "Claude Code",
+        "availability": "available",
+        "he": "לקוח מובנה מגרסה 2.1.284 ומעלה. כינויים אצל ספקים עשויים לפגר; /model מציג את הזמינות בחשבון. כינוי Fable הוא 5.1, פרט לשער Claude apps הממפה ל־5. לא נבדק בחשבון; הזמינות עשויה להיות תלויה באזור, במינוי ובהרשאות סביבת העבודה.",
+        "en": "Native client >= 2.1.284. Provider aliases may lag; /model reflects account access. Fable alias is 5.1 except Claude apps gateway maps to 5. Not account-tested; availability can depend on region, plan and workspace permissions.",
+        "sources": [
+          {
+            "url": "https://code.claude.com/docs/en/model-config",
+            "checkedAt": "2026-10-14"
+          }
+        ],
+        "generations": [
+          "claude-sonnet-5-5"
+        ],
+        "models": [
+          "Claude Sonnet 5.5"
+        ]
+      },
+      {
+        "familyId": "anthropic-claude-models",
+        "surface": "Claude Code",
+        "availability": "available",
+        "he": "לקוח מובנה מגרסה 2.1.293 ומעלה. כינויים אצל ספקים עשויים לפגר; /model מציג את הזמינות בחשבון. כינוי Fable הוא 5.1, פרט לשער Claude apps הממפה ל־5. לא נבדק בחשבון; הזמינות עשויה להיות תלויה באזור, במינוי ובהרשאות סביבת העבודה.",
+        "en": "Native client >= 2.1.293. Provider aliases may lag; /model reflects account access. Fable alias is 5.1 except Claude apps gateway maps to 5. Not account-tested; availability can depend on region, plan and workspace permissions.",
+        "sources": [
+          {
+            "url": "https://code.claude.com/docs/en/model-config",
+            "checkedAt": "2026-10-14"
+          }
+        ],
+        "generations": [
+          "claude-haiku-5-5"
+        ],
+        "models": [
+          "Claude Haiku 5.5"
+        ]
+      },
+      {
+        "familyId": "anthropic-claude-models",
+        "surface": "Claude Code",
+        "availability": "available",
+        "he": "לקוח מובנה מגרסה 2.1.257 ומעלה. כינויים אצל ספקים עשויים לפגר; /model מציג את הזמינות בחשבון. כינוי Fable הוא 5.1, פרט לשער Claude apps הממפה ל־5. לא נבדק בחשבון; הזמינות עשויה להיות תלויה באזור, במינוי ובהרשאות סביבת העבודה.",
+        "en": "Native client >= 2.1.257. Provider aliases may lag; /model reflects account access. Fable alias is 5.1 except Claude apps gateway maps to 5. Not account-tested; availability can depend on region, plan and workspace permissions.",
+        "sources": [
+          {
+            "url": "https://code.claude.com/docs/en/model-config",
+            "checkedAt": "2026-10-14"
+          }
+        ],
+        "generations": [
+          "claude-fable-5-1"
+        ],
+        "models": [
+          "Claude Fable 5.1"
+        ]
+      }
+    ]
+  }
+}

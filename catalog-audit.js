@@ -30,7 +30,13 @@ window.catalogAudit = {
     "grok",
     "grok-imagine",
     "google-veo",
-    "wan-video"
+    "wan-video",
+    "sync-lipsync",
+    "sync-studio",
+    "google-antigravity",
+    "openai-gpt-models",
+    "anthropic-claude-models",
+    "google-gemini-models"
   ],
   "records": {
     "ai-001": {
@@ -1652,6 +1658,66 @@ window.catalogAudit = {
       "checkedAt": "2026-10-13",
       "verification": "official-source-review",
       "scoreScope": "unrated"
+    },
+    "sync-lipsync": {
+      "name": "Sync lip-sync",
+      "he": "משפחת מודלים להתאמת תנועת שפתיים לאודיו; sync-3 הוא ברירת המחדל המתועדת, לצד דורות קודמים ומודל ביצוע מקביל.",
+      "en": "A lip-sync model family matching mouth movement to audio; sync-3 is the documented default, alongside earlier generations and a sibling performance model.",
+      "category": "video",
+      "decision": "Official product/model documentation reviewed; no quality score assigned.",
+      "source": "https://sync.so/docs/models/sync-3",
+      "verification": "checked",
+      "scoreScope": "history-only"
+    },
+    "sync-studio": {
+      "name": "Sync Studio",
+      "he": "סביבת עבודה של Sync Labs להפקת וידאו עם סנכרון שפתיים; המודלים זמינים גם דרך API ותוסף Premiere לפי מסלול השימוש.",
+      "en": "Sync Labs workspace for lip-synced video; model access also includes API and Premiere integration depending on the workflow.",
+      "category": "platforms",
+      "decision": "Official product/model documentation reviewed; no quality score assigned.",
+      "source": "https://sync.so/docs/models/sync-3",
+      "verification": "checked",
+      "scoreScope": "history-only"
+    },
+    "google-antigravity": {
+      "name": "Google Antigravity",
+      "he": "סביבת פיתוח סוכנית עם אפליקציה, CLI, תוספים ו־IDE. בחירת המודלים משתנה לפי משטח עבודה ומינוי.",
+      "en": "Agentic development environment with app, CLI, extensions and IDE surfaces. Model selection varies by surface and subscription.",
+      "category": "workflow",
+      "decision": "Official documentation reviewed; availability is scoped by product surface and plan.",
+      "source": "https://www.antigravity.google/docs/models/",
+      "verification": "checked",
+      "scoreScope": "history-only"
+    },
+    "openai-gpt-models": {
+      "name": "OpenAI GPT",
+      "he": "משפחת מודלי GPT. הדורות, מצבי ההפעלה והזמינות משתנים בין ChatGPT, Codex וספקים אחרים.",
+      "en": "GPT model family. Generations, effort modes and availability differ across ChatGPT, Codex and other providers.",
+      "category": "text",
+      "decision": "Official documentation reviewed; availability is scoped by product surface and plan.",
+      "source": "https://help.openai.com/en/articles/20001354-gpt-6-and-other-models-in-chatgpt",
+      "verification": "checked",
+      "scoreScope": "history-only"
+    },
+    "anthropic-claude-models": {
+      "name": "Claude models",
+      "he": "משפחת מודלי Claude; מוצרי Claude ו־Claude Code הם סביבות שימוש נפרדות, עם מגבלות גרסה ומינוי.",
+      "en": "Claude model family; Claude and Claude Code are separate access products with version and subscription constraints.",
+      "category": "text",
+      "decision": "Official documentation reviewed; availability is scoped by product surface and plan.",
+      "source": "https://www.anthropic.com/claude/sonnet",
+      "verification": "checked",
+      "scoreScope": "history-only"
+    },
+    "google-gemini-models": {
+      "name": "Gemini models",
+      "he": "משפחת מודלי Gemini. המודלים המופיעים בסביבות עבודה שונות אינם בהכרח זמינים בכל מוצר או מינוי.",
+      "en": "Gemini model family. Models documented in different workspaces are not necessarily available in every product or subscription.",
+      "category": "text",
+      "decision": "Official documentation reviewed; availability is scoped by product surface and plan.",
+      "source": "https://www.antigravity.google/docs/models/",
+      "verification": "checked",
+      "scoreScope": "history-only"
     }
   }
 };

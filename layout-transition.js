@@ -4,7 +4,7 @@
  root.LayoutTransition=class {
   constructor({stage,canvas,grid,onStart,onFinish}){Object.assign(this,{stage,canvas,grid,onStart,onFinish});this.animations=[];this.version=0;this.active=false;this.reduced=matchMedia('(prefers-reduced-motion: reduce)');this.reduced.addEventListener('change',()=>{if(this.reduced.matches)this.finish()});}
   capture(){const labels=new Map();for(const b of this.grid.querySelectorAll('.tool-label')){const style=getComputedStyle(b);labels.set(b.parentElement.dataset.id,{rect:b.getBoundingClientRect(),opacity:style.visibility==='hidden'?0:Number(style.opacity)});}return {labels,height:this.stage.getBoundingClientRect().height,canvas:{opacity:this.canvas.hidden?0:Number(getComputedStyle(this.canvas).opacity),transform:getComputedStyle(this.canvas).transform}};}
-  cancel(){cancelAnimationFrame(this.hitFrame);this.version++;for(const a of this.animations)a.cancel();this.animations=[];this.active=false;this.grid.inert=false;delete this.stage.dataset.unfolding;this.onFinish();}
+  cancel(){this.afterFinish=null;cancelAnimationFrame(this.hitFrame);this.version++;for(const a of this.animations)a.cancel();this.animations=[];this.active=false;this.grid.inert=false;delete this.stage.dataset.unfolding;this.onFinish();}
   finish(){if(!this.active)return;const done=this.complete;done?.();}
   run(before,layout){
    if(this.reduced.matches||!before.labels.size)return;
@@ -29,7 +29,7 @@
    animate(stage,[{height:before.height+'px'},{height:targetHeight+'px'}]);
    const canvasHidden=this.canvas.hidden;this.canvas.hidden=false;
    animate(this.canvas,[{opacity:before.canvas.opacity,transform:before.canvas.transform},{opacity:layout==='atlas'?0:1,transform:layout==='atlas'?'translateY(-20px) scaleY(.06)':'none'}]);
-   this.complete=()=>{if(version!==this.version||!this.active)return;this.active=false;cancelAnimationFrame(this.hitFrame);for(const a of animations)a.cancel();this.animations=[];for(const undo of restore)undo();this.canvas.hidden=canvasHidden;delete stage.dataset.unfolding;this.complete=null;this.onFinish();};
+   this.complete=()=>{if(version!==this.version||!this.active)return;this.active=false;cancelAnimationFrame(this.hitFrame);for(const a of animations)a.cancel();this.animations=[];for(const undo of restore)undo();this.canvas.hidden=canvasHidden;delete stage.dataset.unfolding;this.complete=null;this.onFinish();const after=this.afterFinish;this.afterFinish=null;after?.();};
    Promise.all(animations.map(a=>a.finished)).then(()=>{if(version===this.version)this.complete?.();}).catch(()=>{});
   }
  };

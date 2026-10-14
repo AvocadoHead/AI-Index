@@ -1231,13 +1231,22 @@ html[dir=ltr] .creative-steps li {padding:0 0 22px 42px;}
 .dialog-close{top:8px;}
 
 /* A quiet, reversible exploration control; touch retains native vertical page scroll. */
-.exploration-controls {grid-column:1/-1;width:min(100%,420px);max-width:420px;margin:4px auto 8px;color:#536b63;}
+.exploration-controls {grid-column:1/-1;width:min(100%,330px);max-width:330px;margin:0 auto 2px;color:#536b63;}
 .exploration-stops {display:flex;justify-content:space-between;gap:8px;}
 .exploration-stops button {min-height:44px;padding:4px 10px;background:transparent;color:#52675f;font-size:14px;border-radius:6px;}
 .exploration-stops button[aria-pressed=true] {background:#edf2ef;color:#304e43;}
-#explorationDepth {display:block;width:calc(100% - 20px);margin:0 10px;height:44px;accent-color:#708d83;cursor:ew-resize;}
-#explorationHint {font-size:12px;line-height:1.4;text-align:center;margin:2px 10px 0;color:#65776f;}
 .sphere-stage:not(.atlas-mode) {overflow:hidden;touch-action:pan-y;}
-@media(max-width:620px){.exploration-controls {margin-top:0;}.exploration-stops button {font-size:13px;}#explorationHint {font-size:11px;}}
+@media(max-width:620px){.exploration-controls {margin-top:0;}.exploration-stops button {font-size:13px;}}
 /* Keep label coordinates stable when changing views adds or removes page overflow. */
 html {scrollbar-gutter:stable;}
+
+.search-notice,.search-all{grid-column:1/-1;font-size:14px;line-height:1.5;text-align:start;}
+.search-notice{color:var(--muted);margin:0 0 10px;}
+.search-all{min-height:44px;background:#edf3ef;color:#304e43;border-radius:6px;padding:8px 12px;justify-self:start;margin-bottom:12px;}
+.layout-toolbar[hidden]{display:none;}
+
+.relationship-row{padding:12px 0;border-top:1px solid var(--line);}.relationship-row p{font-size:15px;line-height:1.6;margin:5px 0;}.relationship-link{min-height:44px;background:none;color:#365c52;padding:4px 0;font-size:20px;text-align:start;}.relationship-surface,.relationship-status{color:var(--muted);font-size:13px;}.generation-links{display:flex;flex-wrap:wrap;gap:6px;}.relationship-sources{list-style:none;padding:0;font-size:12px;color:var(--muted);}.relationship-sources li{display:flex;gap:12px;flex-wrap:wrap;}.model-relationships>.detail-section{margin-top:22px;}
+
+.relationship-row code{display:block;overflow-wrap:anywhere;white-space:normal;font-size:12px;}.record-kind{font-size:13px;color:var(--muted);margin:0 0 12px;}
+
+.route-details summary{min-height:44px;cursor:pointer;font-size:14px;color:#526d61;display:list-item;align-content:center;}.relationship-link{display:inline-flex;align-items:center;}
