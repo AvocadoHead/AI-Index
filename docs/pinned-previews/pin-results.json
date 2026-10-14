@@ -1,0 +1,146 @@
+[
+  {
+    "name": "390-he-normal",
+    "layout": "sphere",
+    "hoverBridge": true,
+    "clickPins": true,
+    "pointerAndFocusStable": true,
+    "keyboard": true,
+    "touch": true
+  },
+  {
+    "name": "390-he-normal",
+    "layout": "atlas",
+    "hoverBridge": true,
+    "clickPins": true,
+    "pointerAndFocusStable": true,
+    "keyboard": true,
+    "touch": true
+  },
+  {
+    "name": "390-he-reduced",
+    "layout": "sphere",
+    "hoverBridge": true,
+    "clickPins": true,
+    "pointerAndFocusStable": true,
+    "keyboard": true,
+    "touch": true
+  },
+  {
+    "name": "390-he-reduced",
+    "layout": "atlas",
+    "hoverBridge": true,
+    "clickPins": true,
+    "pointerAndFocusStable": true,
+    "keyboard": true,
+    "touch": true
+  },
+  {
+    "name": "390-en-normal",
+    "layout": "sphere",
+    "hoverBridge": true,
+    "clickPins": true,
+    "pointerAndFocusStable": true,
+    "keyboard": true,
+    "touch": true
+  },
+  {
+    "name": "390-en-normal",
+    "layout": "atlas",
+    "hoverBridge": true,
+    "clickPins": true,
+    "pointerAndFocusStable": true,
+    "keyboard": true,
+    "touch": true
+  },
+  {
+    "name": "390-en-reduced",
+    "layout": "sphere",
+    "hoverBridge": true,
+    "clickPins": true,
+    "pointerAndFocusStable": true,
+    "keyboard": true,
+    "touch": true
+  },
+  {
+    "name": "390-en-reduced",
+    "layout": "atlas",
+    "hoverBridge": true,
+    "clickPins": true,
+    "pointerAndFocusStable": true,
+    "keyboard": true,
+    "touch": true
+  },
+  {
+    "name": "1440-he-normal",
+    "layout": "sphere",
+    "hoverBridge": true,
+    "clickPins": true,
+    "pointerAndFocusStable": true,
+    "keyboard": true,
+    "touch": false
+  },
+  {
+    "name": "1440-he-normal",
+    "layout": "atlas",
+    "hoverBridge": true,
+    "clickPins": true,
+    "pointerAndFocusStable": true,
+    "keyboard": true,
+    "touch": false
+  },
+  {
+    "name": "1440-he-reduced",
+    "layout": "sphere",
+    "hoverBridge": true,
+    "clickPins": true,
+    "pointerAndFocusStable": true,
+    "keyboard": true,
+    "touch": false
+  },
+  {
+    "name": "1440-he-reduced",
+    "layout": "atlas",
+    "hoverBridge": true,
+    "clickPins": true,
+    "pointerAndFocusStable": true,
+    "keyboard": true,
+    "touch": false
+  },
+  {
+    "name": "1440-en-normal",
+    "layout": "sphere",
+    "hoverBridge": true,
+    "clickPins": true,
+    "pointerAndFocusStable": true,
+    "keyboard": true,
+    "touch": false
+  },
+  {
+    "name": "1440-en-normal",
+    "layout": "atlas",
+    "hoverBridge": true,
+    "clickPins": true,
+    "pointerAndFocusStable": true,
+    "keyboard": true,
+    "touch": false
+  },
+  {
+    "name": "1440-en-reduced",
+    "layout": "sphere",
+    "hoverBridge": true,
+    "clickPins": true,
+    "pointerAndFocusStable": true,
+    "keyboard": true,
+    "touch": false
+  },
+  {
+    "name": "1440-en-reduced",
+    "layout": "atlas",
+    "hoverBridge": true,
+    "clickPins": true,
+    "pointerAndFocusStable": true,
+    "keyboard": true,
+    "touch": false
+  }
+]

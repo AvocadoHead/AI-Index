@@ -44,3 +44,18 @@ test('collision fades are continuous, time based and finish at their target',()=
  assert.ok(whole>0&&whole<1);assert.ok(Math.abs(whole-geometry.fadeStep(half,1,16))<1e-12);
  let alpha=1;for(let i=0;i<50;i++)alpha=geometry.fadeStep(alpha,0,16);assert.equal(alpha,0);
 });
+
+test('exploration projects continuously through a transparent shell into the far hemisphere',()=>{
+ for(const depth of [0,.1,.45,.75,1])for(let i=0;i<158;i++){
+  const p=geometry.projection(geometry.point(i,158),depth);assert.ok(Number.isFinite(p.x)&&Number.isFinite(p.y));assert.ok(p.alpha>=0&&p.alpha<=1);
+ }
+ assert.equal(geometry.projection([0,0,-1],0).alpha,0);
+ assert.equal(geometry.projection([0,0,-1],.45).alpha,1);
+ assert.equal(geometry.projection([0,0,1],1).alpha,0);
+ assert.equal(geometry.projection([0,0,-1],1).alpha,1);
+});
+test('wheel exploration normalizes devices and bounds a single event',()=>{
+ assert.equal(geometry.wheelStep(1,1),geometry.wheelStep(16,0));
+ assert.equal(geometry.wheelStep(5000,0),.125);assert.equal(geometry.wheelStep(-5000,0),-.125);
+ assert.equal(geometry.wheelStep(0,0),0);assert.ok(geometry.wheelStep(2,0)<.005);
+});

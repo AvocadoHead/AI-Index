@@ -74,3 +74,14 @@ test('category combinations use union and selected-domain scores only',()=>{
  assert.ok(combined.every(r=>r.tasks.includes('audio')||r.tasks.includes('video')));
  const sample={original:{scores:{T2I:.8,T2V:.9,AUD:.7}}};assert.equal(api.estimatedScore(sample,['video']),.9);assert.equal(api.estimatedScore(sample,['design']),null);
 });
+
+test('Seedance launches 2.5 and Codex remains discoverable without a duplicate',()=>{
+ assert.equal(api.destination(records.find(r=>r.id==='bytedance-seedance')),'https://seed.bytedance.com/en/seedance2_5');
+ assert.equal(api.destination(records.find(r=>r.id==='kolbo-ai')),'https://kolbo.ai/');
+ for(const query of ['Codex','OpenAI Codex','קודקס']){
+  const matches=api.selectRecords(records,{...state,query,selectedTasks:['workflow']});
+  assert.equal(matches.length,1);assert.equal(matches[0].id,'openai-codex');assert.equal(matches[0].primaryTask,'workflow');
+ }
+ assert.equal(records.filter(r=>r.id==='openai-codex').length,1);
+ assert.equal(api.estimatedScore(records.find(r=>r.id==='openai-codex')),null);
+});
