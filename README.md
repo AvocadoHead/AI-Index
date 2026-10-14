@@ -31,3 +31,5 @@ node scripts/browser-qa.cjs
 The original local JavaScript importer evaluates supplied files and is retained only in the original view; replacing that importer is a separate security task.
 
 Support the project: [Buy Me a Coffee](https://buymeacoffee.com/Optopia).
+
+Owner/agent update proposals: [shared catalog maintenance route](docs/catalog-updates/README.md). Generate a data-only proposal with `node scripts/catalog-change.mjs --template`, then validate it with `node scripts/catalog-change.mjs change.json`. This creates a review plan; it does not grant writes or publish changes.

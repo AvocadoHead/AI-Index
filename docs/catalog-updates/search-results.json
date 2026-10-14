@@ -1,0 +1,82 @@
+[
+  {
+    "width": 360,
+    "language": "he",
+    "aliases": true,
+    "scopes": true,
+    "categoryAndStatusRecovery": true,
+    "insideSearch": true,
+    "restoreView": true,
+    "keyboardDetails": true
+  },
+  {
+    "width": 360,
+    "language": "en",
+    "aliases": true,
+    "scopes": true,
+    "categoryAndStatusRecovery": true,
+    "insideSearch": true,
+    "restoreView": true,
+    "keyboardDetails": true
+  },
+  {
+    "width": 390,
+    "language": "he",
+    "aliases": true,
+    "scopes": true,
+    "categoryAndStatusRecovery": true,
+    "insideSearch": true,
+    "restoreView": true,
+    "keyboardDetails": true
+  },
+  {
+    "width": 390,
+    "language": "en",
+    "aliases": true,
+    "scopes": true,
+    "categoryAndStatusRecovery": true,
+    "insideSearch": true,
+    "restoreView": true,
+    "keyboardDetails": true
+  },
+  {
+    "width": 768,
+    "language": "he",
+    "aliases": true,
+    "scopes": true,
+    "categoryAndStatusRecovery": true,
+    "insideSearch": true,
+    "restoreView": true,
+    "keyboardDetails": true
+  },
+  {
+    "width": 768,
+    "language": "en",
+    "aliases": true,
+    "scopes": true,
+    "categoryAndStatusRecovery": true,
+    "insideSearch": true,
+    "restoreView": true,
+    "keyboardDetails": true
+  },
+  {
+    "width": 1440,
+    "language": "he",
+    "aliases": true,
+    "scopes": true,
+    "categoryAndStatusRecovery": true,
+    "insideSearch": true,
+    "restoreView": true,
+    "keyboardDetails": true
+  },
+  {
+    "width": 1440,
+    "language": "en",
+    "aliases": true,
+    "scopes": true,
+    "categoryAndStatusRecovery": true,
+    "insideSearch": true,
+    "restoreView": true,
+    "keyboardDetails": true
+  }
+]
